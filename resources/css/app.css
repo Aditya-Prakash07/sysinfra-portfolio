@@ -1,0 +1,677 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override stylized ampersand in Space Grotesk with clean classic ampersand across all weights */
+@font-face {
+    font-family: 'CleanAmpersand';
+    src: local('Helvetica Neue Bold'), local('Arial Bold'), local('Helvetica Neue'), local('Arial'), local('Segoe UI'), local('Roboto');
+    font-weight: 600 900;
+    unicode-range: U+0026; /* Exactly '&' */
+}
+
+@font-face {
+    font-family: 'CleanAmpersand';
+    src: local('Helvetica Neue'), local('Arial'), local('Segoe UI'), local('Roboto');
+    font-weight: 100 599;
+    unicode-range: U+0026; /* Exactly '&' */
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-paper text-ink font-sans antialiased;
+    }
+
+    h1, h2, h3, h4 {
+        @apply font-display;
+    }
+
+    /* Respect reduced-motion preferences everywhere, per the frontend design floor. */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.001ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* Visible keyboard focus, not the browser default outline-none anti-pattern. */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 2px solid theme('colors.beacon.DEFAULT');
+        outline-offset: 2px;
+    }
+}
+
+@layer components {
+    .container-content {
+        @apply mx-auto max-w-content px-6 lg:px-8;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white font-bold px-6 py-3
+               rounded-lg shadow-md shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 bg-white dark:bg-navy-surface border border-slate-300 dark:border-white/10 text-slate-800 dark:text-paper font-semibold px-6 py-3
+               rounded-lg shadow-sm hover:border-blue-500/50 dark:hover:border-beacon/50 hover:bg-slate-50 dark:hover:bg-white/[0.04] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+    }
+
+    .btn-outline-dark {
+        @apply inline-flex items-center justify-center gap-2 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-paper font-semibold
+               px-6 py-3 rounded-lg hover:border-blue-500 dark:hover:border-beacon hover:text-blue-600 dark:hover:text-beacon hover:bg-blue-500/5 dark:hover:bg-beacon/5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+    }
+
+    .btn-beacon {
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white font-bold px-6 py-3
+               rounded-lg shadow-md shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+    }
+
+    .btn-outline-paper {
+        @apply inline-flex items-center justify-center gap-2 border border-slate-300 dark:border-white/20 text-slate-800 dark:text-paper font-semibold
+               px-5 py-2.5 rounded-lg hover:border-blue-500 dark:hover:border-beacon hover:text-blue-600 dark:hover:text-beacon hover:bg-blue-500/5 dark:hover:bg-beacon/5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+    }
+
+    .card-dual {
+        @apply bg-white dark:bg-navy-surface border border-slate-200/90 dark:border-navy-border/60 rounded-xl shadow-sm transition-all duration-200;
+    }
+
+    .panel {
+        @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm transition-all duration-200;
+    }
+
+    .panel-hover {
+        @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm
+               hover:border-blue-500/50 dark:hover:border-beacon/50 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-beacon/5 hover:-translate-y-1.5 transition-all duration-300 ease-out;
+    }
+
+    .card-symmetric {
+        @apply h-full flex flex-col justify-between border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm
+               hover:border-blue-500/50 dark:hover:border-beacon/50 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-beacon/5 hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden;
+    }
+
+    .btn-shimmer {
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white font-bold px-6 py-3
+               rounded-lg shadow-md shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+    }
+
+    .panel-dark {
+        @apply border border-navy-border/70 bg-navy-surface/90 backdrop-blur-sm rounded-xl transition-all duration-200;
+    }
+
+    .badge-rf {
+        @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono tracking-wide uppercase font-semibold
+               rounded-full border border-beacon/30 bg-beacon/10 text-blue-600 dark:text-beacon;
+    }
+
+    .badge-navy {
+        @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono tracking-wide uppercase font-semibold
+               rounded-full border border-slate-300 dark:border-navy-border bg-slate-100 dark:bg-navy-light text-slate-700 dark:text-paper/80;
+    }
+
+    .badge-steel {
+        @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono tracking-wide font-medium
+               rounded border border-slate-200 dark:border-steel/20 bg-slate-100 dark:bg-paper/5 text-slate-600 dark:text-steel-light;
+    }
+
+    .input {
+        @apply w-full border border-slate-300 dark:border-steel/30 bg-white dark:bg-navy-surface px-4 py-3 text-sm text-slate-900 dark:text-paper
+               placeholder:text-slate-400 dark:placeholder:text-steel/60 rounded-lg focus:border-beacon focus:ring-2 focus:ring-beacon/20 outline-none transition-all;
+    }
+
+    .bg-grid-pattern {
+        background-size: 32px 32px;
+        background-image: 
+            linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    .bg-grid-paper {
+        background-size: 28px 28px;
+        background-image: 
+            linear-gradient(to right, rgba(16, 21, 28, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(16, 21, 28, 0.04) 1px, transparent 1px);
+    }
+
+    @keyframes heroFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+            filter: blur(4px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    .animate-hero-fade {
+        animation: heroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .animate-hero-fade-d1 {
+        animation: heroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+    }
+
+    .animate-hero-fade-d2 {
+        animation: heroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+    }
+
+    .animate-hero-fade-d3 {
+        animation: heroFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+    }
+
+    /* Cinematic Banner Typography & Kinetic Reveal Suite */
+    @keyframes heroBadgeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-16px) scale(0.92);
+            filter: blur(6px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    .animate-hero-badge {
+        animation: heroBadgeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes heroTitleIn {
+        0% {
+            opacity: 0;
+            transform: translateY(38px) scale(0.96);
+            filter: blur(10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    .animate-hero-title {
+        animation: heroTitleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.06s both;
+    }
+
+    /* Professional Words Jumping & Expanding from Center Kinetic Animation */
+    @keyframes wordJumpExpand {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 32px, 0) scale(0.62);
+            filter: blur(6px);
+        }
+        52% {
+            opacity: 1;
+            filter: blur(0px);
+        }
+        64% {
+            transform: translate3d(0, -7px, 0) scale(1.055);
+        }
+        82% {
+            transform: translate3d(0, 1.5px, 0) scale(0.99);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+            filter: blur(0px);
+        }
+    }
+
+    .animate-word-jump-expand {
+        animation: wordJumpExpand 680ms cubic-bezier(0.2, 0.85, 0.32, 1.2) both;
+        transform-origin: 50% 50%;
+        will-change: transform, opacity, filter;
+    }
+
+    @keyframes tracerExpand {
+        0% {
+            transform: scaleX(0);
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+        100% {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+    }
+
+    .animate-hero-tracer {
+        transform-origin: left;
+        animation: tracerExpand 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+    }
+
+    @keyframes heroSubtitleIn {
+        0% {
+            opacity: 0;
+            transform: translateY(22px);
+            filter: blur(8px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+    }
+
+    .animate-hero-subtitle {
+        animation: heroSubtitleIn 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+    }
+
+    @keyframes heroChipIn {
+        0% {
+            opacity: 0;
+            transform: translateY(14px) scale(0.9);
+            filter: blur(4px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    .animate-hero-chip-1 {
+        animation: heroChipIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+    }
+
+    .animate-hero-chip-2 {
+        animation: heroChipIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
+    }
+
+    .animate-hero-chip-3 {
+        animation: heroChipIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both;
+    }
+
+    @keyframes heroCtaIn {
+        0% {
+            opacity: 0;
+            transform: translateY(18px) scale(0.94);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .animate-hero-cta {
+        animation: heroCtaIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
+    }
+
+    @keyframes slideProgress {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    .animate-slide-progress {
+        animation: slideProgress 3.4s linear forwards;
+    }
+
+    @keyframes marqueeLtr {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    .animate-marquee-ltr {
+        display: flex;
+        width: max-content;
+        animation: marqueeLtr 32s linear infinite;
+        will-change: transform;
+    }
+
+    .animate-marquee-ltr:hover {
+        animation-play-state: paused;
+    }
+
+    .stat-number-glow {
+        text-shadow: 0 0 24px rgba(74, 144, 226, 0.4), 0 0 48px rgba(56, 189, 248, 0.2);
+    }
+
+    @keyframes statPulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+    }
+
+    .animate-stat-pulse {
+        animation: statPulse 3s ease-in-out infinite;
+    }
+
+    /* Industry-Standard Kinetic Typography Animation Suite */
+    @keyframes textSheen {
+        0% {
+            background-position: 200% center;
+        }
+        100% {
+            background-position: -200% center;
+        }
+    }
+
+    .animate-text-sheen {
+        background-size: 200% auto;
+        animation: textSheen 6s ease-in-out infinite;
+    }
+
+    .text-glow-beacon {
+        text-shadow: 0 0 20px rgba(59, 130, 246, 0.45), 0 0 40px rgba(59, 130, 246, 0.2);
+    }
+
+    /* Hide scrollbar utility */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .hardware-card-shelf {
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .hardware-card-shelf:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 30px -10px rgba(59, 130, 246, 0.18), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    }
+
+    /* =========================================================================
+       CSS-TRICKS STYLE OVERLAPPING & FANNING CARD DECK (OPTIMIZED)
+       Faithful implementation of the iconic CSS-Tricks "Popular this month":
+       - Independent, fixed Left Anchor Card with animated flowing gradient border
+       - Dedicated spacing ensuring Anchor Card NEVER overlaps with deck cards
+       - Overlapping card deck with negative left margins on md/lg/xl screens
+       - Exact cancellation shift: hover ~ .csstricks-card shifts by the exact overlap
+       - Deep directional drop shadows (-2rem 0 3rem -2rem #000)
+       - All 6 cards visible simultaneously on About Us viewport
+       - Responsive mobile snap-scroll fallback
+    ========================================================================= */
+
+    @keyframes anchorGradientFlow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes anchorAuraPulse {
+        0%, 100% {
+            box-shadow: 0 12px 32px -6px rgba(37, 99, 235, 0.35), 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+        50% {
+            box-shadow: 0 16px 45px -4px rgba(2, 132, 199, 0.55), 0 0 25px rgba(6, 182, 212, 0.4);
+        }
+    }
+
+    .csstricks-anchor {
+        flex-shrink: 0;
+        border-radius: 1.5rem;
+        padding: 3px;
+        background: linear-gradient(135deg, #1d4ed8, #0284c7 25%, #06b6d4 50%, #6366f1 75%, #2563eb 100%);
+        background-size: 250% 250%;
+        animation: anchorGradientFlow 7s ease infinite, anchorAuraPulse 4s ease-in-out infinite;
+        display: flex;
+        position: relative;
+    }
+
+    .csstricks-anchor-inner {
+        background: #ffffff;
+        border-radius: calc(1.5rem - 3px);
+        padding: 1.75rem 1.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        transition: background-color 0.3s ease;
+    }
+
+    .dark .csstricks-anchor-inner {
+        background: #000000;
+    }
+
+    /* Overlapping Deck Track */
+    .csstricks-deck {
+        display: flex;
+        align-items: stretch;
+        position: relative;
+    }
+
+    .csstricks-card {
+        flex-shrink: 0;
+        position: relative;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.35s ease, 
+                    border-color 0.25s ease, 
+                    opacity 0.3s ease;
+    }
+
+    /* Invisible hover hit-bridge extending below and around the card to prevent vibration/jitter when hovering near edges */
+    .csstricks-card::after {
+        content: '';
+        position: absolute;
+        inset: -0.75rem -0.5rem -1.75rem -0.5rem;
+        pointer-events: auto;
+        z-index: -1;
+    }
+
+    /* Standard Hardware Deck (Home page): Exactly 4 Animated Cards visible next to fixed card (Screenshot Style) */
+    /* Standard Hardware Deck (Home page): Exactly 4 Animated Cards visible next to fixed card (Screenshot Style) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .hardware-deck .csstricks-card {
+            width: 270px;
+            height: 295px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease, 
+                        opacity 0.3s ease;
+        }
+        .hardware-deck .csstricks-card:first-child {
+            margin-left: 0;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .dark .hardware-deck .csstricks-card:first-child,
+        :is(.dark) .hardware-deck .csstricks-card:first-child {
+            box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.85), 0 3px 8px -2px #000;
+        }
+        .hardware-deck .csstricks-card:not(:first-child) {
+            margin-left: -5.5rem;
+            box-shadow: -1.75rem 0.65rem 1.75rem -1rem rgba(0, 0, 0, 0.35);
+        }
+        .dark .hardware-deck .csstricks-card:not(:first-child),
+        :is(.dark) .hardware-deck .csstricks-card:not(:first-child) {
+            box-shadow: -2rem 0.65rem 1.75rem -1rem #000;
+        }
+        .hardware-deck .csstricks-card:hover,
+        .hardware-deck .csstricks-card:focus-within {
+            transform: translateY(-0.85rem) rotate(2deg) !important;
+            z-index: 50 !important;
+            box-shadow: -1.5rem 1.25rem 2.25rem -0.75rem rgba(0, 0, 0, 0.32), 
+                        0 20px 35px -8px rgba(0, 0, 0, 0.22) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+        }
+        .dark .hardware-deck .csstricks-card:hover,
+        .dark .hardware-deck .csstricks-card:focus-within,
+        :is(.dark) .hardware-deck .csstricks-card:hover,
+        :is(.dark) .hardware-deck .csstricks-card:focus-within {
+            box-shadow: -2rem 1.25rem 2.25rem -1rem #000, 
+                        0 24px 42px -8px rgba(0, 0, 0, 0.95) !important;
+            border-color: rgba(0, 229, 255, 0.5) !important;
+        }
+        .hardware-deck .csstricks-card:hover ~ .csstricks-card,
+        .hardware-deck .csstricks-card:focus-within ~ .csstricks-card {
+            transform: translateX(5.5rem);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hardware-deck .csstricks-card {
+            width: 310px;
+            height: 310px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease, 
+                        opacity 0.3s ease;
+        }
+
+        /* 1. First Card in Deck */
+        .hardware-deck .csstricks-card:first-child {
+            margin-left: 0;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .hardware-deck .csstricks-card:first-child,
+        :is(.dark) .hardware-deck .csstricks-card:first-child {
+            box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.85), 0 3px 8px -2px #000;
+        }
+
+        /* 2. Subsequent Overlapping Cards: Sized so exactly 4 cards fan out across the deck */
+        .hardware-deck .csstricks-card:not(:first-child) {
+            margin-left: -6.25rem; /* -100px overlap: gives 210px visible strip per card */
+            box-shadow: -1.75rem 0.65rem 1.75rem -1rem rgba(0, 0, 0, 0.35);
+        }
+
+        .dark .hardware-deck .csstricks-card:not(:first-child),
+        :is(.dark) .hardware-deck .csstricks-card:not(:first-child) {
+            box-shadow: -2rem 0.65rem 1.75rem -1rem #000;
+        }
+
+        /* 3. Hover on Card: Upward lift, subtle tilt, high z-index (screenshot animation style) */
+        .hardware-deck .csstricks-card:hover,
+        .hardware-deck .csstricks-card:focus-within {
+            transform: translateY(-0.85rem) rotate(2deg) !important;
+            z-index: 50 !important;
+            box-shadow: -1.5rem 1.25rem 2.25rem -0.75rem rgba(0, 0, 0, 0.32), 
+                        0 20px 35px -8px rgba(0, 0, 0, 0.22) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+        }
+
+        .dark .hardware-deck .csstricks-card:hover,
+        .dark .hardware-deck .csstricks-card:focus-within,
+        :is(.dark) .hardware-deck .csstricks-card:hover,
+        :is(.dark) .hardware-deck .csstricks-card:focus-within {
+            box-shadow: -2rem 1.25rem 2.25rem -1rem #000, 
+                        0 24px 42px -8px rgba(0, 0, 0, 0.95) !important;
+            border-color: rgba(0, 229, 255, 0.5) !important;
+        }
+
+        /* 4. Subsequent sibling cards push to the right when a card is hovered */
+        .hardware-deck .csstricks-card:hover ~ .csstricks-card,
+        .hardware-deck .csstricks-card:focus-within ~ .csstricks-card {
+            transform: translateX(6.25rem);
+        }
+
+        .hardware-deck:hover .csstricks-card {
+            opacity: 0.88;
+        }
+        .hardware-deck:hover .csstricks-card:hover {
+            opacity: 1 !important;
+        }
+        .hardware-deck:hover .csstricks-card:hover ~ .csstricks-card {
+            opacity: 0.96;
+        }
+    }
+
+    /* About Us Turnkey 6-Card Pipeline: All 6 cards visible on viewport */
+    @media (min-width: 1024px) {
+        .pipeline-deck .csstricks-card:first-child {
+            box-shadow: 0 8px 22px -5px rgba(0, 0, 0, 0.16), 0 3px 8px -2px rgba(0, 0, 0, 0.08);
+        }
+        .dark .pipeline-deck .csstricks-card:first-child,
+        :is(.dark) .pipeline-deck .csstricks-card:first-child {
+            box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.9), 0 4px 12px -2px #000;
+        }
+
+        .pipeline-deck .csstricks-card:not(:first-child) {
+            margin-left: -4.5rem; /* -72px overlap: each card adds 143px */
+            box-shadow: -2.5rem 0.65rem 2rem -1.25rem rgba(0, 0, 0, 0.4);
+        }
+        .dark .pipeline-deck .csstricks-card:not(:first-child),
+        :is(.dark) .pipeline-deck .csstricks-card:not(:first-child) {
+            box-shadow: -3rem 0.65rem 2rem -1.25rem #000;
+        }
+
+        .pipeline-deck .csstricks-card:first-child:focus-within,
+        .pipeline-deck .csstricks-card:first-child:hover {
+            transform: translateY(-0.85rem) rotate(2.5deg);
+            z-index: 50 !important;
+            box-shadow: 0 20px 38px -8px rgba(0, 0, 0, 0.28), 0 6px 16px -4px rgba(0, 0, 0, 0.15);
+        }
+        .dark .pipeline-deck .csstricks-card:first-child:focus-within,
+        .dark .pipeline-deck .csstricks-card:first-child:hover,
+        :is(.dark) .pipeline-deck .csstricks-card:first-child:focus-within,
+        :is(.dark) .pipeline-deck .csstricks-card:first-child:hover {
+            box-shadow: 0 24px 45px -8px rgba(0, 0, 0, 0.95), 0 8px 20px -4px #000;
+        }
+
+        .pipeline-deck .csstricks-card:not(:first-child):focus-within,
+        .pipeline-deck .csstricks-card:not(:first-child):hover {
+            transform: translateY(-0.85rem) rotate(2.5deg);
+            z-index: 50 !important;
+            box-shadow: -2rem 1rem 2rem -1rem rgba(0, 0, 0, 0.4), 
+                        0 22px 35px -8px rgba(0, 0, 0, 0.28);
+        }
+        .dark .pipeline-deck .csstricks-card:not(:first-child):focus-within,
+        .dark .pipeline-deck .csstricks-card:not(:first-child):hover,
+        :is(.dark) .pipeline-deck .csstricks-card:not(:first-child):focus-within,
+        :is(.dark) .pipeline-deck .csstricks-card:not(:first-child):hover {
+            box-shadow: -2.5rem 1rem 2rem -1.25rem #000, 
+                        0 24px 42px -8px rgba(0, 0, 0, 0.95);
+        }
+        .pipeline-deck .csstricks-card:hover ~ .csstricks-card,
+        .pipeline-deck .csstricks-card:focus-within ~ .csstricks-card {
+            transform: translateX(5.25rem);
+        }
+        .pipeline-deck:hover .csstricks-card {
+            opacity: 0.88;
+        }
+        .pipeline-deck:hover .csstricks-card:hover {
+            opacity: 1 !important;
+        }
+        .pipeline-deck:hover .csstricks-card:hover ~ .csstricks-card {
+            opacity: 0.96;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .pipeline-deck .csstricks-card {
+            width: 230px;
+        }
+        .pipeline-deck .csstricks-card:not(:first-child) {
+            margin-left: -5rem; /* -80px overlap: each card adds 150px. 230 + 5*150 = 980px total deck */
+        }
+        .pipeline-deck .csstricks-card:hover ~ .csstricks-card,
+        .pipeline-deck .csstricks-card:focus-within ~ .csstricks-card {
+            transform: translateX(5.75rem);
+        }
+    }
+}
+

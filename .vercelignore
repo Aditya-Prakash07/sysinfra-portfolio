@@ -1,0 +1,17 @@
+/vendor
+/node_modules
+/.git
+/tests
+.phpunit.result.cache
+.phpunit.cache
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/app/public/*
+/public/hot
+/.rembg
+/.venv
+/.env*
+*.log
+.DS_Store

@@ -1,0 +1,1711 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>sysinfra</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Font-awesome CSS-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Owl Caousel CSS -->
+    <link rel="stylesheet" href="vendor/OwlCarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/OwlCarousel/owl.theme.default.min.css">
+    <!-- Main Menu CSS -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- nivo slider CSS -->
+    <link rel="stylesheet" href="vendor/slider/css/nivo-slider.css" type="text/css" />
+    <link rel="stylesheet" href="vendor/slider/css/preview.css" type="text/css" media="screen" />
+    <!-- Datetime Picker Style CSS -->
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+    <!-- Magic popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Switch Style CSS -->
+    <link rel="stylesheet" href="css/hover-min.css">
+    <!-- ReImageGrid CSS -->
+    <link rel="stylesheet" href="css/reImageGrid.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Modernizr Js -->
+    <script src="js/modernizr-2.8.3.min.js"></script>
+    <!-- Sky birds animation (featured products slide) -->
+    <style>
+        .bend.niceties.preview-1 { position: relative; }
+        .sky-birds { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 6; display: none; }
+        .sky-birds .flock { position: absolute; left: 0; top: 0; width: 0; height: 0;
+            animation: flockMove 24s linear infinite; }
+        .sky-birds .bird.small { width: 10px; height: 6px; }
+        .sky-birds .bird { position: absolute; width: 15px; height: 9px; }
+        .sky-birds .bird svg { display: block; width: 100%; height: 100%; overflow: visible; }
+        .sky-birds .wg { fill: none; stroke: #33465c; stroke-width: 3; stroke-linecap: round; transform-box: fill-box; }
+        .sky-birds .wl { transform-origin: right center; animation: flapL .5s ease-in-out infinite; }
+        .sky-birds .wr { transform-origin: left center;  animation: flapR .5s ease-in-out infinite; }
+        @keyframes flapL { 0%,100% { transform: rotate(8deg); }  50% { transform: rotate(40deg); } }
+        @keyframes flapR { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(-40deg); } }
+        @keyframes flockMove {
+            0%   { left: -10%; top: 50%; opacity: 0; }
+            12%  { opacity: 1; }
+            88%  { opacity: 1; }
+            100% { left: 96%;  top: 2%;  opacity: 0; }
+        }
+        /* Clickable product tiles on the Featured Products slide */
+        .slide-links { position: absolute; inset: 0; z-index: 8; display: none; }
+        .slide-links a { position: absolute; top: 47.6%; width: 12.63%; height: 37.5%; display: block; cursor: pointer;
+            background-image: url(img/slider/1-4.jpg?v=15);
+            background-size: 791.77% 266.67%;      /* draw the slide at full size inside each tile box */
+            background-repeat: no-repeat;
+            transform-origin: center center;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .slide-links a:hover {
+            transform: scale(1.2);                 /* zoom the tile image on hover (no border) */
+            box-shadow: 0 18px 42px rgba(10,36,80,0.35);
+            z-index: 20;
+        }
+        /* Headline / punchline overlay on the Featured Products slide */
+        .slide-headline { position: absolute; left: 3.4%; top: 12%; z-index: 9; display: none; max-width: 60%; }
+        .slide-headline .fh-badge { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(90deg,#1e6fd6,#31a9e0); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 30px; box-shadow: 0 4px 14px rgba(30,111,214,0.4); margin-bottom: 12px; }
+        .slide-headline .fh-badge i { font-size: 12px; }
+        .slide-headline h2 { margin: 0; font-size: clamp(20px, 3.1vw, 40px); line-height: 1.18; font-weight: 800; color: #12233f; text-shadow: 0 1px 12px rgba(255,255,255,0.55); }
+        .slide-headline h2 span { color: #1e6fd6; }
+        @media (max-width: 767px) {
+            .slide-headline { top: 4%; max-width: 88%; }
+            .slide-headline .fh-badge { font-size: 10px; padding: 4px 10px; margin-bottom: 7px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Header Area End Here -->
+        <!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- Font-awesome CSS-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Owl Caousel CSS -->
+    <link rel="stylesheet" href="vendor/OwlCarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/OwlCarousel/owl.theme.default.min.css">
+    <!-- Main Menu CSS -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- nivo slider CSS -->
+    <link rel="stylesheet" href="vendor/slider/css/nivo-slider.css" type="text/css" />
+    <link rel="stylesheet" href="vendor/slider/css/preview.css" type="text/css" media="screen" />
+    <!-- Datetime Picker Style CSS -->
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+    <!-- Magic popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Switch Style CSS -->
+    <link rel="stylesheet" href="css/hover-min.css">
+    <!-- ReImageGrid CSS -->
+    <link rel="stylesheet" href="css/reImageGrid.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Modernizr Js -->
+    <script src="js/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/fade-down.css">
+    <link href="assets/css/webslidemenu.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8e36b2afb1.js" crossorigin="anonymous"></script>
+
+    <!-- ===============/ Google Analytics code /============= -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-223975137-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-223975137-1');
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- ---------disktop view------------------ -->
+        <header>
+            <div id="header1" class="header1-area">
+                <div class="main-menu-area bg-primary" id="sticker">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="logo-area desktop-logo" style="display:flex; align-items:center; gap:12px;">
+                                    <a href="index.php"><img class="img-responsive" src="img/logo.png" alt="logo" style="max-width:74%;"></a>
+                                    <a href="tacticalCommunication.php" style="flex:0 0 auto; line-height:0;"><img src="img/motorola-solutions.png" alt="Motorola Solutions - Authorised Channel Partner" title="Motorola Solutions" style="height:52px; width:auto; max-width:none; display:block;"></a>
+                                </div>
+                                <div class="logo-area tablet-logo">
+                                    <a href="index.php"><img class="img-responsive" src="img/mobile-logo.png" alt="logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <nav id="desktop-nav">
+                                    <ul>
+                                        <li><a href="index.php">Home</a></li>
+                                        <li><a href="aboutus.php">About Us</a>
+                                            <ul class="mega-menu-area aboutus-menu">
+                                                <li class="aboutMegaNenu">
+                                                    <a href="aboutus.php">
+                                                        <img src="img/productIconImg/overview.png" alt=""><br>
+                                                        About Us
+                                                    </a>
+                                                </li>
+                                                <li class="aboutMegaNenu">
+                                                    <a href="researchDevelopment.php">
+                                                        <img src="img/productIconImg/research&Development.png" alt=""><br>
+                                                        Research & Developed
+                                                    </a>
+                                                </li>
+                                                <!-- <li class="aboutMegaNenu">
+                                                    <a href="growthStory.php">
+                                                        <img src="img/productIconImg/history&milestone.png" alt=""> <br>
+                                                        Growth Story
+                                                    </a>
+                                                </li> -->
+                                                <li class="aboutMegaNenu">
+                                                    <a href="manufacturingFacility.php">
+                                                        <img src="img/productIconImg/manufacturingFacility.png" alt=""><br>
+                                                        Manufacturing Facility
+                                                    </a>
+                                                </li>
+                                                <li class="aboutMegaNenu">
+                                                    <a href="qualityAssurance.php">
+                                                        <img src="img/productIconImg/certification.png" alt=""><br>
+                                                        Certification
+                                                    </a>
+                                                </li>
+                                                <!-- <li class="aboutMegaNenu">
+                                                    <a href="#">
+                                                        <img src="img/productIconImg/certification.png" alt="">
+                                                        <br>
+                                                        Telecom
+                                                    </a>
+                                                </li> -->
+                                            </ul>
+                                        </li>
+                                        <li><a href="products.php">Products & Services</a>
+                                            <ul class="mega-menu-area mega-menu-main-area">
+                                                <li class="energy-mgt-controll-main">
+                                                    <img src="img/productIconImg/energyMgtImg.png" alt=""><br>
+                                                    Energy Management & Controllers
+                                                    <ul class="energy-mgt-controll mega-menu-area">
+                                                        <li class="productImgIcon">
+                                                            <a href="AmfPanelIndoor.php">
+                                                                <img src="img/productIconImg/Amf pannel(Indoor).png" alt=""><br>
+                                                                AMF Pannel
+                                                            </a>
+                                                        </li>
+                                                        <li class="productImgIcon">
+                                                            <a href="solarCellSite.php">
+                                                                <img src="img/productIconImg/Amf pannel(Outdoor).png" alt=""><br>
+                                                                Solar Cell Site
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="productImgIcon"><a href="remoteMonitoring.php">
+                                                                <img src="img/productIconImg/rms.png" alt=""><br>
+                                                                Remote Monitoring System
+                                                            </a>
+                                                        </li>
+                                                        <li class="productImgIcon">
+                                                            <a href="energyController.php">
+                                                                <img src="img/productIconImg/energyController.png" alt=""><br>
+                                                                Energy Controller
+                                                            </a>
+                                                        </li>
+                                                        <li class="productImgIcon">
+                                                            <a href="amfController.php">
+                                                                <img src="img/productIconImg/RetrofitController.png" alt=""><br>
+                                                                AMF Controller
+                                                            </a>
+                                                        </li>
+                                                        <li class="productImgIcon">
+                                                            <a href="dualDgcon.php">
+                                                                <img src="img/productIconImg/dualDGcontroller.png" alt=""><br>
+                                                                Dual DG Controller
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                        </li>
+                                        <li class="Stragic-product-main">
+                                            <img src="img/productIconImg/strategicProducts.png" alt=""><br>
+                                            Other Strategic Products
+                                            <ul class="Stragic-product mega-menu-area">
+                                                <li class="productImgIcon">
+                                                    <a href="dcEnergy.php">
+                                                        <img src="img/productIconImg/dcenergymeter.png" alt=""><br>
+                                                        DC Energy Meter
+                                                    </a>
+                                                </li>
+                                                <li class="productImgIcon">
+                                                    <a href="canbusConverter.php">
+                                                        <img src="img/productIconImg/canbusConverter.png" alt=""><br>
+                                                        Can Bus Converter
+                                                    </a>
+                                                </li>
+                                                <li class="productImgIcon">
+                                                    <a href="staticVoltage.php">
+                                                        <img src="img/productIconImg/svrCard.png" alt=""><br>
+                                                        SVR Card
+                                                    </a>
+                                                </li>
+                                                <li class="productImgIcon">
+                                                    <a href="universal.php">
+                                                        <img src="img/productIconImg/UniversalACcontroller.png" alt=""><br>
+                                                        Universal AC Controller
+                                                    </a>
+                                                </li>
+                                                <li class="productImgIcon">
+                                                    <a href="lowVoltage.php">
+                                                        <img src="img/productIconImg/lvdController.png" alt=""><br>
+                                                        LVD/LATCH Controller
+                                                    </a>
+                                                </li>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="i2pms-Substitute-main">
+                                        <img src="img/productIconImg/i2pmsSubsitute.png" alt=""><br>
+                                        I2PMS Substitute & Other Hardware
+                                        <ul class="i2pms-Substitute mega-menu-area">
+                                            <li class="productImgIcon">
+                                                <a href="PlutoAlternate.php">
+                                                    <img src="img/productIconImg/plutoAlternate.png" alt=""><br>
+                                                    Pluto Alternate
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="gprsModem.php">
+                                                    <img src="img/productIconImg/gprsModem.png" alt=".."><br>
+                                                    GPRS Modem
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="alarmMultiPlexer.php">
+                                                    <img src="img/productIconImg/alrmCard1.png" alt=".."><br>
+                                                    Alarm Multiplexer
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="nanomac.php">
+                                                    <img src="img/productIconImg/nanoMac.png" alt=""><br>
+                                                    Nano Mac
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="noc-Solutions-main productMenuName">
+                                        <a href="NOCSolutions.php">
+                                            <img src="img/productIconImg/nocSolutions.png" alt=""><br>
+                                            NOC Solutions
+                                        </a>
+                                        <ul class="noc-Solutions mega-menu-area">
+                                            <li class="productImgIcon">
+                                                <a href="sisAxs.php">
+                                                    <img src="img/productIconImg/sis-axs.png" alt=""><br>
+                                                    SIS-AXS
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="gprsKit.php">
+                                                    <img src="img/productIconImg/gprsCard.png" alt=".."><br>
+                                                    GPRS Kit
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="iProtect.php">
+                                                    <img src="img/productIconImg/i-protect.png" alt=""><br>
+                                                    I-Protect
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="zBrainer.php">
+                                                    <img src="img/productIconImg/z-brainer.png" alt=""><br>
+                                                    Z-Brainer
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="smartBox.php">
+                                                    <img src="img/productIconImg/smartBoxIcon.png" alt=""><br>
+                                                    Smart Box
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="our-Services-main">
+                                        <img src="img/productIconImg/ourServices.png" alt=""><br>
+                                        Our Services
+                                        <ul class="our-Services mega-menu-area">
+                                            <li class="productImgIcon">
+                                                <a href="SMPSModules.php">
+                                                    <img src="img/productIconImg/moduleRecondition.png" alt=""><br>
+                                                    Module Re-conditioning
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="vocieMessagingService.php">
+                                                    <img src="img/productIconImg/voicemessageServices.png" alt=""><br>
+                                                    Voice Messaging Service
+                                                </a>
+                                            </li>
+                                            <!-- <li class="productImgIcon">
+                                                <a href="researchDevelopment.php">
+                                                    <img src="img/productIconImg/research&Development.png" alt=""><br>
+                                                    Research & Development
+                                                </a>
+                                            </li> -->
+                                            <!-- <li class="productImgIcon">
+                                                <a href="SITEMaintenance.php">
+                                                    <img src="img/productIconImg/siteMaintanance.png" alt=""><br>
+                                                    SITE Maintenance
+                                                </a>
+                                            </li> -->
+                                            <li class="productImgIcon">
+                                                <a href="passiveOperation.php">
+                                                    <img src="img/productIconImg/o&mSupport.png" alt=""><br>
+                                                    O & M Support
+                                                </a>
+                                            </li>
+                                            <li class="productImgIcon">
+                                                <a href="offering.php">
+                                                    <img src="img/productIconImg/offeringImg.png" alt=""><br>
+                                                    Our Offering
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="our-Services-main">
+                                        <a href="security.php">
+                                            <img src="img/productIconImg/security.png" alt="">
+                                            <br>
+                                            Security Automation
+                                        </a>
+                                    </li>
+                                    </ul>
+                                    </li>
+                                    <li>
+                                        <a href="events.php">Media</a>
+                                    </li>
+                                    <li>
+                                        <a href="resource.php">Resources</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Career</a>
+                                        <ul class="mega-menu-area career-menu">
+                                            <li class="careerMegaNenu">
+                                                <a href="whySysteminfra.php">
+                                                    <img src="img/productIconImg/lifeatSysinfra.png" alt=""><br>
+                                                    Life at System Infra
+                                                </a>
+                                            </li>
+                                            <li class="careerMegaNenu">
+                                                <a href="jobOpening.php">
+                                                    <img src="img/productIconImg/jobOpening.png" alt=""><br>
+                                                    Current Opening
+                                                </a>
+                                            </li>
+                                            <li class="careerMegaNenu">
+                                                <a href="applyForJob.php">
+                                                    <img src="img/productIconImg/applyNow.png" alt=""><br>
+                                                    Apply Now
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="connectWithus.php">Contact us</a></li>
+                                    </ul>
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header Area End Here -->
+
+        <!-- Mobile Header -->
+        <div class="mobile-nav">
+            <div class="wsmobileheader clearfix ">
+                <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+                <span class="smllogo"><a href="index.php"> <img src="img/mobile-logo.png" width="80" alt=".." /></a></span>
+                <!-- <span><a style="padding-right: 40px;" href="tel:<li><a href=" tel:+91-011-35004142;>+91-011-35004142</a></li>" class="callusbtn"><i class="fas fa-phone-volume"></i></a></span> -->
+                <span><a style="padding-right: 40px;" href="tel:+91-011-35004142;" class="callusbtn"><i class="fas fa-phone-volume"></i></a></span>
+
+                <span><a href="mailto:sales@sysinfra.in" class="callusbtn"><i class="fas fa-envelope"></i></a></span>
+            </div>
+
+            <div class="headtoppart clearfix">
+                <div class="wsmainfull clearfix">
+                    <div class="wsmainwp clearfix">
+                        <!-- <div class="desktoplogo"><a href=""><img src="images/sml-logo02.png" alt=""></a></div> -->
+                        <!--Main Menu HTML Code-->
+                        <nav class="wsmenu clearfix">
+                            <ul class="wsmenu-list">
+                                <li aria-haspopup="true"><a href="index.php" class="active menuhomeicon"><i class="fas fa-home"></i><span class="hometext">&nbsp;&nbsp;Home</span></a></li>
+                                <li aria-haspopup="true"><a href="aboutus.php"><i class="fas fa-align-justify"></i>About us <span class="wsarrow"></span></a>
+                                    <ul class="sub-menu">
+                                        <li aria-haspopup="true"><a href="aboutus.php"><i class="fas fa-angle-right"></i>About Us </a></li>
+                                        <li aria-haspopup="true"><a href="researchDevelopment.php"><i class="fas fa-angle-right"></i>R & D</a></li>
+                                        <!-- <li aria-haspopup="true"><a href="ourCoreValues.php"><i class="fas fa-angle-right"></i>Our Core Values </a></li> -->
+                                        <!-- <li aria-haspopup="true"><a href="growthStory.php"><i class="fas fa-angle-right"></i>Growth Story</a></li> -->
+                                        <li aria-haspopup="true"><a href="manufacturingFacility.php"><i class="fas fa-angle-right"></i>manufacturing Facility</a>
+                                        <li aria-haspopup="true"><a href="certifications.php"><i class="fas fa-angle-right"></i>Certification</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li aria-haspopup="true"><a href="products.php"><i class="fas fa-align-justify"></i>Products & Services<span class="wsarrow"></span></a>
+                                    <ul class="sub-menu">
+                                        <li aria-haspopup="true"><a href="#"><i class="fas fa-angle-right"></i>Energy Management & Controllers</a>
+                                            <ul class="sub-menu">
+                                                <li aria-haspopup="true"><a href="AmfPanelIndoor.php"><i class="fas fa-angle-right"></i>Amf Panel</a></li>
+                                                <li aria-haspopup="true"><a href="solarCellSite.php"></i>Solar Cell Site</a></li>
+                                                <li aria-haspopup="true"><a href="energyController.php"><i class="fas fa-angle-right"></i>Energy Controllers</a></li>
+                                                <li aria-haspopup="true"><a href="amfController.php"><i class="fas fa-angle-right"></i>AMF Controllers</a></li>
+                                                <li aria-haspopup="true"><a href="dualDgcon.php"><i class="fas fa-angle-right"></i>Dual DG Controller</a></li>
+                                            </ul>
+                                        </li>
+                                        <li aria-haspopup="true"><a href="#"><i class="fas fa-angle-right"></i>Other Strategic Products</a>
+                                            <ul class="sub-menu">
+                                                <li aria-haspopup="true"><a href="dcEnergy.php"><i class="fas fa-angle-right"></i>DC Energy Meter</a></li>
+                                                <li aria-haspopup="true"><a href="remoteMonitoring.php"><i class="fas fa-angle-right"></i>Remote Monitoring System</a></li>
+                                                <li aria-haspopup="true"><a href="staticVoltage.php"><i class="fas fa-angle-right"></i>Static Voltage Regulator</a></li>
+                                                <li aria-haspopup="true"><a href="universal.php"><i class="fas fa-angle-right"></i>Universal AC Controller</a></li>
+                                                <li aria-haspopup="true"><a href="lowVoltage.php"><i class="fas fa-angle-right"></i>LVD Controller</a></li>
+                                            </ul>
+                                        </li>
+                                        <li aria-haspopup="true"><a href="i2PmsComom.php"><i class="fas fa-angle-right"></i>I2PMS Substitute & Other Hardware</a>
+                                            <ul class="sub-menu">
+                                                <li aria-haspopup="true"><a href="PlutoAlternate.php"><i class="fas fa-angle-right"></i>Pluto Alternate</a></li>
+                                                <li aria-haspopup="true"><a href="gprsModem.php"><i class="fas fa-angle-right"></i>GPRS Modeme</a></li>
+                                                <li aria-haspopup="true"><a href="alarmMultiPlexer.php"><i class="fas fa-angle-right"></i>Alarm MultiPlexer</a></li>
+                                                <li aria-haspopup="true"><a href="nanomac.php"><i class="fas fa-angle-right"></i>Nano Mac</a></li>
+                                            </ul>
+                                        </li>
+                                        <li aria-haspopup="true"><a href="#"><i class="fas fa-angle-right"></i>NOC Solutions</a>
+                                            <ul class="sub-menu">
+                                                <li aria-haspopup="true"><a href="sisAxs.php"><i class="fas fa-angle-right"></i>Sis-Axs</a></li>
+                                                <li aria-haspopup="true"><a href="gprsKit.php"><i class="fas fa-angle-right"></i>GPRS Kit</a></li>
+                                                <li aria-haspopup="true"><a href="iProtect.php"><i class="fas fa-angle-right"></i>I-Protect</a></li>
+                                                <li aria-haspopup="true"><a href="zBrainer.php"><i class="fas fa-angle-right"></i>Z-Brainer</a></li>
+                                            </ul>
+                                        </li>
+                                        <li aria-haspopup="true"><a href="#"><i class="fas fa-angle-right"></i>Our Service</a>
+                                            <ul class="sub-menu">
+                                                <li aria-haspopup="true"><a href="SMPSModules.php"><i class="fas fa-angle-right"></i>Module Recondition</a></li>
+                                                <li aria-haspopup="true"><a href="vocieMessagingService.php"><i class="fas fa-angle-right"></i>Voice Message Services</a></li>
+                                                <li aria-haspopup="true"><a href="researchDevelopment.php"><i class="fas fa-angle-right"></i>research & Development</a></li>
+                                                <!-- <li aria-haspopup="true"><a href="SITEMaintenance.php"><i class="fas fa-angle-right"></i>site Maintanance</a></li> -->
+                                                <li aria-haspopup="true"><a href="passiveOperation.php"><i class="fas fa-angle-right"></i>O & M Support</a></li>
+                                                <li aria-haspopup="true"><a href="offering.php"><i class="fas fa-angle-right"></i>Our Offering</a></li>
+                                            </ul>
+                                        </li>
+                                        <li aria-haspopup="true">
+                                            <a href="security.php">
+                                                <i class="fas fa-angle-right">
+                                                </i>
+                                                Security Automation
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li aria-haspopup="true"><a href="events.php"><i class="fas fa-align-justify"></i>Media<span class="wsarrow"></span></a></li>
+                                <li aria-haspopup="true"><a href="resource.php"><i class="fas fa-align-justify"></i>Resources<span class="wsarrow"></span></a></li>
+                                <li aria-haspopup="true"><a href="#"><i class="fas fa-align-justify"></i>Career<span class="wsarrow"></span></a>
+                                    <ul class="sub-menu">
+                                        <li aria-haspopup="true"><a href="whySysteminfra.php"><i class="fas fa-angle-right"></i>Life At Sysinfra</a></li>
+                                        <li aria-haspopup="true"><a href="jobOpening.php"><i class="fas fa-angle-right"></i>Current Opening</a></li>
+                                        <li aria-haspopup="true"><a href="applyForJob.php"><i class="fas fa-angle-right"></i>Apply Now</a></li>
+                                    </ul>
+                                </li>
+                                <li aria-haspopup="true"><a href="connectWithus.php"><i class="fas fa-align-justify"></i>Contact Us<span class="wsarrow"></span></a></li>
+                            </ul>
+                            </li>
+                            </ul>
+                        </nav>
+                        <!--Menu HTML Code-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <--------/ End mobile area----------->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/script/webslidemenu.js"></script>
+        <!-- Main Body Area End Here -->
+        <!-- jquery-->
+        <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+        <!-- Plugins js -->
+        <script src="js/plugins.js" type="text/javascript"></script>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- WOW JS -->
+        <script src="js/wow.min.js"></script>
+        <!-- Nivo slider js -->
+        <script src="vendor/slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+        <script src="vendor/slider/home.js" type="text/javascript"></script>
+        <!-- Owl Cauosel JS -->
+        <script src="vendor/OwlCarousel/owl.carousel.min.js" type="text/javascript"></script>
+        <!-- Meanmenu Js -->
+        <script src="js/jquery.meanmenu.min.js" type="text/javascript"></script>
+        <!-- Srollup js -->
+        <script src="js/jquery.scrollUp.min.js" type="text/javascript"></script>
+        <!-- jquery.counterup js -->
+        <script src="js/jquery.counterup.min.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <!-- Countdown js -->
+        <script src="js/jquery.countdown.min.js" type="text/javascript"></script>
+        <!-- Isotope js -->
+        <script src="js/isotope.pkgd.min.js" type="text/javascript"></script>
+        <!-- Magic Popup js -->
+        <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+        <!-- Gridrotator js -->
+        <script src="js/jquery.gridrotator.js" type="text/javascript"></script>
+        <!-- Custom Js -->
+        <script src="js/main.js" type="text/javascript"></script>
+</body>
+
+</html>        <!-- Header Area End Here -->
+        <!-- Slider 1 Area Start Here -->
+        <section>
+            <div class="slider1-area overlay-default index1">
+                <div class="bend niceties preview-1">
+                    <div id="ensign-nivoslider-3" class="slides">
+                        <img src="img/slider/1-4.jpg?v=15" alt="Featured Products" title="#slider-direction-3" />
+                        <img src="img/slider/1-2.jpg" alt="slider" title="#slider-direction-2" />
+                        <img src="img/slider/1-3.jpg" alt="slider" title="#slider-direction-3" />
+                        <img src="img/slider/1-1.jpg" alt="slider" title="#slider-direction-1" />
+                    </div>
+                    <!-- Flying birds over the Featured Products sky -->
+                    <div id="skyBirds" class="sky-birds">
+                        <div class="flock">
+                            <span class="bird" style="left:110px;top:0;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:88px;top:16px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:66px;top:32px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:44px;top:48px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:22px;top:64px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:0;top:80px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:86px;top:-12px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:62px;top:-22px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:38px;top:-32px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:14px;top:-42px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird" style="left:-10px;top:-52px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird small" style="left:-52px;top:6px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird small" style="left:-68px;top:-6px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                            <span class="bird small" style="left:-68px;top:18px;"><svg viewBox="0 0 40 20"><path class="wg wl" d="M20 12 C14 3 8 3 2 9"/><path class="wg wr" d="M20 12 C26 3 32 3 38 9"/></svg></span>
+                        </div>
+                    </div>
+                    <!-- Punchline overlay (Featured Products slide) -->
+                    <div id="featuredHeadline" class="slide-headline">
+                        <span class="fh-badge"><i class="fa fa-bolt"></i> AI-Featured</span>
+                        <h2>Smarter, AI-Driven Solutions for <span>Defence, Telecom &amp; Smart City</span></h2>
+                    </div>
+                    <!-- Clickable product tiles (Featured Products slide) -->
+                    <div id="featuredLinks" class="slide-links">
+                        <a href="automaticWeatherStation.php" style="left:2.67%; background-position:3.06% 76.16%;" title="Automatic Weather Station"></a>
+                        <a href="gpsTracker.php" style="left:16.34%; background-position:18.70% 76.16%;" title="GPS Tracker"></a>
+                        <a href="smartCard.php" style="left:30.01%; background-position:34.35% 76.16%;" title="Smart Card"></a>
+                        <a href="powerSupply.php" style="left:43.68%; background-position:50.00% 76.16%;" title="Power Supply"></a>
+                        <a href="tacticalCommunication.php" style="left:57.36%; background-position:65.66% 76.16%;" title="Tactical Communication"></a>
+                        <a href="virtualTerrainRecce.php" style="left:71.03%; background-position:81.30% 76.16%;" title="Virtual Terrain Recce System"></a>
+                        <a href="defenceRepair.php" style="left:84.70%; background-position:96.94% 76.16%;" title="Defence Repair &amp; Maintenance"></a>
+                    </div>
+                    <script>
+                        (function () {
+                            function initBirds() {
+                                var box = document.getElementById('skyBirds');
+                                var slider = document.getElementById('ensign-nivoslider-3');
+                                if (!box || !slider) { return setTimeout(initBirds, 400); }
+                                var links = document.getElementById('featuredLinks');
+                                var headline = document.getElementById('featuredHeadline');
+
+                                /* ---- Per-slide auto-advance timing ---- */
+                                var FEATURED_MS = 20000;   /* 1st (featured) slide stays this long */
+                                var OTHER_MS = 10000;      /* every other slide */
+                                var advTimer = null, lastSrc = '', paused = false;
+                                function curSrc() {
+                                    var im = slider.querySelector('img.nivo-main-image') || slider.querySelector('img');
+                                    return im ? (im.getAttribute('src') || '') : '';
+                                }
+                                function schedule() {
+                                    clearTimeout(advTimer);
+                                    if (paused) { return; }
+                                    var t = curSrc().indexOf('1-4.jpg') > -1 ? FEATURED_MS : OTHER_MS;
+                                    advTimer = setTimeout(function () {
+                                        var nx = slider.querySelector('.nivo-nextNav');
+                                        if (nx) { nx.click(); }
+                                    }, t);
+                                }
+                                /* pause on hover, resume on leave */
+                                slider.addEventListener('mouseenter', function () { paused = true; clearTimeout(advTimer); });
+                                slider.addEventListener('mouseleave', function () { paused = false; schedule(); });
+
+                                function upd() {
+                                    var src = curSrc();
+                                    var on = src.indexOf('1-4.jpg') > -1;
+                                    box.style.display = 'block';                 /* birds on every slide */
+                                    if (links) links.style.display = on ? 'block' : 'none'; /* clickable tiles only on featured slide */
+                                    if (headline) headline.style.display = on ? 'block' : 'none'; /* punchline only on featured slide */
+                                    if (src && src !== lastSrc) { lastSrc = src; schedule(); } /* slide changed -> reset its timer */
+                                }
+                                try { new MutationObserver(upd).observe(slider, { attributes: true, subtree: true, attributeFilter: ['src', 'style', 'class'] }); } catch (e) {}
+                                setInterval(upd, 500); upd();
+                            }
+                            if (document.readyState !== 'loading') { initBirds(); }
+                            else { document.addEventListener('DOMContentLoaded', initBirds); }
+                        })();
+                    </script>
+                    <div id="slider-direction-1" class="t-cn slider-direction">
+                        <div class="slider-content s-tb slide-1">
+                            <div class="title-container s-tb-c">
+                                <br>
+                                <p class="title1"><i class="far fa-hand-point-right"></i> Pan India Presence</p>
+                                <p><i class="fas fa-hand-point-right"></i> 3 Lakh plus rectifier modules Reconditioned</p>
+                                <div class="slider-btn-area">
+                                    <p><i class="fas fa-hand-point-right"></i> 70K plus telecom site automated</p>
+                                    <p class="paragraph1"><i class="fas fa-hand-point-right"></i> 50K plus AMF controller installed</p>
+                                    <p class="paragraph2"><i class="fas fa-hand-point-right"></i> 10K plus SYS-AXS sites under NOC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="slider-direction-2" class="t-cn slider-direction">
+                        <div class="s-tb slide-2">
+                            <div class="title-container s-tb-c">
+                                <br>
+                                <div class="title1">
+                                    <i class="far fa-hand-point-right"></i> Customized Innovative Solutions
+                                </div>
+                                <p>
+                                    <i class="fas fa-hand-point-right"></i> Dedicated R & D team
+                                </p>
+                                <div class="slider-btn-area">
+                                    <p><i class="fas fa-hand-point-right"></i> Developed innovative products for railways</p>
+                                    <p class="paragraph1"><i class="fas fa-hand-point-right"></i> Customized products for Telecom Infra</p>
+                                    <p class="paragraph2"><i class="fas fa-hand-point-right"></i> State of the Art products for everyone</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="slider-direction-3" class="t-cn slider-direction">
+                        <div class="slider-content s-tb slide-3">
+                            <div class="title-container s-tb-c">
+                                <div class="slider-btn-area">
+                                    <div class="marquee-header container">
+                                        <marquee behavior="scroll" direction="left" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
+                                            <!-- <a href="smartBox.php">
+                                                <span>Smart Box</span> 5G ready, designed for Small Cell Tower/Smart City, Remotely & Online data monitoring in <span>SIS-AXS</span>, <span>I-Protect</span>, <span>Z-Brainer</span>,
+                                                <span>Our Solution:</span> Centralized View Of Tower Infrastructure, Inhouse Designed and Developed, Dedicated R & D team for future supports,
+                                                On-demand and scheduled reporting, Multichannel communication, High availability, Redundency and scalability, Reduced Capex,
+                                                Fast ROI, Reduction in Opex by containing energy losses, 2G, 3G, 4G, LTE & 5G site compatible, Application in other industries like smart City, Railways, Shared or dedicated cloud hosting models.
+                                            </a> -->
+                                            <a href="smartBox.php">
+                                                <span>Smart Box</span> 5G ready, designed for Small Cell Tower/Smart City/Defence,
+                                                An AI based Remote Monitoring Solution for Telecom & Smart City/Defence,
+                                                SIS-AXS (AMF on Remote Monitoring & Energy Management)
+                                            </a>
+                                        </marquee>
+                                    </div>
+                                    <!-- <h1 class="text-right networkSolution">Network Solutions You Can Count On</h1>
+                                    <h2 class="text-right networkSolution">Network Solutions You Can Count On</h2> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="toll-free-number">
+            <a>Customer Care Number:</a>
+            <br>
+            <a href="tel:+91-9899905475;">+91-9899905475</a>
+            <br>
+            <a href="tel:+91-7668609810;">+91-7668609810</a>
+        </div>
+
+        <!-- Inquiry button area -->
+
+        <div id="mybutton">
+            <a href="inquiryNow.php">
+                <button>Inquire Now</button>
+            </a>
+        </div>
+        <!-- ===== < Social icon>========= -->
+        <div class="icon-bar">
+            <a href="https://www.facebook.com/System-Infra-Solutions-Pvt-Ltd-109200568183891/?ref=pages_you_manage" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/SystemInfra1" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/system-infra-32a456231/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        </div>
+
+        <section class="main-marquee-page">
+            <div class="main-marquee">
+                <div class="">
+                    <marquee class="why-ebot-marquee" width="100%" direction="left" behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();">
+                        <p><a href="whySysteminfra.php" style="letter-spacing: 1px;" title="">WHY SYSINFRA: In
+                                House Hardware & Software development team, Easy to Deploy Products with low skill set
+                                manpower, Available on Demand for all emergency support like an Ambulance.
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WHY SYSINFRA: In House Hardware & Software development
+                                team, Easy to Deploy Products with low skill set manpower, Available on Demand for all
+                                emergency support like an Ambulance.
+                            </a></p>
+                    </marquee>
+                </div>
+            </div>
+        </section>
+        <!-- --------<   Product Slider    >-------------->
+        <div class="product-slider">
+            <div class="lecturers-area bnr-slider">
+                <!-- <section id="trend" class="container-fluid">
+                    <div class="">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <a href="AmfPanelOutdoor.php">
+                                    <img src="img/team/19.png">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="AmfPanelIndoor.php">
+                                    <img src="img/team/9.png">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <img src="img/team/22.png">
+                            </div>
+                            <div class="item">
+                                <a href="dcEnergy.php">
+                                    <img src="img/team/21.png">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="iProtect.php">
+                                    <img src="img/team/11.jpg">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="#">
+                                    <img src="img/team/8.jpg">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="lowVoltage.php">
+                                    <img src="img/team/2.jpg">
+                                </a>
+                            </div>
+                            <div class="item">
+                                <a href="remoteMonitoring.php">
+                                    <img src="img/team/23.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <link rel="stylesheet" type="text/css" href="vendor/sis-axs-slider/owl.carousel.css">
+                    <link rel="stylesheet" type="text/css" href="vendor/sis-axs-slider/owl.carousel.js">
+                    <script type="text/javascript" src="vendor/sis-axs-slider/library file.js"></script>
+                    <script type="text/javascript" src="vendor/sis-axs-slider/owl.carousel.js"></script>
+                    <script type="text/javascript">
+                        $('.owl-carousel').owlCarousel({
+                            loop: true,
+                            margin: 10,
+                            nav: false,
+                            autoplay: true,
+                            autoplayTimeout: 2000,
+                            autoplayHoverPause: true,
+                            responsive: {
+                                0: {
+                                    items: 2
+                                },
+                                600: {
+                                    items: 4
+                                },
+                                1000: {
+                                    items: 8
+                                }
+                            }
+                        })
+                    </script>
+                </section> -->
+                <section class="container-fluid">
+                    <div class="product-marquee-area">
+                        <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                            <a href="AmfPanelOutdoor.php">
+                                <img src="img/team/19.png">
+                            </a>
+                            <a href="AmfPanelIndoor.php">
+                                <img src="img/team/9.png">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/22.png">
+                            </a>
+                            <a href="dcEnergy.php">
+                                <img src="img/team/21.png">
+                            </a>
+                            <a href="iProtect.php">
+                                <img src="img/team/11.jpg">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/8.jpg">
+                            </a>
+                            <a href="lowVoltage.php">
+                                <img src="img/team/2.jpg">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/23.png">
+                            </a>
+                            <!-- hidden: security/automation cards (Tripod Turnstile - Road Blocker)
+                            <a href="tripodTurnstile.php">
+                                <img src="img/team/24.png">
+                            </a>
+                            <a href="flapTurnstileSeries.php">
+                                <img src="img/team/25.png">
+                            </a>
+                            <a href="bollards.php">
+                                <img src="img/team/26.png">
+                            </a>
+                            <a href="baggageScanner.php">
+                                <img src="img/team/27.png">
+                            </a>
+                            <a href="boomBarrier.php">
+                                <img src="img/team/28.png">
+                            </a>
+                            <a href="parkingGuidanceSystem.php">
+                                <img src="img/team/29.png">
+                            </a>
+                            <a href="parkingManagementSystem.php">
+                                <img src="img/team/30.png">
+                            </a>
+                            <a href="spikeBarries.php">
+                                <img src="img/team/31.png">
+                            </a>
+                            <a href="roadBlocker.php">
+                                <img src="img/team/32.png">
+                            </a>
+                            -->
+                            <!-- hidden: security cards (Hand Held Metal Detector - UVSS)
+                            <a href="handHeldMetalDetector.php">
+                                <img src="img/team/33.png">
+                            </a>
+                            <a href="proximityReader.php">
+                                <img src="img/team/34.png">
+                            </a>
+                            <a href="ptzCamera.php">
+                                <img src="img/team/35.png">
+                            </a>
+                            <a href="faceRecognization.php">
+                                <img src="img/team/36.png">
+                            </a>
+                            <a href="uvss.php">
+                                <img src="img/team/37.png">
+                            </a>
+                            -->
+                            <a href="automaticWeatherStation.php">
+                                <img src="img/team/38.png">
+                            </a>
+                            <a href="defenceRepair.php">
+                                <img src="img/team/39.png">
+                            </a>
+                            <a href="gpsTracker.php">
+                                <img src="img/team/40.png">
+                            </a>
+                            <a href="smartCard.php">
+                                <img src="img/team/41.png">
+                            </a>
+                            <a href="powerSupply.php">
+                                <img src="img/team/42.png">
+                            </a>
+                            <a href="virtualTerrainRecce.php">
+                                <img src="img/team/43.png">
+                            </a>
+                            <a href="tacticalCommunication.php">
+                                <img src="img/team/44.png">
+                            </a>
+                            <!-- ========/ Duplicate data /======== -->
+                            <a href="AmfPanelOutdoor.php">
+                                <img src="img/team/19.png">
+                            </a>
+                            <a href="AmfPanelIndoor.php">
+                                <img src="img/team/9.png">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/22.png">
+                            </a>
+                            <a href="dcEnergy.php">
+                                <img src="img/team/21.png">
+                            </a>
+                            <a href="iProtect.php">
+                                <img src="img/team/11.jpg">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/8.jpg">
+                            </a>
+                            <a href="lowVoltage.php">
+                                <img src="img/team/2.jpg">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/23.png">
+                            </a>
+                            <!-- hidden: security/automation cards (Tripod Turnstile - Road Blocker)
+                            <a href="tripodTurnstile.php">
+                                <img src="img/team/24.png">
+                            </a>
+                            <a href="flapTurnstileSeries.php">
+                                <img src="img/team/25.png">
+                            </a>
+                            <a href="bollards.php">
+                                <img src="img/team/26.png">
+                            </a>
+                            <a href="baggageScanner.php">
+                                <img src="img/team/27.png">
+                            </a>
+                            <a href="boomBarrier.php">
+                                <img src="img/team/28.png">
+                            </a>
+                            <a href="parkingGuidanceSystem.php">
+                                <img src="img/team/29.png">
+                            </a>
+                            <a href="parkingManagementSystem.php">
+                                <img src="img/team/30.png">
+                            </a>
+                            <a href="spikeBarries.php">
+                                <img src="img/team/31.png">
+                            </a>
+                            <a href="roadBlocker.php">
+                                <img src="img/team/32.png">
+                            </a>
+                            -->
+                            <!-- hidden: security cards (Hand Held Metal Detector - UVSS)
+                            <a href="handHeldMetalDetector.php">
+                                <img src="img/team/33.png">
+                            </a>
+                            <a href="proximityReader.php">
+                                <img src="img/team/34.png">
+                            </a>
+                            <a href="ptzCamera.php">
+                                <img src="img/team/35.png">
+                            </a>
+                            <a href="faceRecognization.php">
+                                <img src="img/team/36.png">
+                            </a>
+                            <a href="uvss.php">
+                                <img src="img/team/37.png">
+                            </a>
+                            -->
+                            <a href="automaticWeatherStation.php">
+                                <img src="img/team/38.png">
+                            </a>
+                            <a href="defenceRepair.php">
+                                <img src="img/team/39.png">
+                            </a>
+                            <a href="gpsTracker.php">
+                                <img src="img/team/40.png">
+                            </a>
+                            <a href="smartCard.php">
+                                <img src="img/team/41.png">
+                            </a>
+                            <a href="powerSupply.php">
+                                <img src="img/team/42.png">
+                            </a>
+                            <a href="virtualTerrainRecce.php">
+                                <img src="img/team/43.png">
+                            </a>
+                            <a href="tacticalCommunication.php">
+                                <img src="img/team/44.png">
+                            </a>
+                            <!-- ========/ Duplicate data /======== -->
+                            <a href="AmfPanelOutdoor.php">
+                                <img src="img/team/19.png">
+                            </a>
+                            <a href="AmfPanelIndoor.php">
+                                <img src="img/team/9.png">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/22.png">
+                            </a>
+                            <a href="dcEnergy.php">
+                                <img src="img/team/21.png">
+                            </a>
+                            <a href="iProtect.php">
+                                <img src="img/team/11.jpg">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/8.jpg">
+                            </a>
+                            <a href="lowVoltage.php">
+                                <img src="img/team/2.jpg">
+                            </a>
+                            <a href="#">
+                                <img src="img/team/23.png">
+                            </a>
+                            <!-- hidden: security/automation cards (Tripod Turnstile - Road Blocker)
+                            <a href="tripodTurnstile.php">
+                                <img src="img/team/24.png">
+                            </a>
+                            <a href="flapTurnstileSeries.php">
+                                <img src="img/team/25.png">
+                            </a>
+                            <a href="bollards.php">
+                                <img src="img/team/26.png">
+                            </a>
+                            <a href="baggageScanner.php">
+                                <img src="img/team/27.png">
+                            </a>
+                            <a href="boomBarrier.php">
+                                <img src="img/team/28.png">
+                            </a>
+                            <a href="parkingGuidanceSystem.php">
+                                <img src="img/team/29.png">
+                            </a>
+                            <a href="parkingManagementSystem.php">
+                                <img src="img/team/30.png">
+                            </a>
+                            <a href="spikeBarries.php">
+                                <img src="img/team/31.png">
+                            </a>
+                            <a href="roadBlocker.php">
+                                <img src="img/team/32.png">
+                            </a>
+                            -->
+                            <!-- hidden: security cards (Hand Held Metal Detector - UVSS)
+                            <a href="handHeldMetalDetector.php">
+                                <img src="img/team/33.png">
+                            </a>
+                            <a href="proximityReader.php">
+                                <img src="img/team/34.png">
+                            </a>
+                            <a href="ptzCamera.php">
+                                <img src="img/team/35.png">
+                            </a>
+                            <a href="faceRecognization.php">
+                                <img src="img/team/36.png">
+                            </a>
+                            <a href="uvss.php">
+                                <img src="img/team/37.png">
+                            </a>
+                            -->
+                            <a href="automaticWeatherStation.php">
+                                <img src="img/team/38.png">
+                            </a>
+                            <a href="defenceRepair.php">
+                                <img src="img/team/39.png">
+                            </a>
+                            <a href="gpsTracker.php">
+                                <img src="img/team/40.png">
+                            </a>
+                            <a href="smartCard.php">
+                                <img src="img/team/41.png">
+                            </a>
+                            <a href="powerSupply.php">
+                                <img src="img/team/42.png">
+                            </a>
+                            <a href="virtualTerrainRecce.php">
+                                <img src="img/team/43.png">
+                            </a>
+                            <a href="tacticalCommunication.php">
+                                <img src="img/team/44.png">
+                            </a>
+                        </marquee>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <style>
+        .owl-dots {
+            text-align: left !important;
+        }
+    </style>
+    <!-- slider area close here...... -->
+    <style>
+        .card {
+            width: 100%;
+        }
+    </style>
+
+    <!-- Welcome to SysInfra Solutions -->
+    <div class="about1-area">
+        <div class="container-fluid">
+            <div class="container-fluid" class="homepageBoxes">
+                <div class="about-img-holder wow fadeIn" data-wow-duration="2s" data-wow-delay=".2s">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <a href="energyManagement&Controller.php" title="">
+                                <div class="card imgZoomOut">
+                                    <h4>Energy Management & Controllers</h4>
+                                    <img class="card-img-top" src="img/sys-products/5.jpg" alt="Card image" width="100%">
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <a href="NOCSolutions.php" title="">
+                                <div class="card imgZoomOut">
+                                    <h4>NOC Services</h4>
+                                    <img class="card-img-top" src="img/sys-products/2.jpg" alt="Card image" width="100%">
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <a href="researchDevelopment.php" title="">
+                                <div class="card imgZoomOut">
+                                    <h4>R & D Services</h4>
+                                    <img class="card-img-top" src="img/sys-products/6.jpg" alt="Card image" width="100%">
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+                        <!-- </div>
+                        <div class="row"> -->
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <a href="aboutus.php" title="">
+                                <div class="card imgZoomOut">
+                                    <h4>About us</h4>
+                                    <img class="card-img-top" src="img/sys-products/7.jpg" alt="Card image" width="100%">
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <a href="clients.php" title="">
+                                <div class="card imgZoomOut">
+                                    <h4>Our Clients</h4>
+                                    <img class="card-img-top" src="img/sys-products/8.jpg" alt="Card image" width="100%">
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <a href="events.php" title="">
+                                <div class="card imgZoomOut">
+                                    <h4>Media Center</h4>
+                                    <img class="card-img-top" src="img/sys-products/9.jpg" alt="Card image" width="100%">
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Counter Area Start Here -->
+    <div class="counterBackgroundImg">
+        <div class="counterInnerArea container-fluid">
+            <div class="counter-area bg-primary-deep" style="background-image: url('img/banner/4.jpg');">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="counter1-box wow fadeInUp" data-wow-duration="0.5s" data-wow-delay=".5s">
+                                <h2 class="about-counter title-bar-counter" data-num="300000">300000</h2>
+                                <p>Rectifier Module Re-conditioned</p>
+                            </div>
+                            <p class="paragraphofCounterFirst"><span> For the past decade more than 3,00,000 rectifier modules of various makes
+                                    have been re-conditioned from our service center, where-houses and sites.</span></p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".4s">
+                                <h2 class="about-counter title-bar-counter" data-num="70000">70000</h2>
+                                <p>Telecom Site Automation</p>
+                            </div>
+                            <p class="paragraphofCounter"><span> For the past decade we have successfully automated more than 70,000 telecom
+                                    Sites through our AMF Panels/Controllers installed indoor and outdoor.</span>
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s">
+                                <h2 class="about-counter title-bar-counter" data-num="50000">50000</h2>
+                                <p>AMF Controller Installed</p>
+                            </div>
+                            <p class="paragraphofCounter"><span> Our highly successful AMF Controller has restored various makes of
+                                    power conditioning units across india and currently running more than 50,000 sites.</span> </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="counter1-box wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".8s">
+                                <h2 class="about-counter title-bar-counter" data-num="10000">10000</h2>
+                                <p>Flagship SYS-AXS NOC Sites </p>
+                            </div>
+                            <p class="paragraphofCounterLast"><span> Our flagship line of products under the SYS-AXS banner
+                                    have connected more than
+                                    10,000 telecom sites under NOC surveillance through their web and mobile apps.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Counter Area End Here -->
+
+    <div class="courses1-area bg-img-banner">
+        <div class="container-fluid DesktopViewArea bg-img-alignment">
+            <div class="row" style="margin-right: 0px; margin-left: 0px;">
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                    <div class="courses-box1">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                                <img class="img-responsive" src="img/course/1.png" alt="courses">
+                                <a href="growthStory.php">
+                                    <h4 class="text-center">Growth Story</h4>
+                                    <p class="text-center">Our Consistent Growth Graph Keeps us ahead of the
+                                        competition</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                    <div class="courses-box1">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                                <img class="img-responsive" src="img/course/2.png" alt="courses">
+                                <a href="#">
+                                    <h4 class="text-center">Solutions</h4>
+                                    <p class="text-center">Our Innovative Solutions for Telecom Industry</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                    <div class="courses-box1">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                                <img class="img-responsive" src="img/course/3.png" alt="courses">
+                                <a href="manufacturingFacility.php">
+                                    <h4 class="text-center">Manufacturing</h4>
+                                    <p class="text-center">We manufacture customized products for telecom and other
+                                        sectors</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                    <div class="courses-box1">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                                <img class="img-responsive" src="img/course/4.png" alt="courses">
+                                <a href="">
+
+                                    <h4 class="text-center">Our Team</h4>
+                                    <p class="text-center">Founded by Experts in the Industry</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                    <div class="courses-box1">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                                <img class="img-responsive" src="img/course/5.png" alt="courses">
+                                <a href="qualityAssurance.php">
+                                    <h4 class="text-center">Quality Assurance</h4>
+                                    <p class="text-center">
+                                        Sysinfra guarantees full satisfaction and quality
+                                        assurance
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                    <div class="courses-box1">
+                        <div class="single-item-wrapper">
+                            <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                                <img class="img-responsive" src="img/course/6.png" alt="courses">
+                                <a href="products.php">
+                                    <h4 class="text-center">Our Products</h4>
+                                    <p class="text-center">Check our wide range of products</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End desktop view area boxes -->
+        <!-- Mobile view area boxes -->
+        <div class="mobileViewBox container-fluid">
+            <div class="mainbox">
+                <div class="courses-box1">
+                    <div class="single-item-wrapper">
+                        <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                            <img class="img-responsive" src="img/course/1.png" alt="courses">
+                            <a href="growthStory.php">
+                                <h4 class="text-center">Growth Story</h4>
+                                <p class="text-center">Our Consistent Growth Graph Keeps us ahead of the
+                                    competition</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="courses-box1">
+                    <div class="single-item-wrapper">
+                        <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                            <img class="img-responsive" src="img/course/2.png" alt="courses">
+                            <a href="#">
+                                <h4 class="text-center">Solutions</h4>
+                                <p class="text-center">Our Innovative Solutions for Telecom Industry</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mainbox">
+                <div class="courses-box1">
+                    <div class="single-item-wrapper">
+                        <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                            <img class="img-responsive" src="img/course/3.png" alt="courses">
+                            <a href="manufacturingFacility.php">
+                                <h4 class="text-center">Manufacturing</h4>
+                                <p class="text-center">We manufacture customized products for telecom and other
+                                    sectors</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="courses-box1">
+                    <div class="single-item-wrapper">
+                        <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                            <img class="img-responsive" src="img/course/4.png" alt="courses">
+                            <a href="">
+
+                                <h4 class="text-center">Our Team</h4>
+                                <p class="text-center">Founded by Experts in the Industry</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mainbox">
+                <div class="courses-box1">
+                    <div class="single-item-wrapper">
+                        <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                            <img class="img-responsive" src="img/course/5.png" alt="courses">
+                            <a href="qualityAssurance.php">
+                                <h4 class="text-center">Quality Assurance</h4>
+                                <p class="text-center">Sysinfra guarantees full satisfaction and quality
+                                    assurance</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="courses-box1">
+                    <div class="single-item-wrapper">
+                        <div class="courses-img-wrapper hvr-bounce-to-bottom">
+                            <img class="img-responsive" src="img/course/6.png" alt="courses">
+                            <a href="products.php">
+                                <h4 class="text-center">Our Products</h4>
+                                <p class="text-center">Check our wide range of products</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Mobile view area boxes -->
+    </div>
+
+    <!-- ===========/ Client area start here /=========== -->
+    <h2 class="title-default-center">OUR CLIENTS</h2>
+    <div class="brand-area">
+        <div class="container-fluid">
+            <div class="rc-carousel" data-loop="true" data-items="8" data-margin="30" data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false" data-nav="false" data-nav-speed="false" data-r-x-small="4" data-r-x-small-nav="false" data-r-x-small-dots="false" data-r-x-medium="6" data-r-x-medium-nav="false" data-r-x-medium-dots="false" data-r-small="9" data-r-small-nav="false" data-r-small-dots="false" data-r-medium="8" data-r-medium-nav="false" data-r-medium-dots="false" data-r-large="11" data-r-large-nav="true" data-r-large-dots="false">
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/1.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/2.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/3.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/4.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/5.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/6.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/7.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/8.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/9.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/10.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/11.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/12.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/13.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/14.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/15.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/17.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/18.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/19.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/20.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/21.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/22.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/23.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/24.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/25.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/26.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/27.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/28.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/29.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/30.jpg" alt="brand"></a>
+                </div>
+                <div class="brand-area-box">
+                    <a href="clients.php"><img src="img/brand/31.jpg" alt="brand"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===========/ Client area close here /=========== -->
+
+    <footer>
+        <div class="footer-area-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-box">
+                            <a href="index.php"><img class="img-responsive" src="img/logo-footer.png" alt="logo"></a>
+                            <div class="footer-about">
+                                <p>Our mission is to establish and maintain long-term Customer relationships and
+                                    partnerships by providing value-added consulting services delivered by
+                                    experience and qualified professionals Manner.</p>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a href="https://www.facebook.com/System-Infra-Solutions-Pvt-Ltd-109200568183891/?ref=pages_you_manage"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://twitter.com/SystemInfra1"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/system-infra-32a456231/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-box">
+                            <h3>Overview</h3>
+                            <ul class="featured-links">
+                                <li>
+                                    <ul>
+                                        <li><a href="visionMission.php">Vision & Mission</a></li>
+                                        <li><a href="aboutus.php">About us</a></li>
+                                        <li><a href="growthStory.php">Growth Story</a></li>
+                                        <li><a href="ourCoreValues.php">Our Core Values</a></li>
+                                        <li><a href="qualityAssurance.php">Quality Assurance & Certification</a></li>
+                                        <li><a href="mediaCenter.php">Media Center</a></li>
+                                        <li><a href="telcomServices.php">Telecom Services</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-box">
+                            <h3>Products</h3>
+                            <ul class="featured-links">
+                                <li>
+                                    <ul>
+                                        <li><a href="AmfPanelIndoor.php">Amf panel</a></li>
+                                        <li><a href="universal.php">Universal AC Controller</a></li>
+                                        <li><a href="amfController.php">AMF Controller</a></li>
+                                        <li><a href="staticVoltage.php">Static Voltage Regulator</a></li>
+                                        <li><a href="iProtect.php">I-Protect</a></li>
+                                        <li><a href="dcTodcConverter.php">DC to DC Converter</a></li>
+                                        <li><a href="dualDgcon.php">Dual DG Controller</a></li>
+                                        <li><a href="energyController.php">Energy Controller</a></li>
+                                        <li><a href="gpsTracker.php">GPS Tracker</a></li>
+                                        <li><a href="smartCard.php">Smart Card</a></li>
+                                        <li><a href="automaticWeatherStation.php">Automatic Weather Station</a></li>
+                                        <li><a href="powerSupply.php">Power Supply</a></li>
+                                        <li><a href="tacticalCommunication.php">Tactical Communication</a></li>
+                                        <li><a href="virtualTerrainRecce.php">Virtual Terrain Recce System</a></li>
+                                        <li><a href="defenceRepair.php">Defence Repair &amp; Maintenance</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="footer-box">
+                            <h3>Contact Us</h3>
+                            <ul class="featured-links">
+                                <li>
+                                    <ul>
+                                        <li><a href="https://goo.gl/maps/LapVX9zFcWn4Etjt8">Address Plot No. 382, Third Floor, F.I.E., Patparganj
+                                                Industrial Area, New Delhi </a></li>
+                                        <li><a href="mailto:hr@sysinfra.in">Email Us: hr@sysinfra.in</a></li>
+                                        <li><a href="tel:+91-011-35004142;">+91-011-35004142</a></li>
+                                        <li><a href="tel:+91-011-35004142;">+91-011-35004143</a></li>
+                                        <li><a href="tel:+91-011-35004142;">+91-011-35004144</a></li>
+                                        <li><a href="tel:+91-011-35004142;">+91-011-35004145</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-area-bottom">
+            <div class="container">
+                <p class="text-center">&copy; Copyright © 2022. All Rights Reserved. &nbsp;</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Area End Here -->
+    </div>
+    <!-- Main Body Area End Here -->
+    <!-- jquery-->
+    <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <!-- Plugins js -->
+    <script src="js/plugins.js" type="text/javascript"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- WOW JS -->
+    <script src="js/wow.min.js"></script>
+    <!-- Nivo slider js -->
+    <script src="vendor/slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <script src="vendor/slider/home.js?v=2" type="text/javascript"></script>
+    <!-- Owl Cauosel JS -->
+    <script src="vendor/OwlCarousel/owl.carousel.min.js" type="text/javascript"></script>
+    <!-- Meanmenu Js -->
+    <script src="js/jquery.meanmenu.min.js" type="text/javascript"></script>
+    <!-- Srollup js -->
+    <script src="js/jquery.scrollUp.min.js" type="text/javascript"></script>
+    <!-- jquery.counterup js -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <!-- Countdown js -->
+    <script src="js/jquery.countdown.min.js" type="text/javascript"></script>
+    <!-- Isotope js -->
+    <script src="js/isotope.pkgd.min.js" type="text/javascript"></script>
+    <!-- Magic Popup js -->
+    <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <!-- Gridrotator js -->
+    <script src="js/jquery.gridrotator.js" type="text/javascript"></script>
+    <!-- Custom Js -->
+    <script src="js/main.js" type="text/javascript"></script>
+</body>
+
+</html>

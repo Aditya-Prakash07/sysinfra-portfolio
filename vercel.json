@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "outputDirectory": "public",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.8.0",
+      "maxDuration": 15,
+      "excludeFiles": "{node_modules/**,now.json,.nowignore,vercel.json,.vercelignore,**/*.mp4,tests/**,*.py,*.md}"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(build|storage|css|js)/(.*)",
+      "dest": "/$1/$2"
+    },
+    {
+      "src": "/(favicon\\.ico|robots\\.txt)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ],
+  "env": {
+    "APP_NAME": "Sanchar Telesystems",
+    "APP_ENV": "production",
+    "APP_KEY": "base64:Tv8soj9vKMC/fjT81Xb75p1U6mS2jbezgxU2sfDnyaI=",
+    "APP_DEBUG": "false",
+    "DB_CONNECTION": "sqlite",
+    "CACHE_STORE": "array",
+    "SESSION_DRIVER": "cookie",
+    "LOG_CHANNEL": "stderr"
+  }
+}
