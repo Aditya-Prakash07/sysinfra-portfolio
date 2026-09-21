@@ -274,7 +274,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                                     Government e-Marketplace (GeM) Assurance
                                 </h4>
                                 <p className="text-xs text-slate-600 dark:text-steel leading-relaxed">
-                                    System Infra Solutions products, including Kenwood DMR terminals, are registered and actively available through the GeM portal. For tender compliance authorizations or OEM letters, include your RFP number in the message.
+                                    System Infra Solutions products, including AMF controllers and SYS-AXS NOC platforms, are available through the GeM portal. For tender compliance authorizations or OEM letters, include your RFP number.
                                 </p>
                             </div>
                         </div>

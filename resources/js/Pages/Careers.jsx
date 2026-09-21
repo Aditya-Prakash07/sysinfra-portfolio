@@ -8,7 +8,7 @@ export default function Careers({ openings = [], seo = {} }) {
         <MainLayout>
             <Seo
                 title={seo?.title || 'Careers in Wireless & RF Engineering | System Infra Solutions'}
-                description={seo?.description || "Join System Infra Solutions. Build the wireless and telecom infrastructure that protects India's borders, public safety, and critical industries."}
+                description={seo?.description || "Join System Infra Solutions. Build the power automation and NOC telemetry infrastructure that keeps India's telecom towers, defence sites, and utilities running 24/7."}
                 canonicalPath="/careers"
             />
 
@@ -42,7 +42,7 @@ export default function Careers({ openings = [], seo = {} }) {
                         </div>
                         <div>
                             <span className="text-slate-500 dark:text-slate-400 block">DOMAINS</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">DMR &bull; TETRA &bull; PoC &bull; 4G/5G</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">AMF &bull; NOC &bull; 5G &bull; Defence</span>
                         </div>
                         <div>
                             <span className="text-slate-500 dark:text-slate-400 block">INITIATIVE</span>
@@ -99,7 +99,7 @@ export default function Careers({ openings = [], seo = {} }) {
                                     Indigenous R&D and Make in India
                                 </h3>
                                 <p className="text-sm text-slate-600 dark:text-steel leading-relaxed">
-                                    Participate in the design of next-generation DMR handhelds, base repeaters, and tactical push-to-talk PoC terminals designed and manufactured right here in India.
+                                    Participate in the design of next-generation AMF controllers, SYS-AXS NOC platforms, and tactical Motorola Solutions radios — designed and manufactured in our Patparganj facility.
                                 </p>
                             </div>
                         </div>

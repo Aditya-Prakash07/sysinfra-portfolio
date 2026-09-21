@@ -15,8 +15,8 @@ class AboutController extends Controller
                 ->orderBy('sort_order')
                 ->get(['name', 'title', 'bio', 'photo_path']),
             'seo' => [
-                'title' => 'About Us — Sanchar Telesystems',
-                'description' => 'Sanchar Telesystems is a market leader in wireless communications in India, delivering end-to-end solutions from conceptualization to system design to project execution.',
+                'title' => 'About Us — System Infra Solutions',
+                'description' => 'System Infra Solutions is a market leader in wireless communications in India, delivering end-to-end solutions from conceptualization to system design to project execution.',
             ],
         ]);
     }

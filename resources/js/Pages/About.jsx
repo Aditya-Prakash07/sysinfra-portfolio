@@ -65,7 +65,7 @@ export default function About({ team = [], seo = {} }) {
                             Mobility, Efficiency & Reliability in Wireless Communications.
                         </AnimatedHeading>
                         <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            System Infra Solutions is a market leader in mission-critical wireless communications in India. We pioneer in offering world-class wireless communication solutions to customers around the country.
+                            System Infra Solutions Pvt. Ltd. (SISPL) is a market leader in telecom power automation and NOC telemetry in India. We manufacture ISO-certified AMF controllers, SYS-AXS platforms, and 5G smart enclosures for tower operators and defence establishments.
                         </p>
                     </div>
 
@@ -76,7 +76,7 @@ export default function About({ team = [], seo = {} }) {
                         </div>
                         <div>
                             <span className="text-slate-500 dark:text-slate-400 block">STANDARDS</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">DMR &bull; TETRA &bull; PoC &bull; LTE-R</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">AMF &bull; NOC &bull; 5G &bull; Defence</span>
                         </div>
                         <div>
                             <span className="text-slate-500 dark:text-slate-400 block">PROJECTS</span>
@@ -139,7 +139,7 @@ export default function About({ team = [], seo = {} }) {
                                         <AnimatedNumber value={500} suffix="+" duration={2000} />
                                     </div>
                                     <h3 className="font-display font-semibold text-sm text-slate-900 dark:text-paper">Projects Delivered</h3>
-                                    <p className="text-xs text-slate-500 dark:text-steel">Turnkey communication systems delivered for public safety, transit, and heavy industry.</p>
+                                    <p className="text-xs text-slate-500 dark:text-steel">Turnkey energy management and automation systems for telecom towers and defence.</p>
                                 </div>
                                 <div className="card-symmetric p-6 space-y-2 hover:border-blue-500/50 dark:hover:border-beacon/40 hover:shadow-xl transition-all duration-300">
                                     <div className="font-display text-3xl font-bold text-blue-600 dark:text-beacon">
@@ -177,7 +177,7 @@ export default function About({ team = [], seo = {} }) {
                                 World-Class Technology Alliances & Make In India Manufacturing
                             </AnimatedHeading>
                             <p>
-                                We collaborate with the world&rsquo;s leading Original Equipment Manufacturers (OEMs) and technology providers to bring best-in-class communication solutions to India. We are a leading manufacturer of LTE MCX, LTE PoC, and DMR radios in India.
+                                We collaborate with world-leading OEMs including Motorola Solutions to deliver cutting-edge tactical radios, Automatic Weather Stations, and mission-critical hardware across India.
                             </p>
                             <p>
                                 We specialize in offering best communication solutions which are right for your business — configured for zero downtime across government, enterprise, and industrial deployments.
@@ -190,7 +190,7 @@ export default function About({ team = [], seo = {} }) {
                         <div className="lg:col-span-6">
                             <div className="relative rounded-2xl overflow-hidden border border-slate-200/90 dark:border-white/10 bg-slate-100/70 dark:bg-[#000000]/80 shadow-2xl group p-6 flex items-center justify-center">
                                 <img
-                                    src="/storage/media/about/as03.png"
+                                    src="/img/sys-products/5.jpg"
                                     alt="Sysinfra OEM Manufacturing & GeM Delivery"
                                     className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-[0_10px_20px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_14px_28px_rgba(0,0,0,0.6)]"
                                 />
@@ -212,13 +212,13 @@ export default function About({ team = [], seo = {} }) {
                         <div className="lg:col-span-6 order-2 lg:order-1">
                             <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/15 bg-slate-950 shadow-2xl group">
                                 <img
-                                    src="/storage/media/about/sancharlab.png"
+                                    src="/img/sys-products/6.jpg"
                                     alt="System Infra Solutions RF Engineering & Testing Lab"
                                     className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
                                 <div className="absolute top-3 left-3 px-3 py-1 rounded-md bg-slate-900/80 backdrop-blur-md border border-white/10 text-[11px] font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
                                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                                    <span>SANCHAR RF TESTING LAB &bull; NEW DELHI</span>
+                                    <span>SYSINFRA RF TESTING LAB &bull; NEW DELHI</span>
                                 </div>
                                 <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
                                     <p className="text-xs font-mono text-white/90">
@@ -241,7 +241,7 @@ export default function About({ team = [], seo = {} }) {
                                 “Service is our Motto” — Telecom Experts & Advanced Lab Infrastructure
                             </AnimatedHeading>
                             <p>
-                                Sysinfra excels in offering mission-critical communication solutions to diverse sectors such as public safety, railways, utility companies, and industrial houses with DMR, TETRA, analog radio, and LTE technologies.
+                                SISPL excels in delivering mission-critical power automation, NOC telemetry, and tactical communication solutions to telecom operators, defence establishments, railways, and utility companies across India.
                             </p>
                             <p>
                                 Sysinfra is geographically spread across the country through our excellent and dedicated channel partners who excel in providing communication solutions right at your doorstep.
@@ -470,7 +470,7 @@ export default function About({ team = [], seo = {} }) {
                                         {/* 1:1 Complete Square Photo (Zero Cropping of Faces) */}
                                         <div className="aspect-square w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-black/60 relative mb-3.5 border border-slate-200/80 dark:border-white/10 group-hover/member:border-blue-500/40 dark:group-hover/member:border-beacon/40 transition-colors duration-500 shadow-xs">
                                             <img
-                                                src={`/storage/${member.photo_path}`}
+                                                src={`/${member.photo_path}`}
                                                 alt={member.name}
                                                 className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover/member:scale-105"
                                                 loading="lazy"

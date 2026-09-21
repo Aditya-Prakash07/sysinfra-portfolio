@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $item->name }} — Technical Specification Datasheet | Sanchar Telesystems</title>
+    <title>{{ $item->name }} — Technical Specification Datasheet | System Infra Solutions</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -98,12 +98,12 @@
                 <div class="flex items-center gap-3.5">
                     <img 
                         src="/storage/media/branding/logo-emblem.svg" 
-                        alt="Sanchar Telesystems" 
+                        alt="System Infra Solutions" 
                         class="h-12 w-auto object-contain"
                         onerror="this.onerror=null; this.src='/storage/media/branding/logo0.png';"
                     >
                     <div>
-                        <h1 class="text-lg font-black tracking-tight text-slate-900 font-sans uppercase">SANCHAR TELESYSTEMS LIMITED</h1>
+                        <h1 class="text-lg font-black tracking-tight text-slate-900 font-sans uppercase">SYSINFRA TELESYSTEMS LIMITED</h1>
                         <p class="text-[10px] font-mono tracking-widest text-slate-600 uppercase font-semibold">Mission-Critical Wireless Communications &bull; Estd. 2002</p>
                     </div>
                 </div>
@@ -309,7 +309,7 @@
                 <div>
                     <strong class="block text-slate-900 uppercase font-sans text-xs">HEADQUARTERS & DESK:</strong>
                     <p class="text-[10px] leading-relaxed mt-1">
-                        Sanchar Telesystems Limited<br>
+                        System Infra Solutions Pvt. Ltd.<br>
                         204, Ansal Bhawan, 16 K.G. Marg<br>
                         Connaught Place, New Delhi - 110001, India
                     </p>
@@ -318,14 +318,14 @@
                     <strong class="block text-slate-900 uppercase font-sans text-xs">DIRECT CONTACT:</strong>
                     <p class="text-[10px] leading-relaxed mt-1">
                         Phone: +91 (11) 2331-5000 / 2331-5001<br>
-                        Tenders: sales@sanchartelesystems.com<br>
-                        Support: support@sanchartelesystems.com
+                        Tenders: sales@sysinfra.in<br>
+                        Support: support@sysinfra.in
                     </p>
                 </div>
                 <div>
                     <strong class="block text-slate-900 uppercase font-sans text-xs">AUTHENTICATION:</strong>
                     <p class="text-[10px] leading-relaxed mt-1">
-                        Portal: www.sanchartelesystems.com<br>
+                        Portal: www.sysinfra.in<br>
                         Authorized OEM Supplier & Integrator<br>
                         Document Generated: {{ date('d-m-Y H:i') }} IST
                     </p>
@@ -333,7 +333,7 @@
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-200 text-[9px] text-slate-600 text-center leading-relaxed">
-                &copy; {{ date('Y') }} Sanchar Telesystems Limited. All rights reserved. Sanchar and its logo are registered trademarks. Product specifications and features are subject to continuous technical enhancement without prior notice.
+                &copy; {{ date('Y') }} System Infra Solutions Pvt. Ltd.. All rights reserved. System Infra and its logo are registered trademarks. Product specifications and features are subject to continuous technical enhancement without prior notice.
             </div>
         </footer>
 

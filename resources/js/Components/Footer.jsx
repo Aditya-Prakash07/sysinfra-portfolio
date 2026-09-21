@@ -30,7 +30,7 @@ export default function Footer() {
             <div className="container-content py-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 relative z-10">
                 <div className="space-y-4">
                     <Link href="/" className="flex items-center group shrink-0" aria-label="System Infra Solutions">
-                        <ApplicationLogo variant="white" className="h-10" />
+                        <ApplicationLogo variant="footer" className="h-9 w-auto max-w-[180px]" />
                     </Link>
                     <p className="text-sm leading-relaxed text-zinc-400">
                         System Infra Solutions Pvt. Ltd. (SISPL) is an ISO-certified engineering leader in telecom power automation, 

@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client';
 
 import { ThemeProvider } from './Context/ThemeContext';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Sanchar Telesystems';
+const appName = import.meta.env.VITE_APP_NAME || 'System Infra Solutions';
 
 createInertiaApp({
     title: (title) => (title ? `${title}` : appName),

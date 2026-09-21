@@ -47,8 +47,8 @@ class HomeController extends Controller
                 ->get(['id', 'title', 'slug', 'body', 'cover_image_path', 'published_at']),
 
             'seo' => [
-                'title' => 'Sanchar Telesystems — Mission-Critical Wireless Communication Solutions',
-                'description' => 'Sanchar Telesystems designs, deploys and supports DMR, TETRA, PoC/MCX and LTE-R wireless communication systems for public safety, railways, utilities and government across India.',
+                'title' => 'System Infra Solutions — Telecom, Power & Tactical Infrastructure',
+                'description' => 'System Infra Solutions Pvt. Ltd. (SISPL) delivers ISO-certified AMF panels, SYS-AXS NOC telemetry, 5G smart enclosures, and tactical communications across India.',
             ],
         ]);
     }

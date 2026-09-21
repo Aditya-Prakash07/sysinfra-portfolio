@@ -52,8 +52,8 @@ export default function ProductsCategory({ category, subcategory, items = [], se
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || `${subcategory.name} — Sanchar Telesystems`}
-                description={seo?.description || `Explore ${subcategory.name} wireless communication equipment from Sanchar Telesystems.`}
+                title={seo?.title || `${subcategory.name} — System Infra Solutions`}
+                description={seo?.description || `Explore ${subcategory.name} infrastructure solutions from System Infra Solutions.`}
                 canonicalPath={`/products/${category.slug}/${subcategory.slug}`}
                 breadcrumbs={[
                     { name: 'Home', url: '/' },
@@ -192,13 +192,13 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                                             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_70%)] dark:hidden pointer-events-none" />
 
                                             <img
-                                                src={`/storage/${item.cover_image_path}`}
+                                                src={`/${item.cover_image_path}`}
                                                 alt={item.name}
                                                 className="max-h-full w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1.5 drop-shadow-[0_8px_16px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_14px_28px_rgba(0,0,0,0.9)] relative z-10"
                                                 loading="lazy"
                                                 onError={(e) => {
                                                     e.target.onerror = null;
-                                                    e.target.src = '/storage/media/products/1559989450_nx3220_ht.jpg';
+                                                    e.target.src = '/img/sys-products/2.jpg';
                                                 }}
                                             />
 
@@ -215,7 +215,7 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                                             </h3>
 
                                             <p className="text-xs sm:text-sm text-slate-600 dark:text-steel min-h-[2.5rem] line-clamp-2 leading-relaxed flex-1">
-                                                {item.short_description || 'High-reliability wireless communication equipment engineered for critical operations.'}
+                                                {item.short_description || 'High-reliability telecom power and automation equipment engineered for mission-critical operations.'}
                                             </p>
                                         </div>
                                     </div>

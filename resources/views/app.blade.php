@@ -26,6 +26,10 @@
 
         <title inertia>{{ config('app.name', 'System Infra Solutions') }}</title>
 
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="/img/mobile-logo.png">
+        <link rel="apple-touch-icon" href="/img/mobile-logo.png">
+
         <!-- Pre-rendered JSON-LD Organization Schema for Google Search -->
         @verbatim
         <script type="application/ld+json">
@@ -33,22 +37,22 @@
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "System Infra Solutions Pvt. Ltd.",
-            "alternateName": "System Infra Solutions",
+            "alternateName": "SISPL",
             "url": "https://www.sysinfra.in",
-            "logo": "https://www.sysinfra.in/storage/media/branding/logo.svg",
-            "description": "Leading manufacturer and turnkey supplier of DMR, TETRA, PoC over Cellular, and Railway LTE-R communication systems in India.",
+            "logo": "https://www.sysinfra.in/img/logo.png",
+            "description": "ISO-certified manufacturer of AMF controllers, SYS-AXS NOC telemetry platforms, 5G smart enclosures, and tactical Motorola Solutions communications across India.",
             "contactPoint": [
                 {
                     "@type": "ContactPoint",
-                    "telephone": "+91-11-46528894",
+                    "telephone": "+91-011-35004142",
                     "contactType": "sales",
                     "areaServed": "IN",
                     "availableLanguage": ["English", "Hindi"]
                 },
                 {
                     "@type": "ContactPoint",
-                    "telephone": "+91-11-46528892",
-                    "contactType": "technical support",
+                    "telephone": "+91-011-35004143",
+                    "contactType": "customer support",
                     "areaServed": "IN",
                     "availableLanguage": ["English", "Hindi"]
                 }
@@ -57,11 +61,11 @@
                 "@type": "PostalAddress",
                 "streetAddress": "Plot No. 382, Third Floor, F.I.E., Patparganj Industrial Area",
                 "addressLocality": "New Delhi",
-                "postalCode": "110020",
+                "postalCode": "110092",
                 "addressCountry": "IN"
             },
             "sameAs": [
-                "https://www.linkedin.com/company/sanchar-telesystems-limited"
+                "https://www.linkedin.com/company/system-infra-solutions"
             ]
         }
         </script>

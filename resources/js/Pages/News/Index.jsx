@@ -36,8 +36,8 @@ export default function NewsIndex({ posts = [], seo = {} }) {
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || 'Latest News & Strategic Updates — Sanchar Telesystems'}
-                description={seo?.description || 'Official dispatches, statutory wireless updates, technology breakthroughs, and company milestones from Sanchar Telesystems.'}
+                title={seo?.title || 'Latest News & Strategic Updates — System Infra Solutions'}
+                description={seo?.description || 'Official dispatches, statutory wireless updates, technology breakthroughs, and company milestones from System Infra Solutions.'}
                 canonicalPath="/latest-news"
                 breadcrumbs={[
                     { name: 'Home', url: '/' },
@@ -135,13 +135,13 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                     {/* Cover Image Pedestal */}
                                     <div className="w-full md:w-5/12 lg:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[340px] bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/10 shrink-0">
                                         <img
-                                            src={post.cover_image_path ? `/storage/${post.cover_image_path}` : '/storage/media/banners/banner1.png'}
+                                            src={post.cover_image_path ? `/${post.cover_image_path}` : '/img/slider/1-1.jpg'}
                                             alt={post.title}
                                             className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                                             loading="lazy"
                                             onError={(e) => {
                                                 e.target.onerror = null;
-                                                e.target.src = '/storage/media/banners/banner1.png';
+                                                e.target.src = '/img/slider/1-1.jpg';
                                             }}
                                         />
                                         <div className="absolute top-4 left-4 z-20">
@@ -207,13 +207,13 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                         {/* Cover Image Pedestal */}
                                         <div className="aspect-[16/10] w-full bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b border-slate-100 dark:border-white/10">
                                             <img
-                                                src={post.cover_image_path ? `/storage/${post.cover_image_path}` : '/storage/media/banners/banner1.png'}
+                                                src={post.cover_image_path ? `/${post.cover_image_path}` : '/img/slider/1-1.jpg'}
                                                 alt={post.title}
                                                 className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                                                 loading="lazy"
                                                 onError={(e) => {
                                                     e.target.onerror = null;
-                                                    e.target.src = '/storage/media/banners/banner1.png';
+                                                    e.target.src = '/img/slider/1-1.jpg';
                                                 }}
                                             />
 

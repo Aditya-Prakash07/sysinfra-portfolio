@@ -38,7 +38,7 @@ const PILLARS = [
         angle: 90,
         x: 270,
         y: 455,
-        description: 'Military-grade AES-256 bit hardware voice and data encryption complying with homeland security and defense protocols.',
+        description: 'AES-256 encrypted communication complying with defence and strategic communication protocols for mission-critical deployments.',
         icon: '🔒'
     },
     {
@@ -48,7 +48,7 @@ const PILLARS = [
         angle: 150,
         x: 110,
         y: 363,
-        description: 'Next-generation DMR Tier III trunking, Railway LTE-R cab radios, MCPTT mission-critical push-to-talk, and hybrid grids.',
+        description: 'MOTOTRBO DMR trunking, Motorola APX tactical radios, SYS-AXS NOC telemetry, and 5G smart enclosures for mission-critical sites.',
         icon: '⚡'
     },
     {
@@ -63,7 +63,7 @@ const PILLARS = [
     },
 ];
 
-export default function WhySancharDiagram() {
+export default function WhySysinfraDiagram() {
     const [activePillar, setActivePillar] = useState(null);
 
     const centerX = 270;
@@ -83,7 +83,7 @@ export default function WhySancharDiagram() {
                         OUR CORE VALUE PROPOSITION
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-paper tracking-tight">
-                        Why Choose Sanchar Telesystems
+                        Why Choose System Infra Solutions
                     </h2>
                     <p className="mt-3 text-slate-600 dark:text-steel text-sm leading-relaxed">
                         Six foundational engineering pillars delivering mission-critical reliability across India’s most demanding security and industrial environments.
@@ -98,7 +98,7 @@ export default function WhySancharDiagram() {
                             <svg 
                                 viewBox="0 0 540 540" 
                                 className="w-full h-full filter drop-shadow-xl select-none"
-                                aria-label="Sanchar Telesystems Six Core Value Pillars"
+                                aria-label="System Infra Solutions Six Core Value Pillars"
                             >
                                 <defs>
                                     {/* Ambient Glow Filter */}
@@ -129,7 +129,7 @@ export default function WhySancharDiagram() {
                                     />
                                 ))}
 
-                                {/* Center Hub Circle (Sanchar Telesystems) */}
+                                {/* Center Hub Circle (System Infra Solutions) */}
                                 <g className="cursor-pointer">
                                     <circle
                                         cx={centerX}
@@ -154,7 +154,7 @@ export default function WhySancharDiagram() {
                                         fill="#ffffff"
                                         className="font-display font-bold text-base sm:text-lg tracking-tight pointer-events-none"
                                     >
-                                        Sanchar
+                                        System Infra
                                     </text>
                                     <text
                                         x={centerX}

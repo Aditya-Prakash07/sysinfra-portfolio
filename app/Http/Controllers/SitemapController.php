@@ -12,7 +12,7 @@ class SitemapController extends Controller
 {
     public function index(): Response
     {
-        $baseUrl = config('app.url', 'https://www.sanchartelesystems.com');
+        $baseUrl = config('app.url', 'https://www.sysinfra.in');
         $baseUrl = rtrim($baseUrl, '/');
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';

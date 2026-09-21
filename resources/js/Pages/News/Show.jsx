@@ -23,7 +23,7 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || `${post.title} — Sanchar Telesystems`}
+                title={seo?.title || `${post.title} — System Infra Solutions`}
                 description={seo?.description}
                 canonicalPath={`/latest-news/${post.slug}`}
                 breadcrumbs={[
@@ -71,12 +71,12 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                     <div className="container-content max-w-4xl mt-10">
                         <div className="rounded-2xl overflow-hidden border border-slate-200/80 dark:border-white/10 shadow-xl bg-slate-100 dark:bg-black aspect-[16/9] relative">
                             <img
-                                src={`/storage/${post.cover_image_path}`}
+                                src={`/${post.cover_image_path}`}
                                 alt={post.title}
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                     e.target.onerror = null;
-                                    e.target.src = '/storage/media/banners/banner1.png';
+                                    e.target.src = '/img/slider/1-1.jpg';
                                 }}
                             />
                         </div>

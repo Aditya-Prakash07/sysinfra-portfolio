@@ -9,22 +9,22 @@ export default function Seo({
     breadcrumbs,
     product,
 }) {
-    const siteName = 'Sanchar Telesystems';
+    const siteName = 'System Infra Solutions';
     const fullTitle = title?.includes(siteName) ? title : `${title} | ${siteName}`;
-    const defaultDesc = 'Sanchar Telesystems is India’s premier manufacturer and turnkey supplier of DMR, TETRA, PoC over Cellular, and Railway LTE-R communication systems.';
+    const defaultDesc = 'System Infra Solutions (SISPL) — ISO-certified manufacturer of AMF power controllers, SYS-AXS NOC telemetry, 5G smart enclosures, and Motorola Solutions tactical radios across India.';
     const metaDesc = description || defaultDesc;
-    const defaultKeywords = 'DMR walkie talkie India, license free walkie talkie, WPC approved radios, TETRA supplier India, PoC LTE terminals, Diamond antenna India, Kenwood communication equipment';
+    const defaultKeywords = 'AMF controller India, telecom power automation, SYS-AXS NOC platform, 5G smart box, solar hybrid AMF, Motorola Solutions India, SISPL energy management, tower automation';
     const metaKeywords = keywords || defaultKeywords;
 
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.sanchartelesystems.com';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.sysinfra.in';
     const canonical = canonicalPath
         ? `${origin}${canonicalPath}`
         : typeof window !== 'undefined'
         ? window.location.href
-        : 'https://www.sanchartelesystems.com';
+        : 'https://www.sysinfra.in';
 
-    const defaultImage = `${origin}/storage/media/banners/banner1.png`;
-    const ogImage = image ? (image.startsWith('http') ? image : `${origin}/storage/${image}`) : defaultImage;
+    const defaultImage = `${origin}/img/slider/1-1.jpg`;
+    const ogImage = image ? (image.startsWith('http') ? image : `${origin}/${image}`) : defaultImage;
 
     // Generate JSON-LD Breadcrumbs if provided
     const breadcrumbsLd = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -43,14 +43,14 @@ export default function Seo({
         '@context': 'https://schema.org',
         '@type': 'Product',
         'name': product.name,
-        'image': product.cover_image_path ? `${origin}/storage/${product.cover_image_path}` : ogImage,
+        'image': product.cover_image_path ? `${origin}/${product.cover_image_path}` : ogImage,
         'description': product.short_description || metaDesc,
         'sku': product.model_number || product.slug,
         'mpn': product.model_number || product.slug,
         'brand': {
             '@type': 'Brand',
             'name': product.name?.toLowerCase().includes('kenwood') ? 'Kenwood' : 
-                    product.name?.toLowerCase().includes('diamond') ? 'Diamond' : 'Sanchar'
+                    product.name?.toLowerCase().includes('diamond') ? 'Diamond' : 'System Infra'
         },
         'offers': {
             '@type': 'Offer',
@@ -59,7 +59,7 @@ export default function Seo({
             'availability': 'https://schema.org/InStock',
             'seller': {
                 '@type': 'Organization',
-                'name': 'Sanchar Telesystems Limited'
+                'name': 'System Infra Solutions Pvt. Ltd.'
             }
         }
     } : null;

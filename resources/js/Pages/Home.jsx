@@ -7,68 +7,8 @@ import WelcomeVideoSection from '@/Components/WelcomeVideoSection';
 import AnimatedHeading from '@/Components/AnimatedHeading';
 import { useTheme } from '@/Context/ThemeContext';
 
-const SECTOR_DATA = [
-    {
-        title: 'Homeland Security & Defense',
-        model: 'ST-200R',
-        tag: 'MISSION CRITICAL TIER-1',
-        headline: 'Tactical Voice, Encrypted DMR & P25 Networks',
-        description: 'Secure, zero-interruption radio communication topologies and ruggedized 4G/LTE PoC terminals engineered for defense forces, tactical SWAT squads, and central police organizations operating in hostile RF environments.',
-        features: [
-            'AES-256 Bit Hardware Encryption',
-            'Full Duplex Interoperability Gateways',
-            'MIL-STD-810G & IP67 Rugged Handsets',
-            'Sub-300ms Call Setup Latency'
-        ],
-        image: '/storage/media/products/1710240493_ST-200R(1).jpg',
-        specs: { coverage: 'All-India 4G/LTE Range', channels: 'Unlimited Groups & Channels', battery: '3800 / 5000 mAh Li-Ion' }
-    },
-    {
-        title: 'Railways & Metro Transit',
-        model: 'LTE-R Cab Radio',
-        tag: 'LTE-R & CAB RADIO',
-        headline: 'Train-to-Trackside Broadband & Passenger Security',
-        description: 'Railway-certified wireless solutions conforming to EN 50155. Providing continuous high-speed voice dispatch, train collision avoidance telemetry, and mission-critical cab communications.',
-        features: [
-            'Doppler Compensation up to 500 km/h',
-            'MCPTT Mission Critical Push-to-Talk',
-            'Dual Redundant RF Hot Standby',
-            'Driver-Guard Emergency Intercom'
-        ],
-        image: '/storage/media/sectors/LTTE-R.jpeg',
-        specs: { coverage: 'Continuous Corridor Coverage', speed: 'Up to 500 km/h Operation', latency: '< 50ms Priority Call Setup' }
-    },
-    {
-        title: 'Oil, Gas & Petrochemical',
-        model: 'ATEX V-710',
-        tag: 'ATEX & INTRINSICALLY SAFE',
-        headline: 'Explosion-Proof Terminals for Hazardous Zones',
-        description: 'Zone 1 and Zone 2 certified communications equipment designed to prevent electrical sparks in flammable refineries, offshore drilling platforms, and chemical storage facilities.',
-        features: [
-            'ATEX / IECEx Certified Handhelds',
-            'Gas Group IIA, IIB, IIC Protection',
-            'IP68 Submersible Ingress Proofing',
-            'Emergency Man-Down & Lone-Worker Alarms'
-        ],
-        image: '/storage/media/products/1707159990_ATEXV-710.png',
-        specs: { cert: 'ATEX Zone 1 / 21 Certified', ingress: 'IP68 (2m Submersion for 4h)', audio: 'Noise-Cancelling Boom Mics' }
-    },
-    {
-        title: 'Mining & Heavy Industries',
-        model: 'Diamond Antenna',
-        tag: 'DEEP MINE & HIGH-NOISE',
-        headline: 'Underground Leaky Feeder & Repeater Topologies',
-        description: 'Ruggedized repeater and telemetry systems ensuring continuous communication through subterranean tunnels, open-cast mines, steel mills, and heavy logistics yards.',
-        features: [
-            'Leaky Feeder Distributed Antenna Arrays',
-            'Heavy Equipment Anti-Vibration Mounts',
-            'Ultra-Loud 3W Acoustic Speaker Drivers',
-            'High-Gain Diamond Mast Antennas'
-        ],
-        image: '/storage/media/sectors/Diamond_Antenna_1.jpg',
-        specs: { penetration: 'Subterranean Multi-Shaft RF', chassis: 'Die-cast Aluminum Alloy', battery: 'High-Capacity 3000mAh Lithium' }
-    }
-];
+import { SYSINFRA_SECTOR_DATA } from './HomeSectorData';
+const SECTOR_DATA = SYSINFRA_SECTOR_DATA;
 
 // Helper to format heading with dynamic dual-tone glowing gradient on the key phrase
 const formatHeading = (text) => {
@@ -142,69 +82,44 @@ export default function Home({ banners = [], categories = [], featuredProducts =
     // Default hero slides if none in database (5 Banners Total: Video + 4 Flagship Hardware)
     const rawSlides = banners.length > 0 ? banners : [
         {
-            heading: 'Pioneering Mission-Critical Wireless Systems',
-            subheading: 'Over three decades of mission-critical engineering excellence trusted by India’s defense forces, homeland security, and key national infrastructure.',
-            image_path: 'media/banners/radio_dark_mode.mp4',
-            cta_label: 'Explore Our Solutions',
+            heading: 'Intelligent Telecom, Energy & Tactical Infrastructure',
+            subheading: 'ISO-certified leader in automated AMF panels, SYS-AXS NOC telemetry, and mission-critical power systems powering over 70,000 sites across India.',
+            image_path: '/img/slider/1-1.jpg',
+            cta_label: 'Explore Products',
             cta_url: '/products',
         },
         {
-            heading: 'Accelerating Mission-Critical Communications',
-            subheading: 'Our plan to scale and diversify tactical wireless operations, DMR Tier III networks and secure communications to meet growing national demand.',
-            image_path: 'media/banners/banner1.jpg',
-            cta_label: 'Explore DMR Radios',
-            cta_url: '/products/professional-amateur-radio/professional-amateur-radio-digital-mobile-radio-dmr',
+            heading: '3,00,000+ Rectifier Modules Reconditioned',
+            subheading: 'Over two decades of excellence with an 8,000 sq. ft. international-standard manufacturing and testing facility in Patparganj Industrial Area, New Delhi.',
+            image_path: '/img/slider/1-2.jpg',
+            cta_label: 'Our Manufacturing Facility',
+            cta_url: '/about-us',
         },
         {
-            heading: 'Next-Generation PoC & Broadband Networks',
-            subheading: 'Empowering first responders and defense forces with nationwide LTE push-to-talk, live dispatching, and sub-second voice latency.',
-            image_path: 'media/banners/banner2.jpg',
-            cta_label: 'Explore PoC Solutions',
-            cta_url: '/products/ptt-over-cellular-poc',
+            heading: 'SYS-AXS NOC Surveillance & Remote Monitoring',
+            subheading: 'Centralized IoT telemetry, fuel ultrasonic sensing, dual PIR intrusion alarms, and battery health intelligence deployed across 10,000+ towers.',
+            image_path: '/img/slider/1-3.jpg',
+            cta_label: 'Explore SYS-AXS Platform',
+            cta_url: '/products',
         },
         {
-            heading: 'Intrinsically Safe Industrial & Defense Radios',
-            subheading: 'Certified explosion-proof ATEX and MIL-STD-810H rugged communications built for hazardous industrial sectors, refineries and tactical operations.',
-            image_path: 'media/banners/banner3.jpg',
-            cta_label: 'Discover ATEX Radios',
-            cta_url: '/products/professional-amateur-radio',
-        },
-        {
-            heading: 'Nationwide Turnkey Wireless Infrastructure',
-            subheading: 'Over three decades of mission-critical engineering excellence trusted by the Parliament of India, Delhi Police, and Indian Railways.',
-            image_path: 'media/banners/banner4.jpg',
-            cta_label: 'Explore Infrastructure',
-            cta_url: '#sectors',
+            heading: 'Motorola Solutions Authorized Channel Partner',
+            subheading: 'Encrypted tactical radios, Automatic Weather Stations, and mission-critical wireless gear engineered for defense forces and national utilities.',
+            image_path: '/img/slider/1-4.jpg',
+            cta_label: 'Discover Tactical Gear',
+            cta_url: '/products',
         }
     ];
 
-    const slides = rawSlides.map((s, idx) => {
-        const isVideo = Boolean(s.image_path?.endsWith('.mp4') || s.image_path?.includes('radio_') || idx === 0);
-        if (isVideo) {
-            const vidPath = isDark
-                ? 'media/banners/radio_dark_mode.mp4'
-                : 'media/banners/radio_light_mode.mp4';
-            return {
-                ...s,
-                isVideo: true,
-                resolved_video_path: vidPath
-            };
-        }
-
-        // For image slides (slides 1..4 corresponding to hardware banners 1..4)
-        const bannerNum = idx; // idx 1 -> banner1, idx 2 -> banner2, etc.
-        const baseImg = (s.image_path && !s.image_path.endsWith('.mp4')) 
-            ? s.image_path 
-            : `media/banners/banner${bannerNum}.jpg`;
-        const imgPath = isDark
-            ? baseImg
-            : baseImg.replace('.jpg', '_light.jpg');
-        return {
-            ...s,
-            isVideo: false,
-            resolved_image_path: imgPath
-        };
-    });
+    // sysinfra.in uses static jpg images only — no video banners.
+    // Images live at /img/slider/ — NOT /storage/. No _light/_dark variants.
+    const slides = rawSlides.map((s) => ({
+        ...s,
+        isVideo: false,
+        resolved_image_path: s.image_path?.startsWith('/')
+            ? s.image_path                          // absolute path — use as-is
+            : `/${s.image_path}`,                   // relative — prefix with /
+    }));
 
     const scrollContainer = (ref, direction) => {
         if (!ref.current) return;
@@ -279,8 +194,8 @@ export default function Home({ banners = [], categories = [], featuredProducts =
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || 'System Infra Solutions — Mission-Critical Wireless Communication Systems'}
-                description={seo?.description || 'India’s premier supplier and turnkey contractor for DMR, TETRA, PoC over Cellular, and Railway LTE-R communication networks.'}
+                title={seo?.title || 'System Infra Solutions — Telecom Power Automation & NOC Solutions'}
+                description={seo?.description || 'System Infra Solutions (SISPL) — ISO-certified manufacturer of AMF controllers, SYS-AXS NOC telemetry, 5G smart enclosures, and Motorola Solutions tactical radios across India.'}
                 canonicalPath="/"
             />
 
@@ -312,14 +227,14 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                 />
                             ) : (
                                 <img
-                                    src={`/storage/${s.resolved_image_path}`}
+                                    src={s.resolved_image_path}
                                     alt={s.heading}
                                     className={`w-full h-full object-cover object-right transform transition-transform duration-[6000ms] ease-out will-change-transform ${
                                         currentSlide === idx ? 'scale-104' : 'scale-100'
                                     }`}
                                     onError={(e) => {
                                         e.target.onerror = null;
-                                        e.target.src = isDark ? '/storage/media/banners/banner1.jpg' : '/storage/media/banners/banner1_light.jpg';
+                                        e.target.src = '/img/slider/1-1.jpg';
                                     }}
                                 />
                             )}
@@ -482,7 +397,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             <div className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-navy-surface/50 hover:bg-white dark:hover:bg-navy-surface hover:border-blue-500/40 dark:hover:border-beacon/30 hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-beacon/5 hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="w-12 h-12 rounded-lg bg-white dark:bg-white/10 p-1.5 flex items-center justify-center border border-slate-200/60 dark:border-white/10 shadow-sm shrink-0 group-hover:scale-105 transition-transform">
                                     <img 
-                                        src="/storage/media/clients/Parliament.png" 
+                                        src="/img/brand/1.jpg" 
                                         alt="Parliament of India" 
                                         className="max-h-full max-w-full object-contain filter group-hover:filter-none transition-all"
                                     />
@@ -500,7 +415,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             <div className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-navy-surface/50 hover:bg-white dark:hover:bg-navy-surface hover:border-blue-500/40 dark:hover:border-beacon/30 hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-beacon/5 hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="w-12 h-12 rounded-lg bg-white dark:bg-white/10 p-1.5 flex items-center justify-center border border-slate-200/60 dark:border-white/10 shadow-sm shrink-0 group-hover:scale-105 transition-transform">
                                     <img 
-                                        src="/storage/media/clients/DelhiPolice.png" 
+                                        src="/img/brand/2.jpg" 
                                         alt="Delhi Police" 
                                         className="max-h-full max-w-full object-contain filter group-hover:filter-none transition-all"
                                     />
@@ -518,7 +433,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             <div className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-navy-surface/50 hover:bg-white dark:hover:bg-navy-surface hover:border-blue-500/40 dark:hover:border-beacon/30 hover:shadow-lg hover:shadow-blue-500/5 dark:hover:shadow-beacon/5 hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="w-12 h-12 rounded-lg bg-white dark:bg-white/10 p-1.5 flex items-center justify-center border border-slate-200/60 dark:border-white/10 shadow-sm shrink-0 group-hover:scale-105 transition-transform">
                                     <img 
-                                        src="/storage/media/clients/sdb.png" 
+                                        src="/img/brand/3.jpg" 
                                         alt="Surat Diamond Bourse" 
                                         className="max-h-full max-w-full object-contain filter group-hover:filter-none transition-all"
                                     />
@@ -561,7 +476,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             Specialized Telecom for Critical Industry Verticals
                         </AnimatedHeading>
                         <p className="mt-2.5 text-slate-600 dark:text-steel max-w-2xl text-sm sm:text-base leading-relaxed">
-                            Sysinfra excels in offering reliable wireless communication solutions tailored for mission-critical operations across public safety, railways, petrochemical facilities, and heavy industries with DMR, TETRA, analog radio, and LTE systems.
+                            SISPL delivers ISO-certified energy management and NOC automation solutions across telecom tower operators, defence establishments, 5G smart cities, and power utilities — including AMF panels, SYS-AXS telemetry, tactical radios, and Motorola Solutions partnerships.
                         </p>
                     </div>
 
@@ -749,26 +664,25 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                         <span>Field Proven</span>
                                     </div>
                                     <div className="font-display font-black text-2xl sm:text-3xl xl:text-[28px] text-slate-900 dark:text-white tracking-tight leading-tight pt-1">
-                                        Mission-Critical<br />Wireless<br />Systems<br />
+                                        ISO-Certified<br />Power<br />Automation<br />
                                         <span className="bg-gradient-to-r from-blue-600 via-sky-600 to-cyan-600 dark:from-sky-400 dark:via-cyan-300 dark:to-teal-300 bg-clip-text text-transparent dark:drop-shadow-[0_2px_12px_rgba(56,189,248,0.5)]">
-                                            Field Deployed
+                                            Pan-India
                                         </span>
                                     </div>
                                     <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
-                                        Standardized RF platforms and transceivers deployed nationwide across defense, rail, and public safety.
-                                    </p>
+                                        AMF panels, NOC telemetry, and 5G smart enclosures deployed across 70,000+ tower sites nationwide.</p>
                                 </div>
 
                                 <div className="pt-5 border-t border-slate-200 dark:border-white/10 space-y-3 mt-4">
                                     <div className="text-[11px] font-mono text-slate-600 dark:text-slate-400 flex items-center gap-2">
                                         <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓</span>
-                                        <span>WPC &amp; TEC Approved</span>
+                                        <span>ISO 9001 &amp; ISO 14001 Certified</span>
                                     </div>
                                     <Link
                                         href="/products"
                                         className="group/cta inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 hover:text-blue-800 dark:text-sky-400 dark:hover:text-white transition-colors"
                                     >
-                                        <span>Explore 120+ Products</span>
+                                        <span>Explore Our Products</span>
                                         <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover/cta:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
@@ -800,13 +714,13 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                         <div className="h-[120px] shrink-0 w-full bg-gradient-to-b from-slate-50 to-slate-100/80 dark:from-[#111111] dark:to-[#0a0a0a] relative flex items-center justify-center border-b border-slate-100 dark:border-white/[0.06] overflow-hidden">
                                             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
                                             <img
-                                                src={`/storage/${item.cover_image_path}`}
+                                                src={`/${item.cover_image_path}`}
                                                 alt={item.name}
                                                 className="h-[90px] w-auto max-w-[120px] object-contain transition-all duration-500 group-hover/card:scale-110 group-hover/card:-translate-y-1 drop-shadow-[0_4px_10px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_6px_16px_rgba(0,0,0,0.9)] relative z-10"
                                                 loading="lazy"
                                                 onError={(e) => {
                                                     e.target.onerror = null;
-                                                    e.target.src = '/storage/media/products/1559989450_nx3220_ht.jpg';
+                                                    e.target.src = '/img/sys-products/2.jpg';
                                                 }}
                                             />
                                             {/* WPC badge */}
@@ -838,7 +752,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
 
                                                 {/* Description */}
                                                 <p className="text-[11px] text-slate-500 dark:text-steel leading-relaxed line-clamp-2">
-                                                    {item.short_description || 'High-reliability wireless communication equipment engineered for critical infrastructure.'}
+                                                    {item.short_description || 'High-reliability energy management and telecom automation equipment engineered for mission-critical infrastructure.'}
                                                 </p>
                                             </div>
 
@@ -924,13 +838,13 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             >
                                 <div className="w-full h-12 px-3 py-1.5 rounded-xl bg-white dark:bg-white/95 border border-slate-200/80 dark:border-slate-300 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform duration-300">
                                     <img
-                                        src={`/storage/${partner.logo_path}`}
+                                        src={`/${partner.logo_path}`}
                                         alt={partner.name}
                                         className="max-h-8 max-w-[130px] w-auto object-contain"
                                         loading="lazy"
                                         onError={(e) => {
                                             e.target.onerror = null;
-                                            e.target.src = '/storage/media/branding/logo-emblem.svg';
+                                            e.target.src = '/img/mobile-logo.png';
                                         }}
                                     />
                                 </div>
@@ -1000,13 +914,13 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                         {/* Cover Image Pedestal */}
                                         <div className="w-full md:w-5/12 lg:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[320px] bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/10 shrink-0">
                                             <img
-                                                src={post.cover_image_path ? `/storage/${post.cover_image_path}` : '/storage/media/banners/banner1.png'}
+                                                src={post.cover_image_path ? `/${post.cover_image_path}` : '/img/slider/1-1.jpg'}
                                                 alt={post.title}
                                                 className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                                                 loading="lazy"
                                                 onError={(e) => {
                                                     e.target.onerror = null;
-                                                    e.target.src = '/storage/media/banners/banner1.png';
+                                                    e.target.src = '/img/slider/1-1.jpg';
                                                 }}
                                             />
                                             <div className="absolute top-4 left-4 z-20">
@@ -1079,13 +993,13 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                                 {/* Image Pedestal */}
                                                 <div className="aspect-[16/10] w-full bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b border-slate-100 dark:border-white/10">
                                                     <img
-                                                        src={post.cover_image_path ? `/storage/${post.cover_image_path}` : '/storage/media/banners/banner1.png'}
+                                                        src={post.cover_image_path ? `/${post.cover_image_path}` : '/img/slider/1-1.jpg'}
                                                         alt={post.title}
                                                         className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                                                         loading="lazy"
                                                         onError={(e) => {
                                                             e.target.onerror = null;
-                                                            e.target.src = '/storage/media/banners/banner1.png';
+                                                            e.target.src = '/img/slider/1-1.jpg';
                                                         }}
                                                     />
 

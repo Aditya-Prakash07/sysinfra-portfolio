@@ -34,7 +34,7 @@ class ProductController extends Controller
         return Inertia::render('Products/Index', [
             'categories' => $categories,
             'seo' => [
-                'title' => 'Products — Sanchar Telesystems',
+                'title' => 'Products — System Infra Solutions',
                 'description' => 'DMR, TETRA, P25, License-Free and Amateur radios, PTT over Cellular (PoC/MCX), LTE-R, Captive LTE and communication accessories.',
             ],
         ]);
@@ -56,8 +56,8 @@ class ProductController extends Controller
             'subcategory' => $subcategory->only('name', 'slug', 'description'),
             'items' => $items,
             'seo' => [
-                'title' => $subcategory->name.' — Sanchar Telesystems',
-                'description' => $subcategory->description ?? "Browse {$subcategory->name} communication equipment from Sanchar Telesystems.",
+                'title' => $subcategory->name.' — System Infra Solutions',
+                'description' => $subcategory->description ?? "Browse {$subcategory->name} communication equipment from System Infra Solutions.",
             ],
         ]);
     }
@@ -74,7 +74,7 @@ class ProductController extends Controller
             'subcategory' => $subcategory->only('name', 'slug'),
             'item' => $item,
             'seo' => [
-                'title' => ($item->meta_title ?: $item->name).' — Sanchar Telesystems',
+                'title' => ($item->meta_title ?: $item->name).' — System Infra Solutions',
                 'description' => $item->meta_description ?: $item->short_description,
             ],
         ]);

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\File;
 
 class GenerateSitemap extends Command
 {
-    protected $signature = 'sanchar:generate-sitemap';
+    protected $signature = 'sysinfra:generate-sitemap';
 
     protected $description = 'Regenerate public/sitemap.xml from published content';
 

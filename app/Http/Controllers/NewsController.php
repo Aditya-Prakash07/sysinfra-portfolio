@@ -20,8 +20,8 @@ class NewsController extends Controller
         return Inertia::render('News/Index', [
             'posts' => $posts,
             'seo' => [
-                'title' => 'Latest News & Updates — Sanchar Telesystems',
-                'description' => 'Official press releases, wireless telecommunications news, and mission-critical milestones from Sanchar Telesystems.',
+                'title' => 'Latest News & Updates — System Infra Solutions',
+                'description' => 'Official press releases, wireless telecommunications news, and mission-critical milestones from System Infra Solutions.',
             ],
         ]);
     }
@@ -47,7 +47,7 @@ class NewsController extends Controller
             'post' => $post,
             'recentPosts' => $recentPosts,
             'seo' => [
-                'title' => "{$post->title} — Sanchar Telesystems",
+                'title' => "{$post->title} — System Infra Solutions",
                 'description' => $excerpt,
             ],
         ]);

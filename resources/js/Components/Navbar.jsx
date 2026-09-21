@@ -69,9 +69,9 @@ export default function Navbar() {
             }`}>
                 <nav className="container-content flex items-center justify-between">
                     {/* Brand Logo */}
-                    <Link href="/" className="flex items-center group shrink-0" aria-label="Sanchar Telesystems">
+                    <Link href="/" className="flex items-center group shrink-0" aria-label="System Infra Solutions">
                         <ApplicationLogo 
-                            className="h-9 sm:h-10" 
+                            className="h-8 sm:h-9 w-auto max-w-[160px] sm:max-w-[180px]" 
                             isOverBanner={isOverBanner} 
                             theme={theme} 
                         />
@@ -138,27 +138,27 @@ export default function Navbar() {
                                                         <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/10 pb-3.5 mb-5">
                                                             <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-beacon font-bold">
                                                                 <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-beacon animate-pulse" />
-                                                                <span>SANCHAR WIRELESS ECOSYSTEM &bull; 121 MISSION-CRITICAL HARDWARE SYSTEMS</span>
+                                                                <span>SYSINFRA PRODUCT ECOSYSTEM &bull; ENERGY &bull; NOC &bull; DEFENCE &bull; 5G</span>
                                                             </div>
                                                             <Link 
                                                                 href="/products" 
                                                                 onClick={() => setProductsDropdown(false)}
                                                                 className="text-xs font-mono text-slate-500 dark:text-steel hover:text-blue-600 dark:hover:text-beacon transition-colors font-semibold"
                                                             >
-                                                                Browse All 121 Products
+                                                                Browse All Products
                                                             </Link>
                                                         </div>
 
                                                         {/* 3 Symmetrical Architectural Pillars */}
                                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                                                             
-                                                            {/* Pillar 1: Land Mobile Radio (LMR) */}
+                                                            {/* Pillar 1: Energy Management & Controllers */}
                                                             <div className="group/col flex flex-col justify-between p-4 rounded-xl border border-slate-200/70 dark:border-white/10 bg-slate-50/50 dark:bg-[#111111] hover:border-blue-500/40 dark:hover:border-beacon/40 hover:bg-white dark:hover:bg-[#161616] transition-all duration-200">
                                                                 <div>
                                                                     <div className="flex items-center gap-3 mb-3">
                                                                         <div className="w-9 h-9 rounded-lg bg-blue-500/10 dark:bg-beacon/10 text-blue-600 dark:text-beacon flex items-center justify-center shrink-0 group-hover/col:bg-blue-600 group-hover/col:text-white transition-all duration-200">
                                                                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                                                             </svg>
                                                                         </div>
                                                                         <div>
@@ -167,13 +167,10 @@ export default function Navbar() {
                                                                                 onClick={() => setProductsDropdown(false)}
                                                                                 className="text-sm font-bold text-slate-900 dark:text-paper group-hover/col:text-blue-600 dark:group-hover/col:text-beacon transition-colors flex items-center gap-1.5"
                                                                             >
-                                                                                <span>Radio Communications</span>
-                                                                                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-100 dark:bg-beacon/20 text-blue-700 dark:text-beacon font-bold">
-                                                                                    {radioCat?.items_count ?? 41}
-                                                                                </span>
+                                                                                <span>Energy Management</span>
                                                                             </Link>
                                                                             <p className="text-[11px] text-slate-500 dark:text-steel font-mono">
-                                                                                DMR &bull; TETRA &bull; P25 &bull; Marine
+                                                                                AMF &bull; Solar Hybrid &bull; Battery &bull; DG
                                                                             </p>
                                                                         </div>
                                                                     </div>
@@ -182,7 +179,7 @@ export default function Navbar() {
                                                                         {(radioCat?.subcategories || []).map((sub) => (
                                                                             <Link
                                                                                 key={sub.slug}
-                                                                                href={`/products/${radioCat.slug}/${sub.slug}`}
+                                                                                href={`/products/${radioCat?.slug ?? 'energy-management-controllers'}/${sub.slug}`}
                                                                                 onClick={() => setProductsDropdown(false)}
                                                                                 className="group/item flex items-center justify-between py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-700 dark:text-steel hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] hover:translate-x-0.5 active:scale-[0.98] transition-all duration-150"
                                                                             >
@@ -206,7 +203,7 @@ export default function Navbar() {
                                                                         onClick={() => setProductsDropdown(false)}
                                                                         className="text-[11px] font-mono font-semibold text-blue-600 dark:text-beacon hover:underline"
                                                                     >
-                                                                        Explore all {radioCat?.items_count ?? 41} Radio terminals
+                                                                        View all Energy Products
                                                                     </Link>
                                                                 </div>
                                                             </div>
@@ -232,7 +229,7 @@ export default function Navbar() {
                                                                                 </span>
                                                                             </Link>
                                                                             <p className="text-[11px] text-slate-500 dark:text-steel font-mono">
-                                                                                4G/LTE &bull; Rail LTE-R &bull; Captive
+                                                                                5G &bull; Smart Cities &bull; Towers
                                                                             </p>
                                                                         </div>
                                                                     </div>
@@ -465,7 +462,7 @@ export default function Navbar() {
                     <div className="pt-4 border-t border-slate-200 dark:border-white/10">
                         <div className="text-xs font-mono text-slate-500 dark:text-steel space-y-1">
                             <div>Direct Tel: +91 (11) 4652 8894</div>
-                            <div>Email: info@sanchartelesystems.com</div>
+                            <div>Email: info@sysinfra.in</div>
                         </div>
                     </div>
                 </div>

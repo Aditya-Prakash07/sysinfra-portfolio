@@ -14,7 +14,7 @@ const AUTHENTIC_OEM_DATA = [
         partnershipYear: '1999',
         origin: 'Tokyo, Japan',
         status: 'Direct Accredited Distributor Since 1999',
-        domains: ['Digital Mobile Radio (DMR)', 'NEXEDGE NXDN', 'P25 Mission Critical', 'Turnkey Repeaters'],
+        domains: ['MOTOTRBO DMR Systems', 'NEXEDGE NXDN', 'P25 Mission Critical', 'Turnkey Repeaters'],
         website_url: 'https://www.kenwood.com/',
         logo_path: 'media/partners/1560034561_Kenwood-logo.png',
         paragraphs: [
@@ -203,7 +203,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             World-Class Hardware, Calibrated for Indian Spectrum.
                         </AnimatedHeading>
                         <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            We collaborate with Tier-1 international radio manufacturers, antenna specialists, and tactical audio engineers to engineer turnkey, WPC-certified communication systems for India's defense, public safety, and enterprise sectors.
+                            We collaborate with Motorola Solutions and other Tier-1 manufacturers to deliver ISO-certified AMF systems, SYS-AXS NOC platforms, tactical radios, and 5G enclosures for India's telecom and defence sectors.
                         </p>
                     </div>
 
@@ -272,7 +272,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                             {/* High-res Logo Box */}
                                             <div className="h-24 w-full max-w-[240px] px-6 py-4 rounded-xl bg-white dark:bg-white/95 border border-slate-200 dark:border-slate-300 flex items-center justify-center shadow-xs mb-5 transition-transform duration-300 group-hover:scale-105">
                                                 <img
-                                                    src={partner.logo_path ? `/storage/${partner.logo_path}` : '/storage/media/branding/logo0.png'}
+                                                    src={partner.logo_path ? `/${partner.logo_path}` : '/img/motorola-solutions.png'}
                                                     alt={partner.name}
                                                     className="max-h-14 max-w-full w-auto object-contain"
                                                     loading="lazy"
@@ -299,7 +299,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                                     <span className="font-bold text-slate-800 dark:text-paper">{partner.origin}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center py-1">
-                                                    <span className="text-slate-400 dark:text-steel">SANCHAR ALLIANCE:</span>
+                                                    <span className="text-slate-400 dark:text-steel">SYSINFRA ALLIANCE:</span>
                                                     <span className="font-bold text-blue-600 dark:text-beacon">Since {partner.partnershipYear}</span>
                                                 </div>
                                             </div>

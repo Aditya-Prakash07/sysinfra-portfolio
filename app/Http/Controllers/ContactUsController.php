@@ -14,8 +14,8 @@ class ContactUsController extends Controller
     {
         return Inertia::render('Contact', [
             'seo' => [
-                'title' => 'Contact Us — Sanchar Telesystems',
-                'description' => 'Reach Sanchar Telesystems at A-78, Ground Floor, Okhla Industrial Area, Phase-II, New Delhi-110020.',
+                'title' => 'Contact Us — System Infra Solutions',
+                'description' => 'Reach System Infra Solutions at A-78, Ground Floor, Okhla Industrial Area, Phase-II, New Delhi-110020.',
             ],
         ]);
     }

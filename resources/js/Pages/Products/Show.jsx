@@ -14,7 +14,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || `${item.name} | Sanchar Telesystems`}
+                title={seo?.title || `${item.name} | System Infra Solutions`}
                 description={seo?.description || item.short_description || `Technical specifications, frequency bands, and features for ${item.name}.`}
                 canonicalPath={`/products/${category.slug}/${subcategory.slug}/${item.slug}`}
                 breadcrumbs={[
@@ -54,12 +54,12 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.14),transparent_70%)] dark:hidden pointer-events-none" />
 
                                 <img
-                                    src={`/storage/${item.cover_image_path}`}
+                                    src={`/${item.cover_image_path}`}
                                     alt={item.name}
                                     className="max-h-full max-w-full w-auto object-contain transition-all duration-500 group-hover:scale-108 drop-shadow-[0_12px_24px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.9)] relative z-10"
                                     onError={(e) => {
                                         e.target.onerror = null;
-                                        e.target.src = '/storage/media/products/1559989450_nx3220_ht.jpg';
+                                        e.target.src = '/img/sys-products/2.jpg';
                                     }}
                                 />
 
@@ -195,7 +195,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                         />
                                     ) : (
                                         <p>
-                                            The {item.name} is built for continuous, zero-failure operations in mission-critical radio environments. It supports open industry digital standards and integrates seamlessly into Sanchar command and dispatch console topologies.
+                                            The {item.name} is built for continuous, zero-failure operations in mission-critical radio environments. It supports open industry digital standards and integrates seamlessly into System Infra command and dispatch console topologies.
                                         </p>
                                     )}
                                 </div>

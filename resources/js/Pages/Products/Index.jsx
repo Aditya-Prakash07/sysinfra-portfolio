@@ -124,8 +124,8 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || 'Wireless Communications Equipment Catalog | Sanchar Telesystems'}
-                description={seo?.description || 'Browse DMR, TETRA, P25, PoC over Cellular, LTE-R, and Diamond antenna equipment from Sanchar Telesystems.'}
+                title={seo?.title || 'Wireless Communications Equipment Catalog | System Infra Solutions'}
+                description={seo?.description || 'Browse AMF controllers, SYS-AXS NOC platforms, 5G smart enclosures, tactical radios, and energy management systems from System Infra Solutions.'}
                 canonicalPath="/products"
                 breadcrumbs={[
                     { name: 'Home', url: '/' },
@@ -150,7 +150,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                         Wireless Communications Equipment
                     </AnimatedHeading>
                     <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-steel leading-relaxed font-sans">
-                        Engineered for defense, public safety, high-speed rail, and hazardous environments.
+                        Engineered for telecom towers, defence establishments, smart cities, and power utilities.
                         Select a product vertical below to explore terminals, base stations, and accessories.
                     </p>
 
@@ -158,7 +158,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                     <div className="mt-8 max-w-lg relative">
                         <input 
                             type="text"
-                            placeholder="Search products (e.g. ST-200R, PoC, DMR, Diamond)..."
+                            placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect, Motorola)..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-blue-500 dark:focus:!border-beacon !pr-16"
@@ -214,13 +214,13 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_70%)] dark:hidden pointer-events-none" />
 
                                                 <img
-                                                    src={`/storage/${item.cover_image_path}`}
+                                                    src={`/${item.cover_image_path}`}
                                                     alt={item.name}
                                                     className="max-h-full w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1.5 drop-shadow-[0_8px_16px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_14px_28px_rgba(0,0,0,0.9)] relative z-10"
                                                     loading="lazy"
                                                     onError={(e) => {
                                                         e.target.onerror = null;
-                                                        e.target.src = '/storage/media/products/1559989450_nx3220_ht.jpg';
+                                                        e.target.src = '/img/sys-products/2.jpg';
                                                     }}
                                                 />
 
@@ -242,7 +242,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                                 </h3>
 
                                                 <p className="text-xs sm:text-sm text-slate-600 dark:text-steel min-h-[2.5rem] line-clamp-2 leading-relaxed flex-1">
-                                                    {item.short_description || 'High-reliability wireless communication equipment engineered for critical operations.'}
+                                                    {item.short_description || 'High-reliability telecom power and automation equipment engineered for mission-critical operations.'}
                                                 </p>
                                             </div>
                                         </div>
@@ -266,7 +266,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                 No products or categories matched &ldquo;{search}&rdquo;
                             </p>
                             <p className="mt-2 text-xs font-mono text-slate-500 dark:text-steel max-w-md mx-auto">
-                                Tip: Try searching by model number (e.g. ST-200R, NX-3220), product family (PoC, DMR, TETRA), or brand (Diamond).
+                                Tip: Try searching by product name (e.g. AMF panel, SYS-AXS), category (Energy, NOC, Defence), or brand (Motorola).
                             </p>
                             <button 
                                 onClick={() => setSearch('')}
