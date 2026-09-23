@@ -5,7 +5,7 @@
     "api/index.php": {
       "runtime": "vercel-php@0.8.0",
       "maxDuration": 15,
-      "excludeFiles": "{node_modules/**,now.json,.nowignore,vercel.json,.vercelignore,**/*.mp4,tests/**,*.py,*.md}"
+      "excludeFiles": "{node_modules/**,now.json,.nowignore,vercel.json,.vercelignore,**/*.mp4,tests/**,*.py,*.md,public/img/**,public/images/**}"
     }
   },
   "routes": [
