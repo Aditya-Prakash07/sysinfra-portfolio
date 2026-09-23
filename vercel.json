@@ -10,11 +10,11 @@
   },
   "routes": [
     {
-      "src": "/(build|storage|css|js)/(.*)",
+      "src": "/(build|storage|css|js|img|images)/(.*)",
       "dest": "/$1/$2"
     },
     {
-      "src": "/(favicon\\.ico|robots\\.txt)",
+      "src": "/(favicon\\.ico|favicon\\.svg|robots\\.txt)",
       "dest": "/$1"
     },
     {
@@ -23,7 +23,7 @@
     }
   ],
   "env": {
-    "APP_NAME": "Sanchar Telesystems",
+    "APP_NAME": "System Infra Solutions",
     "APP_ENV": "production",
     "APP_KEY": "base64:Tv8soj9vKMC/fjT81Xb75p1U6mS2jbezgxU2sfDnyaI=",
     "APP_DEBUG": "false",

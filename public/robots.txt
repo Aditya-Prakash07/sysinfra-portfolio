@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /livewire/
 
-Sitemap: https://www.sanchartelesystems.com/sitemap.xml
+Sitemap: https://www.sysinfra.in/sitemap.xml
