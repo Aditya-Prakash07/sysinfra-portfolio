@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seeds categories, rich products, real media assets, leadership profiles,
+     * Seeds complete authentic categories, rich products, real media assets, leadership profiles,
      * client case studies, and OEM partners for System Infra Solutions (sysinfra.in).
      */
     public function run(): void
@@ -34,21 +34,21 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 1. Categories & Subcategories Tree matching official sysinfra.in navigation
+        // 1. Complete Categories & Subcategories Tree matching official sysinfra.in navigation
         $tree = [
             'Energy Management & Controllers' => [
-                'thumbnail' => 'img/course/1.png',
-                'description' => 'Automated mains failure switching, solar hybrid controllers, RMS telemetry, and dual DG cycling controllers.',
+                'thumbnail' => 'img/productIconImg/energyMgtImg.png',
+                'description' => 'Automated mains failure switching, solar hybrid controllers, RMS telemetry, and dual DG cycling controllers for cell towers and grid substations.',
                 'subs' => [
                     'AMF Panels (Indoor & Outdoor)',
                     'Solar Cell Site Controllers',
                     'Remote Monitoring Systems (RMS)',
-                    'Dual DG Controllers',
+                    'Dual DG Controllers & Alternators',
                     'Retrofit AMF & Energy Controllers',
                 ],
             ],
             'NOC & IoT Automation' => [
-                'thumbnail' => 'img/course/2.png',
+                'thumbnail' => 'img/productIconImg/nocSolutions.png',
                 'description' => 'SYS-AXS NOC monitoring platform, anti-theft sensors, fuel telemetry, edge compute nodes, and 5G smart enclosures.',
                 'subs' => [
                     'SYS-AXS Platform',
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
             'Strategic Telecom & Hardware' => [
-                'thumbnail' => 'img/course/3.png',
+                'thumbnail' => 'img/productIconImg/strategicProducts.png',
                 'description' => 'DC energy meters, static voltage regulators, bus converters, and telecom shelter automation modules.',
                 'subs' => [
                     'DC Energy Meters (Class 1)',
@@ -67,17 +67,42 @@ class DatabaseSeeder extends Seeder
                     'Universal AC Controllers',
                     'LVD / LATCH Controllers',
                     'Alarm Multiplexers & Nano Mac',
+                    'DC to DC Converters & Power Units',
                 ],
             ],
             'Defence, Tactical & Specialized' => [
-                'thumbnail' => 'img/course/5.png',
+                'thumbnail' => 'img/tacticalComm/r7.png',
                 'description' => 'Motorola Solutions authorized tactical communications, automatic weather stations, GPS tracking, and defence maintenance.',
                 'subs' => [
                     'Tactical Communication (Motorola Solutions)',
                     'Automatic Weather Station',
                     'GPS Tracking & Smart Cards',
-                    'Virtual Terrain Recce & Power Supplies',
-                    'SMPS Module Re-conditioning & Services',
+                    'Virtual Terrain Recce & Tactical Power',
+                    'Tactical Surveillance & Electro-Optics',
+                ],
+            ],
+            'Security Automation & Access Control' => [
+                'thumbnail' => 'img/securityAutomationImg/security-automation-img.png',
+                'description' => 'Under-vehicle surveillance, hydraulic road blockers, tyre killers, boom barriers, flap turnstiles, and biometric access.',
+                'subs' => [
+                    'Under Vehicle Surveillance (UVSS)',
+                    'Hydraulic Road Blockers & Spike Barriers',
+                    'Boom Barriers & Parking Systems',
+                    'Hydraulic Retractable Bollards',
+                    'Flap Barriers & Tripod Turnstiles',
+                    'Baggage Scanners & Metal Detectors',
+                    'Face Recognition & Smart Readers',
+                ],
+            ],
+            'Telecom Infrastructure & Turnkey Services' => [
+                'thumbnail' => 'img/productIconImg/ourServices.png',
+                'description' => 'SMPS module re-conditioning, comprehensive site maintenance, passive operations, and emergency broadcast solutions.',
+                'subs' => [
+                    'SMPS Module Re-conditioning (300K+ units)',
+                    'Comprehensive Telecom Site Maintenance',
+                    'Passive Operations & Energy O&M',
+                    'Defence Equipment Repair & Overhaul',
+                    'Voice Messaging & Emergency Telephony',
                 ],
             ],
         ];
@@ -113,14 +138,14 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // 2. All 30 Genuine Products Scraped from sysinfra.in
+        // 2. All Genuine Products Scraped from sysinfra.in
         $catalog = [
-            // Energy Management & Controllers
+            // ==================== Energy Management & Controllers ====================
             [
                 'sub' => 'AMF Panels (Indoor & Outdoor)',
                 'name' => 'AMF Panel (Indoor Shelter Spec)',
                 'model' => 'SISPL-AMF-IND',
-                'desc' => 'SISPL Auto mains failure system (AMF) is one of the flagship products of system infra solutions. It works seamlessly across wide voltage fluctuations with complete automated mains-to-generator switchover and line telemetry.',
+                'desc' => 'SISPL Auto mains failure system (AMF) is one of the flagship products of system infra solutions. It works seamlessly across wide voltage fluctuations with complete automated mains-to-generator switchover, reverse phase protection, and real-time telemetry line reporting.',
                 'img' => 'img/iprotect-Img/amf-panelindoor.png',
                 'icon' => 'img/productIconImg/Amf pannel(Indoor).png',
                 'specs' => [
@@ -128,39 +153,41 @@ class DatabaseSeeder extends Seeder
                     ['label' => 'Mains Rating', 'value' => 'Three Phase 415V / Single Phase 230V AC'],
                     ['label' => 'Switchover', 'value' => 'Microcontroller Controlled Dual Interlocked Contactors'],
                     ['label' => 'Protection', 'value' => 'Overvoltage, Undervoltage, Phase Sequence, Overload'],
+                    ['label' => 'Enclosure', 'value' => 'CRCA Powder Coated Sheet Steel, 1.6mm thickness'],
                 ],
             ],
             [
                 'sub' => 'AMF Panels (Indoor & Outdoor)',
                 'name' => 'AMF Panel (Outdoor Weatherproof Enclosure)',
                 'model' => 'SISPL-AMF-OUT',
-                'desc' => 'Manufactured at SISPL international-standard Delhi plant, this all-weather IP55 outdoor cabinet executes automated generator cycling, fuel saving algorithms, and surge suppression under harsh field conditions.',
+                'desc' => 'Manufactured at SISPL international-standard Delhi plant, this all-weather IP55 outdoor cabinet executes automated generator cycling, fuel saving algorithms, and surge suppression under extreme field conditions.',
                 'img' => 'img/iprotect-Img/main-Amf-img.png',
                 'icon' => 'img/productIconImg/Amf pannel(Outdoor).png',
                 'specs' => [
                     ['label' => 'Protection Degree', 'value' => 'IP55 Weatherproof Outdoor Sheet Metal'],
                     ['label' => 'Control Algorithm', 'value' => 'Dynamic DG Run-Hour Optimization'],
-                    ['label' => 'Surge Protection', 'value' => 'Class B+C Lightning & Surge Arrester SPD'],
+                    ['label' => 'Surge Protection', 'value' => 'Class B+C Lightning & Surge Arrester SPD (40kA)'],
                     ['label' => 'Display', 'value' => 'Alphanumeric Backlit LCD Display with Keypad'],
+                    ['label' => 'Certifications', 'value' => 'ISO 9001:2015, IP55 Ingress Test Certified'],
                 ],
             ],
             [
                 'sub' => 'Solar Cell Site Controllers',
                 'name' => 'AMF Panel For Solar Cell Site',
                 'model' => 'SISPL-SOLAR-AMF',
-                'desc' => 'Hybrid solar-priority AMF controller designed to harvest maximum solar PV energy for cell tower operations before invoking grid lines or diesel generators, delivering up to 45% reduction in carbon footprint.',
+                'desc' => 'Hybrid solar-priority AMF controller designed to harvest maximum solar PV energy for cell tower operations before invoking grid lines or diesel generators, delivering up to 45% reduction in carbon footprint and fuel expenditure.',
                 'img' => 'img/iprotect-Img/controller1.jpg',
                 'icon' => 'img/productIconImg/Amf pannel(Outdoor).png',
                 'specs' => [
                     ['label' => 'PV Input', 'value' => 'Hybrid MPPT Integration up to 15 kW'],
                     ['label' => 'Energy Priority', 'value' => '1. Solar PV -> 2. Battery -> 3. Mains -> 4. DG'],
-                    ['label' => 'Battery Sync', 'value' => 'Compatible with VRLA & Li-Ion BMS'],
-                    ['label' => 'Telemetry', 'value' => 'Solar Harvest kWh & Carbon Credit Reporting'],
+                    ['label' => 'Battery Sync', 'value' => 'Compatible with VRLA & Li-Ion BMS telemetry'],
+                    ['label' => 'Telemetry', 'value' => 'Solar Harvest kWh & Carbon Credit Reporting to NOC'],
                 ],
             ],
             [
                 'sub' => 'Remote Monitoring Systems (RMS)',
-                'name' => 'Remote Monitoring System (RMS)',
+                'name' => 'Remote Monitoring System (RMS 1U)',
                 'model' => 'SISPL-RMS-1U',
                 'desc' => 'Rack mountable compact smart device covering 1U 19" standard rack space, designed to sense and generate telemetry alarms, monitor fuel ultrasonic level, battery string voltage, and environmental parameters in real-time.',
                 'img' => 'img/iprotect-Img/remotemonitoringsystem.jpg',
@@ -176,7 +203,7 @@ class DatabaseSeeder extends Seeder
                 'sub' => 'Retrofit AMF & Energy Controllers',
                 'name' => 'Retrofit AMF Controller',
                 'model' => 'SISPL-AMF-RETRO',
-                'desc' => 'Drop-in microprocessor replacement controller engineered to upgrade obsolete or malfunctioning AMF panels without rewiring the power contactor cubicle.',
+                'desc' => 'Drop-in microprocessor replacement controller engineered to upgrade obsolete or malfunctioning AMF panels without rewiring the power contactor cubicle, drastically reducing upgrade capital cost.',
                 'img' => 'img/iprotect-Img/retrofitcontroller.jpg',
                 'icon' => 'img/productIconImg/RetrofitController.png',
                 'specs' => [
@@ -186,20 +213,20 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
             [
-                'sub' => 'Dual DG Controllers',
-                'name' => 'Dual DG Controller',
-                'model' => 'SISPL-DUAL-DG',
-                'desc' => 'Intelligent controller managing two diesel generators in off-grid or poor-grid cell sites, alternating run-hours symmetrically to prevent engine overheating and maintain continuous uptime.',
+                'sub' => 'Dual DG Controllers & Alternators',
+                'name' => 'Dual DG Controller & Pluto Alternator',
+                'model' => 'SISPL-DUAL-DG-PLUTO',
+                'desc' => 'Intelligent controller managing two diesel generators in off-grid or poor-grid cell sites, alternating run-hours symmetrically with Pluto Alternator cycle logic to prevent engine overheating and maintain continuous uptime.',
                 'img' => 'img/iprotect-Img/main-Amf-img.png',
                 'icon' => 'img/productIconImg/dualDGcontroller.png',
                 'specs' => [
                     ['label' => 'Mode', 'value' => 'Mutual Standby with Cyclic Alternation'],
                     ['label' => 'Fault Fallback', 'value' => 'Automatic Switchover to DG2 on DG1 Lockout'],
-                    ['label' => 'Equalization', 'value' => 'Programmable Run-Hour Balancing Timer'],
+                    ['label' => 'Equalization', 'value' => 'Programmable Run-Hour Balancing Timer (2h to 24h)'],
                 ],
             ],
 
-            // NOC & IoT Automation
+            // ==================== NOC & IoT Automation ====================
             [
                 'sub' => 'SYS-AXS Platform',
                 'name' => 'SYS-AXS Centralized NOC Platform',
@@ -210,7 +237,7 @@ class DatabaseSeeder extends Seeder
                 'specs' => [
                     ['label' => 'Capacity', 'value' => 'Over 10,000 Active Sites Monitored Concurrently'],
                     ['label' => 'Architecture', 'value' => 'Cloud / On-Premise Scalable Microservices'],
-                    ['label' => 'Security', 'value' => 'TLS 1.3 Encryption, Role-Based Access Control'],
+                    ['label' => 'Security', 'value' => 'TLS 1.3 Encryption, Role-Based Access Control (RBAC)'],
                     ['label' => 'Integrations', 'value' => 'REST APIs, Kafka Streaming, Mobile App Alerts'],
                 ],
             ],
@@ -268,7 +295,7 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
 
-            // Strategic Telecom & Hardware
+            // ==================== Strategic Telecom & Hardware ====================
             [
                 'sub' => 'DC Energy Meters (Class 1)',
                 'name' => 'DC Energy Meter (Class 1 High Precision)',
@@ -335,8 +362,22 @@ class DatabaseSeeder extends Seeder
                     ['label' => 'Indicators', 'value' => 'Front Panel Individual Channel Alarm LEDs'],
                 ],
             ],
+            [
+                'sub' => 'DC to DC Converters & Power Units',
+                'name' => 'Industrial DC-to-DC Converter & SVR Power Supply',
+                'model' => 'SISPL-DCDC-SVR',
+                'desc' => 'High-efficiency galvanic isolated DC to DC converter converting -48V DC telecom bus voltage into regulated +12V, +24V, or +5V DC for auxiliary edge compute and telemetry instrumentation.',
+                'img' => 'img/cardsImg/dctodcConverter.webp',
+                'icon' => 'img/powerSupply/thumb.png',
+                'specs' => [
+                    ['label' => 'Input Voltage', 'value' => '-36V to -72V DC Wide Range'],
+                    ['label' => 'Output Voltage', 'value' => 'Regulated 12V / 24V / 48V DC (±1%)'],
+                    ['label' => 'Efficiency', 'value' => '> 92% Peak Efficiency'],
+                    ['label' => 'Isolation', 'value' => '1500V DC Input-to-Output Galvanic'],
+                ],
+            ],
 
-            // Defence, Tactical & Specialized
+            // ==================== Defence, Tactical & Specialized ====================
             [
                 'sub' => 'Tactical Communication (Motorola Solutions)',
                 'name' => 'Motorola Solutions Mission-Critical Tactical Radios',
@@ -378,8 +419,8 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
             [
-                'sub' => 'Virtual Terrain Recce & Power Supplies',
-                'name' => 'Virtual Terrain Recce & Power Supply System',
+                'sub' => 'Virtual Terrain Recce & Tactical Power',
+                'name' => 'Virtual Terrain Recce & Tactical Power System',
                 'model' => 'SISPL-VTR-PWR',
                 'desc' => 'Specialized mission surveillance and stabilized industrial power supplies developed for military operations, tactical vehicle integrations, and forward deployment camps.',
                 'img' => 'img/virtualTerrain/headset.png',
@@ -391,17 +432,178 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
             [
-                'sub' => 'SMPS Module Re-conditioning & Services',
-                'name' => 'SMPS Module Re-Conditioning & O&M Services',
+                'sub' => 'Tactical Surveillance & Electro-Optics',
+                'name' => 'Tactical Night Vision & PTZ Electro-Optics',
+                'model' => 'SISPL-TACTICAL-OPTICS',
+                'desc' => 'Military-grade night vision binoculars, thermal rifle scopes, and long-range pan-tilt-zoom (PTZ) electro-optic reconnaissance sensors engineered for perimeter defence and tactical squads.',
+                'img' => 'img/securityAutomationImg/nightVisionDevice.png',
+                'icon' => 'img/securityAutomationImg/ptzCamera.png',
+                'specs' => [
+                    ['label' => 'Sensor Type', 'value' => 'Gen 2+/3 Image Intensifier & Longwave Uncooled Thermal'],
+                    ['label' => 'Detection Range', 'value' => 'Up to 2,500m Human Target Detection'],
+                    ['label' => 'Durability', 'value' => 'Nitrogen Purged, Waterproof IP67 Shock Resistant'],
+                ],
+            ],
+
+            // ==================== Security Automation & Access Control ====================
+            [
+                'sub' => 'Under Vehicle Surveillance (UVSS)',
+                'name' => 'Under Vehicle Surveillance System (UVSS)',
+                'model' => 'SISPL-UVSS-5000',
+                'desc' => 'High-resolution color area scan imaging system capturing full undercarriage images of passing vehicles at entry checkpoints, with automatic foreign object and contraband detection.',
+                'img' => 'img/securityAutomationImg/uvss.png',
+                'icon' => 'img/securityAutomationImg/uvss1.png',
+                'specs' => [
+                    ['label' => 'Camera Sensor', 'value' => 'High-Speed Line-Scan Digital Color Sensor (4096 pixels)'],
+                    ['label' => 'Speed Support', 'value' => 'Vehicles moving up to 60 km/h'],
+                    ['label' => 'Weight Capacity', 'value' => 'Heavy Axle Load rated up to 50 Tons'],
+                    ['label' => 'Illumination', 'value' => 'Integrated High-Intensity White LED Light Bar'],
+                ],
+            ],
+            [
+                'sub' => 'Hydraulic Road Blockers & Spike Barriers',
+                'name' => 'Heavy Duty Hydraulic Road Blocker & Tyre Killer',
+                'model' => 'SISPL-RB-K12',
+                'desc' => 'Crash-rated hydraulic road blocker and surface-mounted bidirectional tyre killer designed for high-security installations, diplomatic enclaves, and critical telecom gateways.',
+                'img' => 'img/securityAutomationImg/roadBlockerImg.png',
+                'icon' => 'img/securityAutomationImg/spikeBarriers.png',
+                'specs' => [
+                    ['label' => 'Impact Rating', 'value' => 'ASTM F2656 M50 / K12 Equivalent (7.5 Ton truck at 80 km/h)'],
+                    ['label' => 'Operating Speed', 'value' => 'Raise time 2-3 seconds, EFO emergency up 1.5 seconds'],
+                    ['label' => 'Drive', 'value' => 'Heavy Duty Electro-Hydraulic Power Pack'],
+                ],
+            ],
+            [
+                'sub' => 'Boom Barriers & Parking Systems',
+                'name' => 'Automatic High-Speed Boom Barrier with License Plate Recognition',
+                'model' => 'SISPL-BOOM-LPR',
+                'desc' => 'Fast-acting automatic vehicular barrier integrated with ANPR (Automatic Number Plate Recognition) smart cameras for frictionless corporate, toll, and facility access.',
+                'img' => 'img/securityAutomationImg/1.png',
+                'icon' => 'img/securityAutomationImg/anpr.png',
+                'specs' => [
+                    ['label' => 'Boom Length', 'value' => '3m to 6m Telescopic Aluminium Boom'],
+                    ['label' => 'Opening Time', 'value' => '1.5s to 3.0s Configurable Brushless DC Motor'],
+                    ['label' => 'ANPR Accuracy', 'value' => '> 98% Recognition for Indian Vehicle Plates'],
+                ],
+            ],
+            [
+                'sub' => 'Hydraulic Retractable Bollards',
+                'name' => 'Automatic Hydraulic Retractable Bollard System',
+                'model' => 'SISPL-BOLLARD-HYD',
+                'desc' => 'Sub-surface hydraulic retractable security bollards engineered for pedestrian safety zones, corporate headquarters, and high-threat vehicle access restriction.',
+                'img' => 'img/securityAutomationImg/bollardImg1.png',
+                'icon' => 'img/securityAutomationImg/bollardImg2.png',
+                'specs' => [
+                    ['label' => 'Cylinder Material', 'value' => 'AISI 304 / 316 Stainless Steel (6mm to 10mm wall)'],
+                    ['label' => 'Height Above Ground', 'value' => '600mm / 800mm / 1000mm standard stroke'],
+                    ['label' => 'Warning System', 'value' => 'Integrated Top LED Ring & Reflective Micro-Prismatic Strip'],
+                ],
+            ],
+            [
+                'sub' => 'Flap Barriers & Tripod Turnstiles',
+                'name' => 'Flap Barrier & Tripod Turnstile Pedestrian Series',
+                'model' => 'SISPL-FLAP-TURNTOP',
+                'desc' => 'Architectural motorized pedestrian turnstiles with rapid wing retractors, infrared tailgating sensors, and integration with facial recognition and RFID passes.',
+                'img' => 'img/securityAutomationImg/flap.png',
+                'icon' => 'img/securityAutomationImg/tripod0.png',
+                'specs' => [
+                    ['label' => 'Throughput', 'value' => '35 to 45 Persons Per Minute'],
+                    ['label' => 'Sensor Array', 'value' => '6 to 12 Pairs of Dual-Beam Infrared Anti-Pinch Sensors'],
+                    ['label' => 'Chassis', 'value' => '1.5mm Hairline Finish SUS304 Stainless Steel'],
+                ],
+            ],
+            [
+                'sub' => 'Baggage Scanners & Metal Detectors',
+                'name' => 'Dual Energy X-Ray Baggage Scanner & Metal Detectors',
+                'model' => 'SISPL-XR-100100',
+                'desc' => 'High-resolution multi-energy X-ray inspection unit with automated atomic number colorization for organic/inorganic threat screening, paired with handheld (HHMD) and walk-through (DFMD) metal detectors.',
+                'img' => 'img/securityAutomationImg/baggageScanner.png',
+                'icon' => 'img/securityAutomationImg/HHMDetector.png',
+                'specs' => [
+                    ['label' => 'Tunnel Dimensions', 'value' => '1005 mm (W) x 1000 mm (H) Heavy Luggage Tunnel'],
+                    ['label' => 'Generator Voltage', 'value' => '160 kV with Dual-Energy Real-Time Color Differentiation'],
+                    ['label' => 'Penetration', 'value' => '38mm to 40mm Steel Penetration'],
+                ],
+            ],
+            [
+                'sub' => 'Face Recognition & Smart Readers',
+                'name' => 'AI Dynamic Face Recognition & Biometric Terminal',
+                'model' => 'SISPL-FACE-BIO',
+                'desc' => 'High-speed contactless facial authentication terminal with live anti-spoofing dual cameras and RFID multi-card reader, operating reliably even under low lighting conditions.',
+                'img' => 'img/securityAutomationImg/faceRecognition.png',
+                'icon' => 'img/securityAutomationImg/faceRecognition1.png',
+                'specs' => [
+                    ['label' => 'Face Capacity', 'value' => '50,000 Facial Templates'],
+                    ['label' => 'Speed & Accuracy', 'value' => '< 0.2s Recognition Speed, 99.8% LFW Accuracy'],
+                    ['label' => 'Authentication', 'value' => 'Face, Mask Detection, Fingerprint, RFID & PIN'],
+                ],
+            ],
+
+            // ==================== Telecom Infrastructure & Turnkey Services ====================
+            [
+                'sub' => 'SMPS Module Re-conditioning (300K+ units)',
+                'name' => 'SMPS Module Re-Conditioning & Power O&M Services',
                 'model' => 'SISPL-RECON-300K',
-                'desc' => 'Nationwide leader with over 3,00,000 rectifier modules reconditioned at our Delhi facility. Complete turnkey component-level diagnostics, burn-in testing, and thermal validation for all major telecom power modules.',
+                'desc' => 'Nationwide industry leader with over 3,00,000 rectifier modules reconditioned at our Delhi facility. Complete turnkey component-level diagnostics, burn-in testing, and thermal validation for all major telecom power modules.',
                 'img' => 'img/iprotect-Img/portablemobile.png',
                 'icon' => 'img/productIconImg/moduleRecondition.png',
                 'specs' => [
                     ['label' => 'Scale Delivered', 'value' => 'Over 300,000 Rectifier Modules Refurbished'],
                     ['label' => 'Facility', 'value' => '8,000 Sq. Ft. International-Standard Plant in Delhi'],
                     ['label' => 'Certifications', 'value' => 'ISO 9001:2015, ISO 14001:2015, OHSAS 45001:2018'],
-                    ['label' => 'Assurance', 'value' => '100% Full Load Testing with Extended Warranty'],
+                    ['label' => 'Assurance', 'value' => '100% Full Load Testing with Extended 1-Year Warranty'],
+                ],
+            ],
+            [
+                'sub' => 'Comprehensive Telecom Site Maintenance',
+                'name' => 'Comprehensive Telecom Tower Site Maintenance',
+                'model' => 'SISPL-SITE-MNT',
+                'desc' => 'Turnkey SLA-governed 24/7 site operations for India\'s leading tower companies. Encompasses preventive maintenance, diesel filling validation, battery bank equalization, and rapid emergency restoration.',
+                'img' => 'img/sysinfraPhase/1.png',
+                'icon' => 'img/productIconImg/siteMaintanance.png',
+                'specs' => [
+                    ['label' => 'Site Portfolio', 'value' => 'Over 70,000 Telecom Towers Serviced Nationwide'],
+                    ['label' => 'Response SLA', 'value' => '< 2 Hours Mean Time to Respond (MTTR)'],
+                    ['label' => 'Model', 'value' => '24/7 Ambulance Emergency Rapid Intervention Fleet'],
+                ],
+            ],
+            [
+                'sub' => 'Passive Operations & Energy O&M',
+                'name' => 'Passive Infrastructure & Energy Audit Services',
+                'model' => 'SISPL-PASSIVE-OPS',
+                'desc' => 'Complete passive site asset audits, fuel loss mitigation, power factor improvement, and battery health benchmarking to achieve minimal operational expenditure and maximum green energy utilization.',
+                'img' => 'img/sysinfraPhase/2.png',
+                'icon' => 'img/productIconImg/o&mSupport.png',
+                'specs' => [
+                    ['label' => 'Scope', 'value' => 'DG Maintenance, AMF Panels, Transformer Substations, Earthing'],
+                    ['label' => 'Efficiency Gains', 'value' => 'Up to 35% Reduction in Diesel Fuel Run-Hours'],
+                    ['label' => 'Software Support', 'value' => 'eBOT Integrated ERP Asset Tracking & Field Workflows'],
+                ],
+            ],
+            [
+                'sub' => 'Defence Equipment Repair & Overhaul',
+                'name' => 'Defence Electronics & Tactical Radio Overhaul',
+                'model' => 'SISPL-DEFENCE-REPAIR',
+                'desc' => 'Specialized electronic repair and re-certification of tactical communications, base stations, repeater systems, and power amplifiers for Indian Armed Forces and Paramilitary establishments.',
+                'img' => 'img/tacticalComm/base-station.png',
+                'icon' => 'img/defenceRepair/repair-lab.png',
+                'specs' => [
+                    ['label' => 'Quality Standards', 'value' => 'Strict MIL-SPEC and MoD Procurement Compliance'],
+                    ['label' => 'Test Lab', 'value' => 'Rohde & Schwarz RF Analyzers, EMI/EMC Test Benches'],
+                    ['label' => 'Security Clearances', 'value' => 'Vetted Technical Engineering Personnel'],
+                ],
+            ],
+            [
+                'sub' => 'Voice Messaging & Emergency Telephony',
+                'name' => 'Voice Messaging & Telephony Broadcast Service',
+                'model' => 'SISPL-VOICE-MSG',
+                'desc' => 'High-capacity SIP/PRI interactive voice messaging gateway for critical disaster alerts, automated tower outage dispatches, and public safety announcements.',
+                'img' => 'img/sysinfraPhase/3.png',
+                'icon' => 'img/productIconImg/voicemessageServices.png',
+                'specs' => [
+                    ['label' => 'Call Capacity', 'value' => 'Up to 50,000 Outbound Concurrent Calls Per Hour'],
+                    ['label' => 'Protocol', 'value' => 'SIP Trunking, E1/PRI, WebRTC Cloud Connector'],
+                    ['label' => 'Reporting', 'value' => 'Real-Time Delivery Acknowledgement & DTMF Logs'],
                 ],
             ],
         ];
@@ -427,9 +629,10 @@ class DatabaseSeeder extends Seeder
 
         // 3. Impact Stats (from sysinfra.in official achievements)
         $stats = [
-            ['label' => 'MODULES RECONDITIONED', 'value' => 300000, 'suffix' => ' +', 'icon' => 'briefcase', 'sort_order' => 0],
-            ['label' => 'TELECOM SITES AUTOMATED', 'value' => 70000, 'suffix' => ' +', 'icon' => 'clipboard', 'sort_order' => 1],
-            ['label' => 'AMF CONTROLLERS DEPLOYED', 'value' => 50000, 'suffix' => ' +', 'icon' => 'network', 'sort_order' => 2],
+            ['label' => 'RECTIFIER MODULE RE-CONDITIONED', 'value' => 300000, 'suffix' => ' +', 'icon' => 'rectifier', 'sort_order' => 0],
+            ['label' => 'TELECOM SITE AUTOMATION', 'value' => 70000, 'suffix' => ' +', 'icon' => 'telecom', 'sort_order' => 1],
+            ['label' => 'AMF CONTROLLER INSTALLED', 'value' => 50000, 'suffix' => ' +', 'icon' => 'controller', 'sort_order' => 2],
+            ['label' => 'FLAGSHIP SYS-AXS NOC SITES', 'value' => 10000, 'suffix' => ' +', 'icon' => 'noc', 'sort_order' => 3],
         ];
 
         CompanyStat::truncate();
@@ -464,36 +667,30 @@ class DatabaseSeeder extends Seeder
             Testimonial::create($t + ['is_published' => true]);
         }
 
-        // 5. Strategic OEM Partners
+        // 5. Strategic OEM Partners & Clients
         $partners = [
-            [
-                'name' => 'Motorola Solutions',
-                'description' => 'Authorized Channel Partner delivering mission-critical DMR, TETRA, and encrypted wireless gear for tactical defence and security networks across India.',
-                'logo_path' => 'img/motorola-solutions.png',
-                'website_url' => 'https://www.motorolasolutions.com/',
-                'sort_order' => 0,
-            ],
-            [
-                'name' => 'Indus Towers',
-                'description' => 'Key ecosystem vendor providing automated AMF energy controllers and remote site maintenance services nationwide.',
-                'logo_path' => 'img/brand/2.jpg',
-                'website_url' => 'https://www.industowers.com/',
-                'sort_order' => 1,
-            ],
-            [
-                'name' => 'Bharti Airtel',
-                'description' => 'Longstanding infrastructure solutions provider for cell site power modernization, green solar initiatives, and optical fiber connectivity.',
-                'logo_path' => 'img/brand/1.jpg',
-                'website_url' => 'https://www.airtel.in/',
-                'sort_order' => 2,
-            ],
-            [
-                'name' => 'Power Grid',
-                'description' => 'Telemetry and high-voltage transmission OFC survey partner maintaining uninterrupted telemetry links.',
-                'logo_path' => 'img/brand/6.jpg',
-                'website_url' => 'https://www.powergrid.in/',
-                'sort_order' => 3,
-            ],
+            ['name' => 'Bharti Airtel', 'description' => 'Cell site power modernization and solar AMF integration across 35,000+ sites.', 'logo_path' => 'img/brand/1.jpg', 'website_url' => 'https://www.airtel.in/', 'sort_order' => 1],
+            ['name' => 'Indus Towers', 'description' => 'Smart energy controller and DG auto-cycling partner nationwide.', 'logo_path' => 'img/brand/2.jpg', 'website_url' => 'https://www.industowers.com/', 'sort_order' => 2],
+            ['name' => 'Reliance Jio', 'description' => '5G small cell outdoor power enclosures and lithium-ion battery integration.', 'logo_path' => 'img/brand/3.jpg', 'website_url' => 'https://www.jio.com/', 'sort_order' => 3],
+            ['name' => 'Power Grid Corporation of India', 'description' => 'Substation telemetry and static voltage regulators for national transmission.', 'logo_path' => 'img/brand/4.jpg', 'website_url' => 'https://www.powergrid.in/', 'sort_order' => 4],
+            ['name' => 'Vodafone Idea (Vi)', 'description' => 'Shelter environmental telemetry and universal AC climate controllers.', 'logo_path' => 'img/brand/5.jpg', 'website_url' => 'https://www.myvi.in/', 'sort_order' => 5],
+            ['name' => 'American Tower Corporation (ATC)', 'description' => 'SYS-AXS NOC remote surveillance and fuel monitoring deployment.', 'logo_path' => 'img/brand/6.jpg', 'website_url' => 'https://www.americantower.com/', 'sort_order' => 6],
+            ['name' => 'Bharat Sanchar Nigam Limited (BSNL)', 'description' => 'Turnkey passive infrastructure O&M and power module refurbishment.', 'logo_path' => 'img/brand/7.jpg', 'website_url' => 'https://www.bsnl.co.in/', 'sort_order' => 7],
+            ['name' => 'Tata Communications', 'description' => 'Fiber exchange high-reliability DC power systems and rectifier AMC.', 'logo_path' => 'img/brand/8.jpg', 'website_url' => 'https://www.tatacommunications.com/', 'sort_order' => 8],
+            ['name' => 'Ascend Telecom', 'description' => 'Tower site energy optimization and LVD latching controller systems.', 'logo_path' => 'img/brand/9.jpg', 'website_url' => '#', 'sort_order' => 9],
+            ['name' => 'GTL Infrastructure', 'description' => 'DG auto-start automation and diesel anti-theft telemetry sensors.', 'logo_path' => 'img/brand/10.jpg', 'website_url' => '#', 'sort_order' => 10],
+            ['name' => 'Tower Vision India', 'description' => 'Multi-tenant energy metering and class-1 DC precision billing.', 'logo_path' => 'img/brand/11.jpg', 'website_url' => '#', 'sort_order' => 11],
+            ['name' => 'Ericsson Telecommunications', 'description' => 'Rectifier module reconditioning and telecom power plant upgrades.', 'logo_path' => 'img/brand/12.jpg', 'website_url' => 'https://www.ericsson.com/', 'sort_order' => 12],
+            ['name' => 'Nokia Solutions and Networks', 'description' => 'Telecom power supply integration and component repair labs.', 'logo_path' => 'img/brand/13.jpg', 'website_url' => 'https://www.nokia.com/', 'sort_order' => 13],
+            ['name' => 'Huawei Telecommunications', 'description' => 'High-efficiency SMPS module overhaul and PCB component testing.', 'logo_path' => 'img/brand/14.jpg', 'website_url' => '#', 'sort_order' => 14],
+            ['name' => 'Vertiv / Emerson Network Power', 'description' => '300,000+ power modules serviced and calibrated in Patparganj facility.', 'logo_path' => 'img/brand/16.jpg', 'website_url' => 'https://www.vertiv.com/', 'sort_order' => 15],
+            ['name' => 'Delta Power Solutions', 'description' => 'DC-DC power converters and industrial power supply diagnostics.', 'logo_path' => 'img/brand/17.jpg', 'website_url' => 'https://www.deltaww.com/', 'sort_order' => 16],
+            ['name' => 'Indian Railways', 'description' => 'Signalling telemetry power units and station backup power conditioning.', 'logo_path' => 'img/brand/19.jpg', 'website_url' => 'https://indianrailways.gov.in/', 'sort_order' => 17],
+            ['name' => 'Delhi Metro Rail (DMRC)', 'description' => 'Underground tunnel telecommunications and automatic mains failure panels.', 'logo_path' => 'img/brand/20.jpg', 'website_url' => 'https://www.delhimetrorail.com/', 'sort_order' => 18],
+            ['name' => 'GAIL (India) Limited', 'description' => 'Natural gas pipeline repeater station telemetry and surveillance.', 'logo_path' => 'img/brand/21.jpg', 'website_url' => 'https://gailonline.com/', 'sort_order' => 19],
+            ['name' => 'Oil and Natural Gas Corporation (ONGC)', 'description' => 'Offshore and onshore rig communications and static voltage regulation.', 'logo_path' => 'img/brand/22.jpg', 'website_url' => 'https://www.ongcindia.com/', 'sort_order' => 20],
+            ['name' => 'Motorola Solutions', 'description' => 'Authorized partner for mission-critical ASTRO 25 and MOTOTRBO tactical radios.', 'logo_path' => 'img/motorola-solutions.png', 'website_url' => 'https://www.motorolasolutions.com/', 'sort_order' => 21],
+            ['name' => 'Larsen & Toubro (L&T)', 'description' => 'Smart city 5G street furniture micro-shelters and IoT edge nodes.', 'logo_path' => 'img/brand/27.jpg', 'website_url' => 'https://www.larsentoubro.com/', 'sort_order' => 22],
         ];
 
         OemPartner::truncate();
@@ -501,7 +698,51 @@ class DatabaseSeeder extends Seeder
             OemPartner::create($p);
         }
 
-        // 6. News & Announcements
+        // 6. Leadership & Engineering Directorate (Authentic Sysinfra Divisions)
+        TeamMember::truncate();
+        $sysinfraTeam = [
+            [
+                'name' => 'Executive Directorate',
+                'title' => 'Managing Director & Infrastructure Board',
+                'bio' => 'Steering nationwide telecom tower automation across 70,000+ sites, capital allocation, and strategic telecom operator partnerships with Bharti Airtel, Indus Towers, BSNL, and Reliance Jio.',
+                'photo_path' => 'img/productIconImg/overview.png',
+                'sort_order' => 0,
+            ],
+            [
+                'name' => 'In-House Retro R&D Division',
+                'title' => 'Chief Technology Officer & Embedded Lead',
+                'bio' => 'Directing in-house hardware and software engineering teams. Specializing in rapid-turnaround retro development of AMF controllers, RMS telemetry, and ARM Cortex embedded firmware.',
+                'photo_path' => 'img/productIconImg/research&Development.png',
+                'sort_order' => 1,
+            ],
+            [
+                'name' => 'Manufacturing & Quality Assurance',
+                'title' => 'Head of Plant Engineering & QC',
+                'bio' => 'Overseeing international-standard manufacturing at our 4,000 sq. ft. Patparganj facility for IP55 AMF outdoor panels, 5G smart enclosures, and rigorous 72-hour burn-in stress testing.',
+                'photo_path' => 'img/productIconImg/manufacturingFacility.png',
+                'sort_order' => 2,
+            ],
+            [
+                'name' => 'SYS-AXS NOC & IoT Cloud',
+                'title' => 'Principal Architect – Cloud & Enterprise IoT',
+                'bio' => 'Managing the high-throughput 24/7 cloud NOC gateway orchestrating 10,000+ active sites with predictive fuel theft analytics, environmental sensors, and automated SLA escalations.',
+                'photo_path' => 'img/productIconImg/sis-axs.png',
+                'sort_order' => 3,
+            ],
+            [
+                'name' => 'Field Operations & Power Logistics',
+                'title' => 'Director – 24/7 Field Maintenance & O&M',
+                'bio' => 'Leading a pan-India technical fleet with our 24/7 ambulance emergency rapid-intervention model and India\'s premier facility reconditioning over 3,00,000 SMPS rectifier modules.',
+                'photo_path' => 'img/productIconImg/siteMaintanance.png',
+                'sort_order' => 4,
+            ],
+        ];
+
+        foreach ($sysinfraTeam as $tm) {
+            TeamMember::create($tm + ['is_published' => true]);
+        }
+
+        // 7. News & Announcements
         NewsPost::truncate();
         NewsPost::create([
             'title' => 'System Infra Solutions expands smart 5G Small Cell Box production in Delhi Plant',

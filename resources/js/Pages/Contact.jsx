@@ -39,7 +39,7 @@ export default function Contact({ seo = {}, flash = {} }) {
         <MainLayout>
             <Seo
                 title={seo?.title || 'Contact Us — System Infra Solutions Pvt. Ltd.'}
-                description={seo?.description || 'Reach System Infra Solutions headquarters in Okhla, New Delhi. Direct sales, technical support, and government procurement assistance.'}
+                description={seo?.description || 'Reach System Infra Solutions headquarters in Patparganj Industrial Area, New Delhi. Direct sales, technical support, and turnkey power infrastructure assistance.'}
                 canonicalPath="/contact-us"
             />
 
@@ -47,9 +47,9 @@ export default function Contact({ seo = {}, flash = {} }) {
             <header className="relative bg-white dark:bg-[#000000] pt-36 pb-16 overflow-hidden transition-colors duration-300">
                 <div className="container-content relative z-10">
                     <div className="max-w-3xl">
-                        <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider mb-4 font-semibold">
+                        <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
                             <span className="w-2 h-2 rounded-full bg-beacon animate-pulse" />
-                            <span>DIRECT ENGINEERING DESK &bull; NEW DELHI HQ</span>
+                            <span>DIRECT ENGINEERING DESK &bull; PATPARGANJ NEW DELHI</span>
                         </div>
                         <AnimatedHeading
                             as="h1"
@@ -61,7 +61,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                             Contact Technical Operations & Procurement
                         </AnimatedHeading>
                         <p className="mt-5 text-lg text-slate-600 dark:text-steel leading-relaxed font-sans">
-                            Consult with our RF design team, request formal government tender authorizations, or schedule an onsite propagation survey.
+                            Consult with our power automation and NOC telemetry engineering team, request formal quotations, or schedule an onsite technical survey.
                         </p>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                                                     onClick={() => setSelectedType(type.id)}
                                                     className={`p-3 rounded-lg border text-left text-xs font-mono transition-all duration-200 ${
                                                         selectedType === type.id
-                                                            ? 'border-blue-500 dark:border-beacon bg-blue-50 dark:bg-beacon/10 text-blue-900 dark:text-beacon font-bold'
+                                                            ? 'border-sysred dark:border-beacon bg-blue-50 dark:bg-beacon/10 text-blue-900 dark:text-beacon font-bold'
                                                             : 'border-slate-200 dark:border-navy-border/80 text-slate-700 dark:text-paper/80 hover:bg-slate-50 dark:hover:bg-white/5'
                                                     }`}
                                                 >
@@ -169,7 +169,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                                                 value={data.subject}
                                                 onChange={(e) => setData('subject', e.target.value)}
                                                 className="input"
-                                                placeholder="e.g. VHF Base Station Tender Inquiry"
+                                                placeholder="e.g. AMF Controller / SYS-AXS NOC Deployment Inquiry"
                                             />
                                             {errors.subject && <p className="text-red-500 text-xs mt-1 font-mono">{errors.subject}</p>}
                                         </div>
@@ -178,7 +178,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                                     {/* Message */}
                                     <div>
                                         <label className="block text-xs font-mono uppercase text-slate-700 dark:text-slate-300 mb-1.5 font-semibold">
-                                            Detailed Requirement / RF Specifications *
+                                            Detailed Requirement / Project Specifications *
                                         </label>
                                         <textarea
                                             required
@@ -186,7 +186,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                                             value={data.message}
                                             onChange={(e) => setData('message', e.target.value)}
                                             className="input"
-                                            placeholder="Provide technical details, frequency band requirements, quantities, or project timelines..."
+                                            placeholder="Provide technical requirements, site count, power controller specs, or project timelines..."
                                         />
                                         {errors.message && <p className="text-red-500 text-xs mt-1 font-mono">{errors.message}</p>}
                                     </div>
@@ -218,7 +218,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                              {/* Headquarters Card */}
                              <div className="card-dual !bg-white dark:!bg-navy-surface p-8 space-y-5 border border-slate-200/80 dark:border-navy-border shadow-md">
                                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-navy-border/60 pb-3">
-                                     <span className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-beacon font-bold">
+                                     <span className="text-xs font-mono uppercase tracking-wider text-sysred dark:text-[#ff6b6b] font-bold">
                                          NATIONAL HEADQUARTERS
                                      </span>
                                      <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-medium">OPEN 09:30 - 18:00 IST</span>
@@ -230,34 +230,34 @@ export default function Contact({ seo = {}, flash = {} }) {
                                      </h3>
                                      <p className="leading-relaxed">
                                          Plot No. 382, Third Floor, F.I.E., Patparganj Industrial Area<br />
-                                         New Delhi – 110020, India
+                                         New Delhi – 110092, India
                                      </p>
                                  </div>
 
                                  <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-navy-border/60 text-xs font-mono">
                                      <div>
-                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">DIRECT SALES & MARKETING:</span>
-                                         <a href="tel:+911146528894" className="text-blue-600 dark:text-beacon hover:underline text-sm font-bold">
-                                             +91 (11) 3500 4142–97
+                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">DIRECT BOARD LINES:</span>
+                                         <a href="tel:+9101135004142" className="text-sysred dark:text-[#ff6b6b] hover:underline text-sm font-bold">
+                                             +91-011-35004142 / 43 / 44 / 45
                                          </a>
                                      </div>
                                      <div>
-                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">TECHNICAL SUPPORT & AMC:</span>
-                                         <a href="tel:+911146528892" className="text-slate-800 dark:text-white hover:text-blue-600 dark:hover:text-beacon transition-colors text-sm font-bold">
-                                             +91 (11) 4652 8892–93
+                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">DIRECT MOBILE INQUIRIES:</span>
+                                         <a href="tel:+919899905475" className="text-slate-800 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors text-sm font-bold">
+                                             +91-9899905475 / +91-7668609810
                                          </a>
                                      </div>
                                      <div>
                                          <span className="text-slate-500 dark:text-slate-400 block mb-0.5">PRIMARY INQUIRIES:</span>
-                                         <a href="mailto:info@sysinfra.in" className="text-slate-800 dark:text-white hover:text-blue-600 dark:hover:text-beacon transition-colors text-sm">
-                                             info@sysinfra.in
+                                         <a href="mailto:info@sysinfra.in" className="text-slate-800 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors text-sm">
+                                             info@sysinfra.in &bull; hr@sysinfra.in
                                          </a>
                                      </div>
                                  </div>
 
                                  <div className="pt-2">
                                      <a 
-                                         href="https://maps.google.com/?q=Sysinfra+Telesystems+Limited+Okhla+Industrial+Area+Phase+II+New+Delhi" 
+                                         href="https://goo.gl/maps/LapVX9zFcWn4Etjt8" 
                                          target="_blank" 
                                          rel="noopener noreferrer"
                                          className="btn-beacon w-full justify-center text-xs font-mono !py-3 font-bold"

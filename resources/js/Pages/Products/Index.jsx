@@ -124,8 +124,8 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || 'Wireless Communications Equipment Catalog | System Infra Solutions'}
-                description={seo?.description || 'Browse AMF controllers, SYS-AXS NOC platforms, 5G smart enclosures, tactical radios, and energy management systems from System Infra Solutions.'}
+                title={seo?.title || 'Power Automation, NOC & Infrastructure Products — System Infra Solutions'}
+                description={seo?.description || 'Browse AMF controllers, SYS-AXS NOC platforms, 5G smart enclosures, security automation systems, and turnkey site services from System Infra Solutions.'}
                 canonicalPath="/products"
                 breadcrumbs={[
                     { name: 'Home', url: '/' },
@@ -136,22 +136,22 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
             {/* Header */}
             <header className="relative bg-white dark:bg-[#0a0a0a] pt-36 pb-16 overflow-hidden transition-colors duration-300">
                 <div className="container-content relative z-10 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider mb-4 font-semibold">
+                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
                         <span className="w-2 h-2 rounded-full bg-beacon animate-pulse" />
-                        <span>TACTICAL HARDWARE & SYSTEMS CATALOG</span>
+                        <span>SYSTEM INFRA SOLUTIONS &bull; OFFICIAL PRODUCT CATALOG</span>
                     </div>
                     <AnimatedHeading
                         as="h1"
                         immediate={true}
                         stagger={40}
-                        highlightPhrase="Wireless Communications"
+                        highlightPhrase="Infrastructure Systems"
                         className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
                     >
-                        Wireless Communications Equipment
+                        Power Automation & Infrastructure Systems
                     </AnimatedHeading>
                     <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-steel leading-relaxed font-sans">
                         Engineered for telecom towers, defence establishments, smart cities, and power utilities.
-                        Select a product vertical below to explore terminals, base stations, and accessories.
+                        Select a product vertical below to explore AMF panels, NOC telemetry, security automation, and turnkey engineering solutions.
                     </p>
 
                     {/* Search filter input */}
@@ -161,7 +161,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                             placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect, Motorola)..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-blue-500 dark:focus:!border-beacon !pr-16"
+                            className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-16"
                         />
                         {search && (
                             <button 
@@ -183,12 +183,12 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                         <div className="space-y-6">
                             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-2">
                                 <div>
-                                    <span className="text-xs font-mono uppercase tracking-widest text-blue-600 dark:text-beacon font-bold block mb-1">
+                                    <span className="text-xs font-mono uppercase tracking-widest text-sysred dark:text-[#ff6b6b] font-bold block mb-1">
                                         HARDWARE RESULTS
                                     </span>
                                     <h2 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-paper flex items-center gap-3">
                                         <span>Matching Products</span>
-                                        <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-beacon border border-blue-200 dark:border-blue-800/60 font-semibold">
+                                        <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] border border-red-200 dark:border-red-900/60 font-semibold">
                                             {matchingProducts.length} Found
                                         </span>
                                     </h2>
@@ -203,15 +203,15 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                     <Link
                                         key={item.id}
                                         href={`/products/${item.categorySlug}/${item.subcategorySlug}/${item.slug}`}
-                                        className="card-symmetric group relative hover:border-blue-500/60 dark:hover:border-beacon/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden flex flex-col"
+                                        className="card-symmetric group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden flex flex-col"
                                     >
                                         {/* Top specular accent line on hover */}
-                                        <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500/0 dark:via-beacon/0 to-transparent group-hover:via-blue-500 dark:group-hover:via-beacon transition-all duration-500 z-20" />
+                                        <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff6b6b] transition-all duration-500 z-20" />
 
                                         <div className="flex-1 flex flex-col">
                                             {/* Image Pedestal */}
                                             <div className="aspect-[4/3] w-full bg-gradient-to-b from-slate-100/70 via-slate-50/40 to-slate-100/80 dark:bg-black dark:from-black dark:via-black dark:to-black overflow-hidden relative flex items-center justify-center p-6 border-b border-slate-100 dark:border-white/10">
-                                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_70%)] dark:hidden pointer-events-none" />
+                                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(221,60,52,0.10),transparent_70%)] dark:hidden pointer-events-none" />
 
                                                 <img
                                                     src={`/${item.cover_image_path}`}
@@ -225,7 +225,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                                 />
 
                                                 {item.model_number && (
-                                                    <span className="absolute top-3 right-3 z-20 text-[11px] font-mono px-2 py-0.5 rounded bg-slate-900/80 dark:bg-neutral-900/90 text-sky-300 dark:text-beacon border border-white/10">
+                                                    <span className="absolute top-3 right-3 z-20 text-[11px] font-mono px-2 py-0.5 rounded bg-slate-900/80 dark:bg-neutral-900/90 text-sysred dark:text-[#ff6b6b] border border-white/10">
                                                         {item.model_number}
                                                     </span>
                                                 )}
@@ -233,11 +233,11 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
 
                                             {/* Info */}
                                             <div className="p-6 space-y-2 flex-1 flex flex-col">
-                                                <div className="text-[11px] font-mono text-blue-600 dark:text-beacon font-semibold tracking-wide uppercase">
+                                                <div className="text-[11px] font-mono text-sysred dark:text-[#ff6b6b] font-semibold tracking-wide uppercase">
                                                     {item.categoryName} &bull; {item.subcategoryName}
                                                 </div>
 
-                                                <h3 className="font-display font-bold text-lg text-slate-900 dark:text-paper group-hover:text-blue-600 dark:group-hover:text-beacon transition-colors min-h-[3rem] line-clamp-2 leading-snug">
+                                                <h3 className="font-display font-bold text-lg text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors min-h-[3rem] line-clamp-2 leading-snug">
                                                     {item.name}
                                                 </h3>
 
@@ -249,7 +249,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
 
                                         <div className="p-6 pt-4 border-t border-slate-100 dark:border-navy-border/40 mt-auto flex items-center justify-between text-xs font-mono text-slate-500 dark:text-steel">
                                             <span className="group-hover:text-slate-900 dark:group-hover:text-paper font-medium">Technical Specifications</span>
-                                            <svg className="w-4 h-4 text-blue-600 dark:text-beacon transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg className="w-4 h-4 text-sysred dark:text-[#ff6b6b] transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                             </svg>
                                         </div>
@@ -282,7 +282,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                         <div className="space-y-16">
                             {isSearching && matchingProducts.length > 0 && (
                                 <div className="pt-6">
-                                    <span className="text-xs font-mono uppercase tracking-widest text-blue-600 dark:text-beacon font-bold block mb-1">
+                                    <span className="text-xs font-mono uppercase tracking-widest text-sysred dark:text-[#ff6b6b] font-bold block mb-1">
                                         BROWSE BY CATEGORY
                                     </span>
                                     <h3 className="text-xl font-display font-bold text-slate-900 dark:text-paper">
@@ -320,22 +320,22 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                             <Link
                                                 key={sub.id}
                                                 href={`/products/${cat.slug}/${sub.slug}`}
-                                                className="card-symmetric p-6 group relative hover:border-blue-500/60 dark:hover:border-beacon/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden"
+                                                className="card-symmetric p-6 group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden"
                                             >
                                                 {/* Top specular accent line on hover */}
-                                                <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500/0 dark:via-beacon/0 to-transparent group-hover:via-blue-500 dark:group-hover:via-beacon transition-all duration-500 z-20" />
+                                                <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff6b6b] transition-all duration-500 z-20" />
 
                                                 <div className="flex-1 flex flex-col space-y-3">
                                                     <div className="flex items-center justify-between">
                                                         <span className="badge-rf text-[10px]">
-                                                            WPC CERTIFIED
+                                                            ISO 9001 CERTIFIED
                                                         </span>
-                                                        <svg className="w-4 h-4 text-slate-400 group-hover:text-blue-500 dark:group-hover:text-beacon transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <svg className="w-4 h-4 text-slate-400 group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                                         </svg>
                                                     </div>
 
-                                                    <h3 className="font-display font-bold text-lg text-slate-900 dark:text-paper group-hover:text-blue-600 dark:group-hover:text-beacon transition-colors min-h-[1.75rem]">
+                                                    <h3 className="font-display font-bold text-lg text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors min-h-[1.75rem]">
                                                         {sub.name}
                                                     </h3>
 
@@ -346,7 +346,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
 
                                                 <div className="pt-4 mt-auto border-t border-slate-100 dark:border-navy-border/40 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-steel">
                                                     <span className="group-hover:text-slate-900 dark:group-hover:text-paper font-medium">Browse Products</span>
-                                                    <svg className="w-4 h-4 text-blue-600 dark:text-beacon transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <svg className="w-4 h-4 text-sysred dark:text-[#ff6b6b] transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                                     </svg>
                                                 </div>
@@ -361,14 +361,14 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                     {/* Bottom Custom RFQ Banner */}
                     <div className="card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-12 border border-slate-200/80 dark:border-navy-border shadow-md flex flex-col md:flex-row items-center justify-between gap-8">
                         <div className="max-w-xl">
-                            <span className="text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider font-bold block mb-2">
-                                CUSTOM FREQUENCY TUNING & OEM SOURCING
+                            <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-2">
+                                CUSTOM TELECOM POWER &amp; NOC AUTOMATION SOLUTIONS
                             </span>
                             <h3 className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white">
-                                Require a Specialized Frequency Band or GeM Quotation?
+                                Require Custom AMF Controllers, DC Power Systems, or IoT Integration?
                             </h3>
                             <p className="mt-3 text-sm text-slate-600 dark:text-steel leading-relaxed">
-                                Our RF engineering facility in Okhla, New Delhi calibrates custom frequency duplexers, cavity filters, and multi-tier repeater networks to meet client RFP specifications.
+                                Our manufacturing and engineering facilities in Patparganj Industrial Area, New Delhi develop custom AMF panels, DC energy systems, ultrasonic fuel sensors, and SYS-AXS telemetry solutions tailored to your operational specifications.
                             </p>
                         </div>
                         <div className="shrink-0">

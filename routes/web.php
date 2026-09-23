@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CareersController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OemPartnerController;
@@ -29,7 +31,11 @@ Route::get('/products/{category:slug}/{subcategory:slug}/{item:slug}/datasheet',
 Route::get('/latest-news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/latest-news/{post:slug}', [NewsController::class, 'show'])->name('news.show');
 
-Route::get('/oem-partners', [OemPartnerController::class, 'index'])->name('oem-partners');
+Route::get('/clients', [ClientController::class, 'index'])->name('clients');
+Route::get('/our-clients', fn () => redirect('/clients', 301));
+Route::get('/oem-partners', fn () => redirect('/clients', 301))->name('oem-partners');
+Route::get('/media', [EventController::class, 'index'])->name('events.index');
+Route::get('/events', fn () => redirect('/media', 301));
 Route::get('/careers', [CareersController::class, 'index'])->name('careers');
 
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');

@@ -28,13 +28,28 @@ export default {
                     light: '#94A3B8',
                     dark: '#334155',
                 },
+                sysred: {
+                    50: '#fff1f2',
+                    100: '#ffe4e6',
+                    200: '#fecdd3',
+                    300: '#fda4af',
+                    400: '#fb7185',
+                    500: '#f43f5e',
+                    600: '#dd3c34', // Authentic corporate red from logo.png
+                    700: '#be123c',
+                    800: '#9f1239',
+                    900: '#881337',
+                    DEFAULT: '#dd3c34',
+                    glow: 'rgba(221, 60, 52, 0.28)',
+                    darkGlow: 'rgba(244, 63, 94, 0.35)',
+                },
                 beacon: {
-                    light: '#7dd3fc',
-                    DEFAULT: '#0284c7', // sysinfra telecom cyan/blue
-                    royal: '#0369a1',
-                    electric: '#38bdf8',
-                    dim: '#075985',
-                    glow: 'rgba(2, 132, 199, 0.25)',
+                    light: '#fda4af',
+                    DEFAULT: '#dd3c34', // corporate red
+                    royal: '#be123c',
+                    electric: '#fb7185',
+                    dim: '#9f1239',
+                    glow: 'rgba(221, 60, 52, 0.25)',
                 },
             },
             fontFamily: {

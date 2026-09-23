@@ -16,7 +16,7 @@ class AboutController extends Controller
                 ->get(['name', 'title', 'bio', 'photo_path']),
             'seo' => [
                 'title' => 'About Us — System Infra Solutions',
-                'description' => 'System Infra Solutions is a market leader in wireless communications in India, delivering end-to-end solutions from conceptualization to system design to project execution.',
+                'description' => 'System Infra Solutions is an ISO-certified engineering leader in telecom power automation, SYS-AXS NOC telemetry, 5G smart enclosures, and tactical wireless networks.',
             ],
         ]);
     }

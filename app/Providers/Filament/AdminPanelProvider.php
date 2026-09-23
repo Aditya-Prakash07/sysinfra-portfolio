@@ -28,8 +28,9 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('System Infra Solutions')
-            ->brandLogo(asset('images/logo.png'))
-            ->brandLogoHeight('2.5rem')
+            ->brandLogo(asset('images/logo-light.svg'))
+            ->darkModeBrandLogo(asset('images/logo-dark.svg'))
+            ->brandLogoHeight('2.6rem')
             ->colors([
                 'primary' => Color::Sky,
             ])

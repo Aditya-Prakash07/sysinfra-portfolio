@@ -35,7 +35,7 @@ class ProductController extends Controller
             'categories' => $categories,
             'seo' => [
                 'title' => 'Products — System Infra Solutions',
-                'description' => 'DMR, TETRA, P25, License-Free and Amateur radios, PTT over Cellular (PoC/MCX), LTE-R, Captive LTE and communication accessories.',
+                'description' => 'ISO-certified AMF panels, SYS-AXS NOC telemetry platforms, 5G smart enclosures, DC energy meters, and Motorola Solutions tactical equipment.',
             ],
         ]);
     }

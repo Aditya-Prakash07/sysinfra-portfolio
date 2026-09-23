@@ -27,7 +27,7 @@ export default function AnimatedHeading({
     animateBy = 'auto', // 'auto' | 'letter' | 'word'
     immediate = false, // if true, animate immediately without waiting for intersection
     threshold = 0.15,
-    gradientClass = 'bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent animate-text-sheen',
+    gradientClass = 'bg-gradient-to-r from-[#dd3c34] via-[#f43f5e] to-[#ea580c] dark:from-[#ff6b6b] dark:via-[#f43f5e] dark:to-[#fb923c] bg-clip-text text-transparent animate-text-sheen',
     ...props
 }) {
     const containerRef = useRef(null);

@@ -27,6 +27,7 @@
         <title inertia>{{ config('app.name', 'System Infra Solutions') }}</title>
 
         <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
         <link rel="icon" type="image/png" href="/img/mobile-logo.png">
         <link rel="apple-touch-icon" href="/img/mobile-logo.png">
 

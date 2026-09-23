@@ -15,7 +15,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
         <MainLayout>
             <Seo
                 title={seo?.title || `${item.name} | System Infra Solutions`}
-                description={seo?.description || item.short_description || `Technical specifications, frequency bands, and features for ${item.name}.`}
+                description={seo?.description || item.short_description || `Technical specifications, input power ratings, telemetry interfaces, and features for ${item.name}.`}
                 canonicalPath={`/products/${category.slug}/${subcategory.slug}/${item.slug}`}
                 breadcrumbs={[
                     { name: 'Home', url: '/' },
@@ -38,7 +38,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                             {subcategory.name}
                         </Link>
                         <span>/</span>
-                        <span className="text-blue-600 dark:text-beacon font-bold truncate max-w-[200px] sm:max-w-none">{item.name}</span>
+                        <span className="text-sysred dark:text-[#ff6b6b] font-bold truncate max-w-[200px] sm:max-w-none">{item.name}</span>
                     </nav>
                 </div>
             </div>
@@ -51,7 +51,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                         <div className="lg:col-span-5">
                             <div className="aspect-square flex items-center justify-center relative group overflow-hidden bg-gradient-to-b from-slate-100/70 via-slate-50/40 to-slate-100/80 dark:bg-black dark:from-black dark:via-black dark:to-black border border-slate-200/90 dark:border-white/10 rounded-2xl shadow-xl">
                                 {/* Radial Spotlight in light mode */}
-                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.14),transparent_70%)] dark:hidden pointer-events-none" />
+                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(221,60,52,0.10),transparent_70%)] dark:hidden pointer-events-none" />
 
                                 <img
                                     src={`/${item.cover_image_path}`}
@@ -64,7 +64,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                 />
 
                                 {item.model_number && (
-                                    <span className="absolute top-4 right-4 z-20 text-xs font-mono px-3 py-1 rounded-full bg-slate-900/90 dark:bg-neutral-900/90 text-sky-300 dark:text-beacon border border-white/10 font-bold">
+                                    <span className="absolute top-4 right-4 z-20 text-xs font-mono px-3 py-1 rounded-full bg-slate-900/90 dark:bg-neutral-900/90 text-sysred dark:text-[#ff6b6b] border border-white/10 font-bold">
                                         MODEL: {item.model_number}
                                     </span>
                                 )}
@@ -86,7 +86,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                     className="btn-outline-dark !py-3 font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-2"
                                     title="Open and print/save official technical specification datasheet"
                                 >
-                                    <svg className="w-4 h-4 text-blue-600 dark:text-beacon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg className="w-4 h-4 text-sysred dark:text-[#ff6b6b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                     <span>Download Datasheet (PDF)</span>
@@ -100,7 +100,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                     STANDARD COMPLIANCE VERIFICATION
                                 </div>
                                 <div className="text-slate-500 dark:text-steel leading-relaxed">
-                                    Government of India WPC ETA type-approved, MIL-STD-810 ruggedization, and GeM procurement eligible.
+                                    ISO 9001:2015, ISO 14001:2015, IP55/IP65 tested, and GeM portal procurement compliant.
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                     onClick={() => setActiveTab('specs')}
                                     className={`pb-3 border-b-2 font-bold transition-colors ${
                                         activeTab === 'specs'
-                                            ? 'border-blue-500 dark:border-beacon text-blue-600 dark:text-beacon'
+                                            ? 'border-blue-500 dark:border-beacon text-sysred dark:text-[#ff6b6b]'
                                             : 'border-transparent text-slate-500 dark:text-steel hover:text-slate-900 dark:hover:text-paper'
                                     }`}
                                 >
@@ -151,7 +151,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                     onClick={() => setActiveTab('overview')}
                                     className={`pb-3 border-b-2 font-bold transition-colors ${
                                         activeTab === 'overview'
-                                            ? 'border-blue-500 dark:border-beacon text-blue-600 dark:text-beacon'
+                                            ? 'border-blue-500 dark:border-beacon text-sysred dark:text-[#ff6b6b]'
                                             : 'border-transparent text-slate-500 dark:text-steel hover:text-slate-900 dark:hover:text-paper'
                                     }`}
                                 >

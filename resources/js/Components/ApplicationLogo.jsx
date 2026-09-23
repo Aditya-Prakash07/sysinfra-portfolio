@@ -1,51 +1,41 @@
+import React from 'react';
+
 /**
- * ApplicationLogo — Official sysinfra.in logo renderer
- *
- * Dark mode  → /img/logo.png with CSS brightness-0 invert (white)
- * Light mode → /img/logo.png as-is (coloured)
- * Over hero  → In dark mode: white logo; in light mode: coloured logo (always visible)
- * Footer     → /img/logo-footer.png (already white, footer is always dark)
- * compact    → /img/mobile-logo.png (93×93 square icon)
- *
- * The `isOverBanner` flag alone does NOT trigger white filter in light mode —
- * only dark mode gets the inverted white version so the logo stays visible.
+ * ApplicationLogo — Authentic Original sysinfra.in Brand Logo
+ * 
+ * Uses the authentic official System Infra Solutions artwork:
+ * - Light Mode: /img/logo.png (Original navy/purple text + vibrant red 'S')
+ * - Dark Mode: /img/logo-dark.png (Original artwork with bright white text + vibrant red 'S')
+ * - Compact: /img/mobile-logo.png (Original circular emblem)
+ * 
+ * No CSS filters applied. 100% visible on light and dark backgrounds.
  */
 export default function ApplicationLogo({
     className = '',
     isOverBanner = false,
     theme = 'light',
-    variant = 'auto',   // 'auto' | 'white' | 'dark' | 'footer' | 'color'
+    variant = 'auto', // 'auto' | 'light' | 'dark' | 'footer' | 'white' | 'color'
     compact = false,
     ...props
 }) {
-    const isFooter = variant === 'footer';
+    const isDark = 
+        variant === 'dark' || 
+        variant === 'white' || 
+        variant === 'footer' || 
+        (variant === 'auto' && (theme === 'dark' || isOverBanner));
 
-    // Only force white in explicitly dark contexts or actual dark mode.
-    // NEVER invert in light mode — the hero background is white so the logo
-    // would be invisible. When over the banner in light mode, keep the coloured logo.
-    const applyWhiteFilter =
-        !isFooter && (
-            variant === 'white' ||
-            variant === 'dark' ||
-            (variant === 'auto' && theme === 'dark')
-        );
-
-    const src = isFooter
-        ? '/img/logo-footer.png'
-        : compact
-            ? '/img/mobile-logo.png'
-            : '/img/logo.png';
+    const src = compact
+        ? '/img/mobile-logo.png?v=2'
+        : isDark
+            ? '/img/logo-dark.png?v=2'
+            : '/img/logo.png?v=2';
 
     return (
         <img
             src={src}
             alt="System Infra Solutions Pvt. Ltd."
             draggable={false}
-            className={[
-                'object-contain select-none shrink-0 w-auto',
-                applyWhiteFilter ? 'brightness-0 invert' : '',
-                className,
-            ].filter(Boolean).join(' ')}
+            className={`object-contain select-none shrink-0 ${className}`}
             {...props}
         />
     );

@@ -55,28 +55,28 @@
     }
 
     .btn-primary {
-        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white font-bold px-6 py-3
-               rounded-lg shadow-md shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-[#dd3c34] to-[#b91c1c] dark:from-[#e11d48] dark:to-[#be123c] text-white font-bold px-6 py-3
+               rounded-lg shadow-md shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
     }
 
     .btn-secondary {
         @apply inline-flex items-center justify-center gap-2 bg-white dark:bg-navy-surface border border-slate-300 dark:border-white/10 text-slate-800 dark:text-paper font-semibold px-6 py-3
-               rounded-lg shadow-sm hover:border-blue-500/50 dark:hover:border-beacon/50 hover:bg-slate-50 dark:hover:bg-white/[0.04] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+               rounded-lg shadow-sm hover:border-red-500/50 dark:hover:border-red-400/50 hover:bg-slate-50 dark:hover:bg-white/[0.04] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
     }
 
     .btn-outline-dark {
         @apply inline-flex items-center justify-center gap-2 border border-slate-300 dark:border-white/15 text-slate-800 dark:text-paper font-semibold
-               px-6 py-3 rounded-lg hover:border-blue-500 dark:hover:border-beacon hover:text-blue-600 dark:hover:text-beacon hover:bg-blue-500/5 dark:hover:bg-beacon/5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+               px-6 py-3 rounded-lg hover:border-red-500 dark:hover:border-red-400 hover:text-[#dd3c34] dark:hover:text-[#ff6b6b] hover:bg-red-500/5 dark:hover:bg-red-500/10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
     }
 
     .btn-beacon {
-        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white font-bold px-6 py-3
-               rounded-lg shadow-md shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-[#dd3c34] to-[#b91c1c] dark:from-[#e11d48] dark:to-[#be123c] text-white font-bold px-6 py-3
+               rounded-lg shadow-md shadow-red-500/25 hover:shadow-xl hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
     }
 
     .btn-outline-paper {
         @apply inline-flex items-center justify-center gap-2 border border-slate-300 dark:border-white/20 text-slate-800 dark:text-paper font-semibold
-               px-5 py-2.5 rounded-lg hover:border-blue-500 dark:hover:border-beacon hover:text-blue-600 dark:hover:text-beacon hover:bg-blue-500/5 dark:hover:bg-beacon/5 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+               px-5 py-2.5 rounded-lg hover:border-red-500 dark:hover:border-red-400 hover:text-[#dd3c34] dark:hover:text-[#ff6b6b] hover:bg-red-500/5 dark:hover:bg-red-500/10 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
     }
 
     .card-dual {
@@ -89,17 +89,17 @@
 
     .panel-hover {
         @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm
-               hover:border-blue-500/50 dark:hover:border-beacon/50 hover:shadow-xl hover:shadow-blue-500/5 dark:hover:shadow-beacon/5 hover:-translate-y-1.5 transition-all duration-300 ease-out;
+               hover:border-red-500/50 dark:hover:border-red-400/50 hover:shadow-xl hover:shadow-red-500/5 dark:hover:shadow-red-500/10 hover:-translate-y-1.5 transition-all duration-300 ease-out;
     }
 
     .card-symmetric {
         @apply h-full flex flex-col justify-between border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm
-               hover:border-blue-500/50 dark:hover:border-beacon/50 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-beacon/5 hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden;
+               hover:border-red-500/50 dark:hover:border-red-400/50 hover:shadow-2xl hover:shadow-red-500/10 dark:hover:shadow-red-500/10 hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden;
     }
 
     .btn-shimmer {
-        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white font-bold px-6 py-3
-               rounded-lg shadow-md shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
+        @apply inline-flex items-center justify-center gap-2 bg-gradient-to-b from-[#dd3c34] to-[#b91c1c] dark:from-[#e11d48] dark:to-[#be123c] text-white font-bold px-6 py-3
+               rounded-lg shadow-md shadow-red-500/20 hover:shadow-xl hover:shadow-red-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] transition-all duration-200 cursor-pointer;
     }
 
     .panel-dark {
@@ -108,7 +108,7 @@
 
     .badge-rf {
         @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono tracking-wide uppercase font-semibold
-               rounded-full border border-beacon/30 bg-beacon/10 text-blue-600 dark:text-beacon;
+               rounded-full border border-red-500/30 bg-red-500/10 text-[#dd3c34] dark:text-[#ff6b6b];
     }
 
     .badge-navy {
@@ -335,7 +335,7 @@
     .animate-marquee-ltr {
         display: flex;
         width: max-content;
-        animation: marqueeLtr 32s linear infinite;
+        animation: marqueeLtr 45s linear infinite;
         will-change: transform;
     }
 
@@ -344,7 +344,7 @@
     }
 
     .stat-number-glow {
-        text-shadow: 0 0 24px rgba(74, 144, 226, 0.4), 0 0 48px rgba(56, 189, 248, 0.2);
+        text-shadow: 0 0 24px rgba(221, 60, 52, 0.4), 0 0 48px rgba(244, 63, 94, 0.25);
     }
 
     @keyframes statPulse {
@@ -376,7 +376,7 @@
     }
 
     .text-glow-beacon {
-        text-shadow: 0 0 20px rgba(59, 130, 246, 0.45), 0 0 40px rgba(59, 130, 246, 0.2);
+        text-shadow: 0 0 20px rgba(221, 60, 52, 0.45), 0 0 40px rgba(244, 63, 94, 0.25);
     }
 
     /* Hide scrollbar utility */
@@ -393,7 +393,7 @@
     }
     .hardware-card-shelf:hover {
         transform: translateY(-6px);
-        box-shadow: 0 20px 30px -10px rgba(59, 130, 246, 0.18), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 20px 30px -10px rgba(221, 60, 52, 0.2), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
     }
 
     /* =========================================================================
@@ -422,10 +422,10 @@
 
     @keyframes anchorAuraPulse {
         0%, 100% {
-            box-shadow: 0 12px 32px -6px rgba(37, 99, 235, 0.35), 0 0 15px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 12px 32px -6px rgba(221, 60, 52, 0.35), 0 0 15px rgba(244, 63, 94, 0.2);
         }
         50% {
-            box-shadow: 0 16px 45px -4px rgba(2, 132, 199, 0.55), 0 0 25px rgba(6, 182, 212, 0.4);
+            box-shadow: 0 16px 45px -4px rgba(190, 18, 60, 0.5), 0 0 25px rgba(234, 88, 12, 0.35);
         }
     }
 
@@ -433,7 +433,7 @@
         flex-shrink: 0;
         border-radius: 1.5rem;
         padding: 3px;
-        background: linear-gradient(135deg, #1d4ed8, #0284c7 25%, #06b6d4 50%, #6366f1 75%, #2563eb 100%);
+        background: linear-gradient(135deg, #dd3c34, #f43f5e 25%, #ea580c 50%, #be123c 75%, #dd3c34 100%);
         background-size: 250% 250%;
         animation: anchorGradientFlow 7s ease infinite, anchorAuraPulse 4s ease-in-out infinite;
         display: flex;

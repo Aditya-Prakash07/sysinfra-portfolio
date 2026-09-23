@@ -49,8 +49,7 @@ export default function Seo({
         'mpn': product.model_number || product.slug,
         'brand': {
             '@type': 'Brand',
-            'name': product.name?.toLowerCase().includes('kenwood') ? 'Kenwood' : 
-                    product.name?.toLowerCase().includes('diamond') ? 'Diamond' : 'System Infra'
+            'name': 'System Infra Solutions'
         },
         'offers': {
             '@type': 'Offer',
