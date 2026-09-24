@@ -49,32 +49,5 @@ export const SOCIAL_LINKS = [
 ];
 
 export default function SocialBar() {
-    return (
-        <aside 
-            aria-label="Social Media Channels"
-            className="fixed left-0 top-[45%] -translate-y-1/2 z-40 hidden sm:flex flex-col shadow-2xl rounded-r-xl overflow-hidden border-y border-r border-white/20 dark:border-white/10"
-        >
-            {SOCIAL_LINKS.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                    <a
-                        key={item.name}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={item.label}
-                        title={item.label}
-                        className={`group relative flex items-center justify-center w-11 h-11 text-white ${item.bgColor} ${item.hoverBg} transition-all duration-300 hover:w-36`}
-                    >
-                        <div className="shrink-0 flex items-center justify-center w-11 h-11">
-                            <IconComponent className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-                        </div>
-                        <span className="max-w-0 opacity-0 overflow-hidden whitespace-nowrap text-xs font-mono font-semibold transition-all duration-300 group-hover:max-w-xs group-hover:opacity-100 pr-3">
-                            {item.name}
-                        </span>
-                    </a>
-                );
-            })}
-        </aside>
-    );
+    return null;
 }
