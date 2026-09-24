@@ -3,12 +3,10 @@ import React from 'react';
 /**
  * ApplicationLogo — Authentic Original sysinfra.in Brand Logo
  * 
- * Uses the authentic official System Infra Solutions artwork:
- * - Light Mode: /img/logo.png (Original navy/purple text + vibrant red 'S')
- * - Dark Mode: /img/logo-dark.png (Original artwork with bright white text + vibrant red 'S')
+ * Uses the authentic high-quality SVG official System Infra Solutions artwork:
+ * - Light Mode: /storage/logo/system_infra_solutions_logo_exact.svg (Original royal navy text + vibrant red 'S')
+ * - Dark Mode: /storage/logo/system_infra_solutions_logo_dark.svg (Luminous light sky blue text and emblem + vibrant red 'S')
  * - Compact: /img/mobile-logo.png (Original circular emblem)
- * 
- * No CSS filters applied. 100% visible on light and dark backgrounds.
  */
 export default function ApplicationLogo({
     className = '',
@@ -27,8 +25,8 @@ export default function ApplicationLogo({
     const src = compact
         ? '/img/mobile-logo.png?v=2'
         : isDark
-            ? '/img/logo-dark.png?v=2'
-            : '/img/logo.png?v=2';
+            ? '/img/system_infra_solutions_logo_dark.svg'
+            : '/img/system_infra_solutions_logo_exact.svg';
 
     return (
         <img
@@ -36,6 +34,12 @@ export default function ApplicationLogo({
             alt="System Infra Solutions Pvt. Ltd."
             draggable={false}
             className={`object-contain select-none shrink-0 ${className}`}
+            onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = isDark 
+                    ? '/storage/logo/system_infra_solutions_logo_dark.svg' 
+                    : '/storage/logo/system_infra_solutions_logo_exact.svg';
+            }}
             {...props}
         />
     );

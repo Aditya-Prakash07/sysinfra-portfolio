@@ -174,7 +174,7 @@ export default function KeyStatsSection({ stats = [] }) {
                 <div className="relative text-center mb-12 sm:mb-16">
                     {/* Atmospheric Watermark behind Title */}
                     <div 
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none text-slate-900/[0.04] dark:text-white/[0.04] text-6xl sm:text-8xl md:text-9xl font-black uppercase tracking-widest whitespace-nowrap blur-[0.5px]"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none text-slate-900/[0.12] dark:text-white/[0.14] text-6xl sm:text-8xl md:text-9xl font-black uppercase tracking-widest whitespace-nowrap transition-colors duration-300"
                         aria-hidden="true"
                     >
                         Data Facts
