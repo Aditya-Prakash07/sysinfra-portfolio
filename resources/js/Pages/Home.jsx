@@ -79,8 +79,17 @@ export default function Home({ banners = [], categories = [], featuredProducts =
         });
     };
 
-    // Default hero slides if none in database (4 Flagship Hardware Banners)
+    // Default hero slides if none in database (First banner is the flagship video banner)
     const rawSlides = banners.length > 0 ? banners : [
+        {
+            heading: 'System Infra Solutions',
+            subheading: '',
+            image_path: 'banners/sysinfra-video-banner.mp4',
+            isVideo: true,
+            resolved_video_path: '/storage/banners/sysinfra-video-banner.mp4',
+            cta_label: '',
+            cta_url: '',
+        },
         {
             heading: 'Motorola Solutions Authorized Channel Partner',
             subheading: 'Official Authorized Channel Partner delivering mission-critical MOTOTRBO digital radios, automatic weather stations, and tactical communication systems across India.',
@@ -111,15 +120,38 @@ export default function Home({ banners = [], categories = [], featuredProducts =
         }
     ];
 
-    // sysinfra.in uses static jpg images only — no video banners.
-    // Images live at /img/slider/ — NOT /storage/. No _light/_dark variants.
-    const slides = rawSlides.map((s) => ({
-        ...s,
-        isVideo: false,
-        resolved_image_path: s.image_path?.startsWith('/')
-            ? s.image_path                          // absolute path — use as-is
-            : `/${s.image_path}`,                   // relative — prefix with /
-    }));
+    // Detect and resolve image and video banner paths
+    const slides = rawSlides.map((s) => {
+        const isVideo = Boolean(
+            s.isVideo ||
+            s.image_path?.endsWith('.mp4') ||
+            s.image_path?.includes('sysinfra-video-banner') ||
+            s.video_path
+        );
+        let resolved_video_path = null;
+        let resolved_image_path = null;
+
+        if (isVideo) {
+            if (s.image_path?.startsWith('/')) {
+                resolved_video_path = s.image_path;
+            } else if (s.image_path?.startsWith('storage/')) {
+                resolved_video_path = `/${s.image_path}`;
+            } else {
+                resolved_video_path = `/storage/${s.image_path}`;
+            }
+        } else {
+            resolved_image_path = s.image_path?.startsWith('/')
+                ? s.image_path
+                : `/${s.image_path}`;
+        }
+
+        return {
+            ...s,
+            isVideo,
+            resolved_video_path,
+            resolved_image_path,
+        };
+    });
 
     const scrollContainer = (ref, direction) => {
         if (!ref.current) return;
@@ -132,14 +164,18 @@ export default function Home({ banners = [], categories = [], featuredProducts =
 
     const SLIDE_DURATION = 6500; // 6.5s comfortable reading pace for image banners
 
-    // Continuous smooth auto-advance: gives the first video banner full 20s playback, 6.5s for images
+    // Continuous smooth auto-advance:
+    // When video banner is active, do NOT change via timer.
+    // It will strictly play complete and advance automatically via onEnded={nextSlide}.
     useEffect(() => {
         if (slides.length <= 1 || isPaused) return;
         const currentIsVideo = Boolean(slides[currentSlide]?.isVideo);
-        const duration = currentIsVideo ? 20200 : SLIDE_DURATION;
+        if (currentIsVideo) {
+            return;
+        }
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, duration);
+        }, SLIDE_DURATION);
         return () => clearInterval(timer);
     }, [currentSlide, slides.length, isPaused, slides]);
 
@@ -148,12 +184,23 @@ export default function Home({ banners = [], categories = [], featuredProducts =
         if (videoRef.current) {
             if (slides[currentSlide]?.isVideo) {
                 videoRef.current.currentTime = 0;
-                videoRef.current.play().catch(() => {});
+                videoRef.current.muted = isMuted;
+                const playPromise = videoRef.current.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {});
+                }
             } else {
                 videoRef.current.pause();
             }
         }
     }, [currentSlide, slides]);
+
+    // Keep video mute state in sync
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.muted = isMuted;
+        }
+    }, [isMuted]);
 
     const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -241,13 +288,15 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                         </div>
                     ))}
 
-                    {/* Deep pitch-black cinematic vignette in dark mode; ultra-clean and subtle in light mode */}
-                    <div className="absolute inset-0 hidden dark:block bg-gradient-to-r from-black via-black/80 sm:via-black/55 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-x-0 bottom-0 h-28 hidden dark:block bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-x-0 top-0 h-24 hidden dark:block bg-gradient-to-b from-black/80 via-black/30 to-transparent z-10 pointer-events-none" />
-
-                    {/* Light mode gentle reading gradient to guarantee crisp text contrast */}
-                    <div className="absolute inset-0 block dark:hidden bg-gradient-to-r from-white via-white/80 sm:via-white/40 to-transparent z-10 pointer-events-none" />
+                    {/* Deep pitch-black cinematic vignette in dark mode; ultra-clean and subtle in light mode (only for image slides so video remains crystal clear) */}
+                    {!slides[currentSlide]?.isVideo && (
+                        <>
+                            <div className="absolute inset-0 hidden dark:block bg-gradient-to-r from-black via-black/80 sm:via-black/55 to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-x-0 bottom-0 h-28 hidden dark:block bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-x-0 top-0 h-24 hidden dark:block bg-gradient-to-b from-black/80 via-black/30 to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-0 block dark:hidden bg-gradient-to-r from-white via-white/80 sm:via-white/40 to-transparent z-10 pointer-events-none" />
+                        </>
+                    )}
                 </div>
 
                 {/* Left Large Motorola-Style Chevron Arrow */}
@@ -272,80 +321,88 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                     </svg>
                 </button>
 
-                {/* Main Content Area — Firmly Aligned to the Left Edge */}
-                <div className="relative z-20 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 pointer-events-none">
-                    <div className="max-w-xl xl:max-w-2xl w-full text-left py-10 sm:py-14 pointer-events-auto">
-                        <div key={currentSlide} className="space-y-6">
-                            {/* Prominent Credential Highlight for Motorola Solutions Authorized Channel Partner */}
-                            {(currentSlide === 0 || slides[currentSlide]?.heading?.toLowerCase().includes('motorola')) && (
-                                <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-black/80 backdrop-blur-md border border-sysred/40 dark:border-[#ff6b6b]/40 text-xs sm:text-sm font-mono font-bold text-sysred dark:text-[#ff6b6b] uppercase tracking-wider shadow-lg mb-1 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                                    <img 
-                                        src="/img/motorola-solutions.png" 
-                                        alt="Motorola Solutions Authorized Channel Partner" 
-                                        className="h-5 sm:h-6 w-auto object-contain"
-                                    />
-                                    <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
-                                    <span>Motorola Solutions Authorized Channel Partner</span>
+                {/* Main Content Area — Strictly excluded on video banner so video is free of text overlays */}
+                {!slides[currentSlide]?.isVideo && (slides[currentSlide]?.heading || slides[currentSlide]?.subheading) && (
+                    <div className="relative z-20 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 pointer-events-none">
+                        <div className="max-w-xl xl:max-w-2xl w-full text-left py-10 sm:py-14 pointer-events-auto">
+                            <div key={currentSlide} className="space-y-6">
+                                {/* Prominent Credential Highlight for Motorola Solutions Authorized Channel Partner */}
+                                {slides[currentSlide]?.heading?.toLowerCase().includes('motorola') && (
+                                    <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-black/80 backdrop-blur-md border border-sysred/40 dark:border-[#ff6b6b]/40 text-xs sm:text-sm font-mono font-bold text-sysred dark:text-[#ff6b6b] uppercase tracking-wider shadow-lg mb-1 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                        <img 
+                                            src="/img/motorola-solutions.png" 
+                                            alt="Motorola Solutions Authorized Channel Partner" 
+                                            className="h-5 sm:h-6 w-auto object-contain"
+                                        />
+                                        <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
+                                        <span>Motorola Solutions Authorized Channel Partner</span>
+                                    </div>
+                                )}
+
+                                {/* Headline: Motorola-style Bold Typography with Kinetic Letter Reveal Animation */}
+                                {slides[currentSlide]?.heading && (
+                                    <div className="py-1">
+                                        <AnimatedHeading
+                                            key={currentSlide}
+                                            as="h1"
+                                            immediate={true}
+                                            delay={20}
+                                            letterStagger={14}
+                                            highlight="last"
+                                            highlightCount={1}
+                                            className="text-4xl sm:text-5xl lg:text-[54px] font-sans font-extrabold text-slate-950 dark:text-white tracking-tight leading-[1.12] drop-shadow-xs dark:drop-shadow-2xl"
+                                            gradientClass="bg-gradient-to-r from-[#dd3c34] via-[#f43f5e] to-[#ea580c] dark:from-[#ff6b6b] dark:via-[#f43f5e] dark:to-[#fb923c] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(221,60,52,0.3)] animate-text-sheen"
+                                        >
+                                            {slides[currentSlide].heading}
+                                        </AnimatedHeading>
+                                    </div>
+                                )}
+
+                                {/* Luminous Telemetry Tracer Line */}
+                                <div className="relative h-1 w-24 overflow-hidden rounded-full bg-slate-200 dark:bg-white/15 my-1">
+                                    <div className="animate-hero-tracer h-full w-full bg-gradient-to-r from-[#dd3c34] via-[#f43f5e] to-transparent dark:from-[#ff6b6b] dark:via-[#f43f5e] dark:to-transparent rounded-full shadow-sm" />
                                 </div>
-                            )}
 
-                            {/* Headline: Motorola-style Bold Typography with Kinetic Letter Reveal Animation */}
-                            <div className="py-1">
-                                <AnimatedHeading
-                                    key={currentSlide}
-                                    as="h1"
-                                    immediate={true}
-                                    delay={20}
-                                    letterStagger={14}
-                                    highlight="last"
-                                    highlightCount={1}
-                                    className="text-4xl sm:text-5xl lg:text-[54px] font-sans font-extrabold text-slate-950 dark:text-white tracking-tight leading-[1.12] drop-shadow-xs dark:drop-shadow-2xl"
-                                    gradientClass="bg-gradient-to-r from-[#dd3c34] via-[#f43f5e] to-[#ea580c] dark:from-[#ff6b6b] dark:via-[#f43f5e] dark:to-[#fb923c] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(221,60,52,0.3)] animate-text-sheen"
-                                >
-                                    {slides[currentSlide].heading}
-                                </AnimatedHeading>
-                            </div>
+                                {/* Subheading: High Contrast & Crisp Readability */}
+                                {slides[currentSlide]?.subheading && (
+                                    <p className="animate-hero-subtitle text-base sm:text-lg text-slate-800 dark:text-slate-300 max-w-lg leading-relaxed font-sans font-normal">
+                                        {slides[currentSlide].subheading}
+                                    </p>
+                                )}
 
-                            {/* Luminous Telemetry Tracer Line */}
-                            <div className="relative h-1 w-24 overflow-hidden rounded-full bg-slate-200 dark:bg-white/15 my-1">
-                                <div className="animate-hero-tracer h-full w-full bg-gradient-to-r from-[#dd3c34] via-[#f43f5e] to-transparent dark:from-[#ff6b6b] dark:via-[#f43f5e] dark:to-transparent rounded-full shadow-sm" />
-                            </div>
-
-                            {/* Subheading: High Contrast & Crisp Readability */}
-                            <p className="animate-hero-subtitle text-base sm:text-lg text-slate-800 dark:text-slate-300 max-w-lg leading-relaxed font-sans font-normal">
-                                {slides[currentSlide].subheading}
-                            </p>
-
-                            {/* Motorola-Style Rounded Pill CTA Button with Interactive Hover & Click Effects */}
-                            <div className="animate-hero-cta pt-2 flex items-center gap-4">
-                                {slides[currentSlide].cta_url?.startsWith('#') ? (
-                                    <a
-                                        href={slides[currentSlide].cta_url}
-                                        className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 font-sans font-bold text-sm shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
-                                    >
-                                        <span>{slides[currentSlide].cta_label || 'View Release'}</span>
-                                        <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </a>
-                                ) : (
-                                    <Link
-                                        href={slides[currentSlide].cta_url || '/products'}
-                                        className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 font-sans font-bold text-sm shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
-                                    >
-                                        <span>{slides[currentSlide].cta_label || 'View Release'}</span>
-                                        <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </Link>
+                                {/* Motorola-Style Rounded Pill CTA Button with Interactive Hover & Click Effects */}
+                                {slides[currentSlide]?.cta_label && (
+                                    <div className="animate-hero-cta pt-2 flex items-center gap-4">
+                                        {slides[currentSlide].cta_url?.startsWith('#') ? (
+                                            <a
+                                                href={slides[currentSlide].cta_url}
+                                                className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 font-sans font-bold text-sm shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
+                                            >
+                                                <span>{slides[currentSlide].cta_label}</span>
+                                                <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                href={slides[currentSlide].cta_url || '/products'}
+                                                className="group relative inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-slate-950 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 font-sans font-bold text-sm shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer select-none"
+                                            >
+                                                <span>{slides[currentSlide].cta_label}</span>
+                                                <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </Link>
+                                        )}
+                                    </div>
                                 )}
                             </div>
                         </div>
                     </div>
-                </div>
+                )}
 
                 {/* Motorola Bottom-Center Carousel Dot Pagination */}
-                <div className="absolute bottom-6 sm:bottom-8 inset-x-0 z-20 flex items-center justify-center gap-2.5">
+                <div className="absolute bottom-6 sm:bottom-8 inset-x-0 z-20 flex items-center justify-center gap-2.5 pointer-events-auto">
                     {slides.map((s, dotIdx) => (
                         <button
                             key={dotIdx}
@@ -355,34 +412,49 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                     ? 'w-8 h-2.5 bg-sysred dark:bg-[#ff6b6b] ring-2 ring-red-500/30 dark:ring-red-400/40 ring-offset-2 ring-offset-white dark:ring-offset-black' 
                                     : 'w-2.5 h-2.5 bg-slate-300 dark:bg-white/40 hover:bg-slate-500 dark:hover:bg-white/70'
                             }`}
-                            aria-label={`Go to slide ${dotIdx + 1}: ${s.heading}`}
-                            title={`Slide ${dotIdx + 1}: ${s.heading}`}
+                            aria-label={`Go to slide ${dotIdx + 1}${s.heading ? ': ' + s.heading : ''}`}
+                            title={`Slide ${dotIdx + 1}${s.heading ? ': ' + s.heading : ''}`}
                         />
                     ))}
                 </div>
 
-                {/* Audio Mute/Unmute Toggle Button for Video Banner */}
+                {/* Audio Mute/Unmute Switch Toggle for Video Banner */}
                 {slides[currentSlide]?.isVideo && (
                     <button
+                        type="button"
                         onClick={toggleMute}
-                        className="absolute bottom-5 sm:bottom-7 right-4 sm:right-8 lg:right-12 z-30 flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-white/75 hover:bg-white dark:bg-black/60 dark:hover:bg-black/85 backdrop-blur-md border border-slate-200/80 dark:border-white/15 text-slate-800 dark:text-slate-100 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto select-none group"
+                        className="absolute bottom-6 sm:bottom-8 right-6 sm:right-10 lg:right-12 z-40 inline-flex items-center gap-3 px-4 py-2 sm:py-2.5 rounded-full bg-black/85 hover:bg-black text-white backdrop-blur-md border border-white/25 shadow-2xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer pointer-events-auto select-none group"
                         aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
-                        title={isMuted ? 'Click to unmute video audio' : 'Click to mute video audio'}
+                        title={isMuted ? 'Click to unmute sound' : 'Click to mute sound'}
                     >
                         {isMuted ? (
                             <>
-                                <svg className="w-4 h-4 text-slate-600 dark:text-slate-400 group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                                </svg>
-                                <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase font-mono text-slate-700 dark:text-slate-300">Unmute</span>
+                                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 group-hover:bg-red-500/20 text-slate-300 group-hover:text-sysred transition-colors">
+                                    <svg className="w-3.5 h-3.5 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                                    </svg>
+                                </span>
+                                <span className="text-xs font-mono font-bold tracking-wider uppercase text-slate-200 group-hover:text-white">
+                                    Unmute Sound
+                                </span>
+                                <span className="w-8 h-4 rounded-full bg-white/20 p-0.5 flex items-center transition-colors">
+                                    <span className="w-3 h-3 rounded-full bg-white/80 shadow-sm" />
+                                </span>
                             </>
                         ) : (
                             <>
-                                <svg className="w-4 h-4 text-sysred dark:text-[#ff6b6b] animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                                </svg>
-                                <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase font-mono text-sysred dark:text-[#ff6b6b]">Mute</span>
+                                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/25 text-sysred dark:text-[#ff6b6b] animate-pulse">
+                                    <svg className="w-3.5 h-3.5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                    </svg>
+                                </span>
+                                <span className="text-xs font-mono font-bold tracking-wider uppercase text-sysred dark:text-[#ff6b6b]">
+                                    Sound Playing
+                                </span>
+                                <span className="w-8 h-4 rounded-full bg-sysred dark:bg-[#ff6b6b] p-0.5 flex items-center justify-end transition-colors shadow-[0_0_8px_rgba(221,60,52,0.6)]">
+                                    <span className="w-3 h-3 rounded-full bg-white shadow-sm" />
+                                </span>
                             </>
                         )}
                     </button>
