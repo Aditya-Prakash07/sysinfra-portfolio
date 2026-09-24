@@ -305,13 +305,23 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                         </div>
                     ))}
 
-                    {/* Deep pitch-black cinematic vignette in dark mode; ultra-clean and subtle in light mode (only for image slides so video remains crystal clear) */}
-                    {!slides[currentSlide]?.isVideo && (
+                    {/* Deep pitch-black cinematic vignette in dark mode; ultra-clean and subtle in light mode */}
+                    {!slides[currentSlide]?.isVideo ? (
                         <>
+                            {/* Dark mode cinematic framing */}
                             <div className="absolute inset-0 hidden dark:block bg-gradient-to-r from-black via-black/80 sm:via-black/55 to-transparent z-10 pointer-events-none" />
                             <div className="absolute inset-x-0 bottom-0 h-28 hidden dark:block bg-gradient-to-t from-black via-black/60 to-transparent z-10 pointer-events-none" />
                             <div className="absolute inset-x-0 top-0 h-24 hidden dark:block bg-gradient-to-b from-black/80 via-black/30 to-transparent z-10 pointer-events-none" />
+                            
+                            {/* Light mode clean white shade for text & navbar */}
                             <div className="absolute inset-0 block dark:hidden bg-gradient-to-r from-white via-white/80 sm:via-white/40 to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-x-0 top-0 h-28 sm:h-32 block dark:hidden bg-gradient-to-b from-white/95 via-white/60 to-transparent z-10 pointer-events-none" />
+                        </>
+                    ) : (
+                        <>
+                            {/* Video Banner in Light Mode: Shade of white across navbar & ambient overlay so navbar is clearly visible */}
+                            <div className="absolute inset-x-0 top-0 h-28 sm:h-36 block dark:hidden bg-gradient-to-b from-white/95 via-white/70 to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-0 block dark:hidden bg-gradient-to-r from-white/40 via-white/15 to-transparent z-10 pointer-events-none" />
                         </>
                     )}
                 </div>
