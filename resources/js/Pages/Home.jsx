@@ -643,12 +643,24 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             </p>
                         </div>
 
-                        <div className="flex items-center gap-4 shrink-0">
+                        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                            <a
+                                href="/download-catalog"
+                                download="SystemInfraSolutions_MasterCatalogue.pdf"
+                                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-red-50 dark:bg-red-950/30 border border-sysred/20 text-sysred dark:text-[#ff6b6b] text-xs font-mono font-bold hover:bg-sysred hover:text-white transition-all shadow-xs shrink-0"
+                                title="Download official corporate product catalogue (PDF)"
+                            >
+                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                <span>Catalog PDF</span>
+                            </a>
+
                             <Link 
                                 href="/products" 
-                                className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-paper hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors font-mono"
+                                className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-paper hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors font-mono whitespace-nowrap"
                             >
-                                <span>Browse 120+ Products</span>
+                                <span>Browse Products</span>
                                 <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>

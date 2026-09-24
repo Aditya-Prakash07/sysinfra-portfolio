@@ -21,6 +21,8 @@
 !/public/storage/banners/sysinfra-video-banner.mp4
 !/public/storage/logo/system_infra_solutions_logo_exact.svg
 !/public/storage/logo/system_infra_solutions_logo_dark.svg
+!/public/storage/catalogue/*.pdf
+!/public/img/catalogue/*.pdf
 /storage/*.key
 /storage/pail
 /vendor

@@ -154,23 +154,48 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                         Select a product vertical below to explore AMF panels, NOC telemetry, security automation, and turnkey engineering solutions.
                     </p>
 
-                    {/* Search filter input */}
-                    <div className="mt-8 max-w-lg relative">
-                        <input 
-                            type="text"
-                            placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect, Motorola)..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-16"
-                        />
-                        {search && (
-                            <button 
-                                onClick={() => setSearch('')}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-navy-border/80 transition-colors"
-                            >
-                                CLEAR
-                            </button>
-                        )}
+                    {/* Action Buttons & Search filter input */}
+                    <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                        <div className="relative flex-1 max-w-lg">
+                            <input 
+                                type="text"
+                                placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect, Motorola)..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-16 w-full"
+                            />
+                            {search && (
+                                <button 
+                                    onClick={() => setSearch('')}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-navy-border/80 transition-colors"
+                                >
+                                    CLEAR
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Direct Download Catalog CTA */}
+                        <a
+                            href="/download-catalog"
+                            download="SystemInfraSolutions_MasterCatalogue.pdf"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-sysred hover:bg-[#b82720] text-white font-mono text-xs uppercase tracking-wider font-bold shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0 select-none cursor-pointer"
+                            title="Download official corporate product catalogue (PDF)"
+                        >
+                            <svg className="w-4 h-4 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            <span>Download Catalog (PDF)</span>
+                        </a>
+
+                        {/* All Catalogues Link */}
+                        <Link
+                            href="/resources"
+                            className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 dark:border-white/15 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 text-slate-700 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shrink-0"
+                            title="View all 7 official technical catalogues"
+                        >
+                            <span>All 7 Catalogues</span>
+                            <span>&rarr;</span>
+                        </Link>
                     </div>
                 </div>
             </header>

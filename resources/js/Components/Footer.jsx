@@ -70,14 +70,14 @@ export default function Footer() {
                 />
 
                 <FooterColumn
-                    title="Company"
+                    title="Company & Resources"
                     links={[
                         { label: 'About SISPL & Factory', href: '/about-us' },
-                        { label: 'Manufacturing Facilities (8,000 sq ft)', href: '/about-us' },
-                        { label: 'Quality Accreditations (ISO)', href: '/about-us' },
+                        { label: 'Technical Catalogues (PDF)', href: '/resources' },
+                        { label: 'Download Master Catalog', href: '/download-catalog' },
                         { label: 'Our Clients & Enterprise Partners', href: '/clients' },
                         { label: 'Media & Event Gallery', href: '/media' },
-                        { label: 'Careers & Field Opportunities', href: '/careers' },
+                        { label: 'Careers & Opportunities', href: '/careers' },
                         { label: 'RFP & Contact Desk', href: '/contact-us' },
                     ]}
                 />

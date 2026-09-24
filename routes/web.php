@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OemPartnerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,13 @@ Route::get('/oem-partners', fn () => redirect('/clients', 301))->name('oem-partn
 Route::get('/media', [EventController::class, 'index'])->name('events.index');
 Route::get('/events', fn () => redirect('/media', 301));
 Route::get('/careers', [CareersController::class, 'index'])->name('careers');
+
+Route::get('/resources', [ResourceController::class, 'index'])->name('resources.index');
+Route::get('/resource.php', fn () => redirect('/resources', 301));
+Route::get('/catalogues', fn () => redirect('/resources', 301))->name('catalogues');
+Route::get('/catalogue', fn () => redirect('/resources', 301));
+Route::get('/download-catalog', [ResourceController::class, 'downloadMaster'])->name('catalog.download');
+Route::get('/catalogues/download/{catalogue}', [ResourceController::class, 'download'])->name('catalogues.download');
 
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact.store');

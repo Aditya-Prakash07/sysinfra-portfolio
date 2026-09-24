@@ -928,13 +928,29 @@ export default function About({ seo = {} }) {
                                     Overview of AMF systems, DC energy meters, Patparganj facility, and nationwide deployment capabilities.
                                 </p>
                             </div>
-                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10">
-                                <Link 
-                                    href="/contact-us"
-                                    className="btn-beacon w-full !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center"
+                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2">
+                                <a 
+                                    href="/download-catalog"
+                                    download="SystemInfraSolutions_MasterCatalogue.pdf"
+                                    className="btn-beacon flex-1 !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center flex items-center gap-1.5"
+                                    title="Download Master Corporate Catalogue"
                                 >
-                                    Request Catalogue PDF &rarr;
-                                </Link>
+                                    <svg className="w-3.5 h-3.5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <span>Download PDF</span>
+                                </a>
+                                <a
+                                    href="/storage/catalogue/SystemInfraSolutionsCatalogue.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                                    title="Preview in browser"
+                                >
+                                    <svg className="w-4 h-4 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
 
@@ -950,13 +966,29 @@ export default function About({ seo = {} }) {
                                     RFID electronic locking, dual PIR movement detection, and diesel tank ultrasonic siphon deterrent specifications.
                                 </p>
                             </div>
-                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10">
-                                <Link 
-                                    href="/contact-us"
-                                    className="btn-beacon w-full !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center"
+                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2">
+                                <a 
+                                    href="/storage/catalogue/IProtectCatalouge.pdf"
+                                    download="IProtectCatalouge.pdf"
+                                    className="btn-beacon flex-1 !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center flex items-center gap-1.5"
+                                    title="Download I-Protect Catalogue"
                                 >
-                                    Request I-Protect PDF &rarr;
-                                </Link>
+                                    <svg className="w-3.5 h-3.5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <span>Download PDF</span>
+                                </a>
+                                <a
+                                    href="/storage/catalogue/IProtectCatalouge.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                                    title="Preview in browser"
+                                >
+                                    <svg className="w-4 h-4 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
 
@@ -972,13 +1004,29 @@ export default function About({ seo = {} }) {
                                     Scalable microservices architecture, real-time map visualization, fuel fraud detection, and mobile alerting trees.
                                 </p>
                             </div>
-                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10">
-                                <Link 
-                                    href="/contact-us"
-                                    className="btn-beacon w-full !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center"
+                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2">
+                                <a 
+                                    href="/storage/catalogue/SIS-AXSCatalouge.pdf"
+                                    download="SIS-AXSCatalouge.pdf"
+                                    className="btn-beacon flex-1 !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center flex items-center gap-1.5"
+                                    title="Download SIS-AXS Catalogue"
                                 >
-                                    Request SYS-AXS PDF &rarr;
-                                </Link>
+                                    <svg className="w-3.5 h-3.5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <span>Download PDF</span>
+                                </a>
+                                <a
+                                    href="/storage/catalogue/SIS-AXSCatalouge.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                                    title="Preview in browser"
+                                >
+                                    <svg className="w-4 h-4 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
 
@@ -994,15 +1042,50 @@ export default function About({ seo = {} }) {
                                     Pole-mountable IP65 enclosure specifications for 5G micro-sites, CCTV edge aggregation, and power conversion.
                                 </p>
                             </div>
-                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10">
-                                <Link 
-                                    href="/contact-us"
-                                    className="btn-beacon w-full !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center"
+                            <div className="pt-4 mt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center gap-2">
+                                <a 
+                                    href="/storage/catalogue/SmartBoxCatalog.pdf"
+                                    download="SmartBoxCatalog.pdf"
+                                    className="btn-beacon flex-1 !py-2.5 text-xs font-mono font-bold uppercase tracking-wider justify-center flex items-center gap-1.5"
+                                    title="Download Smart Box Catalogue"
                                 >
-                                    Request Smart Box PDF &rarr;
-                                </Link>
+                                    <svg className="w-3.5 h-3.5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <span>Download PDF</span>
+                                </a>
+                                <a
+                                    href="/storage/catalogue/SmartBoxCatalog.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                                    title="Preview in browser"
+                                >
+                                    <svg className="w-4 h-4 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Bottom CTA to All Catalogues */}
+                    <div className="mt-10 p-6 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div className="text-center sm:text-left">
+                            <span className="font-display font-bold text-base text-slate-900 dark:text-white block">
+                                Need technical sheets for AMF Panels, Dual DG Controllers or Security Systems?
+                            </span>
+                            <span className="text-xs text-slate-500 dark:text-steel mt-0.5 block">
+                                Access our complete official documentation repository matching sysinfra.in/resource.php.
+                            </span>
+                        </div>
+                        <Link
+                            href="/resources"
+                            className="btn-outline-dark !py-2.5 !px-5 text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 shrink-0"
+                        >
+                            <span>Browse All 7 Technical Catalogues</span>
+                            <span>&rarr;</span>
+                        </Link>
                     </div>
                 </div>
             </section>

@@ -7,6 +7,7 @@ const NAV_LINKS = [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Products', href: '/products', hasDropdown: true },
+    { label: 'Resources', href: '/resources' },
     { label: 'Our Clients', href: '/clients' },
     { label: 'Media', href: '/media' },
     { label: 'Careers', href: '/careers' },
@@ -225,13 +226,25 @@ export default function Navbar() {
                                         <span>SYSINFRA PRODUCT ECOSYSTEM &bull; ENERGY &bull; NOC &bull; DEFENCE &bull; SECURITY &bull; SERVICES</span>
                                     </div>
                                     
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-3">
+                                        <a 
+                                            href="/download-catalog" 
+                                            download="SystemInfraSolutions_MasterCatalogue.pdf"
+                                            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-sysred hover:bg-[#b82720] text-white text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider transition-all duration-150 active:scale-95 shadow-sm"
+                                            title="Download Master Product Catalog (PDF)"
+                                        >
+                                            <svg className="w-3.5 h-3.5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            <span>Download Catalog</span>
+                                        </a>
+
                                         <Link 
                                             href="/products" 
                                             onClick={() => setProductsDropdown(false)}
                                             className="text-xs font-mono text-slate-500 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors font-semibold flex items-center gap-1.5"
                                         >
-                                            <span>Browse Full Catalog</span>
+                                            <span>Browse All</span>
                                             <span>&rarr;</span>
                                         </Link>
 
@@ -377,14 +390,27 @@ export default function Navbar() {
                                     </div>
 
                                     {/* Right CTA */}
-                                    <Link 
-                                        href="/products" 
-                                        onClick={() => setProductsDropdown(false)}
-                                        className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px] whitespace-nowrap ml-auto"
-                                    >
-                                        <span>All Products</span>
-                                        <span>&rarr;</span>
-                                    </Link>
+                                    <div className="flex items-center gap-4 ml-auto">
+                                        <Link 
+                                            href="/resources" 
+                                            onClick={() => setProductsDropdown(false)}
+                                            className="text-slate-600 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono hover:underline flex items-center gap-1 text-[11px] whitespace-nowrap"
+                                        >
+                                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                            <span>All 7 Catalogues (PDF)</span>
+                                        </Link>
+
+                                        <Link 
+                                            href="/products" 
+                                            onClick={() => setProductsDropdown(false)}
+                                            className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px] whitespace-nowrap"
+                                        >
+                                            <span>All Products</span>
+                                            <span>&rarr;</span>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
