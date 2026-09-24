@@ -23,31 +23,68 @@ export default function Navbar() {
     const dropdownTimeoutRef = useRef(null);
     const navRef = useRef(null);
     const productSliderRef = useRef(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(true);
+    const autoSlideTimerRef = useRef(null);
+    const [isSliderHovered, setIsSliderHovered] = useState(false);
 
-    const updateScrollButtons = () => {
-        if (productSliderRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = productSliderRef.current;
-            setCanScrollLeft(scrollLeft > 10);
-            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    const slideProducts = (direction = 'next') => {
+        if (!productSliderRef.current) return;
+        const container = productSliderRef.current;
+        const firstCard = container.firstElementChild;
+        const cardWidth = firstCard ? firstCard.offsetWidth : 350;
+        const gap = 24;
+        const scrollDistance = cardWidth + gap;
+        const { scrollLeft, scrollWidth, clientWidth } = container;
+
+        if (direction === 'next') {
+            if (scrollLeft + clientWidth >= scrollWidth - 25) {
+                // Loop back to start smoothly
+                container.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+            }
+        } else {
+            if (scrollLeft <= 25) {
+                // Loop to end smoothly
+                container.scrollTo({ left: scrollWidth - clientWidth, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
+            }
         }
     };
 
-    const slideProducts = (direction) => {
-        if (productSliderRef.current) {
-            const firstCard = productSliderRef.current.firstElementChild;
-            const cardWidth = firstCard ? firstCard.offsetWidth : 360;
-            const gap = 24;
-            const scrollDistance = cardWidth + gap;
-
-            productSliderRef.current.scrollBy({
-                left: direction === 'next' ? scrollDistance : -scrollDistance,
-                behavior: 'smooth',
-            });
-            setTimeout(updateScrollButtons, 350);
+    const handleManualSlide = (direction) => {
+        slideProducts(direction);
+        if (autoSlideTimerRef.current) {
+            clearInterval(autoSlideTimerRef.current);
+            if (!isSliderHovered && productsDropdown) {
+                autoSlideTimerRef.current = setInterval(() => {
+                    slideProducts('next');
+                }, 3500);
+            }
         }
     };
+
+    // Auto-advance product cards like banners every 3.5 seconds, paused on hover
+    useEffect(() => {
+        if (!productsDropdown || isSliderHovered) {
+            if (autoSlideTimerRef.current) {
+                clearInterval(autoSlideTimerRef.current);
+                autoSlideTimerRef.current = null;
+            }
+            return;
+        }
+
+        autoSlideTimerRef.current = setInterval(() => {
+            slideProducts('next');
+        }, 3500);
+
+        return () => {
+            if (autoSlideTimerRef.current) {
+                clearInterval(autoSlideTimerRef.current);
+                autoSlideTimerRef.current = null;
+            }
+        };
+    }, [productsDropdown, isSliderHovered]);
 
     // Banners background detection: On the home page and not scrolled past hero
     const isHome = url === '/' || url === '' || url.startsWith('/#') || url.startsWith('/?');
@@ -73,13 +110,6 @@ export default function Navbar() {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
-
-    useEffect(() => {
-        if (productsDropdown) {
-            const timer = setTimeout(updateScrollButtons, 100);
-            return () => clearTimeout(timer);
-        }
-    }, [productsDropdown]);
 
     const handleMouseEnter = () => {
         if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
@@ -168,12 +198,28 @@ export default function Navbar() {
                                                         </Link>
                                                     </div>
 
-                                                    {/* Single Row Slider with Horizontal Smooth Scroll */}
-                                                    <div className="relative group/slider">
+                                                    {/* Single Row Slider with Horizontal Smooth Scroll & Side Arrows */}
+                                                    <div 
+                                                        className="relative group/slider"
+                                                        onMouseEnter={() => setIsSliderHovered(true)}
+                                                        onMouseLeave={() => setIsSliderHovered(false)}
+                                                    >
+                                                        {/* Left Side Quick Chevron Arrow (Moveable to both sides with circular looping) */}
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleManualSlide('prev')}
+                                                            className="flex absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-white/95 dark:bg-[#141414]/95 shadow-[0_4px_20px_rgba(0,0,0,0.18)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.7)] border border-slate-200 dark:border-white/20 items-center justify-center text-slate-700 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto backdrop-blur-md"
+                                                            aria-label="Previous Slide"
+                                                            title="Previous Products"
+                                                        >
+                                                            <svg className="w-5 h-5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                                            </svg>
+                                                        </button>
+
                                                         <div 
                                                             ref={productSliderRef}
-                                                            onScroll={updateScrollButtons}
-                                                            className="flex gap-5 xl:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-2 px-1"
+                                                            className="flex gap-5 xl:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-2 px-3 sm:px-4"
                                                         >
                                                             {categoriesNav.map((cat, idx) => (
                                                                 <div 
@@ -247,39 +293,24 @@ export default function Navbar() {
                                                                         </span>
                                                                     </div>
                                                                 </div>
-                                                            ))}
+                                                             ))}
                                                         </div>
 
-                                                        {/* Side Quick Chevron Arrows */}
-                                                        {canScrollLeft && (
-                                                            <button
-                                                                type="button"
-                                                                onClick={() => slideProducts('prev')}
-                                                                className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-30 w-10 h-10 rounded-full bg-white dark:bg-black/90 shadow-xl border border-slate-200 dark:border-white/20 items-center justify-center text-slate-700 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
-                                                                aria-label="Previous Slide"
-                                                                title="Previous"
-                                                            >
-                                                                <svg className="w-5 h-5 stroke-[1.8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                                                </svg>
-                                                            </button>
-                                                        )}
-                                                        {canScrollRight && (
-                                                            <button
-                                                                type="button"
-                                                                onClick={() => slideProducts('next')}
-                                                                className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-30 w-10 h-10 rounded-full bg-white dark:bg-black/90 shadow-xl border border-slate-200 dark:border-white/20 items-center justify-center text-slate-700 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
-                                                                aria-label="Next Slide"
-                                                                title="Next"
-                                                            >
-                                                                <svg className="w-5 h-5 stroke-[1.8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                                                                </svg>
-                                                            </button>
-                                                        )}
+                                                        {/* Right Side Quick Chevron Arrow (Moveable to both sides with circular looping) */}
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleManualSlide('next')}
+                                                            className="flex absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-40 w-11 h-11 rounded-full bg-white/95 dark:bg-[#141414]/95 shadow-[0_4px_20px_rgba(0,0,0,0.18)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.7)] border border-slate-200 dark:border-white/20 items-center justify-center text-slate-700 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer pointer-events-auto backdrop-blur-md"
+                                                            aria-label="Next Slide"
+                                                            title="Next Products"
+                                                        >
+                                                            <svg className="w-5 h-5 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                            </svg>
+                                                        </button>
                                                     </div>
 
-                                                    {/* Bottom Executive Utility Strip with Pagination in the bottom of the modal */}
+                                                    {/* Bottom Executive Utility Strip without pagination buttons */}
                                                     <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-[#0d0d0d] -mx-6 -mb-6 p-3.5 px-6 flex items-center justify-between gap-4 text-xs">
                                                         {/* Left Credentials Info */}
                                                         <div className="hidden md:flex flex-wrap items-center gap-3 text-[11px] font-mono text-slate-500 dark:text-steel">
@@ -293,48 +324,11 @@ export default function Navbar() {
                                                             <span>Motorola Solutions Partner</span>
                                                         </div>
 
-                                                        {/* Center Pagination (Only simple arrows, matching home page banner, NO page number) */}
-                                                        <div className="flex items-center justify-center gap-2 mx-auto md:mx-0">
-                                                            <button
-                                                                type="button"
-                                                                onClick={() => slideProducts('prev')}
-                                                                disabled={!canScrollLeft}
-                                                                className={`flex items-center justify-center p-2 rounded-full transition-all duration-200 cursor-pointer select-none ${
-                                                                    canScrollLeft
-                                                                        ? 'text-slate-700/80 hover:text-slate-950 dark:text-white/70 dark:hover:text-white hover:scale-125 active:scale-90 bg-slate-200/60 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20'
-                                                                        : 'text-slate-300 dark:text-white/20 cursor-not-allowed opacity-40 bg-slate-100 dark:bg-white/5'
-                                                                }`}
-                                                                aria-label="Previous Slide"
-                                                                title="Previous"
-                                                            >
-                                                                <svg className="w-5 h-5 stroke-[1.6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                                                </svg>
-                                                            </button>
-
-                                                            <button
-                                                                type="button"
-                                                                onClick={() => slideProducts('next')}
-                                                                disabled={!canScrollRight}
-                                                                className={`flex items-center justify-center p-2 rounded-full transition-all duration-200 cursor-pointer select-none ${
-                                                                    canScrollRight
-                                                                        ? 'text-slate-700/80 hover:text-slate-950 dark:text-white/70 dark:hover:text-white hover:scale-125 active:scale-90 bg-slate-200/60 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20'
-                                                                        : 'text-slate-300 dark:text-white/20 cursor-not-allowed opacity-40 bg-slate-100 dark:bg-white/5'
-                                                                }`}
-                                                                aria-label="Next Slide"
-                                                                title="Next"
-                                                            >
-                                                                <svg className="w-5 h-5 stroke-[1.6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-
                                                         {/* Right CTA */}
                                                         <Link 
                                                             href="/products" 
                                                             onClick={() => setProductsDropdown(false)}
-                                                            className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px] whitespace-nowrap ml-auto md:ml-0"
+                                                            className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px] whitespace-nowrap ml-auto"
                                                         >
                                                             <span>All Products</span>
                                                             <span>&rarr;</span>
