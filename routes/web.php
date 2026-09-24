@@ -11,6 +11,7 @@ use App\Http\Controllers\OemPartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\SitemapController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
@@ -48,5 +49,17 @@ Route::get('/catalogues/download/{catalogue}', [ResourceController::class, 'down
 
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact.store');
+
+// Legacy sysinfra.in contact and inquiry endpoints
+Route::get('/contact', fn () => redirect('/contact-us', 301));
+Route::post('/contact', [ContactUsController::class, 'store']);
+Route::get('/connectWithus.php', fn () => redirect('/contact-us', 301));
+Route::get('/inquiryNow.php', fn () => redirect('/contact-us', 301));
+Route::match(['get', 'post'], '/inquiry.php', function (Request $request) {
+    if ($request->isMethod('post')) {
+        return app(ContactUsController::class)->store($request);
+    }
+    return redirect('/contact-us', 301);
+});
 
 // Filament serves /admin itself once installed — no route needed here.

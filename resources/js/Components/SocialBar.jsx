@@ -1,0 +1,80 @@
+import React from 'react';
+
+export const SOCIAL_LINKS = [
+    {
+        name: 'Facebook',
+        handle: 'System Infra Solutions',
+        label: 'System Infra Solutions on Facebook',
+        href: 'https://www.facebook.com/System-Infra-Solutions-Pvt-Ltd-109200568183891/?ref=pages_you_manage',
+        color: '#1877F2',
+        bgColor: 'bg-[#1877F2]',
+        hoverBg: 'hover:bg-[#166fe5]',
+        textColor: 'text-[#1877F2]',
+        icon: (props) => (
+            <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+        ),
+    },
+    {
+        name: 'Twitter',
+        handle: '@SystemInfra1',
+        label: 'System Infra Solutions on Twitter / X',
+        href: 'https://twitter.com/SystemInfra1',
+        color: '#1DA1F2',
+        bgColor: 'bg-[#0f1419] dark:bg-black',
+        hoverBg: 'hover:bg-[#1da1f2]',
+        textColor: 'text-[#1DA1F2]',
+        icon: (props) => (
+            <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+        ),
+    },
+    {
+        name: 'LinkedIn',
+        handle: 'System Infra',
+        label: 'System Infra Solutions on LinkedIn',
+        href: 'https://www.linkedin.com/in/system-infra-32a456231/',
+        color: '#0A66C2',
+        bgColor: 'bg-[#0A66C2]',
+        hoverBg: 'hover:bg-[#095196]',
+        textColor: 'text-[#0A66C2]',
+        icon: (props) => (
+            <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+        ),
+    },
+];
+
+export default function SocialBar() {
+    return (
+        <aside 
+            aria-label="Social Media Channels"
+            className="fixed left-0 top-[45%] -translate-y-1/2 z-40 hidden sm:flex flex-col shadow-2xl rounded-r-xl overflow-hidden border-y border-r border-white/20 dark:border-white/10"
+        >
+            {SOCIAL_LINKS.map((item) => {
+                const IconComponent = item.icon;
+                return (
+                    <a
+                        key={item.name}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={item.label}
+                        title={item.label}
+                        className={`group relative flex items-center justify-center w-11 h-11 text-white ${item.bgColor} ${item.hoverBg} transition-all duration-300 hover:w-36`}
+                    >
+                        <div className="shrink-0 flex items-center justify-center w-11 h-11">
+                            <IconComponent className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                        </div>
+                        <span className="max-w-0 opacity-0 overflow-hidden whitespace-nowrap text-xs font-mono font-semibold transition-all duration-300 group-hover:max-w-xs group-hover:opacity-100 pr-3">
+                            {item.name}
+                        </span>
+                    </a>
+                );
+            })}
+        </aside>
+    );
+}
