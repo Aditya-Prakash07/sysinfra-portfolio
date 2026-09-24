@@ -181,17 +181,26 @@ export default function Home({ banners = [], categories = [], featuredProducts =
 
     // Synchronize video playback & reset currentTime when navigating between slides
     useEffect(() => {
-        if (videoRef.current) {
-            if (slides[currentSlide]?.isVideo) {
-                videoRef.current.currentTime = 0;
-                videoRef.current.muted = isMuted;
-                const playPromise = videoRef.current.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {});
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (slides[currentSlide]?.isVideo) {
+            try {
+                if (video.readyState >= 1) {
+                    video.currentTime = 0;
                 }
-            } else {
-                videoRef.current.pause();
+            } catch (e) {}
+            video.muted = isMuted;
+            video.defaultMuted = true;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                });
             }
+        } else {
+            video.pause();
         }
     }, [currentSlide, slides]);
 
@@ -264,14 +273,22 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                             {s.isVideo ? (
                                 <video
                                     ref={videoRef}
-                                    key={`${s.resolved_video_path}-${isDark ? 'dark' : 'light'}`}
-                                    src={`/storage/${s.resolved_video_path}`}
+                                    key={s.resolved_video_path}
+                                    src={s.resolved_video_path}
                                     autoPlay
                                     muted={isMuted}
                                     playsInline
+                                    preload="auto"
                                     onEnded={nextSlide}
+                                    onLoadedMetadata={() => {
+                                        if (slides[currentSlide]?.isVideo && videoRef.current) {
+                                            videoRef.current.play().catch(() => {});
+                                        }
+                                    }}
                                     className="w-full h-full object-cover object-center"
-                                />
+                                >
+                                    <source src={s.resolved_video_path} type="video/mp4" />
+                                </video>
                             ) : (
                                 <img
                                     src={s.resolved_image_path}

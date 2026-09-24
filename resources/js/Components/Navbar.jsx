@@ -164,16 +164,14 @@ export default function Navbar() {
                                         onMouseEnter={handleMouseEnter}
                                         onMouseLeave={handleMouseLeave}
                                     >
-                                        <button
-                                            type="button"
-                                            onClick={() => setProductsDropdown((prev) => !prev)}
+                                        <Link
+                                            href={link.href}
+                                            onClick={() => setProductsDropdown(false)}
                                             className={`text-sm font-medium transition-colors flex items-center gap-1.5 py-2 whitespace-nowrap cursor-pointer ${
                                                 isOverBanner && theme === 'light'
                                                     ? (isActive ? 'text-sysred font-bold' : 'text-slate-800 hover:text-sysred font-semibold')
                                                     : (isActive ? 'text-sysred dark:text-[#ff6b6b] font-bold' : 'text-slate-700 dark:text-paper/85 hover:text-sysred dark:hover:text-[#ff6b6b]')
                                             }`}
-                                            aria-haspopup="dialog"
-                                            aria-expanded={productsDropdown}
                                         >
                                             <span className="whitespace-nowrap">{link.label}</span>
                                             <svg 
@@ -188,7 +186,7 @@ export default function Navbar() {
                                             >
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                             </svg>
-                                        </button>
+                                        </Link>
                                     </li>
                                 );
                             }
@@ -210,23 +208,15 @@ export default function Navbar() {
                         })}
                     </ul>
 
-                    {/* Products Mega Modal (Placed directly in the center of the view board / viewport) */}
+                    {/* Products Mega Dropdown (Horizontally Centered in Viewport, positioned directly beneath navbar) */}
                     {productsDropdown && (
                         <div 
-                            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-8"
-                            onMouseEnter={() => {
-                                if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
-                            }}
+                            className="fixed inset-x-0 top-[56px] sm:top-[64px] z-50 flex justify-center px-3 sm:px-6 pt-2 pointer-events-none"
+                            onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
                         >
-                            {/* Soft Backdrop Dimmer */}
-                            <div 
-                                className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in" 
-                                onClick={() => setProductsDropdown(false)}
-                            />
-
-                            {/* Modal Window Container (Centered in the view board) */}
-                            <div className="relative z-10 w-full max-w-[1280px] xl:max-w-[1360px] max-h-[92vh] flex flex-col bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] rounded-2xl p-6 sm:p-7 overflow-hidden transition-all duration-300 animate-in fade-in zoom-in-95">
+                            {/* Dropdown Container (Centered Horizontally across viewport, auto-disappears when not hovered) */}
+                            <div className="relative pointer-events-auto w-full max-w-[1240px] xl:max-w-[1360px] flex flex-col bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.25)] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7)] rounded-2xl p-6 sm:p-7 overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-top-2">
                                 
                                 {/* Top Telemetry Header with Close Button */}
                                 <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/10 pb-3.5 mb-5 gap-3 shrink-0">
