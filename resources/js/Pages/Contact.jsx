@@ -101,7 +101,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                                                     onClick={() => setSelectedType(type.id)}
                                                     className={`p-3 rounded-lg border text-left text-xs font-mono transition-all duration-200 ${
                                                         selectedType === type.id
-                                                            ? 'border-sysred dark:border-beacon bg-blue-50 dark:bg-beacon/10 text-blue-900 dark:text-beacon font-bold'
+                                                            ? 'border-sysred dark:border-sysred bg-red-50 dark:bg-red-500/10 text-sysred dark:text-[#ff6b6b] font-bold shadow-xs'
                                                             : 'border-slate-200 dark:border-navy-border/80 text-slate-700 dark:text-paper/80 hover:bg-slate-50 dark:hover:bg-white/5'
                                                     }`}
                                                 >

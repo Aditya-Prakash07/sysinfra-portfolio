@@ -143,7 +143,7 @@ export default function Navbar() {
                                                             >
                                                                 <div>
                                                                     <div className="flex items-start gap-2.5 mb-2.5">
-                                                                        <div className="w-8 h-8 rounded-lg bg-blue-500/10 dark:bg-beacon/10 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-200 text-xs font-bold font-mono">
+                                                                        <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-200 text-xs font-bold font-mono">
                                                                             0{idx + 1}
                                                                         </div>
                                                                         <div className="min-w-0 flex-1">
@@ -316,7 +316,7 @@ export default function Navbar() {
                                 onClick={() => setMobileOpen(false)}
                                 className={`block py-2.5 text-base font-medium rounded-lg px-3 transition-colors ${
                                     url === link.href
-                                        ? 'bg-blue-50 dark:bg-beacon/10 text-sysred dark:text-[#ff6b6b] font-semibold'
+                                        ? 'bg-red-50 dark:bg-red-500/10 text-sysred dark:text-[#ff6b6b] font-semibold'
                                         : 'text-slate-800 dark:text-paper hover:bg-slate-100 dark:hover:bg-white/5'
                                 }`}
                             >

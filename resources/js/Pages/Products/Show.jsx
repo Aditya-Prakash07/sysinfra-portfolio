@@ -141,7 +141,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                     onClick={() => setActiveTab('specs')}
                                     className={`pb-3 border-b-2 font-bold transition-colors ${
                                         activeTab === 'specs'
-                                            ? 'border-blue-500 dark:border-beacon text-sysred dark:text-[#ff6b6b]'
+                                            ? 'border-sysred dark:border-[#ff6b6b] text-sysred dark:text-[#ff6b6b]'
                                             : 'border-transparent text-slate-500 dark:text-steel hover:text-slate-900 dark:hover:text-paper'
                                     }`}
                                 >
@@ -151,7 +151,7 @@ export default function ProductsShow({ category, subcategory, item, seo = {} }) 
                                     onClick={() => setActiveTab('overview')}
                                     className={`pb-3 border-b-2 font-bold transition-colors ${
                                         activeTab === 'overview'
-                                            ? 'border-blue-500 dark:border-beacon text-sysred dark:text-[#ff6b6b]'
+                                            ? 'border-sysred dark:border-[#ff6b6b] text-sysred dark:text-[#ff6b6b]'
                                             : 'border-transparent text-slate-500 dark:text-steel hover:text-slate-900 dark:hover:text-paper'
                                     }`}
                                 >

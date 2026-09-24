@@ -42,7 +42,7 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                         <span>/</span>
                         <Link href="/latest-news" className="hover:text-slate-900 dark:hover:text-white transition-colors">LATEST NEWS</Link>
                         <span>/</span>
-                        <span className="text-blue-600 dark:text-beacon uppercase font-bold truncate max-w-[200px] sm:max-w-xs">{post.title}</span>
+                        <span className="text-sysred dark:text-[#ff6b6b] uppercase font-bold truncate max-w-[200px] sm:max-w-xs">{post.title}</span>
                     </nav>
 
                     {/* Meta info */}
@@ -89,7 +89,7 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                         className="prose prose-slate dark:prose-invert max-w-none text-base sm:text-lg leading-relaxed space-y-6 font-sans
                             prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white
                             prose-p:text-slate-700 dark:prose-p:text-slate-300
-                            prose-a:text-blue-600 dark:prose-a:text-beacon prose-a:no-underline hover:prose-a:underline"
+                            prose-a:text-sysred dark:prose-a:text-[#ff6b6b] prose-a:no-underline hover:prose-a:underline"
                         dangerouslySetInnerHTML={{ __html: post.body }}
                     />
 
@@ -97,7 +97,7 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                     <div className="mt-14 pt-8 border-t border-slate-200 dark:border-navy-border flex items-center justify-between">
                         <Link
                             href="/latest-news"
-                            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 dark:text-beacon hover:underline uppercase tracking-wider"
+                            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-sysred dark:text-[#ff6b6b] hover:underline uppercase tracking-wider"
                         >
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -123,7 +123,7 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                             <h2 className="text-xl sm:text-2xl font-display font-bold text-slate-900 dark:text-paper">
                                 More Press Dispatches
                             </h2>
-                            <Link href="/latest-news" className="text-xs font-mono text-blue-600 dark:text-beacon hover:underline font-medium">
+                            <Link href="/latest-news" className="text-xs font-mono text-sysred dark:text-[#ff6b6b] hover:underline font-medium">
                                 View Archive &rarr;
                             </Link>
                         </div>
@@ -139,12 +139,12 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                                 <Link
                                     key={r.id || r.slug}
                                     href={`/latest-news/${r.slug}`}
-                                    className="card-symmetric p-6 group hover:border-blue-500/60 dark:hover:border-beacon/50 transition-all duration-300"
+                                    className="card-symmetric p-6 group hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] hover:-translate-y-1.5 transition-all duration-300"
                                 >
-                                    <div className="text-[10px] font-mono text-blue-600 dark:text-beacon font-bold mb-2">
+                                    <div className="text-[10px] font-mono text-sysred dark:text-[#ff6b6b] font-bold mb-2">
                                         {formatDate(r.published_at)}
                                     </div>
-                                    <h3 className="font-display font-bold text-base text-slate-900 dark:text-paper group-hover:text-blue-600 dark:group-hover:text-beacon transition-colors line-clamp-2 leading-snug mb-2">
+                                    <h3 className="font-display font-bold text-base text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors line-clamp-2 leading-snug mb-2">
                                         {r.title}
                                     </h3>
                                     <p className="text-xs text-slate-600 dark:text-steel line-clamp-2 leading-relaxed">

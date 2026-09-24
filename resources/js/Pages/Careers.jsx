@@ -292,8 +292,9 @@ ${formData.coverLetter}`
                             return (
                                 <div 
                                     key={job.id || job.title} 
-                                    className="panel p-6 sm:p-7 hover:border-red-500/40 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300"
+                                    className="group relative panel-hover p-6 sm:p-7 hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-2xl hover:-translate-y-1.5 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
                                 >
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#dd3c34] dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
                                         <div className="space-y-2 max-w-2xl">
                                             <div className="flex flex-wrap items-center gap-2">

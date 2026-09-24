@@ -523,7 +523,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                              key={feat} 
                                              className="flex items-start gap-2.5 text-sm font-medium text-slate-800 dark:text-paper p-2 rounded-lg hover:bg-red-500/5 dark:hover:bg-red-500/10 hover:translate-x-1.5 transition-all duration-200 group cursor-default"
                                         >
-                                            <div className="w-5 h-5 rounded-full bg-blue-500/15 dark:bg-beacon/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-sysred group-hover:text-white transition-colors">
+                                            <div className="w-5 h-5 rounded-full bg-red-500/15 dark:bg-red-500/20 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-sysred group-hover:text-white transition-colors">
                                                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                 </svg>
@@ -737,7 +737,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                             <div>
                                                 {/* Subcategory badge + index */}
                                                 <div className="flex items-center justify-between mb-1.5">
-                                                    <span className="font-mono text-[10px] tracking-wider text-sysred dark:text-[#ff6b6b] font-bold px-1.5 py-0.5 rounded bg-blue-500/10 dark:bg-beacon/10 border border-blue-500/20 dark:border-beacon/20">
+                                                    <span className="font-mono text-[10px] tracking-wider text-sysred dark:text-[#ff6b6b] font-bold px-1.5 py-0.5 rounded bg-red-500/10 dark:bg-red-500/15 border border-red-500/20 dark:border-red-500/30">
                                                         {item.subcategory?.name?.toUpperCase() || 'RADIO SYSTEM'}
                                                     </span>
                                                     <span className="text-[10px] font-mono text-slate-400 dark:text-steel tracking-wider">
@@ -957,7 +957,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                                 <span className="group-hover:text-slate-900 dark:group-hover:text-paper font-semibold inline-flex items-center gap-2">
                                                     Read Full Intelligence Dispatch
                                                 </span>
-                                                <div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-navy-surface flex items-center justify-center text-sysred dark:text-[#ff6b6b] group-hover:bg-sysred group-hover:text-white dark:group-hover:bg-beacon dark:group-hover:text-slate-950 transition-all duration-300 shadow-xs">
+                                                <div className="w-8 h-8 rounded-full bg-red-50 dark:bg-navy-surface flex items-center justify-center text-sysred dark:text-[#ff6b6b] group-hover:bg-sysred group-hover:text-white dark:group-hover:bg-sysred dark:group-hover:text-white transition-all duration-300 shadow-xs">
                                                     <svg className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                                     </svg>

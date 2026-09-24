@@ -34,7 +34,7 @@ const PILLARS = [
     {
         id: 'security',
         title: 'Secure Solutions',
-        color: '#2563eb', // Royal/Electric Blue (6 o'clock)
+        color: '#b91c1c', // Crimson Red (6 o'clock)
         angle: 90,
         x: 270,
         y: 455,
@@ -44,7 +44,7 @@ const PILLARS = [
     {
         id: 'technology',
         title: 'Latest Technology',
-        color: '#3e768e', // Steel Teal / Cyan (8 o'clock)
+        color: '#c2410c', // Deep Amber / Rust (8 o'clock)
         angle: 150,
         x: 110,
         y: 363,
@@ -74,12 +74,12 @@ export default function WhySysinfraDiagram() {
     return (
         <section className="py-20 bg-white dark:bg-[#0a0a0a] transition-colors duration-300 relative overflow-hidden">
             {/* Soft Ambient Radial Background Aura */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 dark:bg-beacon/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-500/5 dark:bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
 
             <div className="container-content relative z-10">
                 {/* Section Header */}
                 <div className="text-center max-w-2xl mx-auto mb-14">
-                    <span className="text-xs font-mono uppercase tracking-widest text-blue-600 dark:text-beacon font-bold block mb-2">
+                    <span className="text-xs font-mono uppercase tracking-widest text-sysred dark:text-[#ff6b6b] font-bold block mb-2">
                         OUR CORE VALUE PROPOSITION
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-paper tracking-tight">
@@ -241,7 +241,7 @@ export default function WhySysinfraDiagram() {
 
                     {/* Right: Interactive Pillar Breakdown & Highlighting */}
                     <div className="lg:col-span-5 space-y-4">
-                        <div className="panel p-6 sm:p-8 relative overflow-hidden border border-slate-200/90 dark:border-navy-border shadow-lg">
+                        <div className="panel p-6 sm:p-8 relative overflow-hidden border border-slate-200/90 dark:border-navy-border shadow-lg hover:shadow-2xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] hover:border-sysred/60 dark:hover:border-sysred/70 transition-all duration-300">
                             <div className="flex items-center gap-3 mb-4">
                                 <span 
                                     className="w-4 h-4 rounded-full transition-colors duration-300"
@@ -261,7 +261,7 @@ export default function WhySysinfraDiagram() {
 
                             <div className="mt-6 pt-5 border-t border-slate-200 dark:border-navy-border/60 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-steel">
                                 <span>INTERACTIVE VALUE MATRIX</span>
-                                <span className="text-blue-600 dark:text-beacon font-semibold">
+                                <span className="text-sysred dark:text-[#ff6b6b] font-semibold">
                                     {activePillar ? 'ACTIVE PILLAR' : '6 VALUE DRIVERS'}
                                 </span>
                             </div>
@@ -278,7 +278,7 @@ export default function WhySysinfraDiagram() {
                                         onMouseEnter={() => setActivePillar(p)}
                                         className={`p-3 rounded-xl border text-left transition-all text-xs font-medium flex items-center gap-2.5 ${
                                             isSelected 
-                                                ? 'border-blue-500/80 bg-white dark:bg-navy-surface shadow-md scale-[1.02]' 
+                                                ? 'border-sysred/80 bg-white dark:bg-navy-surface shadow-md shadow-sysred/15 scale-[1.02]' 
                                                 : 'border-slate-200 dark:border-navy-border/80 bg-white dark:bg-navy-surface/80 hover:border-slate-300 dark:hover:border-navy-border'
                                         }`}
                                     >

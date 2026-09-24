@@ -187,8 +187,8 @@ export default function OemPartners({ partners = [], seo = {} }) {
             {/* Header */}
             <header className="relative bg-white dark:bg-[#000000] pt-36 pb-20 overflow-hidden transition-colors duration-300">
                 <div className="container-content relative z-10">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-beacon animate-pulse" />
+                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
                         <span>GLOBAL TECHNOLOGY ALLIANCES &bull; OEM NETWORK</span>
                     </div>
 
@@ -234,7 +234,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                     {/* Official Live Site Header */}
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                         <div>
-                            <span className="text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider font-bold block mb-1">
+                            <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-1">
                                 AUTHORIZED ECOSYSTEM &bull; OEM NETWORK
                             </span>
                             <AnimatedHeading
@@ -249,7 +249,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             </p>
                         </div>
                         <div className="shrink-0">
-                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-blue-50 dark:bg-beacon/10 text-blue-700 dark:text-beacon border border-blue-200 dark:border-beacon/20">
+                            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-red-50 dark:bg-red-500/10 text-sysred dark:text-[#ff6b6b] border border-red-200 dark:border-red-500/20">
                                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                 {mergedPartners.length} Global Technology Alliances
                             </span>
@@ -264,8 +264,9 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             return (
                                 <article
                                     key={partner.id}
-                                    className="group rounded-2xl bg-white dark:bg-navy-surface border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-sm hover:shadow-xl hover:border-blue-500/40 dark:hover:border-beacon/40 transition-all duration-300"
+                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-sm hover:shadow-2xl hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
                                 >
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                                         {/* Left Column: Brand Identity, Logo, Quick Specs & Official Link */}
                                         <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-white/10 pb-7 lg:pb-0 lg:pr-8">
@@ -279,12 +280,12 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                                 />
                                             </div>
 
-                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-blue-50 dark:bg-beacon/10 text-blue-700 dark:text-beacon border border-blue-200 dark:border-beacon/20 mb-3">
+                                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider font-semibold bg-red-50 dark:bg-red-500/10 text-sysred dark:text-[#ff6b6b] border border-red-200 dark:border-red-500/20 mb-3">
                                                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                                 {partner.status}
                                             </span>
 
-                                            <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-beacon transition-colors">
+                                            <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white mb-3 group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors">
                                                 {partner.name}
                                             </h3>
 
@@ -300,7 +301,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                                 </div>
                                                 <div className="flex justify-between items-center py-1">
                                                     <span className="text-slate-400 dark:text-steel">SYSINFRA ALLIANCE:</span>
-                                                    <span className="font-bold text-blue-600 dark:text-beacon">Since {partner.partnershipYear}</span>
+                                                    <span className="font-bold text-sysred dark:text-[#ff6b6b]">Since {partner.partnershipYear}</span>
                                                 </div>
                                             </div>
 
@@ -309,7 +310,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                                     href={partner.website_url}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="mt-5 group/link inline-flex items-center gap-2 text-xs font-mono font-bold text-blue-600 hover:text-blue-800 dark:text-sky-400 dark:hover:text-white transition-colors"
+                                                    className="mt-5 group/link inline-flex items-center gap-2 text-xs font-mono font-bold text-sysred hover:text-red-700 dark:text-[#ff6b6b] dark:hover:text-white transition-colors"
                                                 >
                                                     <span>Visit Official Website</span>
                                                     <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -358,7 +359,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                             {/* Card Bottom Meta */}
                                             <div className="mt-8 pt-5 border-t border-slate-100 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 dark:text-steel">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-beacon" />
+                                                    <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
                                                     <span>Direct Technical Support, Warranty &amp; Level-3 Calibration by System Infra Solutions</span>
                                                 </div>
                                                 <span className="text-[11px]">
@@ -376,7 +377,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                     <div className="mt-20 pt-8">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="card-symmetric p-6">
-                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 dark:bg-beacon/10 text-blue-600 dark:text-beacon font-mono font-bold flex items-center justify-center mb-4 text-xs">
+                                <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] font-mono font-bold flex items-center justify-center mb-4 text-xs">
                                     01
                                 </div>
                                 <h4 className="font-display font-bold text-slate-900 dark:text-paper text-base mb-2">
@@ -388,7 +389,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             </div>
 
                             <div className="card-symmetric p-6">
-                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 dark:bg-beacon/10 text-blue-600 dark:text-beacon font-mono font-bold flex items-center justify-center mb-4 text-xs">
+                                <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] font-mono font-bold flex items-center justify-center mb-4 text-xs">
                                     02
                                 </div>
                                 <h4 className="font-display font-bold text-slate-900 dark:text-paper text-base mb-2">
@@ -400,7 +401,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             </div>
 
                             <div className="card-symmetric p-6">
-                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 dark:bg-beacon/10 text-blue-600 dark:text-beacon font-mono font-bold flex items-center justify-center mb-4 text-xs">
+                                <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] font-mono font-bold flex items-center justify-center mb-4 text-xs">
                                     03
                                 </div>
                                 <h4 className="font-display font-bold text-slate-900 dark:text-paper text-base mb-2">
@@ -416,7 +417,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                     {/* Partnership Inquiry Banner */}
                     <div className="mt-12 card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-10 border border-slate-200 dark:border-navy-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl shadow-sm">
                         <div className="max-w-xl">
-                            <span className="text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider font-bold block mb-2">
+                            <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-2">
                                 GLOBAL TECHNOLOGY PROVIDERS
                             </span>
                             <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-white">

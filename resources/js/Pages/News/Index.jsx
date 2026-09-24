@@ -48,8 +48,8 @@ export default function NewsIndex({ posts = [], seo = {} }) {
             {/* Header */}
             <header className="relative bg-white dark:bg-[#0a0a0a] pt-36 pb-16 overflow-hidden transition-colors duration-300">
                 <div className="container-content relative z-10 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-beacon uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-beacon animate-pulse" />
+                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
                         <span>INDUSTRY INTELLIGENCE & DISPATCHES</span>
                     </div>
 
@@ -75,7 +75,7 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                             placeholder="Search news and announcements..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-blue-500 dark:focus:!border-beacon !pr-16"
+                            className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-16"
                         />
                         {search && (
                             <button
@@ -95,9 +95,9 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-10 gap-3">
                         <span className="text-xs font-mono uppercase text-slate-500 dark:text-steel font-bold">
                             PRESS ARCHIVE &bull; {filteredPosts.length} {filteredPosts.length === 1 ? 'DISPATCH' : 'DISPATCHES'}
-                            {search && <span className="text-blue-600 dark:text-beacon ml-2 font-semibold">(FILTERED)</span>}
+                            {search && <span className="text-sysred dark:text-[#ff6b6b] ml-2 font-semibold">(FILTERED)</span>}
                         </span>
-                        <Link href="/" className="text-xs font-mono text-blue-600 dark:text-beacon hover:underline inline-flex items-center gap-1.5 font-medium">
+                        <Link href="/" className="text-xs font-mono text-sysred dark:text-[#ff6b6b] hover:underline inline-flex items-center gap-1.5 font-medium">
                             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
@@ -127,10 +127,10 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                             return (
                                 <Link
                                     href={`/latest-news/${post.slug}`}
-                                    className="card-symmetric group relative hover:border-blue-500/60 dark:hover:border-beacon/50 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden flex flex-col md:flex-row w-full"
+                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-2xl hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden flex flex-col md:flex-row w-full"
                                 >
                                     {/* Top specular accent line on hover */}
-                                    <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500/0 dark:via-beacon/0 to-transparent group-hover:via-blue-500 dark:group-hover:via-beacon transition-all duration-500 z-20" />
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff5c54]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff5c54] transition-all duration-500 z-20" />
 
                                     {/* Cover Image Pedestal */}
                                     <div className="w-full md:w-5/12 lg:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[340px] bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/10 shrink-0">
@@ -140,13 +140,13 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                             className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                                             loading="lazy"
                                             onError={(e) => {
-                                                e.target.onerror = null;
-                                                e.target.src = '/img/slider/1-1.jpg';
+                                                 e.target.onerror = null;
+                                                 e.target.src = '/img/slider/1-1.jpg';
                                             }}
                                         />
                                         <div className="absolute top-4 left-4 z-20">
-                                            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900/85 dark:bg-neutral-900/90 text-xs font-mono text-sky-300 dark:text-beacon border border-white/10 backdrop-blur-sm shadow-md">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                                            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900/85 dark:bg-neutral-900/90 text-xs font-mono text-sysred dark:text-[#ff6b6b] border border-white/10 backdrop-blur-sm shadow-md">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-sysred animate-pulse" />
                                                 {formatDate(post.published_at)}
                                             </span>
                                         </div>
@@ -156,7 +156,7 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                     <div className="flex-1 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-4">
                                         <div className="space-y-3">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[11px] font-mono uppercase tracking-widest text-blue-600 dark:text-beacon font-bold">
+                                                <span className="text-[11px] font-mono uppercase tracking-widest text-sysred dark:text-[#ff6b6b] font-bold">
                                                     FEATURED DISPATCH
                                                 </span>
                                                 <span className="text-slate-300 dark:text-steel/40">•</span>
@@ -165,7 +165,7 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                                 </span>
                                             </div>
 
-                                            <h2 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-slate-900 dark:text-paper group-hover:text-blue-600 dark:group-hover:text-beacon transition-colors leading-snug">
+                                            <h2 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors leading-snug">
                                                 {post.title}
                                             </h2>
 
@@ -178,7 +178,7 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                             <span className="group-hover:text-slate-900 dark:group-hover:text-paper font-semibold inline-flex items-center gap-2">
                                                 Read Full Story & Specifications
                                             </span>
-                                            <div className="w-8 h-8 rounded-full bg-blue-50 dark:bg-navy-surface flex items-center justify-center text-blue-600 dark:text-beacon group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-beacon dark:group-hover:text-slate-950 transition-all duration-300 shadow-xs">
+                                            <div className="w-8 h-8 rounded-full bg-red-50 dark:bg-navy-surface flex items-center justify-center text-sysred dark:text-[#ff6b6b] group-hover:bg-sysred group-hover:text-white dark:group-hover:bg-sysred dark:group-hover:text-white transition-all duration-300 shadow-xs">
                                                 <svg className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                                 </svg>
@@ -198,10 +198,10 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                 <Link
                                     key={post.id || post.slug}
                                     href={`/latest-news/${post.slug}`}
-                                    className="card-symmetric group relative hover:border-blue-500/60 dark:hover:border-beacon/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden flex flex-col"
+                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden flex flex-col"
                                 >
                                     {/* Top specular accent line on hover */}
-                                    <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500/0 dark:via-beacon/0 to-transparent group-hover:via-blue-500 dark:group-hover:via-beacon transition-all duration-500 z-20" />
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff5c54]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff5c54] transition-all duration-500 z-20" />
 
                                     <div className="flex-1 flex flex-col">
                                         {/* Cover Image Pedestal */}
@@ -218,8 +218,8 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                             />
 
                                             <div className="absolute top-3 right-3 z-20">
-                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-900/80 dark:bg-neutral-900/90 text-[10px] font-mono text-sky-300 dark:text-beacon border border-white/10 backdrop-blur-xs">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-900/80 dark:bg-neutral-900/90 text-[10px] font-mono text-sysred dark:text-[#ff6b6b] border border-white/10 backdrop-blur-xs">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-sysred animate-pulse" />
                                                     {formatDate(post.published_at)}
                                                 </span>
                                             </div>
@@ -227,11 +227,11 @@ export default function NewsIndex({ posts = [], seo = {} }) {
 
                                         {/* Article Details */}
                                         <div className="p-6 space-y-2.5 flex-1 flex flex-col">
-                                            <div className="text-[10px] font-mono uppercase tracking-widest text-blue-600 dark:text-beacon font-bold">
+                                            <div className="text-[10px] font-mono uppercase tracking-widest text-sysred dark:text-[#ff6b6b] font-bold">
                                                 PRESS DISPATCH
                                             </div>
 
-                                            <h2 className="font-display font-bold text-lg text-slate-900 dark:text-paper group-hover:text-blue-600 dark:group-hover:text-beacon transition-colors line-clamp-2 leading-snug">
+                                            <h2 className="font-display font-bold text-lg text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors line-clamp-2 leading-snug">
                                                 {post.title}
                                             </h2>
 
@@ -244,7 +244,7 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                     {/* Action Footer */}
                                     <div className="p-6 pt-4 border-t border-slate-100 dark:border-navy-border/40 mt-auto flex items-center justify-between text-xs font-mono text-slate-500 dark:text-steel">
                                         <span className="group-hover:text-slate-900 dark:group-hover:text-paper font-medium">Read Full Story</span>
-                                        <svg className="w-4 h-4 text-blue-600 dark:text-beacon transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg className="w-4 h-4 text-sysred dark:text-[#ff6b6b] transform group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </div>

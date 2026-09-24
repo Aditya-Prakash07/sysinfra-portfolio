@@ -22,7 +22,7 @@ export default function ApplicationLogo({
         variant === 'dark' || 
         variant === 'white' || 
         variant === 'footer' || 
-        (variant === 'auto' && (theme === 'dark' || isOverBanner));
+        (variant === 'auto' && theme === 'dark');
 
     const src = compact
         ? '/img/mobile-logo.png?v=2'

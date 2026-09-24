@@ -95,8 +95,10 @@ export default function Events({ events = [], seo = {} }) {
                         {filteredEvents.map((evt, idx) => (
                             <div 
                                 key={evt.title}
-                                className="group rounded-2xl bg-slate-50 dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 overflow-hidden hover:border-[#dd3c34]/50 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300 flex flex-col"
+                                className="group relative rounded-2xl bg-slate-50 dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 overflow-hidden hover:border-[#dd3c34] dark:hover:border-sysred/80 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col"
                             >
+                                {/* Specular top red laser line on hover */}
+                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#dd3c34] dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-30" />
                                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900 cursor-pointer" onClick={() => setActiveModalImage(`/${evt.cover}`)}>
                                     <img 
                                         src={`/${evt.cover}`} 
@@ -161,7 +163,7 @@ export default function Events({ events = [], seo = {} }) {
                                 <div
                                     key={`${item.src}-${idx}`}
                                     onClick={() => setActiveModalImage(`/${item.src}`)}
-                                    className="group relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34] hover:shadow-xl hover:shadow-red-500/15 cursor-pointer transition-all duration-300"
+                                    className="group relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34] dark:hover:border-sysred/80 hover:shadow-xl hover:-translate-y-1.5 dark:hover:shadow-[0_0_25px_-5px_rgba(221,60,52,0.45)] cursor-pointer transition-all duration-300 ease-out"
                                 >
                                     <img
                                         src={`/${item.src}`}

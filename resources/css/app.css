@@ -89,12 +89,17 @@
 
     .panel-hover {
         @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm
-               hover:border-red-500/50 dark:hover:border-red-400/50 hover:shadow-xl hover:shadow-red-500/5 dark:hover:shadow-red-500/10 hover:-translate-y-1.5 transition-all duration-300 ease-out;
+               hover:border-red-500/60 dark:hover:border-[#ff5c54]/70 hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] hover:-translate-y-2 transition-all duration-300 ease-out;
     }
 
     .card-symmetric {
         @apply h-full flex flex-col justify-between border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-sm
-               hover:border-red-500/50 dark:hover:border-red-400/50 hover:shadow-2xl hover:shadow-red-500/10 dark:hover:shadow-red-500/10 hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden;
+               hover:border-red-500/60 dark:hover:border-[#ff5c54]/70 hover:shadow-2xl dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.5)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden;
+    }
+
+    .card-interactive {
+        @apply border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#141414] rounded-2xl shadow-sm
+               hover:border-red-500/60 dark:hover:border-[#ff5c54]/70 hover:shadow-2xl dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.5)] hover:-translate-y-2 transition-all duration-300 ease-out;
     }
 
     .btn-shimmer {
@@ -516,15 +521,16 @@
             z-index: 50 !important;
             box-shadow: -1.5rem 1.25rem 2.25rem -0.75rem rgba(0, 0, 0, 0.32), 
                         0 20px 35px -8px rgba(0, 0, 0, 0.22) !important;
-            border-color: rgba(59, 130, 246, 0.5) !important;
+            border-color: rgba(221, 60, 52, 0.6) !important;
         }
         .dark .hardware-deck .csstricks-card:hover,
         .dark .hardware-deck .csstricks-card:focus-within,
         :is(.dark) .hardware-deck .csstricks-card:hover,
         :is(.dark) .hardware-deck .csstricks-card:focus-within {
-            box-shadow: -2rem 1.25rem 2.25rem -1rem #000, 
+            box-shadow: 0 0 35px -5px rgba(221, 60, 52, 0.55),
+                        -2rem 1.25rem 2.25rem -1rem #000, 
                         0 24px 42px -8px rgba(0, 0, 0, 0.95) !important;
-            border-color: rgba(0, 229, 255, 0.5) !important;
+            border-color: rgba(221, 60, 52, 0.8) !important;
         }
         .hardware-deck .csstricks-card:hover ~ .csstricks-card,
         .hardware-deck .csstricks-card:focus-within ~ .csstricks-card {
@@ -571,16 +577,17 @@
             z-index: 50 !important;
             box-shadow: -1.5rem 1.25rem 2.25rem -0.75rem rgba(0, 0, 0, 0.32), 
                         0 20px 35px -8px rgba(0, 0, 0, 0.22) !important;
-            border-color: rgba(59, 130, 246, 0.5) !important;
+            border-color: rgba(221, 60, 52, 0.6) !important;
         }
 
         .dark .hardware-deck .csstricks-card:hover,
         .dark .hardware-deck .csstricks-card:focus-within,
         :is(.dark) .hardware-deck .csstricks-card:hover,
         :is(.dark) .hardware-deck .csstricks-card:focus-within {
-            box-shadow: -2rem 1.25rem 2.25rem -1rem #000, 
+            box-shadow: 0 0 40px -5px rgba(221, 60, 52, 0.55),
+                        -2rem 1.25rem 2.25rem -1rem #000, 
                         0 24px 42px -8px rgba(0, 0, 0, 0.95) !important;
-            border-color: rgba(0, 229, 255, 0.5) !important;
+            border-color: rgba(221, 60, 52, 0.8) !important;
         }
 
         /* 4. Subsequent sibling cards push to the right when a card is hovered */
@@ -624,12 +631,14 @@
             transform: translateY(-0.85rem) rotate(2.5deg);
             z-index: 50 !important;
             box-shadow: 0 20px 38px -8px rgba(0, 0, 0, 0.28), 0 6px 16px -4px rgba(0, 0, 0, 0.15);
+            border-color: rgba(221, 60, 52, 0.6) !important;
         }
         .dark .pipeline-deck .csstricks-card:first-child:focus-within,
         .dark .pipeline-deck .csstricks-card:first-child:hover,
         :is(.dark) .pipeline-deck .csstricks-card:first-child:focus-within,
         :is(.dark) .pipeline-deck .csstricks-card:first-child:hover {
-            box-shadow: 0 24px 45px -8px rgba(0, 0, 0, 0.95), 0 8px 20px -4px #000;
+            box-shadow: 0 0 35px -5px rgba(221, 60, 52, 0.5), 0 24px 45px -8px rgba(0, 0, 0, 0.95), 0 8px 20px -4px #000;
+            border-color: rgba(221, 60, 52, 0.8) !important;
         }
 
         .pipeline-deck .csstricks-card:not(:first-child):focus-within,
@@ -638,13 +647,15 @@
             z-index: 50 !important;
             box-shadow: -2rem 1rem 2rem -1rem rgba(0, 0, 0, 0.4), 
                         0 22px 35px -8px rgba(0, 0, 0, 0.28);
+            border-color: rgba(221, 60, 52, 0.6) !important;
         }
         .dark .pipeline-deck .csstricks-card:not(:first-child):focus-within,
         .dark .pipeline-deck .csstricks-card:not(:first-child):hover,
         :is(.dark) .pipeline-deck .csstricks-card:not(:first-child):focus-within,
         :is(.dark) .pipeline-deck .csstricks-card:not(:first-child):hover {
-            box-shadow: -2.5rem 1rem 2rem -1.25rem #000, 
+            box-shadow: 0 0 35px -5px rgba(221, 60, 52, 0.5), -2.5rem 1rem 2rem -1.25rem #000, 
                         0 24px 42px -8px rgba(0, 0, 0, 0.95);
+            border-color: rgba(221, 60, 52, 0.8) !important;
         }
         .pipeline-deck .csstricks-card:hover ~ .csstricks-card,
         .pipeline-deck .csstricks-card:focus-within ~ .csstricks-card {

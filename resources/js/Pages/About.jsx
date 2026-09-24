@@ -442,8 +442,10 @@ export default function About({ seo = {} }) {
                             {RD_CARDS.map((card, idx) => (
                                 <div 
                                     key={idx}
-                                    className="p-4 rounded-2xl bg-white dark:bg-black/60 border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34]/50 dark:hover:border-[#dd3c34]/50 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 flex flex-col justify-between group"
+                                    className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                                 >
+                                    {/* Specular top red laser line on hover */}
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <div>
                                         <div className="aspect-[4/3] w-full rounded-xl bg-slate-100 dark:bg-white/[0.02] p-3 flex items-center justify-center overflow-hidden mb-3 border border-slate-100 dark:border-white/5">
                                             <img 
@@ -511,8 +513,9 @@ export default function About({ seo = {} }) {
                         {MILESTONES.map((m, idx) => (
                             <div 
                                 key={idx} 
-                                className="p-6 rounded-2xl bg-slate-50/70 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34]/50 dark:hover:border-[#dd3c34]/50 transition-all duration-300 group"
+                                className="group relative p-6 rounded-2xl bg-slate-50/70 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
                             >
+                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                 <div className="text-3xl font-display font-extrabold text-[#dd3c34] dark:text-[#ff5c54] mb-1">
                                     {m.metric}
                                 </div>
@@ -599,8 +602,9 @@ export default function About({ seo = {} }) {
                             {PROCESS.map((p) => (
                                 <div 
                                     key={p.step}
-                                    className="p-6 rounded-2xl bg-white dark:bg-black/60 border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34]/50 dark:hover:border-[#dd3c34]/50 transition-all duration-300"
+                                    className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
                                 >
+                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <span className="text-2xl font-mono font-black text-[#dd3c34] dark:text-[#ff6b6b] block mb-2">
                                         {p.step}
                                     </span>
@@ -637,7 +641,8 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/10 text-center flex flex-col justify-between group">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate1.jpg" 
@@ -654,7 +659,8 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/10 text-center flex flex-col justify-between group">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate2.jpg" 
@@ -671,7 +677,8 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/10 text-center flex flex-col justify-between group">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate3.jpg" 
@@ -688,7 +695,8 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/10 text-center flex flex-col justify-between group">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate4.jpg" 
@@ -731,8 +739,9 @@ export default function About({ seo = {} }) {
                         {SYSINFRA_LEADERSHIP.map((div, idx) => (
                             <div 
                                 key={idx}
-                                className="p-6 rounded-2xl bg-white dark:bg-black/60 border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34]/50 dark:hover:border-[#dd3c34]/50 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 flex flex-col justify-between group"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                             >
+                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-white/[0.04] p-2 flex items-center justify-center border border-slate-200/60 dark:border-white/10 group-hover:scale-105 transition-transform">

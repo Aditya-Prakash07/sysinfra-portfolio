@@ -77,7 +77,7 @@ export default function Clients({ clients = [], seo = {} }) {
                                 onClick={() => setSelectedSector(sec)}
                                 className={`px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all duration-200 ${
                                     selectedSector === sec
-                                        ? 'bg-sysred text-white dark:text-slate-950 shadow-md shadow-blue-500/20'
+                                        ? 'bg-sysred text-white dark:text-slate-950 shadow-md shadow-sysred/25'
                                         : 'bg-white dark:bg-[#161616] text-slate-700 dark:text-steel hover:bg-slate-100 dark:hover:bg-[#202020] border border-slate-200 dark:border-white/10'
                                 }`}
                             >
@@ -91,11 +91,14 @@ export default function Clients({ clients = [], seo = {} }) {
                         {filteredClients.map((client, idx) => (
                             <div
                                 key={idx}
-                                className="group p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-sm hover:shadow-2xl hover:-translate-y-2.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                             >
+                                {/* Specular top red laser line on hover */}
+                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
                                 <div>
                                     {/* Client Logo with White Background for Clarity */}
-                                    <div className="h-28 w-full rounded-xl bg-white p-4 flex items-center justify-center border border-slate-100 dark:border-white/5 mb-5 shadow-xs group-hover:scale-102 transition-transform duration-200">
+                                    <div className="h-28 w-full rounded-xl bg-white p-4 flex items-center justify-center border border-slate-100 dark:border-white/5 mb-5 shadow-xs group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
                                         <img
                                             src={`/${client.logo}`}
                                             alt={client.name}
