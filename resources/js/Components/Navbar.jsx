@@ -114,67 +114,80 @@ export default function Navbar() {
                                             </svg>
                                         </Link>
 
-                                        {/* Products Mega Dropdown (4 Authentic Sysinfra Pillars) */}
+                                        {/* Products Mega Dropdown (Authentic Sysinfra Architecture Pillars) */}
                                         {productsDropdown && (
                                             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[1180px] max-w-[96vw] xl:w-[1240px] z-50">
                                                 <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 shadow-2xl rounded-2xl p-6 overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-top-2">
                                                     
                                                     {/* Top Telemetry Header */}
-                                                    <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/10 pb-3.5 mb-5">
+                                                    <div className="flex flex-wrap items-center justify-between border-b border-slate-100 dark:border-white/10 pb-3.5 mb-5 gap-3">
                                                         <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-wider text-sysred dark:text-[#ff6b6b] font-bold">
-                                                            <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
-                                                            <span>SYSINFRA PRODUCT ECOSYSTEM &bull; ENERGY &bull; NOC &bull; DEFENCE &bull; SERVICES</span>
+                                                            <span className="w-2.5 h-2.5 rounded-full bg-sysred animate-pulse shadow-[0_0_8px_rgba(221,60,52,0.8)]" />
+                                                            <span>SYSINFRA PRODUCT ECOSYSTEM &bull; ENERGY &bull; NOC &bull; DEFENCE &bull; SECURITY &bull; SERVICES</span>
                                                         </div>
                                                         <Link 
                                                             href="/products" 
                                                             onClick={() => setProductsDropdown(false)}
-                                                            className="text-xs font-mono text-slate-500 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors font-semibold"
+                                                            className="text-xs font-mono text-slate-500 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors font-semibold flex items-center gap-1.5"
                                                         >
-                                                            Browse All Products
+                                                            <span>Browse Full Catalog</span>
+                                                            <span>&rarr;</span>
                                                         </Link>
                                                     </div>
 
-                                                    {/* 4 Architectural Category Pillars */}
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
+                                                    {/* Symmetrical 3-Column x 2-Row Architecture Grid */}
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4.5">
                                                         {categoriesNav.map((cat, idx) => (
                                                             <div 
                                                                 key={cat.id || idx}
-                                                                className="group/col flex flex-col justify-between p-3.5 rounded-xl border border-slate-200/70 dark:border-white/10 bg-slate-50/50 dark:bg-[#111111] hover:border-sysred/40 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] transition-all duration-200"
+                                                                className="group/col h-full flex flex-col justify-between p-4.5 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative overflow-hidden"
                                                             >
+                                                                {/* Top specular accent line on hover */}
+                                                                <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover/col:via-sysred dark:group-hover/col:via-[#ff6b6b] transition-all duration-500 rounded-t-2xl" />
+
                                                                 <div>
-                                                                    <div className="flex items-start gap-2.5 mb-2.5">
-                                                                        <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-200 text-xs font-bold font-mono">
+                                                                    {/* Symmetrical Header */}
+                                                                    <div className="flex items-start gap-3 pb-3 border-b border-slate-200/70 dark:border-white/10">
+                                                                        <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-300 text-xs font-bold font-mono">
                                                                             0{idx + 1}
                                                                         </div>
-                                                                        <div className="min-w-0 flex-1">
+                                                                        <div className="min-w-0 flex-1 min-h-[42px] flex flex-col justify-center">
                                                                             <Link 
-                                                                                href={`/products`}
+                                                                                href={`/products#category-${cat.slug}`}
                                                                                 onClick={() => setProductsDropdown(false)}
-                                                                                className="text-xs sm:text-sm font-bold text-slate-900 dark:text-paper group-hover/col:text-sysred dark:group-hover/col:text-[#ff6b6b] transition-colors leading-tight block truncate"
+                                                                                className="text-sm font-bold text-slate-900 dark:text-paper group-hover/col:text-sysred dark:group-hover/col:text-[#ff6b6b] transition-colors leading-snug break-words"
                                                                                 title={cat.name}
                                                                             >
                                                                                 {cat.name}
                                                                             </Link>
-                                                                            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold inline-block mt-0.5">
-                                                                                {cat.items_count ?? cat.subcategories?.length ?? 0} Systems
-                                                                            </span>
+                                                                            <div className="flex items-center gap-2 mt-1">
+                                                                                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold">
+                                                                                    {cat.items_count ?? cat.subcategories?.length ?? 0} Systems
+                                                                                </span>
+                                                                                <span className="text-[10px] font-mono text-slate-400 dark:text-steel">
+                                                                                    {cat.subcategories?.length || 0} Subcategories
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
-                                                                    <div className="space-y-1 mt-2.5">
+                                                                    {/* Subcategory List with Full Untruncated Product Names */}
+                                                                    <div className="space-y-1.5 my-3">
                                                                         {(cat.subcategories || []).slice(0, 5).map((sub) => (
                                                                             <Link
                                                                                 key={sub.slug}
                                                                                 href={`/products/${cat.slug}/${sub.slug}`}
                                                                                 onClick={() => setProductsDropdown(false)}
-                                                                                className="group/item flex items-center justify-between py-1 px-2 rounded-lg text-xs font-medium text-slate-700 dark:text-steel hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] hover:translate-x-0.5 active:scale-[0.98] transition-all duration-150"
+                                                                                className="group/item flex items-start justify-between py-1.5 px-2.5 rounded-lg text-xs font-medium text-slate-700 dark:text-steel hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] hover:translate-x-1 active:scale-[0.99] transition-all duration-150 gap-2"
                                                                             >
-                                                                                <div className="flex items-center gap-1.5 truncate">
-                                                                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20 group-hover/item:bg-sysred dark:group-hover/item:bg-[#ff6b6b] transition-colors shrink-0" />
-                                                                                    <span className="truncate text-[11px]">{sub.name}</span>
+                                                                                <div className="flex items-start gap-2 min-w-0 flex-1">
+                                                                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20 group-hover/item:bg-sysred dark:group-hover/item:bg-[#ff6b6b] transition-colors shrink-0 mt-1.5" />
+                                                                                    <span className="text-[12px] leading-snug font-medium text-slate-700 dark:text-steel group-hover/item:text-slate-950 dark:group-hover/item:text-white break-words">
+                                                                                        {sub.name}
+                                                                                    </span>
                                                                                 </div>
-                                                                                {sub.items_count !== undefined && (
-                                                                                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-steel group-hover/item:bg-red-500/15 group-hover/item:text-sysred dark:group-hover/item:text-[#ff6b6b] transition-colors shrink-0">
+                                                                                {sub.items_count !== undefined && sub.items_count > 0 && (
+                                                                                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel group-hover/item:bg-red-500/15 group-hover/item:text-sysred dark:group-hover/item:text-[#ff6b6b] transition-colors shrink-0 mt-0.5">
                                                                                         {sub.items_count}
                                                                                     </span>
                                                                                 )}
@@ -183,14 +196,19 @@ export default function Navbar() {
                                                                     </div>
                                                                 </div>
 
-                                                                <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-white/5">
+                                                                {/* Symmetrical Card Footer */}
+                                                                <div className="pt-2.5 border-t border-slate-200/70 dark:border-white/10 flex items-center justify-between">
                                                                     <Link
-                                                                        href="/products"
+                                                                        href={`/products#category-${cat.slug}`}
                                                                         onClick={() => setProductsDropdown(false)}
-                                                                        className="text-[10px] font-mono font-semibold text-sysred dark:text-[#ff6b6b] hover:underline block truncate"
+                                                                        className="text-[11px] font-mono font-semibold text-sysred dark:text-[#ff6b6b] hover:underline flex items-center gap-1 group-hover/col:translate-x-1 transition-transform"
                                                                     >
-                                                                        View all {cat.name.split(' ')[0]} &rarr;
+                                                                        <span>Explore Category</span>
+                                                                        <span>&rarr;</span>
                                                                     </Link>
+                                                                    <span className="text-[10px] font-mono text-slate-400 dark:text-steel">
+                                                                        SISPL Spec
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         ))}
@@ -211,7 +229,7 @@ export default function Navbar() {
                                                             <span>Authorized Motorola Solutions Partner</span>
                                                         </div>
                                                         <Link 
-                                                            href="/products"
+                                                            href="/products" 
                                                             onClick={() => setProductsDropdown(false)}
                                                             className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px]"
                                                         >

@@ -292,7 +292,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                             )}
 
                             {filteredCategories.map((cat) => (
-                                <div key={cat.id} className="space-y-6">
+                                <div key={cat.id} id={`category-${cat.slug}`} className="space-y-6 scroll-mt-32">
                                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-2">
                                         <div>
                                             <h2 className="text-2xl font-display font-bold text-slate-900 dark:text-paper">

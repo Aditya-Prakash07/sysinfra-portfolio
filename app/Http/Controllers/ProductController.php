@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function index(): Response
     {
         $categories = ProductCategory::where('is_published', true)
+            ->whereHas('subcategories', fn ($sq) => $sq->where('is_published', true))
             ->orderBy('sort_order')
             ->with([
                 'subcategories' => fn ($q) => $q->where('is_published', true)

@@ -39,6 +39,7 @@ class HandleInertiaRequests extends Middleware
                 'error' => fn () => $request->session()->get('error'),
             ],
             'categoriesNav' => fn () => \App\Models\ProductCategory::where('is_published', true)
+                ->whereHas('subcategories', fn ($sq) => $sq->where('is_published', true))
                 ->orderBy('sort_order')
                 ->with([
                     'subcategories' => fn ($q) => $q->where('is_published', true)
