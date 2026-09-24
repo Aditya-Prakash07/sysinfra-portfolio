@@ -22,6 +22,32 @@ export default function Navbar() {
     const [productsDropdown, setProductsDropdown] = useState(false);
     const dropdownTimeoutRef = useRef(null);
     const navRef = useRef(null);
+    const productSliderRef = useRef(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
+
+    const updateScrollButtons = () => {
+        if (productSliderRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = productSliderRef.current;
+            setCanScrollLeft(scrollLeft > 10);
+            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+        }
+    };
+
+    const slideProducts = (direction) => {
+        if (productSliderRef.current) {
+            const firstCard = productSliderRef.current.firstElementChild;
+            const cardWidth = firstCard ? firstCard.offsetWidth : 360;
+            const gap = 24;
+            const scrollDistance = cardWidth + gap;
+
+            productSliderRef.current.scrollBy({
+                left: direction === 'next' ? scrollDistance : -scrollDistance,
+                behavior: 'smooth',
+            });
+            setTimeout(updateScrollButtons, 350);
+        }
+    };
 
     // Banners background detection: On the home page and not scrolled past hero
     const isHome = url === '/' || url === '' || url.startsWith('/#') || url.startsWith('/?');
@@ -47,6 +73,13 @@ export default function Navbar() {
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    useEffect(() => {
+        if (productsDropdown) {
+            const timer = setTimeout(updateScrollButtons, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [productsDropdown]);
 
     const handleMouseEnter = () => {
         if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
@@ -135,80 +168,72 @@ export default function Navbar() {
                                                         </Link>
                                                     </div>
 
-                                                    {/* Symmetrical Architecture Grid: 2 Rows (4 cards in Row 1, 3 cards in Row 2) */}
-                                                    <div className="grid grid-cols-12 gap-5 xl:gap-6">
-                                                        {categoriesNav.map((cat, idx) => {
-                                                            const isRow1 = idx < 4;
-                                                            const colSpanClass = isRow1 
-                                                                ? 'col-span-12 sm:col-span-6 lg:col-span-3' 
-                                                                : 'col-span-12 sm:col-span-6 lg:col-span-4';
-
-                                                            return (
+                                                    {/* Single Row Slider with Horizontal Smooth Scroll */}
+                                                    <div className="relative group/slider">
+                                                        <div 
+                                                            ref={productSliderRef}
+                                                            onScroll={updateScrollButtons}
+                                                            className="flex gap-5 xl:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-2 px-1"
+                                                        >
+                                                            {categoriesNav.map((cat, idx) => (
                                                                 <div 
                                                                     key={cat.id || idx}
-                                                                    className={`${colSpanClass} group/col h-full flex flex-col justify-between p-5 xl:p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative min-h-[300px]`}
+                                                                    className="snap-start shrink-0 w-[290px] sm:w-[330px] lg:w-[350px] h-[385px] group/col flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative overflow-hidden select-none"
                                                                 >
                                                                     {/* Top specular accent line on hover */}
                                                                     <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover/col:via-sysred dark:group-hover/col:via-[#ff6b6b] transition-all duration-500 rounded-t-2xl" />
 
-                                                                    <div>
-                                                                        {/* Symmetrical Header */}
-                                                                        <div className="flex items-start gap-3 pb-3.5 mb-3.5 border-b border-slate-200/70 dark:border-white/10">
-                                                                            <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-300 text-xs font-bold font-mono">
-                                                                                0{idx + 1}
-                                                                            </div>
-                                                                            <div className="min-w-0 flex-1 min-h-[44px] flex flex-col justify-center">
-                                                                                <Link 
-                                                                                    href={`/products#category-${cat.slug}`}
-                                                                                    onClick={() => setProductsDropdown(false)}
-                                                                                    className="text-xs sm:text-sm font-bold text-slate-900 dark:text-paper group-hover/col:text-sysred dark:group-hover/col:text-[#ff6b6b] transition-colors leading-snug break-words block"
-                                                                                    title={cat.name}
-                                                                                >
-                                                                                    {cat.name}
-                                                                                </Link>
-                                                                                <div className="flex items-center gap-2 mt-1">
-                                                                                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold">
-                                                                                        {cat.items_count ?? cat.subcategories?.length ?? 0} Systems
-                                                                                    </span>
-                                                                                    <span className="text-[10px] font-mono text-slate-400 dark:text-steel">
-                                                                                        {cat.subcategories?.length || 0} Subs
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
+                                                                    {/* Header */}
+                                                                    <div className="flex items-start gap-3 pb-3 mb-3 border-b border-slate-200/70 dark:border-white/10 shrink-0">
+                                                                        <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-300 text-xs font-bold font-mono">
+                                                                            0{idx + 1}
                                                                         </div>
-
-                                                                        {/* Subcategory List with Full Untruncated Product Names */}
-                                                                        <div className="space-y-1.5 mb-3">
-                                                                            {(cat.subcategories || []).slice(0, 4).map((sub) => (
-                                                                                <Link
-                                                                                    key={sub.slug}
-                                                                                    href={`/products/${cat.slug}/${sub.slug}`}
-                                                                                    onClick={() => setProductsDropdown(false)}
-                                                                                    className="group/item flex items-start justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-slate-700 dark:text-steel hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] hover:translate-x-1 active:scale-[0.99] transition-all duration-150 gap-2"
-                                                                                >
-                                                                                    <div className="flex items-start gap-2 min-w-0 flex-1">
-                                                                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20 group-hover/item:bg-sysred dark:group-hover/item:bg-[#ff6b6b] transition-colors shrink-0 mt-1.5" />
-                                                                                        <span className="text-[11px] sm:text-[12px] leading-snug font-medium text-slate-700 dark:text-steel group-hover/item:text-slate-950 dark:group-hover/item:text-white break-words">
-                                                                                            {sub.name}
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    {sub.items_count !== undefined && sub.items_count > 0 && (
-                                                                                        <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel group-hover/item:bg-red-500/15 group-hover/item:text-sysred dark:group-hover/item:text-[#ff6b6b] transition-colors shrink-0 mt-0.5">
-                                                                                            {sub.items_count}
-                                                                                        </span>
-                                                                                    )}
-                                                                                </Link>
-                                                                            ))}
-                                                                            {(cat.subcategories?.length || 0) > 4 && (
-                                                                                <div className="px-2 pt-1 text-[10px] font-mono text-slate-400 dark:text-steel/70">
-                                                                                    +{(cat.subcategories.length - 4)} more specialized systems
-                                                                                </div>
-                                                                            )}
+                                                                        <div className="min-w-0 flex-1 flex flex-col justify-center">
+                                                                            <Link 
+                                                                                href={`/products#category-${cat.slug}`}
+                                                                                onClick={() => setProductsDropdown(false)}
+                                                                                className="text-xs sm:text-sm font-bold text-slate-900 dark:text-paper group-hover/col:text-sysred dark:group-hover/col:text-[#ff6b6b] transition-colors leading-snug break-words line-clamp-2 block"
+                                                                                title={cat.name}
+                                                                            >
+                                                                                {cat.name}
+                                                                            </Link>
+                                                                            <div className="flex items-center gap-2 mt-1">
+                                                                                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold shrink-0">
+                                                                                    {cat.items_count ?? cat.subcategories?.length ?? 0} Systems
+                                                                                </span>
+                                                                                <span className="text-[10px] font-mono text-slate-400 dark:text-steel truncate">
+                                                                                    {cat.subcategories?.length || 0} Subs
+                                                                                </span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
 
+                                                                    {/* Subcategory List with Full Untruncated Product Names & Internal Smooth Scroll */}
+                                                                    <div className="flex-1 overflow-y-auto no-scrollbar space-y-1.5 min-h-0 py-1 pr-1">
+                                                                        {(cat.subcategories || []).map((sub) => (
+                                                                            <Link
+                                                                                key={sub.slug}
+                                                                                href={`/products/${cat.slug}/${sub.slug}`}
+                                                                                onClick={() => setProductsDropdown(false)}
+                                                                                className="group/item flex items-start justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-slate-700 dark:text-steel hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.08] hover:translate-x-1 active:scale-[0.99] transition-all duration-150 gap-2"
+                                                                            >
+                                                                                <div className="flex items-start gap-2 min-w-0 flex-1">
+                                                                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20 group-hover/item:bg-sysred dark:group-hover/item:bg-[#ff6b6b] transition-colors shrink-0 mt-1.5" />
+                                                                                    <span className="text-[11px] sm:text-[12px] leading-snug font-medium text-slate-700 dark:text-steel group-hover/item:text-slate-950 dark:group-hover/item:text-white break-words">
+                                                                                        {sub.name}
+                                                                                    </span>
+                                                                                </div>
+                                                                                {sub.items_count !== undefined && sub.items_count > 0 && (
+                                                                                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel group-hover/item:bg-red-500/15 group-hover/item:text-sysred dark:group-hover/item:text-[#ff6b6b] transition-colors shrink-0 mt-0.5">
+                                                                                        {sub.items_count}
+                                                                                    </span>
+                                                                                )}
+                                                                            </Link>
+                                                                        ))}
+                                                                    </div>
+
                                                                     {/* Symmetrical Card Footer */}
-                                                                    <div className="pt-3 border-t border-slate-200/70 dark:border-white/10 flex items-center justify-between mt-auto">
+                                                                    <div className="pt-3 border-t border-slate-200/70 dark:border-white/10 flex items-center justify-between mt-auto shrink-0">
                                                                         <Link
                                                                             href={`/products#category-${cat.slug}`}
                                                                             onClick={() => setProductsDropdown(false)}
@@ -222,30 +247,97 @@ export default function Navbar() {
                                                                         </span>
                                                                     </div>
                                                                 </div>
-                                                            );
-                                                        })}
+                                                            ))}
+                                                        </div>
+
+                                                        {/* Side Quick Chevron Arrows */}
+                                                        {canScrollLeft && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => slideProducts('prev')}
+                                                                className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-30 w-10 h-10 rounded-full bg-white dark:bg-black/90 shadow-xl border border-slate-200 dark:border-white/20 items-center justify-center text-slate-700 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+                                                                aria-label="Previous Slide"
+                                                                title="Previous"
+                                                            >
+                                                                <svg className="w-5 h-5 stroke-[1.8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                                                </svg>
+                                                            </button>
+                                                        )}
+                                                        {canScrollRight && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => slideProducts('next')}
+                                                                className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-30 w-10 h-10 rounded-full bg-white dark:bg-black/90 shadow-xl border border-slate-200 dark:border-white/20 items-center justify-center text-slate-700 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+                                                                aria-label="Next Slide"
+                                                                title="Next"
+                                                            >
+                                                                <svg className="w-5 h-5 stroke-[1.8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                                </svg>
+                                                            </button>
+                                                        )}
                                                     </div>
 
-                                                    {/* Bottom Executive Utility Strip */}
-                                                    <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-[#0d0d0d] -mx-6 -mb-6 p-3.5 px-6 flex flex-wrap items-center justify-between gap-3 text-xs">
-                                                        <div className="flex flex-wrap items-center gap-3 text-[11px] font-mono text-slate-500 dark:text-steel">
+                                                    {/* Bottom Executive Utility Strip with Pagination in the bottom of the modal */}
+                                                    <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-white/10 bg-slate-50 dark:bg-[#0d0d0d] -mx-6 -mb-6 p-3.5 px-6 flex items-center justify-between gap-4 text-xs">
+                                                        {/* Left Credentials Info */}
+                                                        <div className="hidden md:flex flex-wrap items-center gap-3 text-[11px] font-mono text-slate-500 dark:text-steel">
                                                             <span className="flex items-center gap-1.5">
                                                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                                                                 ISO 9001:2015 &amp; ISO 14001:2015 Certified
                                                             </span>
                                                             <span>&bull;</span>
-                                                            <span>GeM Registered OEM</span>
+                                                            <span>GeM OEM</span>
                                                             <span>&bull;</span>
-                                                            <span>Over 3,00,000+ Modules Reconditioned</span>
-                                                            <span>&bull;</span>
-                                                            <span>Authorized Motorola Solutions Partner</span>
+                                                            <span>Motorola Solutions Partner</span>
                                                         </div>
+
+                                                        {/* Center Pagination (Only simple arrows, matching home page banner, NO page number) */}
+                                                        <div className="flex items-center justify-center gap-2 mx-auto md:mx-0">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => slideProducts('prev')}
+                                                                disabled={!canScrollLeft}
+                                                                className={`flex items-center justify-center p-2 rounded-full transition-all duration-200 cursor-pointer select-none ${
+                                                                    canScrollLeft
+                                                                        ? 'text-slate-700/80 hover:text-slate-950 dark:text-white/70 dark:hover:text-white hover:scale-125 active:scale-90 bg-slate-200/60 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20'
+                                                                        : 'text-slate-300 dark:text-white/20 cursor-not-allowed opacity-40 bg-slate-100 dark:bg-white/5'
+                                                                }`}
+                                                                aria-label="Previous Slide"
+                                                                title="Previous"
+                                                            >
+                                                                <svg className="w-5 h-5 stroke-[1.6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                                                </svg>
+                                                            </button>
+
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => slideProducts('next')}
+                                                                disabled={!canScrollRight}
+                                                                className={`flex items-center justify-center p-2 rounded-full transition-all duration-200 cursor-pointer select-none ${
+                                                                    canScrollRight
+                                                                        ? 'text-slate-700/80 hover:text-slate-950 dark:text-white/70 dark:hover:text-white hover:scale-125 active:scale-90 bg-slate-200/60 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20'
+                                                                        : 'text-slate-300 dark:text-white/20 cursor-not-allowed opacity-40 bg-slate-100 dark:bg-white/5'
+                                                                }`}
+                                                                aria-label="Next Slide"
+                                                                title="Next"
+                                                            >
+                                                                <svg className="w-5 h-5 stroke-[1.6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+
+                                                        {/* Right CTA */}
                                                         <Link 
                                                             href="/products" 
                                                             onClick={() => setProductsDropdown(false)}
-                                                            className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px]"
+                                                            className="text-sysred dark:text-[#ff6b6b] font-bold font-mono hover:underline flex items-center gap-1 text-[11px] whitespace-nowrap ml-auto md:ml-0"
                                                         >
-                                                            All Products &rarr;
+                                                            <span>All Products</span>
+                                                            <span>&rarr;</span>
                                                         </Link>
                                                     </div>
                                                 </div>
