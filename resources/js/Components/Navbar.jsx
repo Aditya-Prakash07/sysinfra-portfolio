@@ -116,7 +116,7 @@ export default function Navbar() {
 
                                         {/* Products Mega Dropdown (Authentic Sysinfra Architecture Pillars) */}
                                         {productsDropdown && (
-                                            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[1180px] max-w-[96vw] xl:w-[1240px] z-50">
+                                            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[1180px] max-w-[98vw] xl:w-[1280px] 2xl:w-[1360px] z-50">
                                                 <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 shadow-2xl rounded-2xl p-6 overflow-hidden transition-all duration-200 animate-in fade-in slide-in-from-top-2">
                                                     
                                                     {/* Top Telemetry Header */}
@@ -135,92 +135,18 @@ export default function Navbar() {
                                                         </Link>
                                                     </div>
 
-                                                    {/* Symmetrical Architecture Grid with Full Width for Odd Remaining Card */}
-                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5 xl:gap-6">
+                                                    {/* Symmetrical Architecture Grid: 2 Rows (4 cards in Row 1, 3 cards in Row 2) */}
+                                                    <div className="grid grid-cols-12 gap-5 xl:gap-6">
                                                         {categoriesNav.map((cat, idx) => {
-                                                            const total = categoriesNav.length;
-                                                            const isLastSingle = idx === total - 1 && (total % 6 === 1 || total % 3 === 1 || total % 2 === 1);
-
-                                                            if (isLastSingle) {
-                                                                return (
-                                                                    <div 
-                                                                        key={cat.id || idx}
-                                                                        className="col-span-full sm:col-span-2 lg:col-span-3 xl:col-span-6 group/col p-6 sm:p-7 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/80 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative"
-                                                                    >
-                                                                        {/* Top specular accent line on hover */}
-                                                                        <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover/col:via-sysred dark:group-hover/col:via-[#ff6b6b] transition-all duration-500 rounded-t-2xl" />
-
-                                                                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 w-full">
-                                                                            {/* Left Column: Category Summary */}
-                                                                            <div className="lg:w-4/12 shrink-0 space-y-2.5">
-                                                                                <div className="flex items-center gap-3">
-                                                                                    <div className="w-9 h-9 rounded-xl bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-300 text-xs font-bold font-mono">
-                                                                                        0{idx + 1}
-                                                                                    </div>
-                                                                                    <div>
-                                                                                        <Link 
-                                                                                            href={`/products#category-${cat.slug}`}
-                                                                                            onClick={() => setProductsDropdown(false)}
-                                                                                            className="text-base font-bold text-slate-900 dark:text-paper group-hover/col:text-sysred dark:group-hover/col:text-[#ff6b6b] transition-colors leading-snug block break-words"
-                                                                                            title={cat.name}
-                                                                                        >
-                                                                                            {cat.name}
-                                                                                        </Link>
-                                                                                        <div className="flex items-center gap-2 mt-1">
-                                                                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold">
-                                                                                                {cat.items_count ?? cat.subcategories?.length ?? 0} Systems
-                                                                                            </span>
-                                                                                            <span className="text-[10px] font-mono text-slate-400 dark:text-steel">
-                                                                                                {cat.subcategories?.length || 0} Subcategories
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <p className="text-xs text-slate-500 dark:text-steel line-clamp-2 leading-relaxed">
-                                                                                    {cat.description || 'Specialized turnkey telecom infrastructure, maintenance, and power management solutions.'}
-                                                                                </p>
-                                                                                <Link
-                                                                                    href={`/products#category-${cat.slug}`}
-                                                                                    onClick={() => setProductsDropdown(false)}
-                                                                                    className="text-xs font-mono font-bold text-sysred dark:text-[#ff6b6b] hover:underline inline-flex items-center gap-1.5 pt-1 group-hover/col:translate-x-1 transition-transform"
-                                                                                >
-                                                                                    <span>Explore Full {cat.name} Catalog</span>
-                                                                                    <span>&rarr;</span>
-                                                                                </Link>
-                                                                            </div>
-
-                                                                            {/* Right Column: Subcategories in a wide responsive sub-grid */}
-                                                                            <div className="lg:w-8/12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2.5">
-                                                                                {(cat.subcategories || []).slice(0, 6).map((sub) => (
-                                                                                    <Link
-                                                                                        key={sub.slug}
-                                                                                        href={`/products/${cat.slug}/${sub.slug}`}
-                                                                                        onClick={() => setProductsDropdown(false)}
-                                                                                        className="group/item flex items-start justify-between p-3 rounded-xl text-xs font-medium text-slate-700 dark:text-steel hover:text-slate-950 dark:hover:text-white bg-white/70 dark:bg-white/[0.04] hover:bg-white dark:hover:bg-white/[0.09] border border-slate-200/70 dark:border-white/5 hover:border-sysred/30 transition-all duration-150 gap-2 shadow-2xs"
-                                                                                    >
-                                                                                        <div className="flex items-start gap-2.5 min-w-0 flex-1">
-                                                                                            <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20 group-hover/item:bg-sysred dark:group-hover/item:bg-[#ff6b6b] transition-colors shrink-0 mt-1.5" />
-                                                                                            <span className="text-[12px] leading-snug font-medium text-slate-800 dark:text-steel/90 group-hover/item:text-slate-950 dark:group-hover/item:text-white break-words">
-                                                                                                {sub.name}
-                                                                                            </span>
-                                                                                        </div>
-                                                                                        {sub.items_count !== undefined && sub.items_count > 0 && (
-                                                                                            <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel group-hover/item:bg-red-500/15 group-hover/item:text-sysred dark:group-hover/item:text-[#ff6b6b] transition-colors shrink-0 mt-0.5">
-                                                                                                {sub.items_count}
-                                                                                            </span>
-                                                                                        )}
-                                                                                    </Link>
-                                                                                ))}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                );
-                                                            }
+                                                            const isRow1 = idx < 4;
+                                                            const colSpanClass = isRow1 
+                                                                ? 'col-span-12 sm:col-span-6 lg:col-span-3' 
+                                                                : 'col-span-12 sm:col-span-6 lg:col-span-4';
 
                                                             return (
                                                                 <div 
                                                                     key={cat.id || idx}
-                                                                    className="group/col h-full flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative min-h-[290px]"
+                                                                    className={`${colSpanClass} group/col h-full flex flex-col justify-between p-5 xl:p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative min-h-[300px]`}
                                                                 >
                                                                     {/* Top specular accent line on hover */}
                                                                     <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover/col:via-sysred dark:group-hover/col:via-[#ff6b6b] transition-all duration-500 rounded-t-2xl" />
@@ -241,7 +167,7 @@ export default function Navbar() {
                                                                                     {cat.name}
                                                                                 </Link>
                                                                                 <div className="flex items-center gap-2 mt-1">
-                                                                                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold">
+                                                                                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-950/40 text-sysred dark:text-[#ff6b6b] font-bold">
                                                                                         {cat.items_count ?? cat.subcategories?.length ?? 0} Systems
                                                                                     </span>
                                                                                     <span className="text-[10px] font-mono text-slate-400 dark:text-steel">
@@ -253,7 +179,7 @@ export default function Navbar() {
 
                                                                         {/* Subcategory List with Full Untruncated Product Names */}
                                                                         <div className="space-y-1.5 mb-3">
-                                                                            {(cat.subcategories || []).slice(0, 5).map((sub) => (
+                                                                            {(cat.subcategories || []).slice(0, 4).map((sub) => (
                                                                                 <Link
                                                                                     key={sub.slug}
                                                                                     href={`/products/${cat.slug}/${sub.slug}`}
@@ -273,6 +199,11 @@ export default function Navbar() {
                                                                                     )}
                                                                                 </Link>
                                                                             ))}
+                                                                            {(cat.subcategories?.length || 0) > 4 && (
+                                                                                <div className="px-2 pt-1 text-[10px] font-mono text-slate-400 dark:text-steel/70">
+                                                                                    +{(cat.subcategories.length - 4)} more specialized systems
+                                                                                </div>
+                                                                            )}
                                                                         </div>
                                                                     </div>
 
