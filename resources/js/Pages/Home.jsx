@@ -79,34 +79,34 @@ export default function Home({ banners = [], categories = [], featuredProducts =
         });
     };
 
-    // Default hero slides if none in database (5 Banners Total: Video + 4 Flagship Hardware)
+    // Default hero slides if none in database (4 Flagship Hardware Banners)
     const rawSlides = banners.length > 0 ? banners : [
         {
-            heading: 'Intelligent Telecom, Energy & Tactical Infrastructure',
-            subheading: 'ISO-certified leader in automated AMF panels, SYS-AXS NOC telemetry, and mission-critical power systems powering over 70,000 sites across India.',
-            image_path: '/img/slider/1-1.jpg',
-            cta_label: 'Explore Products',
-            cta_url: '/products',
-        },
-        {
-            heading: '3,00,000+ Rectifier Modules Reconditioned',
-            subheading: 'Over two decades of excellence with an 8,000 sq. ft. international-standard manufacturing and testing facility in Patparganj Industrial Area, New Delhi.',
-            image_path: '/img/slider/1-2.jpg',
-            cta_label: 'Our Manufacturing Facility',
-            cta_url: '/about-us',
-        },
-        {
-            heading: 'SYS-AXS NOC Surveillance & Remote Monitoring',
-            subheading: 'Centralized IoT telemetry, fuel ultrasonic sensing, dual PIR intrusion alarms, and battery health intelligence deployed across 10,000+ towers.',
+            heading: 'Motorola Solutions Authorized Channel Partner',
+            subheading: 'Official Authorized Channel Partner delivering mission-critical MOTOTRBO digital radios, automatic weather stations, and tactical communication systems across India.',
             image_path: '/img/slider/1-3.jpg',
+            cta_label: 'Explore Motorola Systems',
+            cta_url: '/products/defence-tactical-specialized/tactical-communication-motorola-solutions',
+        },
+        {
+            heading: 'SYS-AXS NOC Platform & Remote Telemetry',
+            subheading: 'Centralized IoT telemetry, fuel ultrasonic sensing, dual PIR intrusion alarms, and battery health intelligence deployed across 10,000+ towers.',
+            image_path: '/img/slider/1-2.jpg',
             cta_label: 'Explore SYS-AXS Platform',
             cta_url: '/products',
         },
         {
-            heading: 'Motorola Solutions Authorized Channel Partner',
-            subheading: 'Encrypted tactical radios, Automatic Weather Stations, and mission-critical wireless gear engineered for defense forces and national utilities.',
+            heading: 'AMF Power Controllers & Automation',
+            subheading: 'Automated Mains Failure systems, solar hybrid controllers, and power telemetry deployed across 70,000+ tower sites nationwide.',
+            image_path: '/img/slider/1-1.jpg',
+            cta_label: 'Explore AMF Panels',
+            cta_url: '/products',
+        },
+        {
+            heading: '5G Smart Box Solutions & Enclosures',
+            subheading: 'Next-generation small cell enclosures and integrated power distribution designed for urban 5G and smart city infrastructure.',
             image_path: '/img/slider/1-4.jpg',
-            cta_label: 'Discover Tactical Gear',
+            cta_label: 'Discover Small Cell Enclosures',
             cta_url: '/products',
         }
     ];
@@ -276,6 +276,19 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                 <div className="relative z-20 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 pointer-events-none">
                     <div className="max-w-xl xl:max-w-2xl w-full text-left py-10 sm:py-14 pointer-events-auto">
                         <div key={currentSlide} className="space-y-6">
+                            {/* Prominent Credential Highlight for Motorola Solutions Authorized Channel Partner */}
+                            {(currentSlide === 0 || slides[currentSlide]?.heading?.toLowerCase().includes('motorola')) && (
+                                <div className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-black/80 backdrop-blur-md border border-sysred/40 dark:border-[#ff6b6b]/40 text-xs sm:text-sm font-mono font-bold text-sysred dark:text-[#ff6b6b] uppercase tracking-wider shadow-lg mb-1 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                    <img 
+                                        src="/img/motorola-solutions.png" 
+                                        alt="Motorola Solutions Authorized Channel Partner" 
+                                        className="h-5 sm:h-6 w-auto object-contain"
+                                    />
+                                    <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
+                                    <span>Motorola Solutions Authorized Channel Partner</span>
+                                </div>
+                            )}
+
                             {/* Headline: Motorola-style Bold Typography with Kinetic Letter Reveal Animation */}
                             <div className="py-1">
                                 <AnimatedHeading
@@ -379,82 +392,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
 
 
             {/* =========================================================================
-                2. NATIONAL DEPLOYMENT PROOF BAR
-            ========================================================================= */}
-            <section className="bg-white dark:bg-[#000000] py-8 transition-colors duration-300">
-                <div className="container-content">
-                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
-                        <div className="shrink-0 max-w-sm">
-                            <span className="text-xs font-mono uppercase tracking-widest text-sysred dark:text-[#ff6b6b] font-bold block mb-1">
-                                CRITICAL DEPLOYMENTS
-                            </span>
-                            <h2 className="text-lg sm:text-xl font-display font-bold text-slate-900 dark:text-paper leading-snug">
-                                Trusted by National Security & Key Infrastructure
-                            </h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 items-center flex-1">
-                            <div className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-navy-surface/50 hover:bg-white dark:hover:bg-navy-surface hover:border-sysred/40 dark:hover:border-[#ff6b6b]/30 hover:shadow-lg hover:shadow-red-500/10 dark:hover:shadow-red-500/10 hover:-translate-y-1 transition-all duration-300 group">
-                                <div className="w-12 h-12 rounded-lg bg-white dark:bg-white/10 p-1.5 flex items-center justify-center border border-slate-200/60 dark:border-white/10 shadow-sm shrink-0 group-hover:scale-105 transition-transform">
-                                    <img 
-                                        src="/img/brand/1.jpg" 
-                                        alt="Parliament of India" 
-                                        className="max-h-full max-w-full object-contain filter group-hover:filter-none transition-all"
-                                    />
-                                </div>
-                                <div className="min-w-0">
-                                    <span className="block text-xs font-bold text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors truncate">
-                                        Parliament of India
-                                    </span>
-                                    <span className="block text-[10px] font-mono text-slate-500 dark:text-steel uppercase tracking-wider">
-                                        New Delhi &bull; Security Grid
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-navy-surface/50 hover:bg-white dark:hover:bg-navy-surface hover:border-sysred/40 dark:hover:border-[#ff6b6b]/30 hover:shadow-lg hover:shadow-red-500/10 dark:hover:shadow-red-500/10 hover:-translate-y-1 transition-all duration-300 group">
-                                <div className="w-12 h-12 rounded-lg bg-white dark:bg-white/10 p-1.5 flex items-center justify-center border border-slate-200/60 dark:border-white/10 shadow-sm shrink-0 group-hover:scale-105 transition-transform">
-                                    <img 
-                                        src="/img/brand/2.jpg" 
-                                        alt="Delhi Police" 
-                                        className="max-h-full max-w-full object-contain filter group-hover:filter-none transition-all"
-                                    />
-                                </div>
-                                <div className="min-w-0">
-                                    <span className="block text-xs font-bold text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors truncate">
-                                        Delhi Police
-                                    </span>
-                                    <span className="block text-[10px] font-mono text-slate-500 dark:text-steel uppercase tracking-wider">
-                                        2,500+ PoC Radios
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-navy-surface/50 hover:bg-white dark:hover:bg-navy-surface hover:border-sysred/40 dark:hover:border-[#ff6b6b]/30 hover:shadow-lg hover:shadow-red-500/10 dark:hover:shadow-red-500/10 hover:-translate-y-1 transition-all duration-300 group">
-                                <div className="w-12 h-12 rounded-lg bg-white dark:bg-white/10 p-1.5 flex items-center justify-center border border-slate-200/60 dark:border-white/10 shadow-sm shrink-0 group-hover:scale-105 transition-transform">
-                                    <img 
-                                        src="/img/brand/3.jpg" 
-                                        alt="Surat Diamond Bourse" 
-                                        className="max-h-full max-w-full object-contain filter group-hover:filter-none transition-all"
-                                    />
-                                </div>
-                                <div className="min-w-0">
-                                    <span className="block text-xs font-bold text-slate-900 dark:text-paper group-hover:text-sysred dark:group-hover:text-[#ff6b6b] transition-colors truncate">
-                                        Surat Diamond Bourse
-                                    </span>
-                                    <span className="block text-[10px] font-mono text-slate-500 dark:text-steel uppercase tracking-wider">
-                                        Private LTE Architecture
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            {/* =========================================================================
-                2B. WELCOME & CORPORATE HD VIDEO SHOWCASE (FROM ORIGINAL WEBSITE)
+                2. WELCOME & CORPORATE HD VIDEO SHOWCASE (FROM ORIGINAL WEBSITE)
             ========================================================================= */}
             <WelcomeVideoSection />
 

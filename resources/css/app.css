@@ -348,6 +348,26 @@
         animation-play-state: paused;
     }
 
+    @keyframes marqueeHorizontal {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-marquee-footer {
+        display: flex;
+        width: max-content;
+        animation: marqueeHorizontal 32s linear infinite;
+        will-change: transform;
+    }
+
+    .animate-marquee-footer:hover {
+        animation-play-state: paused;
+    }
+
     .stat-number-glow {
         text-shadow: 0 0 24px rgba(221, 60, 52, 0.4), 0 0 48px rgba(244, 63, 94, 0.25);
     }

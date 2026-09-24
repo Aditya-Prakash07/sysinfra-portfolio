@@ -4,26 +4,40 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 export default function Footer() {
     return (
         <footer className="bg-black text-slate-300 dark:text-zinc-400 relative overflow-hidden transition-colors duration-300 border-t border-zinc-900">
-            {/* Certifications & Compliance Strip */}
-            <div className="bg-zinc-950 border-b border-zinc-900/80 relative z-10">
-                <div className="container-content py-3.5 flex items-center justify-between gap-4 lg:gap-6 text-[11px] xl:text-xs font-mono text-zinc-400 whitespace-nowrap overflow-x-auto no-scrollbar">
-                    <div className="flex items-center gap-3.5 xl:gap-6 shrink-0">
-                        <span className="flex items-center gap-2 text-[#ff6b6b] font-semibold shrink-0">
-                            <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
-                            IP-1 & DPL TELECOM LICENSED PROVIDER
-                        </span>
-                        <span className="text-zinc-700 shrink-0">•</span>
-                        <span className="shrink-0">ISO 9001:2015 | ISO 14001:2015 | OHSAS 45001:2018</span>
-                        <span className="text-zinc-700 shrink-0">•</span>
-                        <span className="shrink-0">Motorola Solutions Authorized Channel Partner</span>
-                    </div>
+            {/* Certifications & Compliance Strip — Smooth Horizontal Moving Marquee */}
+            <div className="bg-zinc-950 border-b border-zinc-900/80 relative z-10 overflow-hidden py-3.5 select-none">
+                {/* Side gradient fade masks */}
+                <div className="pointer-events-none absolute left-0 inset-y-0 w-16 sm:w-28 z-20 bg-gradient-to-r from-zinc-950 to-transparent" />
+                <div className="pointer-events-none absolute right-0 inset-y-0 w-16 sm:w-28 z-20 bg-gradient-to-l from-zinc-950 to-transparent" />
 
-                    <div className="flex items-center gap-2 text-zinc-300 shrink-0 ml-auto pl-4">
-                        <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                        <span className="shrink-0">24/7 Pan-India Field Operations</span>
-                    </div>
+                <div className="flex animate-marquee-footer">
+                    {[0, 1, 2, 3].map((loopIdx) => (
+                        <div key={loopIdx} className="flex items-center gap-6 xl:gap-8 text-xs font-mono text-zinc-400 shrink-0 pr-6 xl:pr-8 whitespace-nowrap">
+                            <span className="flex items-center gap-2 text-[#ff6b6b] font-bold">
+                                <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                <span>IP-1 &amp; DPL TELECOM LICENSED PROVIDER</span>
+                            </span>
+                            <span className="text-zinc-600 font-bold">•</span>
+                            <span className="text-zinc-300 font-medium">ISO 9001:2015 | ISO 14001:2015 | OHSAS 45001:2018</span>
+                            <span className="text-zinc-600 font-bold">•</span>
+                            <span className="flex items-center gap-2 text-white font-semibold">
+                                <img 
+                                    src="/img/motorola-solutions.png" 
+                                    alt="Motorola Solutions" 
+                                    className="h-4 w-auto object-contain inline-block"
+                                />
+                                <span>Motorola Solutions Authorized Channel Partner</span>
+                            </span>
+                            <span className="text-zinc-600 font-bold">•</span>
+                            <span className="flex items-center gap-2 text-emerald-400 font-semibold">
+                                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                                <span>24/7 Pan-India Field Operations</span>
+                            </span>
+                            <span className="text-zinc-600 font-bold">•</span>
+                        </div>
+                    ))}
                 </div>
             </div>
 
