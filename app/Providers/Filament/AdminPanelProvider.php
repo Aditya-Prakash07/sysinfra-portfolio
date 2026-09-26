@@ -10,12 +10,14 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\HtmlString;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
@@ -28,9 +30,36 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('System Infra Solutions')
-            ->brandLogo(asset('images/logo-light.svg'))
-            ->darkModeBrandLogo(asset('images/logo-dark.svg'))
-            ->brandLogoHeight('2.6rem')
+            ->brandLogo(asset('img/system_infra_solutions_logo_exact.svg'))
+            ->darkModeBrandLogo(asset('img/system_infra_solutions_logo_dark.svg'))
+            ->brandLogoHeight('2.5rem')
+            ->renderHook(
+                PanelsRenderHook::HEAD_END,
+                fn (): HtmlString => new HtmlString('
+                    <style>
+                        .fi-logo {
+                            object-fit: contain;
+                            width: auto;
+                            max-width: 100%;
+                            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.04));
+                            transition: transform 0.2s ease, opacity 0.2s ease;
+                        }
+                        .fi-logo:hover {
+                            opacity: 0.95;
+                        }
+                        /* Enhanced sizing on auth pages (login, password reset) */
+                        .fi-simple-layout-header .fi-logo {
+                            height: 3.25rem !important;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        /* Sidebar brand container */
+                        .fi-sidebar-header .fi-logo {
+                            max-height: 2.35rem !important;
+                        }
+                    </style>
+                ')
+            )
             ->colors([
                 'primary' => Color::Sky,
             ])
