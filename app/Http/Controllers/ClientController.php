@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -9,7 +10,33 @@ class ClientController extends Controller
 {
     public function index(): Response
     {
-        $clients = [
+        $dbClients = Client::where('is_published', true)
+            ->orderBy('sort_order')
+            ->get(['name', 'sector', 'highlight', 'description', 'logo_path', 'website_url'])
+            ->map(function ($c) {
+                return [
+                    'name' => $c->name,
+                    'sector' => $c->sector ?? 'Telecom Operators & TowerCos',
+                    'logo' => $c->logo_path,
+                    'highlight' => $c->highlight ?? $c->description ?? '',
+                    'website_url' => $c->website_url,
+                ];
+            });
+
+        $clients = $dbClients->isNotEmpty() ? $dbClients->all() : $this->fallbackClients();
+
+        return Inertia::render('Clients', [
+            'clients' => $clients,
+            'seo' => [
+                'title' => 'Our Clients & Enterprise Partners — System Infra Solutions',
+                'description' => 'Trusted by India\'s leading telecom operators, towercos, public sector undertakings, and defence forces including Airtel, Indus, Jio, Power Grid, and Indian Armed Forces.',
+            ],
+        ]);
+    }
+
+    protected function fallbackClients(): array
+    {
+        return [
             ['name' => 'Bharti Airtel', 'sector' => 'Telecom Operators & TowerCos', 'logo' => 'img/brand/1.jpg', 'highlight' => 'Nationwide AMF Deployment across 35,000+ Cell Sites'],
             ['name' => 'Indus Towers', 'sector' => 'Telecom Operators & TowerCos', 'logo' => 'img/brand/2.jpg', 'highlight' => 'Smart Energy Controller & DG Auto-cycling Partner'],
             ['name' => 'Reliance Jio', 'sector' => 'Telecom Operators & TowerCos', 'logo' => 'img/brand/3.jpg', 'highlight' => '5G Small Cell Enclosures & Power Conditioning'],
@@ -42,13 +69,5 @@ class ClientController extends Controller
             ['name' => 'Cummins India', 'sector' => 'Genset & Power Generation', 'logo' => 'img/brand/30.jpg', 'highlight' => 'J1939 CAN Bus Engine Telemetry Protocol Integration'],
             ['name' => 'Kirloskar Oil Engines', 'sector' => 'Genset & Power Generation', 'logo' => 'img/brand/31.jpg', 'highlight' => 'Universal AMF Panel Compatibility for DG Fleets'],
         ];
-
-        return Inertia::render('Clients', [
-            'clients' => $clients,
-            'seo' => [
-                'title' => 'Our Clients & Enterprise Partners — System Infra Solutions',
-                'description' => 'Trusted by India\'s leading telecom operators, towercos, public sector undertakings, and defence forces including Airtel, Indus, Jio, Power Grid, and Indian Armed Forces.',
-            ],
-        ]);
     }
 }

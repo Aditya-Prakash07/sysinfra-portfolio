@@ -37,6 +37,10 @@ class HomeController extends Controller
                 ->orderBy('sort_order')
                 ->get(['id', 'client_name', 'story', 'logo_path']),
 
+            'clients' => \App\Models\Client::where('is_published', true)
+                ->orderBy('sort_order')
+                ->get(['id', 'name', 'logo_path', 'website_url']),
+
             'oemPartners' => OemPartner::where('is_published', true)
                 ->orderBy('sort_order')
                 ->get(['id', 'name', 'logo_path', 'website_url']),

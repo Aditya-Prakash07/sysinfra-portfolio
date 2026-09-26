@@ -35,7 +35,7 @@ Route::get('/latest-news/{post:slug}', [NewsController::class, 'show'])->name('n
 
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 Route::get('/our-clients', fn () => redirect('/clients', 301));
-Route::get('/oem-partners', fn () => redirect('/clients', 301))->name('oem-partners');
+Route::get('/oem-partners', [OemPartnerController::class, 'index'])->name('oem-partners');
 Route::get('/media', [EventController::class, 'index'])->name('events.index');
 Route::get('/events', fn () => redirect('/media', 301));
 Route::get('/careers', [CareersController::class, 'index'])->name('careers');

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Banner;
+use App\Models\Client;
 use App\Models\CompanyStat;
 use App\Models\NewsPost;
 use App\Models\OemPartner;
@@ -667,35 +668,122 @@ class DatabaseSeeder extends Seeder
             Testimonial::create($t + ['is_published' => true]);
         }
 
-        // 5. Strategic OEM Partners & Clients
-        $partners = [
-            ['name' => 'Bharti Airtel', 'description' => 'Cell site power modernization and solar AMF integration across 35,000+ sites.', 'logo_path' => 'img/brand/1.jpg', 'website_url' => 'https://www.airtel.in/', 'sort_order' => 1],
-            ['name' => 'Indus Towers', 'description' => 'Smart energy controller and DG auto-cycling partner nationwide.', 'logo_path' => 'img/brand/2.jpg', 'website_url' => 'https://www.industowers.com/', 'sort_order' => 2],
-            ['name' => 'Reliance Jio', 'description' => '5G small cell outdoor power enclosures and lithium-ion battery integration.', 'logo_path' => 'img/brand/3.jpg', 'website_url' => 'https://www.jio.com/', 'sort_order' => 3],
-            ['name' => 'Power Grid Corporation of India', 'description' => 'Substation telemetry and static voltage regulators for national transmission.', 'logo_path' => 'img/brand/4.jpg', 'website_url' => 'https://www.powergrid.in/', 'sort_order' => 4],
-            ['name' => 'Vodafone Idea (Vi)', 'description' => 'Shelter environmental telemetry and universal AC climate controllers.', 'logo_path' => 'img/brand/5.jpg', 'website_url' => 'https://www.myvi.in/', 'sort_order' => 5],
-            ['name' => 'American Tower Corporation (ATC)', 'description' => 'SYS-AXS NOC remote surveillance and fuel monitoring deployment.', 'logo_path' => 'img/brand/6.jpg', 'website_url' => 'https://www.americantower.com/', 'sort_order' => 6],
-            ['name' => 'Bharat Sanchar Nigam Limited (BSNL)', 'description' => 'Turnkey passive infrastructure O&M and power module refurbishment.', 'logo_path' => 'img/brand/7.jpg', 'website_url' => 'https://www.bsnl.co.in/', 'sort_order' => 7],
-            ['name' => 'Tata Communications', 'description' => 'Fiber exchange high-reliability DC power systems and rectifier AMC.', 'logo_path' => 'img/brand/8.jpg', 'website_url' => 'https://www.tatacommunications.com/', 'sort_order' => 8],
-            ['name' => 'Ascend Telecom', 'description' => 'Tower site energy optimization and LVD latching controller systems.', 'logo_path' => 'img/brand/9.jpg', 'website_url' => '#', 'sort_order' => 9],
-            ['name' => 'GTL Infrastructure', 'description' => 'DG auto-start automation and diesel anti-theft telemetry sensors.', 'logo_path' => 'img/brand/10.jpg', 'website_url' => '#', 'sort_order' => 10],
-            ['name' => 'Tower Vision India', 'description' => 'Multi-tenant energy metering and class-1 DC precision billing.', 'logo_path' => 'img/brand/11.jpg', 'website_url' => '#', 'sort_order' => 11],
-            ['name' => 'Ericsson Telecommunications', 'description' => 'Rectifier module reconditioning and telecom power plant upgrades.', 'logo_path' => 'img/brand/12.jpg', 'website_url' => 'https://www.ericsson.com/', 'sort_order' => 12],
-            ['name' => 'Nokia Solutions and Networks', 'description' => 'Telecom power supply integration and component repair labs.', 'logo_path' => 'img/brand/13.jpg', 'website_url' => 'https://www.nokia.com/', 'sort_order' => 13],
-            ['name' => 'Huawei Telecommunications', 'description' => 'High-efficiency SMPS module overhaul and PCB component testing.', 'logo_path' => 'img/brand/14.jpg', 'website_url' => '#', 'sort_order' => 14],
-            ['name' => 'Vertiv / Emerson Network Power', 'description' => '300,000+ power modules serviced and calibrated in Patparganj facility.', 'logo_path' => 'img/brand/16.jpg', 'website_url' => 'https://www.vertiv.com/', 'sort_order' => 15],
-            ['name' => 'Delta Power Solutions', 'description' => 'DC-DC power converters and industrial power supply diagnostics.', 'logo_path' => 'img/brand/17.jpg', 'website_url' => 'https://www.deltaww.com/', 'sort_order' => 16],
-            ['name' => 'Indian Railways', 'description' => 'Signalling telemetry power units and station backup power conditioning.', 'logo_path' => 'img/brand/19.jpg', 'website_url' => 'https://indianrailways.gov.in/', 'sort_order' => 17],
-            ['name' => 'Delhi Metro Rail (DMRC)', 'description' => 'Underground tunnel telecommunications and automatic mains failure panels.', 'logo_path' => 'img/brand/20.jpg', 'website_url' => 'https://www.delhimetrorail.com/', 'sort_order' => 18],
-            ['name' => 'GAIL (India) Limited', 'description' => 'Natural gas pipeline repeater station telemetry and surveillance.', 'logo_path' => 'img/brand/21.jpg', 'website_url' => 'https://gailonline.com/', 'sort_order' => 19],
-            ['name' => 'Oil and Natural Gas Corporation (ONGC)', 'description' => 'Offshore and onshore rig communications and static voltage regulation.', 'logo_path' => 'img/brand/22.jpg', 'website_url' => 'https://www.ongcindia.com/', 'sort_order' => 20],
-            ['name' => 'Motorola Solutions', 'description' => 'Authorized partner for mission-critical ASTRO 25 and MOTOTRBO tactical radios.', 'logo_path' => 'img/motorola-solutions.png', 'website_url' => 'https://www.motorolasolutions.com/', 'sort_order' => 21],
-            ['name' => 'Larsen & Toubro (L&T)', 'description' => 'Smart city 5G street furniture micro-shelters and IoT edge nodes.', 'logo_path' => 'img/brand/27.jpg', 'website_url' => 'https://www.larsentoubro.com/', 'sort_order' => 22],
+        // 5. Our Clients & Strategic OEM Partners
+        $clients = [
+            ['name' => 'Bharti Airtel', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/1.jpg', 'highlight' => 'Nationwide AMF Deployment across 35,000+ Cell Sites', 'website_url' => 'https://www.airtel.in/', 'sort_order' => 1],
+            ['name' => 'Indus Towers', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/2.jpg', 'highlight' => 'Smart Energy Controller & DG Auto-cycling Partner', 'website_url' => 'https://www.industowers.com/', 'sort_order' => 2],
+            ['name' => 'Reliance Jio', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/3.jpg', 'highlight' => '5G Small Cell Enclosures & Power Conditioning', 'website_url' => 'https://www.jio.com/', 'sort_order' => 3],
+            ['name' => 'Power Grid Corporation of India', 'sector' => 'Energy, Power & Utilities', 'logo_path' => 'img/brand/4.jpg', 'highlight' => 'Substation Remote Telemetry & SVR Voltage Regulators', 'website_url' => 'https://www.powergrid.in/', 'sort_order' => 4],
+            ['name' => 'Vodafone Idea (Vi)', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/5.jpg', 'highlight' => 'BTS Shelter Environmental Management & Dual-AC', 'website_url' => 'https://www.myvi.in/', 'sort_order' => 5],
+            ['name' => 'American Tower Corporation (ATC)', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/6.jpg', 'highlight' => 'SYS-AXS NOC Remote Monitoring Integration', 'website_url' => 'https://www.americantower.com/', 'sort_order' => 6],
+            ['name' => 'Bharat Sanchar Nigam Limited (BSNL)', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/7.jpg', 'highlight' => 'Turnkey Telecom Infrastructure O&M Services', 'website_url' => 'https://www.bsnl.co.in/', 'sort_order' => 7],
+            ['name' => 'Tata Communications / Teleservices', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/8.jpg', 'highlight' => 'Fiber Exchange Power Systems & Rectifier AMC', 'website_url' => 'https://www.tatacommunications.com/', 'sort_order' => 8],
+            ['name' => 'Ascend Telecom Infrastructure', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/9.jpg', 'highlight' => 'Tower Site Energy Optimization & LVD Controls', 'website_url' => '#', 'sort_order' => 9],
+            ['name' => 'GTL Infrastructure', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/10.jpg', 'highlight' => 'DG Auto-Start & Diesel Theft Surveillance', 'website_url' => '#', 'sort_order' => 10],
+            ['name' => 'Tower Vision India', 'sector' => 'Telecom Operators & TowerCos', 'logo_path' => 'img/brand/11.jpg', 'highlight' => 'Multi-Tenant Tower Energy Metering Units', 'website_url' => '#', 'sort_order' => 11],
+            ['name' => 'Ericsson Telecommunications', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/12.jpg', 'highlight' => 'Rectifier Module Reconditioning to OEM Standards', 'website_url' => 'https://www.ericsson.com/', 'sort_order' => 12],
+            ['name' => 'Nokia Solutions and Networks', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/13.jpg', 'highlight' => 'Telecom Power Supply Integration & Lab Certification', 'website_url' => 'https://www.nokia.com/', 'sort_order' => 13],
+            ['name' => 'Huawei Telecommunications', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/14.jpg', 'highlight' => 'SMPS Module Refurbishment & Board Repairs', 'website_url' => '#', 'sort_order' => 14],
+            ['name' => 'ZTE Telecom India', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/15.jpg', 'highlight' => 'DC Power Conversion & Power Plant Upgrades', 'website_url' => '#', 'sort_order' => 15],
+            ['name' => 'Vertiv / Emerson Network Power', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/16.jpg', 'highlight' => '3,00,000+ Power Modules Serviced in Patparganj', 'website_url' => 'https://www.vertiv.com/', 'sort_order' => 16],
+            ['name' => 'Delta Power Solutions', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/17.jpg', 'highlight' => 'In-house Component-Level Testing & Validation', 'website_url' => 'https://www.deltaww.com/', 'sort_order' => 17],
+            ['name' => 'Eltek Power Systems', 'sector' => 'OEM Power & Equipment Partners', 'logo_path' => 'img/brand/18.jpg', 'highlight' => 'High-Efficiency DC Rectifier Support', 'website_url' => 'https://www.eltek.com/', 'sort_order' => 18],
+            ['name' => 'Indian Railways', 'sector' => 'Transportation & Public Utilities', 'logo_path' => 'img/brand/19.jpg', 'highlight' => 'Station Signalling & Telemetry Power Backups', 'website_url' => 'https://indianrailways.gov.in/', 'sort_order' => 19],
+            ['name' => 'Delhi Metro Rail Corporation (DMRC)', 'sector' => 'Transportation & Public Utilities', 'logo_path' => 'img/brand/20.jpg', 'highlight' => 'Underground Tunnel Telecommunications & AMF', 'website_url' => 'https://www.delhimetrorail.com/', 'sort_order' => 20],
+            ['name' => 'GAIL (India) Limited', 'sector' => 'Energy, Power & Utilities', 'logo_path' => 'img/brand/21.jpg', 'highlight' => 'Gas Pipeline Repeater Station Remote Telemetry', 'website_url' => 'https://gailonline.com/', 'sort_order' => 21],
+            ['name' => 'Oil and Natural Gas Corporation (ONGC)', 'sector' => 'Energy, Power & Utilities', 'logo_path' => 'img/brand/22.jpg', 'highlight' => 'Offshore / Onshore Rig Communications & SVR', 'website_url' => 'https://www.ongcindia.com/', 'sort_order' => 22],
+            ['name' => 'Indian Armed Forces (MoD)', 'sector' => 'Defence & Homeland Security', 'logo_path' => 'img/brand/23.jpg', 'highlight' => 'Motorola Solutions Tactical Radios & Weather Stations', 'website_url' => '#', 'sort_order' => 23],
+            ['name' => 'Central Reserve Police Force (CRPF)', 'sector' => 'Defence & Homeland Security', 'logo_path' => 'img/brand/24.jpg', 'highlight' => 'Tactical Communication Gear & Base Repeaters', 'website_url' => '#', 'sort_order' => 24],
+            ['name' => 'Border Security Force (BSF)', 'sector' => 'Defence & Homeland Security', 'logo_path' => 'img/brand/25.jpg', 'highlight' => 'Extreme-Climate Automatic Weather Station (AWS)', 'website_url' => '#', 'sort_order' => 25],
+            ['name' => 'Central Industrial Security Force (CISF)', 'sector' => 'Defence & Homeland Security', 'logo_path' => 'img/brand/26.jpg', 'highlight' => 'Airport & Strategic Plant Perimeter Telemetry', 'website_url' => '#', 'sort_order' => 26],
+            ['name' => 'Larsen & Toubro (L&T)', 'sector' => 'Infrastructure & EPC Leaders', 'logo_path' => 'img/brand/27.jpg', 'highlight' => 'Smart City 5G Street Furniture Enclosures', 'website_url' => 'https://www.larsentoubro.com/', 'sort_order' => 27],
+            ['name' => 'Sterling and Wilson', 'sector' => 'Infrastructure & EPC Leaders', 'logo_path' => 'img/brand/28.jpg', 'highlight' => 'Solar Hybrid Power Plant Integration & Microgrid', 'website_url' => '#', 'sort_order' => 28],
+            ['name' => 'Voltas Limited', 'sector' => 'HVAC & Climate Control', 'logo_path' => 'img/brand/29.jpg', 'highlight' => 'Precision Shelter AC Duty-Cycling Controllers', 'website_url' => '#', 'sort_order' => 29],
+            ['name' => 'Cummins India', 'sector' => 'Genset & Power Generation', 'logo_path' => 'img/brand/30.jpg', 'highlight' => 'J1939 CAN Bus Engine Telemetry Protocol Integration', 'website_url' => 'https://www.cummins.com/', 'sort_order' => 30],
+            ['name' => 'Kirloskar Oil Engines', 'sector' => 'Genset & Power Generation', 'logo_path' => 'img/brand/31.jpg', 'highlight' => 'Universal AMF Panel Compatibility for DG Fleets', 'website_url' => '#', 'sort_order' => 31],
+        ];
+
+        Client::truncate();
+        foreach ($clients as $c) {
+            Client::create($c + ['is_published' => true]);
+        }
+
+        $oemPartners = [
+            [
+                'name' => 'Kenwood Corporation, Japan',
+                'description' => 'World leader in mission-critical land mobile radios (DMR, NEXEDGE NXDN, P25). Sysinfra has been their accredited distributor in India since 1999.',
+                'logo_path' => 'img/brand/12.jpg',
+                'website_url' => 'https://www.kenwood.com/',
+                'sort_order' => 1,
+            ],
+            [
+                'name' => 'Motorola Solutions',
+                'description' => 'Global leader in public safety and enterprise security technology. Authorized channel partner for MOTOTRBO and ASTRO 25 mission-critical tactical communications.',
+                'logo_path' => 'img/motorola-solutions.png',
+                'website_url' => 'https://www.motorolasolutions.com/',
+                'sort_order' => 2,
+            ],
+            [
+                'name' => 'Diamond Corporation, Japan',
+                'description' => 'Established in 1955, Diamond Japan is a world leader in RF antennas, duplexers, and RF accessories. Sysinfra partner since 2005.',
+                'logo_path' => 'img/brand/14.jpg',
+                'website_url' => 'https://www.diamond-ant.co.jp/english/',
+                'sort_order' => 3,
+            ],
+            [
+                'name' => 'Radio Activity (JVCKENWOOD Group)',
+                'description' => 'Specialized in the design of DMR Tier III simulcast and multisite trunked PMR base stations. 100% subsidiary of JVCKENWOOD group.',
+                'logo_path' => 'img/brand/15.jpg',
+                'website_url' => 'https://www.radioactivity-tlc.com/',
+                'sort_order' => 4,
+            ],
+            [
+                'name' => 'EF Johnson Technologies, USA',
+                'description' => 'Mission-critical P25 communication solutions for first responders, public safety organizations, and defence forces worldwide.',
+                'logo_path' => 'img/brand/13.jpg',
+                'website_url' => 'https://www.efjohnson.com/',
+                'sort_order' => 5,
+            ],
+            [
+                'name' => 'Vertiv / Emerson Network Power',
+                'description' => 'Strategic partner for DC telecom power systems and rectifier modules. Over 300,000 power modules serviced in Patparganj facility.',
+                'logo_path' => 'img/brand/16.jpg',
+                'website_url' => 'https://www.vertiv.com/',
+                'sort_order' => 6,
+            ],
+            [
+                'name' => 'Delta Power Solutions',
+                'description' => 'Global provider of power and thermal management solutions, high-efficiency DC power systems, and telecom power conversion.',
+                'logo_path' => 'img/brand/17.jpg',
+                'website_url' => 'https://www.deltaww.com/',
+                'sort_order' => 7,
+            ],
+            [
+                'name' => 'Eltek Power Systems',
+                'description' => 'High-efficiency DC power systems and telecom rectifier modules engineered for extreme reliability in mission-critical networks.',
+                'logo_path' => 'img/brand/18.jpg',
+                'website_url' => 'https://www.eltek.com/',
+                'sort_order' => 8,
+            ],
+            [
+                'name' => 'Nokia Solutions and Networks',
+                'description' => 'Telecom power supply integration, base station power conditioning, and component validation laboratories.',
+                'logo_path' => 'img/brand/13.jpg',
+                'website_url' => 'https://www.nokia.com/',
+                'sort_order' => 9,
+            ],
+            [
+                'name' => 'Ericsson Telecommunications',
+                'description' => 'Telecom infrastructure power modules and power plant upgrade partner.',
+                'logo_path' => 'img/brand/12.jpg',
+                'website_url' => 'https://www.ericsson.com/',
+                'sort_order' => 10,
+            ],
         ];
 
         OemPartner::truncate();
-        foreach ($partners as $p) {
-            OemPartner::create($p);
+        foreach ($oemPartners as $p) {
+            OemPartner::create($p + ['is_published' => true]);
         }
 
         // 6. Leadership & Engineering Directorate (Authentic Sysinfra Divisions)

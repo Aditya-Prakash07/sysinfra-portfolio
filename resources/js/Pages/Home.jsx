@@ -60,7 +60,7 @@ const getSectorIcon = (idx) => {
     }
 };
 
-export default function Home({ banners = [], categories = [], featuredProducts = [], stats = [], testimonials = [], oemPartners = [], latestNews = [], seo = {} }) {
+export default function Home({ banners = [], categories = [], featuredProducts = [], stats = [], testimonials = [], clients = [], oemPartners = [], latestNews = [], seo = {} }) {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
     const [selectedSector, setSelectedSector] = useState(0);
@@ -878,7 +878,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
 
                     <div className="animate-marquee-ltr flex items-center gap-5 sm:gap-6">
                         {/* Duplicate array for continuous seamless infinite loop */}
-                        {[...(oemPartners || []), ...(oemPartners || [])].map((partner, pIdx) => (
+                        {[...((clients && clients.length > 0) ? clients : oemPartners || []), ...((clients && clients.length > 0) ? clients : oemPartners || [])].map((partner, pIdx) => (
                             <a
                                 key={`${partner.name}-${pIdx}`}
                                 href={partner.website_url || '#'}
