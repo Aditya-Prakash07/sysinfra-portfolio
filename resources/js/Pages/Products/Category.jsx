@@ -102,22 +102,38 @@ export default function ProductsCategory({ category, subcategory, items = [], se
 
                     {/* Subcategory Search filter input */}
                     {items.length > 0 && (
-                        <div className="mt-8 max-w-md mx-auto relative text-left">
-                            <input 
-                                type="text"
-                                placeholder={`Search in ${subcategory.name}...`}
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                                className="input !bg-white dark:!bg-[#141414] !border-slate-300 dark:!border-white/15 !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-[#dd3c34] dark:focus:!border-[#ff6b6b] !pr-16 w-full shadow-xs"
-                            />
-                            {search && (
-                                <button 
-                                    onClick={() => setSearch('')}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-white/10 transition-colors"
-                                >
-                                    CLEAR
-                                </button>
-                            )}
+                        <div className="mt-8 sm:mt-10 max-w-2xl mx-auto">
+                            <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-lg shadow-slate-200/50 dark:shadow-2xl dark:shadow-black/50 transition-all duration-300 group">
+                                <div className="absolute left-4 sm:left-5 pointer-events-none text-sysred dark:text-[#ff6b6b] flex items-center">
+                                    <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </div>
+                                <input
+                                    type="text"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    placeholder={`Search within ${subcategory.name} (e.g. model, specs)...`}
+                                    className="w-full h-14 sm:h-15 pl-12 sm:pl-14 pr-24 sm:pr-28 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base sm:text-lg font-sans tracking-tight focus:outline-none border-0 ring-0 focus:ring-0"
+                                />
+                                <div className="absolute right-3 sm:right-4 flex items-center gap-2">
+                                    {search && (
+                                        <button
+                                            type="button"
+                                            onClick={() => setSearch('')}
+                                            className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                                            title="Clear search query"
+                                        >
+                                            <svg className="w-4 h-4 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    )}
+                                    <span className="hidden sm:inline-flex px-3 py-1.5 rounded-lg bg-sysred/10 dark:bg-sysred/20 text-sysred dark:text-[#ff6b6b] font-mono text-[11px] font-bold uppercase tracking-wider">
+                                        Filter
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -126,7 +142,7 @@ export default function ProductsCategory({ category, subcategory, items = [], se
             {/* Items Grid */}
             <div className="py-16 sm:py-20 bg-slate-50 dark:bg-[#111111] transition-colors duration-300">
                 <div className="container-content">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-10 gap-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-10 gap-3 border-b border-slate-200 dark:border-white/10">
                         <span className="text-xs font-mono uppercase text-slate-500 dark:text-steel font-bold">
                             HARDWARE CATALOG &bull; {filteredItems.length} OF {items.length} {items.length === 1 ? 'UNIT' : 'UNITS'}
                             {search && <span className="text-sysred dark:text-[#ff6b6b] ml-2 font-semibold">(FILTERED)</span>}
@@ -140,38 +156,49 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                     </div>
 
                     {filteredItems.length === 0 ? (
-                        <div className="panel p-16 text-center space-y-4">
+                        <div className="py-16 px-6 text-center bg-white dark:bg-[#0d0d0d] rounded-2xl border border-slate-200 dark:border-white/10 max-w-xl mx-auto shadow-sm">
+                            <div className="w-16 h-16 mx-auto rounded-2xl bg-red-500/10 text-sysred dark:text-[#ff6b6b] flex items-center justify-center mb-4 border border-red-500/20">
+                                <svg className="w-8 h-8 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
                             {search ? (
                                 <>
-                                    <p className="font-mono text-sm text-slate-700 dark:text-paper font-semibold">
-                                        No products matched &ldquo;{search}&rdquo; in {subcategory.name}.
+                                    <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white">
+                                        No Matching Equipment
+                                    </h3>
+                                    <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
+                                        No items matched &ldquo;<strong className="text-sysred dark:text-[#ff6b6b]">{search}</strong>&rdquo; in {subcategory.name}.
                                     </p>
-                                    <p className="text-xs font-mono text-slate-500 dark:text-steel">
-                                        Try searching across all categories or check for alternative model numbers.
-                                    </p>
-                                    <div className="pt-2 flex items-center justify-center gap-4">
+                                    <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                                         <button 
+                                            type="button"
                                             onClick={() => setSearch('')}
-                                            className="btn-beacon !py-2 !px-5 text-xs font-mono uppercase tracking-wider font-bold"
+                                            className="px-5 py-2.5 rounded-full bg-sysred hover:bg-[#b82720] text-white font-mono text-xs uppercase tracking-wider font-bold shadow-md transition-all cursor-pointer"
                                         >
                                             Reset Filter
                                         </button>
                                         <Link 
                                             href="/products" 
-                                            className="text-xs font-mono text-sysred dark:text-[#ff6b6b] hover:underline"
+                                            className="px-5 py-2.5 rounded-full border border-slate-200 dark:border-white/15 hover:border-sysred/50 text-slate-700 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono text-xs uppercase tracking-wider font-semibold transition-colors"
                                         >
-                                            Search All Categories
+                                            Search All Categories &rarr;
                                         </Link>
                                     </div>
                                 </>
                             ) : (
                                 <>
-                                    <p className="font-mono text-sm text-slate-600 dark:text-steel">
-                                        Direct supply models available via custom RFP quotation.
+                                    <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white">
+                                        Direct Supply &amp; Custom RFP
+                                    </h3>
+                                    <p className="text-sm text-slate-600 dark:text-steel mt-2 max-w-md mx-auto">
+                                        Direct supply models available via custom RFP quotation from our Patparganj facility.
                                     </p>
-                                    <Link href="/contact-us" className="btn-beacon !py-2.5 !px-6 text-xs font-mono uppercase tracking-wider font-bold">
-                                        Request Custom Hardware Specs
-                                    </Link>
+                                    <div className="mt-6">
+                                        <Link href="/contact-us" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sysred hover:bg-[#b82720] text-white font-mono text-xs font-bold uppercase tracking-wider shadow-md transition-all">
+                                            Request Custom Hardware Specs
+                                        </Link>
+                                    </div>
                                 </>
                             )}
                         </div>

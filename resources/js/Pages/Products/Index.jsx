@@ -48,6 +48,7 @@ export function matchesSearch(fields = [], query = '') {
 
 export default function ProductsIndex({ categories = [], seo = {} }) {
     const [search, setSearch] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('All');
 
     // Flatten all products across all categories and subcategories with parent hierarchy info
     const allProducts = useMemo(() => {
@@ -68,11 +69,12 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
         return list;
     }, [categories]);
 
-    // Matching products when search is active
+    // Matching products when search is active or category filter is applied
     const matchingProducts = useMemo(() => {
         if (!search.trim()) return [];
-        return allProducts.filter((item) =>
-            matchesSearch(
+        return allProducts.filter((item) => {
+            const matchesCat = selectedCategory === 'All' || item.categorySlug === selectedCategory;
+            const matchesQuery = matchesSearch(
                 [
                     item.name,
                     item.model_number,
@@ -82,16 +84,20 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                     item.categoryName,
                 ],
                 search
-            )
-        );
-    }, [allProducts, search]);
+            );
+            return matchesCat && matchesQuery;
+        });
+    }, [allProducts, search, selectedCategory]);
 
-    // Filter categories & subcategories:
-    // Subcategories match if their name/desc matches OR if they contain a matching product.
+    // Filter categories & subcategories based on selected category & search query
     const filteredCategories = useMemo(() => {
-        if (!search.trim()) return categories;
+        const baseCategories = selectedCategory === 'All'
+            ? categories
+            : categories.filter((c) => c.slug === selectedCategory);
 
-        return categories
+        if (!search.trim()) return baseCategories;
+
+        return baseCategories
             .map((cat) => {
                 const catMatches = matchesSearch([cat.name, cat.description, cat.slug], search);
 
@@ -117,7 +123,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                 return null;
             })
             .filter(Boolean);
-    }, [categories, search]);
+    }, [categories, search, selectedCategory]);
 
     const isSearching = Boolean(search.trim());
 
@@ -162,48 +168,143 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                         Select a product vertical below to explore AMF panels, NOC telemetry, security automation, and turnkey engineering solutions.
                     </p>
 
-                    {/* Action Buttons & Search filter input */}
-                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
-                        <div className="relative flex-1 w-full max-w-md text-left">
-                            <input 
+                    {/* Big Prominent Search & Category Filter Hub (Directly after the last line) */}
+                    <div className="mt-8 sm:mt-10 max-w-3xl mx-auto">
+                        <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-lg shadow-slate-200/50 dark:shadow-2xl dark:shadow-black/50 transition-all duration-300 group">
+                            {/* Search Lens Icon */}
+                            <div className="absolute left-4 sm:left-5 pointer-events-none text-sysred dark:text-[#ff6b6b] flex items-center">
+                                <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+
+                            {/* Search Input */}
+                            <input
                                 type="text"
-                                placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect)..."
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="input !bg-white dark:!bg-[#141414] !border-slate-300 dark:!border-white/15 !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-[#dd3c34] dark:focus:!border-[#ff6b6b] !pr-16 w-full shadow-xs"
+                                placeholder="Search products by model, keyword (e.g. AMF Panel, SYS-AXS, i-Protect, Smart Box)..."
+                                className="w-full h-14 sm:h-16 pl-12 sm:pl-14 pr-24 sm:pr-28 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base sm:text-lg font-sans tracking-tight focus:outline-none border-0 ring-0 focus:ring-0"
                             />
-                            {search && (
-                                <button 
-                                    onClick={() => setSearch('')}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-white/10 transition-colors"
-                                >
-                                    CLEAR
-                                </button>
-                            )}
+
+                            {/* Clear button and live tag */}
+                            <div className="absolute right-3 sm:right-4 flex items-center gap-2">
+                                {search && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setSearch('')}
+                                        className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                                        title="Clear search query"
+                                    >
+                                        <svg className="w-4 h-4 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                )}
+                                <span className="hidden sm:inline-flex px-3 py-1.5 rounded-lg bg-sysred/10 dark:bg-sysred/20 text-sysred dark:text-[#ff6b6b] font-mono text-[11px] font-bold uppercase tracking-wider">
+                                    Search
+                                </span>
+                            </div>
                         </div>
 
-                        {/* Direct Download Catalog CTA */}
-                        <a
-                            href="/download-catalog"
-                            download="SystemInfraSolutions_MasterCatalogue.pdf"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-sysred hover:bg-[#b82720] text-white font-mono text-xs uppercase tracking-wider font-bold shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0 select-none cursor-pointer"
-                            title="Download official corporate product catalogue (PDF)"
-                        >
-                            <svg className="w-4 h-4 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            <span>Download Catalog (PDF)</span>
-                        </a>
+                        {/* Category Filter Pills */}
+                        <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setSelectedCategory('All')}
+                                className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5 ${
+                                    selectedCategory === 'All'
+                                        ? 'bg-sysred text-white font-bold shadow-md shadow-red-500/25 scale-105'
+                                        : 'bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-steel border border-slate-200/90 dark:border-white/10'
+                                }`}
+                            >
+                                <span>All Products</span>
+                                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                                    selectedCategory === 'All' ? 'bg-black/25 text-white' : 'bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel'
+                                }`}>
+                                    {allProducts.length}
+                                </span>
+                            </button>
 
-                        {/* All Catalogues Link */}
-                        <Link
-                            href="/resources"
-                            className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 dark:border-white/15 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 text-slate-700 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shrink-0 bg-white dark:bg-[#141414]"
-                            title="View all 7 official technical catalogues"
-                        >
-                            <span>All Catalogues</span>
-                            <span>&rarr;</span>
-                        </Link>
+                            {categories.map((cat) => {
+                                const isSelected = selectedCategory === cat.slug;
+                                const itemCount = (cat.subcategories || []).reduce((acc, sub) => acc + (sub.items?.length || 0), 0);
+                                return (
+                                    <button
+                                        key={cat.id}
+                                        type="button"
+                                        onClick={() => setSelectedCategory(isSelected ? 'All' : cat.slug)}
+                                        className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5 ${
+                                            isSelected
+                                                ? 'bg-sysred text-white font-bold shadow-md shadow-red-500/25 scale-105'
+                                                : 'bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-steel border border-slate-200/90 dark:border-white/10'
+                                        }`}
+                                    >
+                                        <span>{cat.name}</span>
+                                        <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                                            isSelected ? 'bg-black/25 text-white' : 'bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel'
+                                        }`}>
+                                            {itemCount}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Live Filter Indicator */}
+                        {(search || selectedCategory !== 'All') && (
+                            <div className="mt-3 flex items-center justify-center gap-2 text-xs font-mono text-slate-500 dark:text-steel">
+                                <span>
+                                    Found <strong className="text-slate-900 dark:text-white">
+                                        {isSearching 
+                                            ? matchingProducts.length 
+                                            : (selectedCategory !== 'All' 
+                                                ? allProducts.filter(p => p.categorySlug === selectedCategory).length 
+                                                : allProducts.length)
+                                        }
+                                    </strong> products
+                                </span>
+                                {search && <span>matching &ldquo;{search}&rdquo;</span>}
+                                {selectedCategory !== 'All' && (
+                                    <span>in <strong className="text-sysred dark:text-[#ff6b6b]">{categories.find(c => c.slug === selectedCategory)?.name}</strong></span>
+                                )}
+                                <span>&bull;</span>
+                                <button
+                                    type="button"
+                                    onClick={() => { setSearch(''); setSelectedCategory('All'); }}
+                                    className="text-sysred dark:text-[#ff6b6b] hover:underline font-bold cursor-pointer"
+                                >
+                                    Reset Filters
+                                </button>
+                            </div>
+                        )}
+
+                        {/* CTAs Quick Action Strip */}
+                        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-slate-200/60 dark:border-white/10">
+                            <a
+                                href="/download-catalog"
+                                download="SystemInfraSolutions_MasterCatalogue.pdf"
+                                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sysred hover:bg-[#b82720] text-white font-mono text-xs uppercase tracking-wider font-bold shadow-sm hover:shadow-md transition-all active:scale-95 shrink-0 select-none cursor-pointer"
+                                title="Download official corporate product catalogue (PDF)"
+                            >
+                                <svg className="w-4 h-4 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                <span>Download Full Catalog (PDF)</span>
+                            </a>
+
+                            <Link
+                                href="/resources"
+                                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/15 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 text-slate-700 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shrink-0 bg-white dark:bg-[#141414]"
+                                title="View all 7 official technical catalogues"
+                            >
+                                <svg className="w-4 h-4 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span>All 7 Technical Catalogues</span>
+                                <span>&rarr;</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -294,18 +395,38 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
 
                     {/* 2. No Results State */}
                     {isSearching && matchingProducts.length === 0 && filteredCategories.length === 0 && (
-                        <div className="panel p-16 text-center text-slate-500 dark:text-steel">
-                            <p className="font-mono text-base text-slate-800 dark:text-paper font-semibold">
-                                No products or categories matched &ldquo;{search}&rdquo;
+                        <div className="py-16 px-6 text-center bg-white dark:bg-[#0d0d0d] rounded-2xl border border-slate-200 dark:border-white/10 max-w-xl mx-auto shadow-sm">
+                            <div className="w-16 h-16 mx-auto rounded-2xl bg-red-500/10 text-sysred dark:text-[#ff6b6b] flex items-center justify-center mb-4 border border-red-500/20">
+                                <svg className="w-8 h-8 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white">
+                                No Equipment or Categories Found
+                            </h3>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
+                                No products matched your query &ldquo;<strong className="text-sysred dark:text-[#ff6b6b]">{search}</strong>&rdquo;
+                                {selectedCategory !== 'All' ? ` in ${categories.find(c => c.slug === selectedCategory)?.name || selectedCategory}` : ''}.
                             </p>
-                            <p className="mt-2 text-xs font-mono text-slate-500 dark:text-steel max-w-md mx-auto">
-                                Tip: Try searching by product name (e.g. AMF panel, SYS-AXS), category (Energy, NOC, Defence), or brand (Motorola).
-                            </p>
+                            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                                <span className="text-xs font-mono text-slate-400">Popular searches:</span>
+                                {['AMF Panel', 'SYS-AXS NOC', 'i-Protect', 'Smart Box', 'Dual DG', 'DC Meter'].map((kw) => (
+                                    <button
+                                        key={kw}
+                                        type="button"
+                                        onClick={() => { setSearch(kw); setSelectedCategory('All'); }}
+                                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-700 dark:text-white transition-colors cursor-pointer"
+                                    >
+                                        {kw}
+                                    </button>
+                                ))}
+                            </div>
                             <button 
-                                onClick={() => setSearch('')}
-                                className="mt-5 btn-beacon !py-2 !px-5 text-xs font-mono uppercase tracking-wider font-bold"
+                                type="button"
+                                onClick={() => { setSearch(''); setSelectedCategory('All'); }}
+                                className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sysred hover:bg-[#b82720] text-white font-mono text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all cursor-pointer"
                             >
-                                Clear Search Filter
+                                Reset Search &amp; Show All Products
                             </button>
                         </div>
                     )}
