@@ -12,10 +12,24 @@ export default function Resources({ catalogues = [], seo = {} }) {
 
     const filtered = catalogues.filter((cat) => {
         const matchesCat = selectedCategory === 'All' || cat.category === selectedCategory;
-        const matchesSearch = 
-            cat.title.toLowerCase().includes(search.toLowerCase()) ||
-            cat.subtitle.toLowerCase().includes(search.toLowerCase()) ||
-            cat.description.toLowerCase().includes(search.toLowerCase());
+        if (!search.trim()) return matchesCat;
+
+        const q = search.toLowerCase().trim();
+        const searchTerms = q.split(/\s+/).filter(Boolean);
+
+        const corpus = [
+            cat.title,
+            cat.subtitle,
+            cat.description,
+            cat.category,
+            cat.badge,
+            cat.filename,
+            (cat.title || '').replace(/[-_]/g, ' '),
+            (cat.subtitle || '').replace(/[-_]/g, ' '),
+            (cat.filename || '').replace(/[-_]/g, ' ')
+        ].filter(Boolean).join(' ').toLowerCase();
+
+        const matchesSearch = searchTerms.every(term => corpus.includes(term));
         return matchesCat && matchesSearch;
     });
 
@@ -59,8 +73,94 @@ export default function Resources({ catalogues = [], seo = {} }) {
                         Official technical brochures, product data specification sheets, and corporate engineering portfolios directly from our Patparganj R&amp;D archives. Download one-click PDF documents below.
                     </p>
 
+                    {/* Prominent Large Search Area (Directly after the last line) */}
+                    <div className="mt-8 sm:mt-10 max-w-3xl mx-auto">
+                        <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-lg shadow-slate-200/50 dark:shadow-2xl dark:shadow-black/50 transition-all duration-300 group">
+                            {/* Search Lens Icon */}
+                            <div className="absolute left-4 sm:left-5 pointer-events-none text-sysred dark:text-[#ff6b6b] flex items-center">
+                                <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+
+                            {/* Search Input */}
+                            <input
+                                type="text"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder="Search by model, keyword (e.g. AMF, SYS-AXS, i-Protect, Smart Box, Dual DG)..."
+                                className="w-full h-14 sm:h-16 pl-12 sm:pl-14 pr-24 sm:pr-28 bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base sm:text-lg font-sans tracking-tight focus:outline-none border-0 ring-0 focus:ring-0"
+                            />
+
+                            {/* Clear button and live tag */}
+                            <div className="absolute right-3 sm:right-4 flex items-center gap-2">
+                                {search && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setSearch('')}
+                                        className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                                        title="Clear search query"
+                                    >
+                                        <svg className="w-4 h-4 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                )}
+                                <span className="hidden sm:inline-flex px-3 py-1.5 rounded-lg bg-sysred/10 dark:bg-sysred/20 text-sysred dark:text-[#ff6b6b] font-mono text-[11px] font-bold uppercase tracking-wider">
+                                    Search
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Category Filter Pills */}
+                        <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                            {categories.map((c) => {
+                                const isSelected = selectedCategory === c;
+                                const count = c === 'All' 
+                                    ? catalogues.length 
+                                    : catalogues.filter(cat => cat.category === c).length;
+                                return (
+                                    <button
+                                        key={c}
+                                        type="button"
+                                        onClick={() => setSelectedCategory(c)}
+                                        className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer select-none flex items-center gap-1.5 ${
+                                            isSelected
+                                                ? 'bg-sysred text-white font-bold shadow-md shadow-red-500/25 scale-105'
+                                                : 'bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-steel border border-slate-200/90 dark:border-white/10'
+                                        }`}
+                                    >
+                                        <span>{c}</span>
+                                        <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                                            isSelected ? 'bg-black/25 text-white' : 'bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-steel'
+                                        }`}>
+                                            {count}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Live Filter Indicator */}
+                        {(search || selectedCategory !== 'All') && (
+                            <div className="mt-3 flex items-center justify-center gap-2 text-xs font-mono text-slate-500 dark:text-steel">
+                                <span>Found <strong className="text-slate-900 dark:text-white">{filtered.length}</strong> {filtered.length === 1 ? 'catalogue' : 'catalogues'}</span>
+                                {search && <span>for &ldquo;{search}&rdquo;</span>}
+                                {selectedCategory !== 'All' && <span>in <strong className="text-sysred dark:text-[#ff6b6b]">{selectedCategory}</strong></span>}
+                                <span>&bull;</span>
+                                <button
+                                    type="button"
+                                    onClick={() => { setSearch(''); setSelectedCategory('All'); }}
+                                    className="text-sysred dark:text-[#ff6b6b] hover:underline font-bold cursor-pointer"
+                                >
+                                    Reset Filters
+                                </button>
+                            </div>
+                        )}
+                    </div>
+
                     {/* Master Corporate Catalogue Featured Banner */}
-                    <div className="mt-8 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm hover:shadow-xl transition-all text-left">
+                    <div className="mt-10 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm hover:shadow-xl transition-all text-left">
                         <div className="space-y-2">
                             <div className="flex items-center gap-2">
                                 <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-sysred text-white">
@@ -88,46 +188,6 @@ export default function Resources({ catalogues = [], seo = {} }) {
                             <span>Download Master Catalog (PDF)</span>
                         </a>
                     </div>
-
-                    {/* Filter and Search Bar */}
-                    <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                        {/* Search Input */}
-                        <div className="relative flex-1 max-w-md">
-                            <input
-                                type="text"
-                                placeholder="Search catalogues (e.g. AMF, SIS-AXS, i-Protect, Smart Box)..."
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                                className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-10 w-full"
-                            />
-                            {search && (
-                                <button
-                                    onClick={() => setSearch('')}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white"
-                                >
-                                    ✕
-                                </button>
-                            )}
-                        </div>
-
-                        {/* Category Pills */}
-                        <div className="flex flex-wrap items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
-                            {categories.map((c) => (
-                                <button
-                                    key={c}
-                                    type="button"
-                                    onClick={() => setSelectedCategory(c)}
-                                    className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer select-none ${
-                                        selectedCategory === c
-                                            ? 'bg-sysred text-white font-bold shadow-sm'
-                                            : 'bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-steel'
-                                    }`}
-                                >
-                                    {c}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
                 </div>
             </header>
 
@@ -147,8 +207,43 @@ export default function Resources({ catalogues = [], seo = {} }) {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-                        {filtered.map((cat, idx) => (
+                    {filtered.length === 0 ? (
+                        <div className="py-16 px-6 text-center bg-white dark:bg-[#0d0d0d] rounded-2xl border border-slate-200 dark:border-white/10 max-w-xl mx-auto shadow-sm">
+                            <div className="w-16 h-16 mx-auto rounded-2xl bg-red-500/10 text-sysred dark:text-[#ff6b6b] flex items-center justify-center mb-4 border border-red-500/20">
+                                <svg className="w-8 h-8 stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-xl font-bold font-display text-slate-900 dark:text-white">
+                                No Technical Catalogues Found
+                            </h3>
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
+                                No official documents match your search &ldquo;<strong className="text-sysred dark:text-[#ff6b6b]">{search}</strong>&rdquo;{selectedCategory !== 'All' ? ` in ${selectedCategory}` : ''}.
+                            </p>
+                            <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+                                <span className="text-xs font-mono text-slate-400">Popular searches:</span>
+                                {['AMF Panel', 'SYS-AXS', 'i-Protect', 'Smart Box', 'Dual DG'].map((kw) => (
+                                    <button
+                                        key={kw}
+                                        type="button"
+                                        onClick={() => { setSearch(kw); setSelectedCategory('All'); }}
+                                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-700 dark:text-white transition-colors cursor-pointer"
+                                    >
+                                        {kw}
+                                    </button>
+                                ))}
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => { setSearch(''); setSelectedCategory('All'); }}
+                                className="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sysred hover:bg-[#b82720] text-white font-mono text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all cursor-pointer"
+                            >
+                                Reset Search &amp; Show All Catalogues
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+                            {filtered.map((cat, idx) => (
                             <div 
                                 key={cat.id || idx}
                                 className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0d0d0d] border border-slate-200 dark:border-white/10 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 shadow-sm hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.25)] transition-all duration-300 overflow-hidden"
@@ -218,7 +313,8 @@ export default function Resources({ catalogues = [], seo = {} }) {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                        </div>
+                    )}
 
                     {/* Support Notice */}
                     <div className="mt-14 p-6 rounded-2xl bg-white dark:bg-[#0c0c0c] border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono">

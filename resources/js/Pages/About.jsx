@@ -258,21 +258,21 @@ export default function About({ seo = {} }) {
                     </p>
 
                     {/* Quick Highlights Strip from sysinfra.in/aboutus.php */}
-                    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 text-xs font-mono max-w-3xl mx-auto">
+                    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 text-xs font-mono max-w-4xl mx-auto">
                         <div>
-                            <span className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white block">70,000+</span>
+                            <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap">70,000+</span>
                             <span className="text-slate-500 dark:text-slate-400 mt-1 block">TOWER SITES AUTOMATED</span>
                         </div>
                         <div>
-                            <span className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white block">3,00,000+</span>
+                            <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap">3,00,000+</span>
                             <span className="text-slate-500 dark:text-slate-400 mt-1 block">MODULES RECONDITIONED</span>
                         </div>
                         <div>
-                            <span className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white block">10,000+</span>
+                            <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap">10,000+</span>
                             <span className="text-slate-500 dark:text-slate-400 mt-1 block">SITES IN SYS-AXS NOC</span>
                         </div>
                         <div>
-                            <span className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white block">4,000 Sq.Ft.</span>
+                            <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap">4,000 Sq.Ft.</span>
                             <span className="text-slate-500 dark:text-slate-400 mt-1 block">PATPARGANJ PLANT</span>
                         </div>
                     </div>
