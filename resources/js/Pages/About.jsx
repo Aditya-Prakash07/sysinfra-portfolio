@@ -230,29 +230,35 @@ export default function About({ seo = {} }) {
             />
 
             {/* Hero Section */}
-            <header className="relative bg-white dark:bg-[#000000] pt-32 pb-16 overflow-hidden transition-colors duration-300">
-                <div className="container-content relative z-10">
-                    <div className="max-w-3xl">
-                        <div className="inline-flex items-center gap-2 text-xs font-mono text-[#dd3c34] dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
-                            <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
-                            <span>ABOUT SYSTEM INFRA SOLUTIONS &bull; EST. 2016</span>
-                        </div>
-                        <AnimatedHeading
-                            as="h1"
-                            immediate={true}
-                            stagger={40}
-                            highlightPhrase="Telecom & Power Infrastructure"
-                            className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
-                        >
-                            Engineering Telecom &amp; Power Infrastructure
-                        </AnimatedHeading>
-                        <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            System Infra Solutions Pvt. Ltd. (SISPL) is an ISO 9001:2015, ISO 14001:2015, and OHSAS 45001:2018 certified technology powerhouse delivering automated AMF panels, SYS-AXS NOC telemetry platforms, 5G smart boxes, and turnkey site operations across 70,000+ telecom sites nationwide.
-                        </p>
-                    </div>
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
+                        ABOUT SYSTEM INFRA SOLUTIONS &bull; EST. 2016
+                    </span>
+
+                    <AnimatedHeading
+                        as="h1"
+                        immediate={true}
+                        stagger={40}
+                        highlightPhrase="Telecom & Power Infrastructure"
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
+                    >
+                        Engineering Telecom &amp; Power Infrastructure
+                    </AnimatedHeading>
+
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
+                        System Infra Solutions Pvt. Ltd. (SISPL) is an ISO 9001:2015, ISO 14001:2015, and OHSAS 45001:2018 certified technology powerhouse delivering automated AMF panels, SYS-AXS NOC telemetry platforms, 5G smart boxes, and turnkey site operations across 70,000+ telecom sites nationwide.
+                    </p>
 
                     {/* Quick Highlights Strip from sysinfra.in/aboutus.php */}
-                    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 text-xs font-mono">
+                    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 text-xs font-mono max-w-3xl mx-auto">
                         <div>
                             <span className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white block">70,000+</span>
                             <span className="text-slate-500 dark:text-slate-400 mt-1 block">TOWER SITES AUTOMATED</span>

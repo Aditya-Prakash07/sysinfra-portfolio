@@ -86,42 +86,47 @@ ${formData.coverLetter}`
             />
 
             {/* Header */}
-            <header className="relative bg-white dark:bg-[#000000] pt-36 pb-20 overflow-hidden transition-colors duration-300">
-                <div className="container-content relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-xs font-mono text-[#dd3c34] dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold shadow-xs">
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
                         <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
-                        <span>CAREERS &bull; LIFE AT SYSTEM INFRA &bull; PAN-INDIA OPPORTUNITIES</span>
-                    </div>
+                        CAREERS &bull; LIFE AT SYSTEM INFRA &bull; PAN-INDIA OPPORTUNITIES
+                    </span>
 
-                    <div className="max-w-3xl">
-                        <AnimatedHeading
-                            as="h1"
-                            immediate={true}
-                            stagger={40}
-                            highlightPhrase="Powering India's Telecom"
-                            className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
-                        >
-                            Build Systems Powering India's Telecom &amp; Industrial Future
-                        </AnimatedHeading>
-                        <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            Join our team of embedded hardware developers, power electronics specialists, and NOC automation engineers building high-reliability systems powering over 70,000 telecom tower sites across India.
-                        </p>
-                    </div>
+                    <AnimatedHeading
+                        as="h1"
+                        immediate={true}
+                        stagger={40}
+                        highlightPhrase="Powering India's Telecom"
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
+                    >
+                        Build Systems Powering India's Telecom &amp; Industrial Future
+                    </AnimatedHeading>
 
-                    <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-4xl text-xs font-mono">
-                        <div className="p-4 rounded-xl bg-slate-50 dark:bg-navy-surface border border-slate-200/80 dark:border-white/10">
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
+                        Join our team of embedded hardware developers, power electronics specialists, and NOC automation engineers building high-reliability systems powering over 70,000 telecom tower sites across India.
+                    </p>
+
+                    <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-3xl mx-auto text-xs font-mono">
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
                             <span className="text-slate-500 dark:text-slate-400 block uppercase text-[10px]">Primary HQ &amp; Plant</span>
                             <span className="text-slate-900 dark:text-white font-bold mt-1 block">Patparganj, New Delhi</span>
                         </div>
-                        <div className="p-4 rounded-xl bg-slate-50 dark:bg-navy-surface border border-slate-200/80 dark:border-white/10">
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
                             <span className="text-slate-500 dark:text-slate-400 block uppercase text-[10px]">Open Positions</span>
                             <span className="text-[#dd3c34] dark:text-[#ff6b6b] font-bold mt-1 block">{openings.length} Verified Roles</span>
                         </div>
-                        <div className="p-4 rounded-xl bg-slate-50 dark:bg-navy-surface border border-slate-200/80 dark:border-white/10">
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
                             <span className="text-slate-500 dark:text-slate-400 block uppercase text-[10px]">Initiative</span>
                             <span className="text-slate-900 dark:text-white font-bold mt-1 block">Make in India OEM</span>
                         </div>
-                        <div className="p-4 rounded-xl bg-slate-50 dark:bg-navy-surface border border-slate-200/80 dark:border-white/10">
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
                             <span className="text-slate-500 dark:text-slate-400 block uppercase text-[10px]">Field Reach</span>
                             <span className="text-slate-900 dark:text-white font-bold mt-1 block">22 Telecom Circles</span>
                         </div>

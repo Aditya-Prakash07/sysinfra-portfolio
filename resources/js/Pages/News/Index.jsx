@@ -46,12 +46,17 @@ export default function NewsIndex({ posts = [], seo = {} }) {
             />
 
             {/* Header */}
-            <header className="relative bg-white dark:bg-[#0a0a0a] pt-36 pb-16 overflow-hidden transition-colors duration-300">
-                <div className="container-content relative z-10 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
-                        <span>INDUSTRY INTELLIGENCE & DISPATCHES</span>
-                    </div>
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
+                        INDUSTRY INTELLIGENCE &amp; DISPATCHES
+                    </span>
 
                     <AnimatedHeading
                         as="h1"
@@ -59,28 +64,29 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                         stagger={40}
                         highlight="last"
                         highlightCount={1}
-                        className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
                     >
-                        Latest News & Updates
+                        Latest News &amp; Updates
                     </AnimatedHeading>
 
-                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-steel leading-relaxed font-sans">
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
                         Official company dispatches, telecom policy changes, WPC/TEC statutory updates, and mission-critical milestones.
                     </p>
 
                     {/* Search Input */}
-                    <div className="mt-8 max-w-lg relative">
+                    <div className="mt-8 max-w-md mx-auto relative text-left">
                         <input
                             type="text"
                             placeholder="Search news and announcements..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-16"
+                            className="input !bg-white dark:!bg-[#141414] !border-slate-300 dark:!border-white/15 !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-[#dd3c34] dark:focus:!border-[#ff6b6b] !pr-16 w-full shadow-xs"
                         />
                         {search && (
                             <button
                                 onClick={() => setSearch('')}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-navy-border/80 transition-colors"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-white/10 transition-colors"
                             >
                                 CLEAR
                             </button>

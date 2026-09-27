@@ -136,44 +136,49 @@ export default function OemPartners({ partners = [], seo = {} }) {
             />
 
             {/* Header */}
-            <header className="relative bg-white dark:bg-[#000000] pt-36 pb-20 overflow-hidden transition-colors duration-300">
-                <div className="container-content relative z-10">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
-                        <span>GLOBAL TECHNOLOGY ALLIANCES &bull; OEM NETWORK</span>
-                    </div>
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
 
-                    <div className="max-w-3xl">
-                        <AnimatedHeading
-                            as="h1"
-                            immediate={true}
-                            stagger={40}
-                            highlightPhrase="Mission-Critical Hardware."
-                            className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
-                        >
-                            World-Class Partnerships, Mission-Critical Hardware.
-                        </AnimatedHeading>
-                        <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            System Infra Solutions collaborates with Motorola Solutions as an Authorised Channel Partner, along with Tier-1 telecom and DC power equipment manufacturers, to deliver robust, high-availability infrastructure across India.
-                        </p>
-                    </div>
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
+                        GLOBAL TECHNOLOGY ALLIANCES &bull; OEM NETWORK
+                    </span>
 
-                    <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-4xl text-xs font-mono">
-                        <div>
-                            <span className="text-slate-500 dark:text-slate-400 block">INTEGRATION MODEL</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">AUTHORISED CHANNEL PARTNER</span>
+                    <AnimatedHeading
+                        as="h1"
+                        immediate={true}
+                        stagger={40}
+                        highlightPhrase="Mission-Critical Hardware."
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
+                    >
+                        World-Class Partnerships, Mission-Critical Hardware.
+                    </AnimatedHeading>
+
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
+                        System Infra Solutions collaborates with Motorola Solutions as an Authorised Channel Partner, along with Tier-1 telecom and DC power equipment manufacturers, to deliver robust, high-availability infrastructure across India.
+                    </p>
+
+                    <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-3xl mx-auto text-xs font-mono">
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
+                            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase">INTEGRATION MODEL</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block text-xs">CHANNEL PARTNER</span>
                         </div>
-                        <div>
-                            <span className="text-slate-500 dark:text-slate-400 block">COMPLIANCE PROTOCOL</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">ISO 9001 &bull; ISO 14001 &bull; ISO 45001</span>
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
+                            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase">COMPLIANCE PROTOCOL</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block text-xs">ISO 9001 &bull; 14001</span>
                         </div>
-                        <div>
-                            <span className="text-slate-500 dark:text-slate-400 block">FACILITY CAPACITY</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">300,000+ MODULES SERVICED</span>
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
+                            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase">FACILITY CAPACITY</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block text-xs">300,000+ MODULES</span>
                         </div>
-                        <div>
-                            <span className="text-slate-500 dark:text-slate-400 block">SERVICE LAB</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">PATPARGANJ, NEW DELHI</span>
+                        <div className="p-3.5 rounded-xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 shadow-xs">
+                            <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase">SERVICE LAB</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block text-xs">PATPARGANJ, DELHI</span>
                         </div>
                     </div>
                 </div>

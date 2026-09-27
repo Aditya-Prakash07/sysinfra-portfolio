@@ -35,9 +35,9 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
 
             {/* Header / Article Top */}
             <article className="relative bg-white dark:bg-[#0a0a0a] pt-36 pb-20 overflow-hidden transition-colors duration-300">
-                <header className="container-content max-w-4xl">
+                <header className="container-content max-w-4xl text-center mx-auto">
                     {/* Breadcrumb Nav */}
-                    <nav className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">
+                    <nav className="flex items-center justify-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">
                         <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">HOME</Link>
                         <span>/</span>
                         <Link href="/latest-news" className="hover:text-slate-900 dark:hover:text-white transition-colors">LATEST NEWS</Link>
@@ -46,7 +46,7 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                     </nav>
 
                     {/* Meta info */}
-                    <div className="flex flex-wrap items-center gap-3 text-xs font-mono mb-4">
+                    <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-mono mb-4">
                         <span className="badge-rf text-[10px]">
                             PRESS DISPATCH
                         </span>
@@ -60,7 +60,8 @@ export default function NewsShow({ post, recentPosts = [], seo = {} }) {
                         as="h1"
                         immediate={true}
                         stagger={35}
-                        className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
+                        className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
                     >
                         {post.title}
                     </AnimatedHeading>

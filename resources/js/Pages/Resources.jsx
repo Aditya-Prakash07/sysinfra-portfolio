@@ -32,29 +32,35 @@ export default function Resources({ catalogues = [], seo = {} }) {
             />
 
             {/* Header Section */}
-            <header className="relative bg-white dark:bg-[#0a0a0a] pt-36 pb-16 overflow-hidden transition-colors duration-300 border-b border-slate-100 dark:border-white/10">
-                <div className="container-content relative z-10 max-w-4xl">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-beacon animate-pulse" />
-                        <span>OFFICIAL TECHNICAL ARCHIVES &bull; sysinfra.in/resource.php</span>
-                    </div>
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
+                        OFFICIAL TECHNICAL ARCHIVES &bull; sysinfra.in/resource.php
+                    </span>
 
                     <AnimatedHeading
                         as="h1"
                         immediate={true}
                         stagger={35}
                         highlightPhrase="Product Catalogues"
-                        className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
                     >
-                        Official Downloadable Product Catalogues & Specs
+                        Official Downloadable Product Catalogues &amp; Specs
                     </AnimatedHeading>
 
-                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-steel leading-relaxed font-sans max-w-3xl">
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
                         Official technical brochures, product data specification sheets, and corporate engineering portfolios directly from our Patparganj R&amp;D archives. Download one-click PDF documents below.
                     </p>
 
                     {/* Master Corporate Catalogue Featured Banner */}
-                    <div className="mt-8 p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-red-500/10 via-slate-50 to-white dark:from-red-950/20 dark:via-[#121212] dark:to-[#0f0f0f] border border-sysred/30 dark:border-[#ff6b6b]/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-lg">
+                    <div className="mt-8 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm hover:shadow-xl transition-all text-left">
                         <div className="space-y-2">
                             <div className="flex items-center gap-2">
                                 <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-sysred text-white">

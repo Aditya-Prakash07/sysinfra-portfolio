@@ -134,40 +134,48 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
             />
 
             {/* Header */}
-            <header className="relative bg-white dark:bg-[#0a0a0a] pt-36 pb-16 overflow-hidden transition-colors duration-300">
-                <div className="container-content relative z-10 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-beacon animate-pulse" />
-                        <span>SYSTEM INFRA SOLUTIONS &bull; OFFICIAL PRODUCT CATALOG</span>
-                    </div>
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
+                        SYSTEM INFRA SOLUTIONS &bull; OFFICIAL PRODUCT CATALOG
+                    </span>
+
                     <AnimatedHeading
                         as="h1"
                         immediate={true}
                         stagger={40}
                         highlightPhrase="Infrastructure Systems"
-                        className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
                     >
-                        Power Automation & Infrastructure Systems
+                        Power Automation &amp; Infrastructure Systems
                     </AnimatedHeading>
-                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-steel leading-relaxed font-sans">
+
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
                         Engineered for telecom towers, defence establishments, smart cities, and power utilities.
                         Select a product vertical below to explore AMF panels, NOC telemetry, security automation, and turnkey engineering solutions.
                     </p>
 
                     {/* Action Buttons & Search filter input */}
-                    <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                        <div className="relative flex-1 max-w-lg">
+                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
+                        <div className="relative flex-1 w-full max-w-md text-left">
                             <input 
                                 type="text"
-                                placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect, Motorola)..."
+                                placeholder="Search products (e.g. AMF panel, SYS-AXS, i-Protect)..."
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                className="input !bg-slate-50 dark:!bg-navy-surface !border-slate-300 dark:!border-navy-border !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-sysred dark:focus:!border-[#ff6b6b] !pr-16 w-full"
+                                className="input !bg-white dark:!bg-[#141414] !border-slate-300 dark:!border-white/15 !text-slate-900 dark:!text-white placeholder:text-slate-400 focus:!border-[#dd3c34] dark:focus:!border-[#ff6b6b] !pr-16 w-full shadow-xs"
                             />
                             {search && (
                                 <button 
                                     onClick={() => setSearch('')}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-navy-border/80 transition-colors"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs font-mono px-2 py-1 rounded bg-slate-200/60 dark:bg-white/10 transition-colors"
                                 >
                                     CLEAR
                                 </button>
@@ -190,10 +198,10 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                         {/* All Catalogues Link */}
                         <Link
                             href="/resources"
-                            className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 dark:border-white/15 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 text-slate-700 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shrink-0"
+                            className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border border-slate-200 dark:border-white/15 hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 text-slate-700 dark:text-steel hover:text-sysred dark:hover:text-[#ff6b6b] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shrink-0 bg-white dark:bg-[#141414]"
                             title="View all 7 official technical catalogues"
                         >
-                            <span>All 7 Catalogues</span>
+                            <span>All Catalogues</span>
                             <span>&rarr;</span>
                         </Link>
                     </div>

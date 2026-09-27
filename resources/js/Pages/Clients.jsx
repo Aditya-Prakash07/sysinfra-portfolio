@@ -22,30 +22,35 @@ export default function Clients({ clients = [], seo = {} }) {
             />
 
             {/* Header */}
-            <header className="relative bg-white dark:bg-[#000000] pt-36 pb-20 overflow-hidden transition-colors duration-300">
-                <div className="container-content relative z-10">
-                    <div className="inline-flex items-center gap-2 text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider mb-4 font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
-                        <span>ENTERPRISE CLIENTS &bull; 70,000+ SITES NATIONWIDE</span>
-                    </div>
+            <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200/80 dark:border-white/10">
+                <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15 pointer-events-none" />
+                
+                {/* Ambient Red Glow */}
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
 
-                    <div className="max-w-3xl">
-                        <AnimatedHeading
-                            as="h1"
-                            immediate={true}
-                            stagger={40}
-                            highlightPhrase="Trusted Across India's"
-                            className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
-                        >
-                            Trusted Across India's Critical Infrastructure
-                        </AnimatedHeading>
-                        <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            System Infra Solutions (SISPL) powers, monitors, and protects critical infrastructure for India's foremost telecom operators, tower companies, national utilities, and tactical defence forces.
-                        </p>
-                    </div>
+                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                        <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
+                        ENTERPRISE CLIENTS &bull; 70,000+ SITES NATIONWIDE
+                    </span>
+
+                    <AnimatedHeading
+                        as="h1"
+                        immediate={true}
+                        stagger={40}
+                        highlightPhrase="Trusted Across India's"
+                        className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-slate-900 dark:text-white"
+                        gradientClass="bg-gradient-to-r from-[#dd3c34] to-[#f43f5e] dark:from-[#ff6b6b] dark:to-[#fb923c] bg-clip-text text-transparent"
+                    >
+                        Trusted Across India's Critical Infrastructure
+                    </AnimatedHeading>
+
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
+                        System Infra Solutions (SISPL) powers, monitors, and protects critical infrastructure for India's foremost telecom operators, tower companies, national utilities, and tactical defence forces.
+                    </p>
 
                     {/* Stats strip */}
-                    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 max-w-4xl text-xs font-mono">
+                    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 max-w-3xl mx-auto text-xs font-mono">
                         <div>
                             <span className="text-2xl sm:text-3xl font-display font-bold text-slate-900 dark:text-white block">70,000+</span>
                             <span className="text-slate-500 dark:text-steel mt-1 block">TOWER SITES AUTOMATED</span>
@@ -70,7 +75,7 @@ export default function Clients({ clients = [], seo = {} }) {
             <section className="py-20 bg-slate-50 dark:bg-[#0d0d0d] transition-colors duration-300 min-h-[600px]">
                 <div className="container-content">
                     {/* Sector Filters */}
-                    <div className="flex flex-wrap items-center gap-2 mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
                         {sectors.map((sec) => (
                             <button
                                 key={sec}
