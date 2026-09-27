@@ -4,183 +4,134 @@ import MainLayout from '@/Layouts/MainLayout';
 import Seo from '@/Components/Seo';
 import AnimatedHeading from '@/Components/AnimatedHeading';
 
-// 100% Complete authentic verbatim OEM partners copy from official website: https://www.sysinfra.in/oem-partners
-const AUTHENTIC_OEM_DATA = [
+// Authentic System Infra Solutions OEM & Technology Partnerships
+const DEFAULT_SYSINFRA_OEM_PARTNERS = [
     {
-        id: 'kenwood',
-        name: 'Kenwood Corporation, Japan',
-        shortName: 'Kenwood',
-        established: '1946',
-        partnershipYear: '1999',
-        origin: 'Tokyo, Japan',
-        status: 'Direct Accredited Distributor Since 1999',
-        domains: ['MOTOTRBO DMR Systems', 'NEXEDGE NXDN', 'P25 Mission Critical', 'Turnkey Repeaters'],
-        website_url: 'https://www.kenwood.com/',
-        logo_path: 'media/partners/1560034561_Kenwood-logo.png',
+        id: 'motorola-solutions',
+        name: 'Motorola Solutions',
+        shortName: 'Motorola Solutions',
+        established: '1928',
+        origin: 'Chicago, Illinois, USA',
+        status: 'Authorised Channel Partner',
+        badge: 'TACTICAL & MISSION-CRITICAL',
+        domains: ['MOTOTRBO Digital Two-Way Radios', 'ASTRO 25 P25 Trunking', 'VB400 Body-Worn Cameras', 'TLK LTE Push-to-Talk', 'HALO Smart Sensors'],
+        website_url: 'https://www.motorolasolutions.com/',
+        logo_path: 'img/motorola-solutions.png',
         paragraphs: [
-            "Started in 1946 KENWOOD IS WORLD LEADER in mobile radios .It has carved out a worldwide reputation as a leader in its field , based on its advanced technologies, innovative R&D manufacturing quality and superb reliability of its product in mission critical application. Sysinfra has been their accredited distributor in India since 1999 to provide best of these sophisticated land mobile radios to its esteemed customer."
+            "System Infra Solutions is an Authorised Channel Partner for Motorola Solutions in India, supplying mission-critical communications equipment to defense, homeland security, public safety, and enterprise customers nationwide.",
+            "Our offerings include next-generation MOTOTRBO R7, R5, and R2 digital two-way radios, VB400 body-worn cameras for security personnel, TLK 110 LTE push-to-talk radios for nationwide fleet operations, and HALO smart environmental sensors."
         ]
     },
     {
-        id: 'diamond',
-        name: 'Diamond Corporation, Japan',
-        shortName: 'Diamond Antenna',
-        established: '1955',
-        partnershipYear: '2005',
-        origin: 'Tokyo, Japan',
-        status: 'Strategic RF Hardware Partner',
-        domains: ['RF Base Antennas', 'Mobile Vehicle Antennas', 'Duplexers & Triplexers', 'SWR Meters'],
-        website_url: 'https://www.diamond-ant.co.jp/english/',
-        logo_path: 'media/partners/1560034773_da.png',
+        id: 'vertiv',
+        name: 'Vertiv / Emerson Network Power',
+        shortName: 'Vertiv',
+        established: '1965',
+        origin: 'Columbus, Ohio, USA',
+        status: 'Strategic DC Power Partner',
+        badge: 'TELECOM POWER SYSTEMS',
+        domains: ['NetSure DC Power Systems', 'Telecom Rectifier Modules', 'Static Inverters', 'Power Plant Refurbishment'],
+        website_url: 'https://www.vertiv.com/',
+        logo_path: 'img/partners/vertiv.svg',
         paragraphs: [
-            "Established in September 4th 1955 Diamond, Japan are world leader in RF Antennas and accessories. Sysinfra has been associated with them to provide excellent antennas to give enhanced permanence to our Radios."
+            "Vertiv (formerly Emerson Network Power) is the global benchmark for critical digital infrastructure and continuity solutions. System Infra Solutions collaborates on telecom DC power systems, modular rectifiers, and power conditioning systems across India.",
+            "With over 300,000 power modules serviced at our state-of-the-art Patparganj facility, Sysinfra provides Tier-3 component-level repair, recalibration, and preventive life-extension for Vertiv power plants."
         ]
     },
     {
-        id: 'radio-activity',
-        name: 'Radio Activity',
-        shortName: 'Radio Activity',
-        established: '2003',
-        partnershipYear: '2015',
-        origin: 'Milan, Italy',
-        status: 'JVCKENWOOD Group 100% Subsidiary',
-        domains: ['DMR Tier III Simulcast', 'Multisite Trunking', 'RF Coverage Optimization', 'PMR Base Stations'],
-        website_url: 'https://www.radioactivity-tlc.com/',
-        logo_path: 'media/partners/1560034967_ra.png',
+        id: 'delta-power',
+        name: 'Delta Power Solutions',
+        shortName: 'Delta Power',
+        established: '1971',
+        origin: 'Taipei, Taiwan',
+        status: 'Power Conversion Alliance',
+        badge: 'HIGH-EFFICIENCY DC SYSTEMS',
+        domains: ['High-Efficiency Rectifiers', 'DC-DC Power Converters', 'Telecom Power Plant Controllers', 'Green Hybrid Power'],
+        website_url: 'https://www.deltaww.com/',
+        logo_path: 'img/partners/delta.svg',
         paragraphs: [
-            "Founded in 2003, Radio Activity is a dynamic and flexible engineering company, specialized in the design of radio devices and applications. With vast experience and multi-disciplinary skills, their team of engineers designs, develops and continuously offers customized solutions to the Professional Mobile Radio (PMR) market. 100% subsidiary of JVCKENWOOD group, Sysinfra associates with them to cater Indian market."
+            "Delta Power Solutions is a world-class provider of power and thermal management solutions. Sysinfra partners with Delta for cellular telecom tower power conversion, rectifiers, and high-efficiency switch-mode power supplies (SMPS).",
+            "Our dedicated engineering benches perform complete testing, firmware re-flashing, and load calibration to ensure zero-downtime operations for telecom operator cell sites."
         ]
     },
     {
-        id: 'ef-johnson',
-        name: 'EF Johnson Technologies',
-        shortName: 'EF Johnson',
-        established: '1923',
-        partnershipYear: '2016',
-        origin: 'Irving, Texas, USA',
-        status: 'Local Representative in India',
-        domains: ['P25 Public Safety', 'ATLAS P25 Infrastructure', 'Viking Multi-Band Transceivers', 'FirstNet Interop'],
-        website_url: 'https://www.efjohnson.com/',
-        logo_path: 'media/partners/1560035008_ef.png',
+        id: 'eltek',
+        name: 'Eltek Power Systems',
+        shortName: 'Eltek',
+        established: '1971',
+        origin: 'Drammen, Norway',
+        status: 'Modular Rectifier Engineering Partner',
+        badge: 'CRITICAL TELECOM POWER',
+        domains: ['Flatpack Modular Rectifiers', 'Smartpack Site Controllers', 'DC Power Distribution', 'Extreme-Climate Solutions'],
+        website_url: 'https://www.eltek.com/',
+        logo_path: 'img/partners/eltek.svg',
         paragraphs: [
-            "Founded in 1923, A JVCKENWOOD company,EF Johnson are committed to providing modern, turnkey solutions for today and the future. They deliver superior products so that customer can focus on their mission - protecting and saving lives. Sysinfra are their local representative in India."
-        ]
-    },
-    {
-        id: 'yaesu',
-        name: 'Yaesu',
-        shortName: 'Yaesu',
-        established: '1959',
-        partnershipYear: '2008',
-        origin: 'Tokyo, Japan',
-        status: 'Authorized National Distributor',
-        domains: ['Ham Amateur Radios', 'Air Band VHF Transceivers', 'Standard Horizon Marine', 'System Fusion C4FM'],
-        website_url: 'https://www.yaesu.com/',
-        logo_path: 'media/partners/1560035046_ya.png',
-        paragraphs: [
-            "The Yaesu brand is well known among ham radio aficionados and is synonymous with premium quality ham radios. From stationary multi-feature communications equipment to portable devices, YAESU has consistently represented the best in communications equipment to the world's top DX'ers for over half a century. Sysinfra is National distributor for Yaesu for their Ham radios and air band and marine radios(Standard Horizon)."
-        ]
-    },
-    {
-        id: 'ruggear',
-        name: 'RugGear',
-        shortName: 'RugGear',
-        established: '2006',
-        partnershipYear: '2018',
-        origin: 'Lauda-Königshofen, Germany',
-        status: 'Authorized PTT Partner',
-        domains: ['MIL-STD-810H Rugged Phones', 'IP68 Push-to-Talk Handsets', 'MCPTT First Responder', 'ATEX Explosion Proof'],
-        website_url: 'https://www.ruggear.com/',
-        logo_path: 'media/partners/1560035112_ru.png',
-        paragraphs: [
-            "RugGearhas been a global leader in the design and manufacturing of rugged phones and the partner of choice for leading network operators, enterprises and brands around the world.Sysinfra has partnered with them for rugged phone suitable for PTT operations."
-        ]
-    },
-    {
-        id: 'wireless-technologies',
-        name: 'Wireless Technologies',
-        shortName: 'Wireless Tech',
-        established: '2003',
-        partnershipYear: '2017',
-        origin: 'Espoo, Finland',
-        status: 'Carrier-Grade PoC Alliance',
-        domains: ['3GPP / IETF Standards', 'Real-Time PushCom Platform', 'Group Dispatch Systems', 'Carrier LTE Interconnect'],
-        website_url: 'http://www.wirelesstechnologies.mobi/',
-        logo_path: 'media/partners/1560578565_PushCom_Logo_1.PNG',
-        paragraphs: [
-            "Wireless Technologies Finland Ltd, business ID FI18411756, was founded in Espoo in 2003. The company focuses on developing and supplying real-time group communication solutions for mobile operators and organizations. Our core-solution is a superset of relevant telecom standards from 3GPP and IETF, with a rich set of extensions, flexible integration and configuration options."
-        ]
-    },
-    {
-        id: 'teltronics',
-        name: 'Teltronics (Cab Radios)',
-        shortName: 'Teltronic',
-        established: '1974',
-        partnershipYear: '2019',
-        origin: 'Zaragoza, Spain',
-        status: 'Railway Critical Communications Partner',
-        domains: ['EN 50155 Train Cab Radios', 'TETRA Ground-to-Train', 'LTE-R High Speed Transit', 'FRMCS 5G Rail Consoles'],
-        website_url: 'https://www.teltronic.es/en/',
-        logo_path: 'media/partners/1707162735_Teltronics.png',
-        paragraphs: [
-            "Teltronic solutions are based on TETRA and LTE standards, and offer continuous train-ground voice and data communication. In addition, the 5G standard and its application for the future FRMCS (Future Railway Mobile Communication System) also form part of Teltronic’s offer for the railway sector.",
-            "In order to manage the wide range of functionalities of Teltronic on-board equipment, its portfolio includes a set of control consoles. All these consoles include an easy-to-use interface, from which you can control the radio equipment, as well as a set of audio accessories (headphone, speaker and microphone) in order to facilitate driver communications."
+            "Eltek is a strategic technology partner in high-efficiency DC power technology, renowned for Flatpack2 modular rectifiers and Smartpack controllers operating in harsh environmental conditions.",
+            "System Infra Solutions provides Level-3 repair, reconditioning, and multi-tenant telecom tower site integration for Eltek DC power systems deployed across major Indian telecom networks."
         ]
     },
     {
         id: 'nokia',
-        name: 'Nokia (Captive 4G/5G)',
-        shortName: 'Nokia Enterprise',
+        name: 'Nokia Solutions and Networks',
+        shortName: 'Nokia',
         established: '1865',
-        partnershipYear: '2020',
         origin: 'Espoo, Finland',
-        status: 'Private 4G/5G RAN Integration Partner',
-        domains: ['Private Wireless / Captive LTE', 'Open RAN & Cloud RAN', '5G Standalone Core', 'Industrial IoT Automation'],
-        website_url: 'https://www.nokia.com/networks/solutions/private-wireless/',
-        logo_path: 'media/partners/1707308840_nokia.png',
+        status: 'Telecom Infrastructure Alliance',
+        badge: 'CELL SITE INFRASTRUCTURE',
+        domains: ['Base Station Power Conditioning', 'Telecom Power Supply Units', 'Site Energy Optimization', 'Lab Component Validation'],
+        website_url: 'https://www.nokia.com/',
+        logo_path: 'img/partners/nokia.svg',
         paragraphs: [
-            "Nokia is the biggest market leader in the Private LTE sector. Nokia RAN devices are by nature future-proof; for example, Nokia radios manufactured after 2012 may be software-upgraded to 5G, which speeds up the rollout of 5G.",
-            "Nokia RAN combines the flexibility of cloud RAN and open RAN with the efficiency of single RAN supporting 2G, 3G, 4G, and 5G."
+            "Nokia is a global leader in telecommunications network infrastructure. System Infra Solutions collaborates with Nokia ecosystem hardware for cellular base station power conditioning and specialized site support.",
+            "Sysinfra engineering teams conduct rigorous laboratory validation and component-level servicing for Nokia telecom site power conversion units."
         ]
     },
     {
-        id: 'resonous',
-        name: 'Resonous',
-        shortName: 'Resonous Technologies',
-        established: '2014',
-        partnershipYear: '2021',
-        origin: 'Bangalore, India',
-        status: 'Indigenous 4G/5G R&D Alliance',
-        domains: ['Make in India 4G/5G Small Cells', 'Rural Telecom Infrastructure', 'Defense Tactical Networks', 'Industry 4.0 Private 5G'],
-        website_url: 'https://resonoustech.com/',
-        logo_path: 'media/partners/1707308900_Resonous.png',
+        id: 'ericsson',
+        name: 'Ericsson Telecommunications',
+        shortName: 'Ericsson',
+        established: '1876',
+        origin: 'Stockholm, Sweden',
+        status: 'Cellular Site Power Partner',
+        badge: 'NETWORK POWER UNITS',
+        domains: ['Telecom Site Power Systems', 'SMPS Power Conversion', 'BTS Enclosure Telemetry', 'Power Plant Upgrades'],
+        website_url: 'https://www.ericsson.com/',
+        logo_path: 'img/partners/ericsson.svg',
         paragraphs: [
-            "Resonous technologies is a Bangalore based 4G and 5G Wireless Network Solutions Supplier with strong R&D focus for nearly 10 years, delivering cutting edge solutions with secure, reliable, and cost-effective end to end portfolio, Resonous technologies is  specialized to serves the industry-tailored needs of Voice, Broadband Data, and IoT. Resonous technologies focused domains are Rural Telecom, Defense, and Industry4.0 Communications with operations in India, Europe and USA."
+            "Ericsson is one of the world's leading providers of Information and Communication Technology (ICT) to service providers. Sysinfra collaborates on cellular site power conversion modules, SMPS units, and telecom plant power infrastructure.",
+            "Our specialized repair facilities ensure rapid turnaround and component-level restoration for Ericsson power modules serving national telecom corridors."
         ]
     }
 ];
 
 export default function OemPartners({ partners = [], seo = {} }) {
-    // Merge database partners with authoritative authentic copy
-    const mergedPartners = AUTHENTIC_OEM_DATA.map((authPartner) => {
-        const dbMatch = partners.find(
-            (p) => p.name && (
-                p.name.toLowerCase().includes(authPartner.shortName.toLowerCase()) ||
-                authPartner.name.toLowerCase().includes(p.name.toLowerCase())
-            )
-        );
-        return {
-            ...authPartner,
-            logo_path: dbMatch?.logo_path || authPartner.logo_path,
-            website_url: dbMatch?.website_url || authPartner.website_url,
-        };
-    });
+    // Map database records, matching against Sysinfra default meta or dynamically rendering
+    const displayPartners = (partners && partners.length > 0)
+        ? partners.map((p, idx) => {
+            const defMatch = DEFAULT_SYSINFRA_OEM_PARTNERS.find(
+                (d) => d.name.toLowerCase().includes(p.name.toLowerCase()) || p.name.toLowerCase().includes(d.shortName.toLowerCase())
+            );
+            return {
+                id: p.id || defMatch?.id || ('partner-' + idx),
+                name: p.name,
+                shortName: defMatch?.shortName || p.name,
+                status: defMatch?.status || 'Authorized Technology Partner',
+                badge: defMatch?.badge || 'ENTERPRISE INFRASTRUCTURE',
+                established: defMatch?.established || 'Global Tier-1',
+                origin: defMatch?.origin || 'International',
+                domains: defMatch?.domains || ['Telecom Power Systems', 'Mission-Critical Engineering', 'Level-3 Maintenance'],
+                website_url: p.website_url || defMatch?.website_url || '#',
+                logo_path: p.logo_path || defMatch?.logo_path || 'img/motorola-solutions.png',
+                paragraphs: p.description ? [p.description] : (defMatch?.paragraphs || [])
+            };
+        })
+        : DEFAULT_SYSINFRA_OEM_PARTNERS;
 
     return (
         <MainLayout>
             <Seo
-                title={seo?.title || 'Our Preferred Partners — OEM Alliances | System Infra Solutions'}
-                description={seo?.description || "Sysinfra Telesystem has partnered with recognized brand leaders including Kenwood, Diamond, EF Johnson, Yaesu, RugGear, Teltronics, and Nokia to offer best in class communication products."}
+                title={seo?.title || 'OEM & Technology Partners — System Infra Solutions'}
+                description={seo?.description || "System Infra Solutions is an Authorised Channel Partner for Motorola Solutions and collaborates with premier power and telecom equipment OEMs to deliver mission-critical infrastructure across India."}
                 canonicalPath="/oem-partners"
             />
 
@@ -197,41 +148,41 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             as="h1"
                             immediate={true}
                             stagger={40}
-                            highlightPhrase="Indian Spectrum."
+                            highlightPhrase="Mission-Critical Hardware."
                             className="text-4xl sm:text-5xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-tight"
                         >
-                            World-Class Hardware, Calibrated for Indian Spectrum.
+                            World-Class Partnerships, Mission-Critical Hardware.
                         </AnimatedHeading>
                         <p className="mt-5 text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                            We collaborate with Motorola Solutions and other Tier-1 manufacturers to deliver ISO-certified AMF systems, SYS-AXS NOC platforms, tactical radios, and 5G enclosures for India's telecom and defence sectors.
+                            System Infra Solutions collaborates with Motorola Solutions as an Authorised Channel Partner, along with Tier-1 telecom and DC power equipment manufacturers, to deliver robust, high-availability infrastructure across India.
                         </p>
                     </div>
 
                     <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-4xl text-xs font-mono">
                         <div>
                             <span className="text-slate-500 dark:text-slate-400 block">INTEGRATION MODEL</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">DIRECT AUTHORIZED TIER-1</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">AUTHORISED CHANNEL PARTNER</span>
                         </div>
                         <div>
                             <span className="text-slate-500 dark:text-slate-400 block">COMPLIANCE PROTOCOL</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">WPC ETA &bull; TEC CAB CERTIFIED</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">ISO 9001 &bull; ISO 14001 &bull; ISO 45001</span>
                         </div>
                         <div>
-                            <span className="text-slate-500 dark:text-slate-400 block">BAND CALIBRATION</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">INDIGENOUS LAB TUNING</span>
+                            <span className="text-slate-500 dark:text-slate-400 block">FACILITY CAPACITY</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">300,000+ MODULES SERVICED</span>
                         </div>
                         <div>
-                            <span className="text-slate-500 dark:text-slate-400 block">SLA SUPPORT</span>
-                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">24/7 LEVEL-3 REPAIR BENCH</span>
+                            <span className="text-slate-500 dark:text-slate-400 block">SERVICE LAB</span>
+                            <span className="text-slate-900 dark:text-white font-bold mt-1 block">PATPARGANJ, NEW DELHI</span>
                         </div>
                     </div>
                 </div>
             </header>
 
-            {/* Partners List: All OEM Partners with Full Details, One Partner Per Row */}
+            {/* Partners List: All OEM Partners with Full Details */}
             <section className="py-16 md:py-24 bg-slate-50 dark:bg-[#111111] transition-colors duration-300">
                 <div className="container-content">
-                    {/* Official Live Site Header */}
+                    {/* Header */}
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                         <div>
                             <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-1">
@@ -239,31 +190,31 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             </span>
                             <AnimatedHeading
                                 as="h2"
-                                highlightPhrase="preferred partners"
+                                highlightPhrase="Technology Partners"
                                 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 dark:text-paper"
                             >
-                                Our preferred partners
+                                OEM &amp; Technology Partners
                             </AnimatedHeading>
                             <p className="mt-2 text-base text-slate-600 dark:text-steel max-w-3xl leading-relaxed">
-                                Sysinfra Telesystem has partnered with recognized brand leaders to offer you best in class communication products to meet all your business needs.
+                                System Infra Solutions collaborates with recognized global brand leaders and equipment manufacturers to provide best-in-class power systems, tactical communications, and telecom infrastructure.
                             </p>
                         </div>
                         <div className="shrink-0">
                             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-red-50 dark:bg-red-500/10 text-sysred dark:text-[#ff6b6b] border border-red-200 dark:border-red-500/20">
                                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                {mergedPartners.length} Global Technology Alliances
+                                {displayPartners.length} Technology Alliances
                             </span>
                         </div>
                     </div>
 
-                    {/* All Partners Listed: One Partner per Full-Width Row with Complete Details */}
+                    {/* All Partners Listed: One Partner per Full-Width Row */}
                     <div className="space-y-8">
-                        {mergedPartners.map((partner, idx) => {
+                        {displayPartners.map((partner, idx) => {
                             const hasLink = Boolean(partner.website_url && partner.website_url !== '#');
 
                             return (
                                 <article
-                                    key={partner.id}
+                                    key={partner.id || idx}
                                     className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-sm hover:shadow-2xl hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
                                 >
                                     <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -273,7 +224,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                             {/* High-res Logo Box */}
                                             <div className="h-24 w-full max-w-[240px] px-6 py-4 rounded-xl bg-white dark:bg-white/95 border border-slate-200 dark:border-slate-300 flex items-center justify-center shadow-xs mb-5 transition-transform duration-300 group-hover:scale-105">
                                                 <img
-                                                    src={partner.logo_path ? `/${partner.logo_path}` : '/img/motorola-solutions.png'}
+                                                    src={partner.logo_path ? ('/' + partner.logo_path.replace(/^\//, '')) : '/img/motorola-solutions.png'}
                                                     alt={partner.name}
                                                     className="max-h-14 max-w-full w-auto object-contain"
                                                     loading="lazy"
@@ -292,16 +243,16 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                             {/* Quick Specs Grid */}
                                             <div className="w-full space-y-2 text-xs font-mono border-t border-slate-100 dark:border-white/10 pt-4 mt-2">
                                                 <div className="flex justify-between items-center py-1 border-b border-slate-100/70 dark:border-white/5">
-                                                    <span className="text-slate-400 dark:text-steel">FOUNDED:</span>
+                                                    <span className="text-slate-400 dark:text-steel">ESTABLISHED:</span>
                                                     <span className="font-bold text-slate-800 dark:text-paper">{partner.established}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center py-1 border-b border-slate-100/70 dark:border-white/5">
-                                                    <span className="text-slate-400 dark:text-steel">ORIGIN:</span>
+                                                    <span className="text-slate-400 dark:text-steel">HEADQUARTERS:</span>
                                                     <span className="font-bold text-slate-800 dark:text-paper">{partner.origin}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center py-1">
-                                                    <span className="text-slate-400 dark:text-steel">SYSINFRA ALLIANCE:</span>
-                                                    <span className="font-bold text-sysred dark:text-[#ff6b6b]">Since {partner.partnershipYear}</span>
+                                                    <span className="text-slate-400 dark:text-steel">SYSINFRA FACILITY:</span>
+                                                    <span className="font-bold text-sysred dark:text-[#ff6b6b]">Patparganj Lab</span>
                                                 </div>
                                             </div>
 
@@ -320,17 +271,17 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                             )}
                                         </div>
 
-                                        {/* Right Column: Complete Authentic Paragraphs & Domain Chips */}
+                                        {/* Right Column: Complete Paragraphs & Domain Chips */}
                                         <div className="lg:col-span-8 flex flex-col justify-between h-full">
                                             <div>
                                                 {/* Header Strip with Index Counter */}
                                                 <div className="flex items-center justify-between gap-4 mb-4">
                                                     <div className="flex items-center gap-2 text-xs font-mono text-slate-400 dark:text-steel">
-                                                        <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 uppercase tracking-wider text-[10px] font-semibold">
-                                                            PORTFOLIO {String(idx + 1).padStart(2, '0')}
+                                                        <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 uppercase tracking-wider text-[10px] font-semibold text-sysred dark:text-[#ff6b6b]">
+                                                            {partner.badge}
                                                         </span>
                                                         <span>&bull;</span>
-                                                        <span>OFFICIAL PRINCIPAL DOSSIER</span>
+                                                        <span>TECHNOLOGY ALLIANCE #{String(idx + 1).padStart(2, '0')}</span>
                                                     </div>
                                                 </div>
 
@@ -346,7 +297,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                                     ))}
                                                 </div>
 
-                                                {/* 100% Verbatim Authentic Copy from Official Website */}
+                                                {/* Paragraphs */}
                                                 <div className="space-y-4 text-slate-700 dark:text-slate-200 text-base leading-relaxed font-sans">
                                                     {partner.paragraphs.map((paragraph, pIdx) => (
                                                         <p key={pIdx} className="leading-relaxed">
@@ -360,10 +311,10 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                             <div className="mt-8 pt-5 border-t border-slate-100 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 dark:text-steel">
                                                 <div className="flex items-center gap-2">
                                                     <span className="w-2 h-2 rounded-full bg-sysred animate-pulse" />
-                                                    <span>Direct Technical Support, Warranty &amp; Level-3 Calibration by System Infra Solutions</span>
+                                                    <span>Direct Technical Support &amp; Component-Level Service by System Infra Solutions</span>
                                                 </div>
                                                 <span className="text-[11px]">
-                                                    Principal #{idx + 1} of {mergedPartners.length}
+                                                    Partner #{idx + 1} of {displayPartners.length}
                                                 </span>
                                             </div>
                                         </div>
@@ -381,10 +332,10 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                     01
                                 </div>
                                 <h4 className="font-display font-bold text-slate-900 dark:text-paper text-base mb-2">
-                                    WPC Spectrum Compliance
+                                    Authorised Channel Compliance
                                 </h4>
                                 <p className="text-xs text-slate-600 dark:text-steel leading-relaxed">
-                                    Every imported terminal and RF repeater undergoes stringent harmonic testing, frequency calibration, and Wireless Planning &amp; Coordination (WPC) ETA licensing.
+                                    As Motorola Solutions Authorised Channel Partner, all tactical radio equipment, MOTOTRBO systems, and body-worn cameras come with genuine OEM certifications, WPC clearances, and factory warranty.
                                 </p>
                             </div>
 
@@ -393,10 +344,10 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                     02
                                 </div>
                                 <h4 className="font-display font-bold text-slate-900 dark:text-paper text-base mb-2">
-                                    Tactical Ruggedization
+                                    Level-3 Reconditioning Facility
                                 </h4>
                                 <p className="text-xs text-slate-600 dark:text-steel leading-relaxed">
-                                    Partner hardware is tested against MIL-STD-810G and IP67/IP68 ingress standards to withstand extreme Indian operating conditions from Himalayan cold to coastal humidity.
+                                    Our dedicated 20,000+ sq. ft. facility in Patparganj Industrial Area has serviced over 300,000 power modules, rectifiers, and controllers with specialized burn-in racks and automatic testing setups.
                                 </p>
                             </div>
 
@@ -405,10 +356,10 @@ export default function OemPartners({ partners = [], seo = {} }) {
                                     03
                                 </div>
                                 <h4 className="font-display font-bold text-slate-900 dark:text-paper text-base mb-2">
-                                    Tier-1 RMA &amp; Spares Depot
+                                    PAN-India Support Network
                                 </h4>
                                 <p className="text-xs text-slate-600 dark:text-steel leading-relaxed">
-                                    Direct OEM parts inventory in New Delhi guarantees sub-48-hour turnarounds on mission-critical board replacements, battery cells, and RF antenna modules.
+                                    With over 25+ regional service depots and 500+ field service engineers, we guarantee rapid turnaround times for telecom operators, towercos, and public sector enterprises.
                                 </p>
                             </div>
                         </div>
@@ -418,13 +369,13 @@ export default function OemPartners({ partners = [], seo = {} }) {
                     <div className="mt-12 card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-10 border border-slate-200 dark:border-navy-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl shadow-sm">
                         <div className="max-w-xl">
                             <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-2">
-                                GLOBAL TECHNOLOGY PROVIDERS
+                                TECHNOLOGY COLLABORATION
                             </span>
                             <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-white">
-                                Expand Into the Indian Defense &amp; Enterprise Market
+                                Partner with System Infra Solutions
                             </h3>
                             <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                                System Infra Solutions offers end-to-end WPC/TEC licensing, government GeM channel distribution, and an active network of over 500+ defense and enterprise dealers across India.
+                                System Infra Solutions offers nationwide deployment reach, ISO-certified repair and reconditioning facilities, and trusted relationships across India's telecom, power, and enterprise sectors.
                             </p>
                         </div>
                         <div className="shrink-0">

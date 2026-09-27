@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="100%" height="100%">
+  <g transform="translate(16, 16)">
+    <!-- 3 Ericsson slashes -->
+    <rect x="4" y="8" width="8" height="32" rx="4" transform="skewX(-20)" fill="#002561"/>
+    <rect x="18" y="8" width="8" height="32" rx="4" transform="skewX(-20)" fill="#002561"/>
+    <rect x="32" y="8" width="8" height="32" rx="4" transform="skewX(-20)" fill="#002561"/>
+    <text x="60" y="35" font-family="'Montserrat', 'Arial Black', -apple-system, sans-serif" font-size="28" font-weight="900" letter-spacing="2" fill="#002561">ERICSSON</text>
+  </g>
+</svg>

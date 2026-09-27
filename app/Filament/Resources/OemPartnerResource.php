@@ -25,7 +25,7 @@ class OemPartnerResource extends Resource
             Forms\Components\TextInput::make('name')
                 ->label('OEM Partner Name')
                 ->required()
-                ->placeholder('e.g. Kenwood Corporation, Japan / Motorola Solutions'),
+                ->placeholder('e.g. Motorola Solutions, Vertiv, Delta Power'),
             Forms\Components\Textarea::make('description')
                 ->label('Partnership Overview & Credentials')
                 ->rows(4)

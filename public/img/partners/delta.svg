@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="100%" height="100%">
+  <g transform="translate(16, 16)">
+    <path d="M24,4 L44,44 L4,44 Z" fill="#0072CE"/>
+    <path d="M24,14 L38,41 L10,41 Z" fill="#FFFFFF"/>
+    <circle cx="24" cy="28" r="5" fill="#0072CE"/>
+    <text x="58" y="36" font-family="'Montserrat', 'Arial Black', -apple-system, sans-serif" font-size="32" font-weight="900" letter-spacing="4" fill="#0072CE">DELTA</text>
+  </g>
+</svg>
