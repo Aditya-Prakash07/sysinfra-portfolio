@@ -103,7 +103,7 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                     {/* Subcategory Search filter input */}
                     {items.length > 0 && (
                         <div className="mt-8 sm:mt-10 max-w-2xl mx-auto">
-                            <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-lg shadow-slate-200/50 dark:shadow-2xl dark:shadow-black/50 transition-all duration-300 group">
+                            <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] transition-all duration-300 group">
                                 <div className="absolute left-4 sm:left-5 pointer-events-none text-sysred dark:text-[#ff6b6b] flex items-center">
                                     <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

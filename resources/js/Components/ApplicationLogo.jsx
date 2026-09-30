@@ -1,12 +1,23 @@
 import React from 'react';
+import { usePage } from '@inertiajs/react';
+
+const resolveLogoUrl = (path) => {
+    if (!path) return null;
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    if (path.startsWith('/')) return path;
+    if (path.startsWith('storage/')) return '/' + path;
+    if (path.startsWith('img/')) return '/' + path;
+    return `/storage/${path}`;
+};
 
 /**
  * ApplicationLogo — Authentic Original sysinfra.in Brand Logo
  * 
- * Uses the authentic high-quality SVG official System Infra Solutions artwork:
- * - Light Mode: /storage/logo/system_infra_solutions_logo_exact.svg (Original royal navy text + vibrant red 'S')
- * - Dark Mode: /storage/logo/system_infra_solutions_logo_dark.svg (Luminous light sky blue text and emblem + vibrant red 'S')
- * - Compact: /img/mobile-logo.png (Original circular emblem)
+ * Uses custom uploaded logos from Admin Panel (SiteSettings) if available,
+ * falling back to the authentic high-quality SVG official artwork:
+ * - Light Mode: /storage/logo/system_infra_solutions_logo_exact.svg
+ * - Dark Mode: /storage/logo/system_infra_solutions_logo_dark.svg
+ * - Compact: /img/mobile-logo.png
  */
 export default function ApplicationLogo({
     className = '',
@@ -16,22 +27,31 @@ export default function ApplicationLogo({
     compact = false,
     ...props
 }) {
+    const { props: pageProps } = usePage();
+    const siteBranding = pageProps?.siteBranding || {};
+
     const isDark = 
         variant === 'dark' || 
         variant === 'white' || 
         variant === 'footer' || 
         (variant === 'auto' && theme === 'dark');
 
-    const src = compact
+    const customLogo = isDark 
+        ? resolveLogoUrl(siteBranding.logo_dark) 
+        : resolveLogoUrl(siteBranding.logo_light);
+
+    const defaultSrc = compact
         ? '/img/mobile-logo.png?v=2'
         : isDark
             ? '/img/system_infra_solutions_logo_dark.svg'
             : '/img/system_infra_solutions_logo_exact.svg';
 
+    const src = (!compact && customLogo) ? customLogo : defaultSrc;
+
     return (
         <img
             src={src}
-            alt="System Infra Solutions Pvt. Ltd."
+            alt={siteBranding.name || "System Infra Solutions Pvt. Ltd."}
             draggable={false}
             className={`object-contain select-none shrink-0 ${className}`}
             onError={(e) => {

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EventAlbum;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class EventController extends Controller
 {
-    public function index(): Response
+    public static function getDefaultEvents(): array
     {
-        $festivals = [
+        return [
             [
                 'title' => 'Holi Celebration @ SIS Office — Delhi Team',
                 'category' => 'Festival Celebration',
@@ -64,15 +65,39 @@ class EventController extends Controller
                     'img/eventGallery/imcImg/galleryImg11.webp',
                     'img/eventGallery/imcImg/galleryImg12.webp',
                 ],
-                'description' => 'Showcasing SISPL indigenously developed AMF Controllers, Smart Box 5G micro-enclosures, and SYS-AXS NOC telemetry at the premier telecom expo.',
+                'description' => 'Unveiling 5G smart enclosures, tactical wireless solutions, and intelligent IoT telemetry alongside Prime Minister Shri Narendra Modi and industry leaders at Pragati Maidan, New Delhi.',
             ],
         ];
+    }
+
+    public function index(): Response
+    {
+        $dbAlbums = EventAlbum::where('is_published', true)
+            ->orderBy('sort_order')
+            ->get();
+
+        if ($dbAlbums->isNotEmpty()) {
+            $events = $dbAlbums->map(function ($album) {
+                return [
+                    'id' => $album->id,
+                    'title' => $album->title,
+                    'slug' => $album->slug,
+                    'category' => $album->category,
+                    'date' => $album->event_date,
+                    'cover' => $album->cover_image_path,
+                    'images' => $album->gallery_images ?? [],
+                    'description' => $album->description,
+                ];
+            })->toArray();
+        } else {
+            $events = self::getDefaultEvents();
+        }
 
         return Inertia::render('Events', [
-            'events' => $festivals,
+            'events' => $events,
             'seo' => [
-                'title' => 'Media & Event Gallery — System Infra Solutions',
-                'description' => 'Explore life, culture, and corporate milestones at System Infra Solutions: Festival celebrations, New Year galas, and India Mobile Congress exhibitions.',
+                'title' => 'Media & Corporate Events Gallery — System Infra Solutions',
+                'description' => 'Explore authentic photo galleries of System Infra Solutions events, India Mobile Congress (IMC) 5G showcases, and corporate cultural celebrations.',
             ],
         ]);
     }

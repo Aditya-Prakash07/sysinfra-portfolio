@@ -60,7 +60,7 @@ const getSectorIcon = (idx) => {
     }
 };
 
-export default function Home({ banners = [], categories = [], featuredProducts = [], stats = [], testimonials = [], clients = [], oemPartners = [], latestNews = [], seo = {} }) {
+export default function Home({ banners = [], videoSettings = {}, categories = [], featuredProducts = [], stats = [], testimonials = [], clients = [], oemPartners = [], latestNews = [], seo = {} }) {
     const { theme } = useTheme();
     const isDark = theme === 'dark';
     const [selectedSector, setSelectedSector] = useState(0);
@@ -86,7 +86,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
             subheading: '',
             image_path: 'banners/sysinfra-video-banner.mp4',
             isVideo: true,
-            resolved_video_path: '/storage/banners/sysinfra-video-banner.mp4',
+            resolved_video_path: videoSettings?.video_url || '/storage/banners/sysinfra-video-banner.mp4',
             cta_label: '',
             cta_url: '',
         },
@@ -494,7 +494,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
             {/* =========================================================================
                 2. WELCOME & CORPORATE HD VIDEO SHOWCASE (FROM ORIGINAL WEBSITE)
             ========================================================================= */}
-            <WelcomeVideoSection />
+            <WelcomeVideoSection videoSettings={videoSettings} />
 
 
             {/* =========================================================================
@@ -539,7 +539,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                     </div>
 
                     {/* Selected Sector Showcase Card with Telemetry Specs */}
-                    <div className="panel p-5 sm:p-8 border border-slate-200 dark:border-white/10 shadow-xl dark:shadow-black/30">
+                    <div className="panel p-5 sm:p-8 border border-slate-200 dark:border-white/10 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)]">
                         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                             <div className="lg:col-span-7 space-y-5">
                                 <span className="badge-rf font-mono text-xs">

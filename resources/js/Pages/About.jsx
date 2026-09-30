@@ -218,8 +218,40 @@ const SYSINFRA_LEADERSHIP = [
     }
 ];
 
-export default function About({ seo = {} }) {
+const resolveAssetUrl = (path, fallback = '') => {
+    if (!path) return fallback;
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    if (path.startsWith('/')) return path;
+    if (path.startsWith('storage/')) return '/' + path;
+    if (path.startsWith('img/')) return '/' + path;
+    return `/storage/${path}`;
+};
+
+export default function About({ 
+    seo = {}, 
+    team = [], 
+    dbMilestones = null, 
+    dbCompanyValues = null, 
+    dbRdCards = null, 
+    plantSettings = null 
+}) {
     const [activeTab, setActiveTab] = useState('all');
+
+    const milestonesToRender = (dbMilestones && dbMilestones.length > 0) ? dbMilestones : MILESTONES;
+    const valuesToRender = (dbCompanyValues && dbCompanyValues.length > 0) ? dbCompanyValues : CORE_VALUES;
+    const rdCardsToRender = (dbRdCards && dbRdCards.length > 0) ? dbRdCards : RD_CARDS;
+    const leadershipToRender = (team && team.length > 0) ? team : SYSINFRA_LEADERSHIP;
+
+    const plantHeadline = plantSettings?.headline || '4,000 Sq. Ft. International Standard Manufacturing Plant';
+    const plantDesc = plantSettings?.description || 'System Infra Solutions Private Limited (SISPL) operates an international quality standard manufacturing facility of 4,000 square feet for complete assembly, wiring, and testing of AMF panels, power controllers, and IoT telemetry products at Patparganj Industrial Area, New Delhi.';
+    const plantBullets = (plantSettings?.bullets && Array.isArray(plantSettings.bullets) && plantSettings.bullets.length > 0)
+        ? plantSettings.bullets
+        : [
+            'Precision sheet metal fabrication & IP55 powder coating',
+            'Automated PCB assembly & selective soldering lines',
+            '72-hour full electrical load & thermal burn-in chambers',
+            'High-voltage dielectric insulation & surge surge testing'
+        ];
 
     return (
         <MainLayout>
@@ -272,8 +304,8 @@ export default function About({ seo = {} }) {
                             <span className="text-slate-500 dark:text-slate-400 mt-1 block">SITES IN SYS-AXS NOC</span>
                         </div>
                         <div>
-                            <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap">4,000 Sq.Ft.</span>
-                            <span className="text-slate-500 dark:text-slate-400 mt-1 block">PATPARGANJ PLANT</span>
+                            <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap overflow-visible">4,000&nbsp;Sq.Ft.</span>
+                            <span className="text-slate-500 dark:text-slate-400 mt-1 block whitespace-nowrap">PATPARGANJ PLANT</span>
                         </div>
                     </div>
                 </div>
@@ -372,25 +404,25 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {CORE_VALUES.map((val) => (
+                        {valuesToRender.map((val, idx) => (
                             <div 
-                                key={val.id} 
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                key={val.id || val.code || idx} 
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                             >
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
                                         <span className="text-2xl font-mono font-bold text-slate-300 dark:text-white/20 group-hover:text-[#dd3c34] transition-colors">
-                                            {val.id}
+                                            {val.id || val.code || `0${idx + 1}`}
                                         </span>
                                         <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/10 text-[#dd3c34] dark:text-[#ff6b6b] font-bold border border-red-500/20">
-                                            {val.badge}
+                                            {val.badge || 'Core Value'}
                                         </span>
                                     </div>
                                     <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white mb-2 group-hover:text-[#dd3c34] dark:group-hover:text-[#ff6b6b] transition-colors">
                                         {val.title}
                                     </h3>
                                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                                        {val.desc}
+                                        {val.desc || val.description}
                                     </p>
                                 </div>
                             </div>
@@ -445,36 +477,39 @@ export default function About({ seo = {} }) {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            {RD_CARDS.map((card, idx) => (
-                                <div 
-                                    key={idx}
-                                    className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
-                                >
-                                    <div>
-                                        <div className="aspect-[4/3] w-full rounded-xl bg-slate-100 dark:bg-white/[0.02] p-3 flex items-center justify-center overflow-hidden mb-3 border border-slate-100 dark:border-white/5">
-                                            <img 
-                                                src={`/${card.img}`} 
-                                                alt={card.name} 
-                                                className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                                                loading="lazy"
-                                                onError={(e) => {
-                                                    e.target.onerror = null;
-                                                    e.target.src = '/img/cardsImg/svrCard.webp';
-                                                }}
-                                            />
+                            {rdCardsToRender.map((card, idx) => {
+                                const cardImg = resolveAssetUrl(card.image_path || card.img, '/img/cardsImg/svrCard.webp');
+                                return (
+                                    <div 
+                                        key={idx}
+                                        className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                    >
+                                        <div>
+                                            <div className="aspect-[4/3] w-full rounded-xl bg-slate-100 dark:bg-white/[0.02] p-3 flex items-center justify-center overflow-hidden mb-3 border border-slate-100 dark:border-white/5">
+                                                <img 
+                                                    src={cardImg} 
+                                                    alt={card.name} 
+                                                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" 
+                                                    loading="lazy"
+                                                    onError={(e) => {
+                                                        e.target.onerror = null;
+                                                        e.target.src = '/img/cardsImg/svrCard.webp';
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/10 text-[#dd3c34] dark:text-[#ff6b6b] font-bold block w-fit mb-1.5">
+                                                {card.tag}
+                                            </span>
+                                            <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white leading-snug">
+                                                {card.name}
+                                            </h4>
+                                            <p className="mt-1 text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                                                {card.desc || card.description}
+                                            </p>
                                         </div>
-                                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-500/10 text-[#dd3c34] dark:text-[#ff6b6b] font-bold block w-fit mb-1.5">
-                                            {card.tag}
-                                        </span>
-                                        <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white leading-snug">
-                                            {card.name}
-                                        </h4>
-                                        <p className="mt-1 text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                                            {card.desc}
-                                        </p>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -514,13 +549,13 @@ export default function About({ seo = {} }) {
 
                     {/* 8 Audited Growth Metrics Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {MILESTONES.map((m, idx) => (
+                        {milestonesToRender.map((m, idx) => (
                             <div 
                                 key={idx} 
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden cursor-pointer"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden cursor-pointer"
                             >
-                                <div className="text-3xl font-display font-extrabold text-[#dd3c34] dark:text-[#ff5c54] mb-1">
-                                    {m.metric}
+                                <div className="text-2xl sm:text-3xl font-display font-extrabold text-[#dd3c34] dark:text-[#ff5c54] mb-1 whitespace-nowrap overflow-visible">
+                                    <span className="whitespace-nowrap inline-block">{m.metric}</span>
                                 </div>
                                 <div className="h-0.5 w-8 bg-[#dd3c34] rounded-full my-2 group-hover:w-12 transition-all duration-300" />
                                 <h3 className="font-mono font-bold text-xs uppercase tracking-wider text-slate-900 dark:text-white mb-1.5">
@@ -544,28 +579,18 @@ export default function About({ seo = {} }) {
                                 PRODUCTION FACILITY &bull; sysinfra.in/manufacturingFacility.php
                             </span>
                             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-slate-900 dark:text-white leading-tight">
-                                4,000 Sq. Ft. International Standard Manufacturing Plant
+                                {plantHeadline}
                             </h2>
                             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                                System Infra Solutions Private Limited (SISPL) operates an international quality standard manufacturing facility of 4,000 square feet for complete assembly, wiring, and testing of AMF panels, power controllers, and IoT telemetry products at Patparganj Industrial Area, New Delhi.
+                                {plantDesc}
                             </p>
                             <div className="space-y-2 pt-2 text-xs font-mono text-slate-700 dark:text-slate-300">
-                                <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#dd3c34]" />
-                                    <span>Precision sheet metal fabrication &amp; IP55 powder coating</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#dd3c34]" />
-                                    <span>Automated PCB assembly &amp; selective soldering lines</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#dd3c34]" />
-                                    <span>72-hour full electrical load &amp; thermal burn-in chambers</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#dd3c34]" />
-                                    <span>High-voltage dielectric insulation &amp; surge surge testing</span>
-                                </div>
+                                {plantBullets.map((bullet, bIdx) => (
+                                    <div key={bIdx} className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#dd3c34] shrink-0" />
+                                        <span>{bullet}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -605,7 +630,7 @@ export default function About({ seo = {} }) {
                             {PROCESS.map((p) => (
                                 <div 
                                     key={p.step}
-                                    className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden cursor-pointer"
+                                    className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden cursor-pointer"
                                 >
                                     <span className="text-2xl font-mono font-black text-[#dd3c34] dark:text-[#ff6b6b] block mb-2">
                                         {p.step}
@@ -643,7 +668,7 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate1.jpg" 
@@ -660,7 +685,7 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate2.jpg" 
@@ -677,7 +702,7 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate3.jpg" 
@@ -694,7 +719,7 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate4.jpg" 
@@ -734,40 +759,49 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {SYSINFRA_LEADERSHIP.map((div, idx) => (
-                            <div 
-                                key={idx}
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between mb-4">
-                                        <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-white/[0.04] p-2 flex items-center justify-center border border-slate-200/60 dark:border-white/10 group-hover:scale-105 transition-transform">
-                                            <img 
-                                                src={`/${div.icon}`} 
-                                                alt={div.name} 
-                                                className="max-h-full max-w-full object-contain"
-                                            />
+                        {leadershipToRender.map((div, idx) => {
+                            const iconSrc = resolveAssetUrl(div.photo_path || div.icon, '/img/productIconImg/overview.png');
+                            return (
+                                <div 
+                                    key={idx}
+                                    className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                >
+                                    <div>
+                                        <div className="flex items-center justify-between mb-4">
+                                            <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-white/[0.04] p-2 flex items-center justify-center border border-slate-200/60 dark:border-white/10 group-hover:scale-105 transition-transform overflow-hidden">
+                                                <img 
+                                                    src={iconSrc} 
+                                                    alt={div.name} 
+                                                    className="max-h-full max-w-full object-contain"
+                                                    onError={(e) => {
+                                                        e.target.onerror = null;
+                                                        e.target.src = '/img/productIconImg/overview.png';
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/10 text-[#dd3c34] dark:text-[#ff6b6b] font-bold border border-red-500/20">
+                                                {div.badge || 'Leadership'}
+                                            </span>
                                         </div>
-                                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-500/10 text-[#dd3c34] dark:text-[#ff6b6b] font-bold border border-red-500/20">
-                                            {div.badge}
+                                        <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white mb-1 group-hover:text-[#dd3c34] dark:group-hover:text-[#ff6b6b] transition-colors">
+                                            {div.name}
+                                        </h3>
+                                        <span className="text-[11px] font-mono text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
+                                            {div.title}
                                         </span>
+                                        {div.division && (
+                                            <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block mb-3">
+                                                {div.division}
+                                            </span>
+                                        )}
+                                        <div className="h-0.5 w-8 bg-slate-200 dark:bg-white/10 group-hover:w-12 group-hover:bg-[#dd3c34] transition-all duration-300 rounded-full mb-3" />
+                                        <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                                            {div.bio}
+                                        </p>
                                     </div>
-                                    <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white mb-1 group-hover:text-[#dd3c34] dark:group-hover:text-[#ff6b6b] transition-colors">
-                                        {div.name}
-                                    </h3>
-                                    <span className="text-[11px] font-mono text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
-                                        {div.title}
-                                    </span>
-                                    <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 block mb-3">
-                                        {div.division}
-                                    </span>
-                                    <div className="h-0.5 w-8 bg-slate-200 dark:bg-white/10 group-hover:w-12 group-hover:bg-[#dd3c34] transition-all duration-300 rounded-full mb-3" />
-                                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-                                        {div.bio}
-                                    </p>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -801,7 +835,7 @@ export default function About({ seo = {} }) {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         {/* 1. Holi Celebration */}
-                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
+                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
                             <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                                 <img 
                                     src="/img/eventGallery/festivalImg/FestivalCelebration.webp" 
@@ -831,7 +865,7 @@ export default function About({ seo = {} }) {
                         </div>
 
                         {/* 2. New Year Celebration */}
-                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
+                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
                             <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                                 <img 
                                     src="/img/eventGallery/newYearCelebration/birthDayBanner.webp" 
@@ -861,7 +895,7 @@ export default function About({ seo = {} }) {
                         </div>
 
                         {/* 3. India Mobile Congress */}
-                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
+                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
                             <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                                 <img 
                                     src="/img/eventGallery/imcImg/imcBanner.webp" 
@@ -913,7 +947,7 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     CORPORATE BROCHURE
@@ -951,7 +985,7 @@ export default function About({ seo = {} }) {
                             </div>
                         </div>
 
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     TELECOM SECURITY
@@ -989,7 +1023,7 @@ export default function About({ seo = {} }) {
                             </div>
                         </div>
 
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     NOC TELEMETRY
@@ -1027,7 +1061,7 @@ export default function About({ seo = {} }) {
                             </div>
                         </div>
 
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     5G / SMALL CELL

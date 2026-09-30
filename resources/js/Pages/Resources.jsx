@@ -4,7 +4,7 @@ import Seo from '@/Components/Seo';
 import AnimatedHeading from '@/Components/AnimatedHeading';
 import { Link } from '@inertiajs/react';
 
-export default function Resources({ catalogues = [], seo = {} }) {
+export default function Resources({ catalogues = [], masterCatalogue = null, seo = {} }) {
     const [search, setSearch] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -75,7 +75,7 @@ export default function Resources({ catalogues = [], seo = {} }) {
 
                     {/* Prominent Large Search Area (Directly after the last line) */}
                     <div className="mt-8 sm:mt-10 max-w-3xl mx-auto">
-                        <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-lg shadow-slate-200/50 dark:shadow-2xl dark:shadow-black/50 transition-all duration-300 group">
+                        <div className="relative flex items-center w-full rounded-2xl bg-white dark:bg-[#111111] border-2 border-slate-300/80 dark:border-white/15 focus-within:border-sysred dark:focus-within:border-[#ff6b6b] shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] transition-all duration-300 group">
                             {/* Search Lens Icon */}
                             <div className="absolute left-4 sm:left-5 pointer-events-none text-sysred dark:text-[#ff6b6b] flex items-center">
                                 <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,26 +160,26 @@ export default function Resources({ catalogues = [], seo = {} }) {
                     </div>
 
                     {/* Master Corporate Catalogue Featured Banner */}
-                    <div className="mt-10 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-1.5 transition-all duration-300 ease-out text-left relative overflow-hidden group">
+                    <div className="mt-10 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-1.5 transition-all duration-300 ease-out text-left relative overflow-hidden group">
                         <div className="space-y-2">
                             <div className="flex items-center gap-2">
                                 <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-sysred text-white">
                                     Primary Master Document
                                 </span>
                                 <span className="text-xs font-mono text-slate-500 dark:text-steel">
-                                    2.26 MB &bull; PDF Format
+                                    {masterCatalogue?.size || '2.26 MB'} &bull; PDF Format
                                 </span>
                             </div>
                             <h2 className="text-xl sm:text-2xl font-bold font-display text-slate-900 dark:text-white">
-                                System Infra Solutions Complete Corporate Catalogue
+                                {masterCatalogue?.title || 'System Infra Solutions Complete Corporate Catalogue'}
                             </h2>
                             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                                Includes comprehensive technical overviews of AMF power panels, DC smart energy meters, SYS-AXS NOC gateways, small cell enclosures, and 24/7 Pan-India field operations.
+                                {masterCatalogue?.description || 'Includes comprehensive technical overviews of AMF power panels, DC smart energy meters, SYS-AXS NOC gateways, small cell enclosures, and 24/7 Pan-India field operations.'}
                             </p>
                         </div>
                         <a
-                            href="/download-catalog"
-                            download="SystemInfraSolutions_MasterCatalogue.pdf"
+                            href={masterCatalogue?.path || '/download-catalog'}
+                            download={masterCatalogue?.filename || 'SystemInfraSolutions_MasterCatalogue.pdf'}
                             className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-sysred hover:bg-[#b82720] text-white font-mono text-xs uppercase tracking-wider font-bold shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all shrink-0 select-none cursor-pointer"
                         >
                             <svg className="w-4 h-4 stroke-[2.2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -246,7 +246,7 @@ export default function Resources({ catalogues = [], seo = {} }) {
                             {filtered.map((cat, idx) => (
                             <div 
                                 key={cat.id || idx}
-                                className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0d0d0d] border border-slate-200 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden cursor-pointer"
+                                className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0d0d0d] border border-slate-200 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] hover:-translate-y-2 dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] transition-all duration-300 ease-out overflow-hidden cursor-pointer"
                             >
 
                                 <div>
@@ -315,7 +315,7 @@ export default function Resources({ catalogues = [], seo = {} }) {
                     )}
 
                     {/* Support Notice */}
-                    <div className="mt-14 p-6 rounded-2xl bg-white dark:bg-[#0c0c0c] border border-slate-200 dark:border-white/10 hover:border-sysred/50 dark:hover:border-[#ff5c54]/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out">
+                    <div className="mt-14 p-6 rounded-2xl bg-white dark:bg-[#0c0c0c] border border-slate-200 dark:border-white/10 hover:border-sysred/50 dark:hover:border-[#ff5c54]/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] hover:-translate-y-1 transition-all duration-300 ease-out">
                         <div className="space-y-1">
                             <span className="text-slate-900 dark:text-white font-bold block">
                                 Need custom tender technical compliance or WPC type approvals?

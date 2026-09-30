@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogue;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -10,9 +11,9 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ResourceController extends Controller
 {
     /**
-     * Catalogues metadata matching sysinfra.in/resource.php
+     * Default fallback catalogues metadata matching sysinfra.in/resource.php
      */
-    public static function getCatalogues(): array
+    public static function getDefaultCatalogues(): array
     {
         return [
             [
@@ -29,6 +30,7 @@ class ResourceController extends Controller
                 'description' => 'Complete catalog covering telecom power controllers, AMF systems, SYS-AXS NOC telemetry, small cell smart enclosures, and Patparganj manufacturing plant capabilities.',
                 'badge' => 'Flagship Catalog',
                 'popular' => true,
+                'is_master' => true,
             ],
             [
                 'id' => 'i-protect',
@@ -44,6 +46,7 @@ class ResourceController extends Controller
                 'description' => 'Smart perimeter security, RFID keyless entry, dual PIR intrusion motion sensors, siren automation, and diesel tank ultrasonic level monitoring.',
                 'badge' => 'Patented IoT',
                 'popular' => true,
+                'is_master' => false,
             ],
             [
                 'id' => 'sis-axs',
@@ -59,6 +62,7 @@ class ResourceController extends Controller
                 'description' => 'Cloud-connected NOC telemetry gateway managing remote diesel generator parameters, battery bank health, grid availability, and multi-tenant billing.',
                 'badge' => 'Cloud Telemetry',
                 'popular' => true,
+                'is_master' => false,
             ],
             [
                 'id' => 'smart-box',
@@ -74,6 +78,7 @@ class ResourceController extends Controller
                 'description' => 'Compact IP65 outdoor telecom enclosures designed for pole mounting, fiber aggregation, smart street furniture, and high-density 5G radio deployments.',
                 'badge' => '5G Enclosure',
                 'popular' => false,
+                'is_master' => false,
             ],
             [
                 'id' => 'amf-panel',
@@ -89,6 +94,7 @@ class ResourceController extends Controller
                 'description' => 'Automated Mains Failure controllers for telecom and commercial sites. Handles automatic generator start/stop, phase sequencing, and fuel conservation.',
                 'badge' => '70,000+ Deployed',
                 'popular' => true,
+                'is_master' => false,
             ],
             [
                 'id' => 'dual-dg',
@@ -104,6 +110,7 @@ class ResourceController extends Controller
                 'description' => 'Equal run-time load balancing and automated switchover for sites running dual diesel generator setups in harsh off-grid geographies.',
                 'badge' => 'Energy Optimization',
                 'popular' => false,
+                'is_master' => false,
             ],
             [
                 'id' => 'security',
@@ -119,8 +126,44 @@ class ResourceController extends Controller
                 'description' => 'High-security crash-rated bollards, hydraulic road blockers, tyre killers, flap turnstiles, and UVSS vehicle undercarriage scanners for defence and VIP installations.',
                 'badge' => 'Defence Grade',
                 'popular' => true,
+                'is_master' => false,
             ],
         ];
+    }
+
+    /**
+     * Get all active catalogues from database with fallback
+     */
+    public static function getCatalogues(): array
+    {
+        $dbCatalogues = Catalogue::where('is_published', true)
+            ->orderBy('sort_order')
+            ->get();
+
+        if ($dbCatalogues->isNotEmpty()) {
+            return $dbCatalogues->map(function ($cat) {
+                $filePath = $cat->file_path;
+                $cleanPath = str_starts_with($filePath, '/') ? $filePath : (str_starts_with($filePath, 'storage/') ? '/' . $filePath : '/storage/' . $filePath);
+
+                return [
+                    'id' => $cat->id,
+                    'slug' => $cat->slug,
+                    'title' => $cat->title,
+                    'subtitle' => $cat->subtitle,
+                    'category' => $cat->category,
+                    'filename' => basename($cat->file_path),
+                    'path' => $cleanPath,
+                    'size' => $cat->file_size ?? 'PDF Spec',
+                    'pages' => $cat->pages ?? 'Technical Sheet',
+                    'description' => $cat->description,
+                    'badge' => $cat->badge ?? $cat->category,
+                    'popular' => (bool) $cat->is_popular,
+                    'is_master' => (bool) $cat->is_master,
+                ];
+            })->toArray();
+        }
+
+        return self::getDefaultCatalogues();
     }
 
     /**
@@ -128,8 +171,12 @@ class ResourceController extends Controller
      */
     public function index(): Response
     {
+        $catalogues = self::getCatalogues();
+        $master = collect($catalogues)->firstWhere('is_master', true) ?? ($catalogues[0] ?? null);
+
         return Inertia::render('Resources', [
-            'catalogues' => self::getCatalogues(),
+            'catalogues' => $catalogues,
+            'masterCatalogue' => $master,
             'seo' => [
                 'title' => 'Official Product Catalogues & Technical Brochures — System Infra Solutions',
                 'description' => 'Download official PDF catalogues for System Infra Solutions products including AMF panels, SYS-AXS NOC telemetry, i-Protect tower security, and 5G smart enclosures.',
@@ -142,6 +189,17 @@ class ResourceController extends Controller
      */
     public function downloadMaster(): BinaryFileResponse
     {
+        $master = Catalogue::where('is_master', true)->where('is_published', true)->first();
+        if ($master && !empty($master->file_path)) {
+            $filePath = storage_path('app/public/' . ltrim($master->file_path, '/'));
+            if (!file_exists($filePath)) {
+                $filePath = public_path(ltrim($master->file_path, '/'));
+            }
+            if (file_exists($filePath)) {
+                return response()->download($filePath, basename($master->file_path), ['Content-Type' => 'application/pdf']);
+            }
+        }
+
         $filePath = public_path('storage/catalogue/SystemInfraSolutionsCatalogue.pdf');
         if (!file_exists($filePath)) {
             $filePath = storage_path('app/public/catalogue/SystemInfraSolutionsCatalogue.pdf');
@@ -159,7 +217,21 @@ class ResourceController extends Controller
      */
     public function download(string $slug): BinaryFileResponse
     {
-        $catalogues = self::getCatalogues();
+        $dbCat = Catalogue::where('slug', $slug)
+            ->orWhere('id', $slug)
+            ->first();
+
+        if ($dbCat && !empty($dbCat->file_path)) {
+            $filePath = storage_path('app/public/' . ltrim($dbCat->file_path, '/'));
+            if (!file_exists($filePath)) {
+                $filePath = public_path(ltrim($dbCat->file_path, '/'));
+            }
+            if (file_exists($filePath)) {
+                return response()->download($filePath, basename($dbCat->file_path), ['Content-Type' => 'application/pdf']);
+            }
+        }
+
+        $catalogues = self::getDefaultCatalogues();
         $target = null;
 
         foreach ($catalogues as $cat) {

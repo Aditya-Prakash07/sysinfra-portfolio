@@ -48,6 +48,14 @@ class HandleInertiaRequests extends Middleware
                 ])
                 ->withCount(['items' => fn ($iq) => $iq->where('portfolio_items.is_published', true)])
                 ->get(['id', 'name', 'slug', 'description', 'thumbnail_path']),
+            'siteBranding' => fn () => [
+                'site_name' => \App\Models\SiteSetting::get('site_name', 'System Infra Solutions'),
+                'logo_light' => \App\Models\SiteSetting::get('site_logo_light'),
+                'logo_dark' => \App\Models\SiteSetting::get('site_logo_dark'),
+                'phone' => \App\Models\SiteSetting::get('boardline_1', '+91-011-35004142'),
+                'email' => \App\Models\SiteSetting::get('email_sales', 'sales@sysinfra.in'),
+                'footer_copyright' => \App\Models\SiteSetting::get('footer_copyright', 'System Infra Solutions Private Limited. All Rights Reserved.'),
+            ],
         ];
     }
 }

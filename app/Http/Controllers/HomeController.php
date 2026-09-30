@@ -6,7 +6,9 @@ use App\Models\Banner;
 use App\Models\CompanyStat;
 use App\Models\NewsPost;
 use App\Models\OemPartner;
+use App\Models\PortfolioItem;
 use App\Models\ProductCategory;
+use App\Models\SiteSetting;
 use App\Models\Testimonial;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -15,17 +17,39 @@ class HomeController extends Controller
 {
     public function index(): Response
     {
+        $uploadedVideo = SiteSetting::get('hero_video_path');
+        $videoUrl = SiteSetting::get('hero_video_url');
+        $finalVideo = !empty($uploadedVideo)
+            ? (str_starts_with($uploadedVideo, '/') ? $uploadedVideo : '/storage/' . $uploadedVideo)
+            : (!empty($videoUrl) ? $videoUrl : '/img/sysinfra-video-banner.mp4');
+
+        $uploadedPoster = SiteSetting::get('hero_video_poster');
+        $finalPoster = !empty($uploadedPoster)
+            ? (str_starts_with($uploadedPoster, '/') ? $uploadedPoster : '/storage/' . $uploadedPoster)
+            : '/img/video-banner-poster.jpg';
+
+        $videoSettings = [
+            'video_url' => $finalVideo,
+            'poster_url' => $finalPoster,
+            'badge' => SiteSetting::get('hero_video_badge', '8,000 SQ. FT. ADVANCED MANUFACTURING FACILITY • PATPARGANJ NEW DELHI'),
+            'title' => SiteSetting::get('hero_video_title', 'Inside Our Patparganj Electronics Facility'),
+            'subtitle' => SiteSetting::get('hero_video_subtitle', 'Watch how our state-of-the-art Delhi manufacturing facility produces high-reliability AMF panels, IoT telemetry systems, and precision power electronics.'),
+            'highlights' => SiteSetting::get('hero_video_highlights', null),
+        ];
+
         return Inertia::render('Home', [
             'banners' => Banner::where('is_published', true)
                 ->orderBy('sort_order')
                 ->get(['id', 'heading', 'subheading', 'image_path', 'cta_label', 'cta_url']),
+
+            'videoSettings' => $videoSettings,
 
             'categories' => ProductCategory::where('is_published', true)
                 ->orderBy('sort_order')
                 ->withCount('subcategories')
                 ->get(['id', 'name', 'slug', 'description', 'thumbnail_path']),
 
-            'featuredProducts' => \App\Models\PortfolioItem::where('is_published', true)
+            'featuredProducts' => PortfolioItem::where('is_published', true)
                 ->orderBy('sort_order')
                 ->take(8)
                 ->with('subcategory.category')

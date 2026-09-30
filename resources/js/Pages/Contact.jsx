@@ -12,9 +12,24 @@ const REQUIREMENT_TYPES = [
     { id: 'oem_partnership', label: 'OEM & Channel Partnership' },
 ];
 
-export default function Contact({ seo = {}, flash = {} }) {
+export default function Contact({ seo = {}, flash = {}, contactSettings = {} }) {
     const [selectedType, setSelectedType] = useState('system_architecture');
     const [submittedSuccess, setSubmittedSuccess] = useState(false);
+
+    const boardlines = contactSettings?.boardlines?.filter(Boolean)?.length 
+        ? contactSettings.boardlines.filter(Boolean) 
+        : ['+91-011-35004142', '+91-011-35004143', '+91-011-35004144', '+91-011-35004145'];
+    
+    const helplines = contactSettings?.helplines?.filter(Boolean)?.length
+        ? contactSettings.helplines.filter(Boolean)
+        : ['+91-9899905475', '+91-7668609810'];
+
+    const emailSales = contactSettings?.emails?.sales || 'sales@sysinfra.in';
+    const emailSupport = contactSettings?.emails?.support || 'support@sysinfra.in';
+    const emailInfo = contactSettings?.emails?.info || 'info@sysinfra.in';
+    const hqAddress = contactSettings?.hq_address || 'Plot No. 382, Third Floor, F.I.E., Patparganj Industrial Area\nNew Delhi – 110092, India';
+    const branches = contactSettings?.branches || [];
+    const mapsEmbed = contactSettings?.google_maps_embed || 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d532133.9197566778!2d76.79728722612579!3d28.813379345027453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb4834bc8df9%3A0x96b2ef91963d1fb!2sSystem%20Infra%20Solutions%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1611221383318!5m2!1sen!2sin';
 
     const { data, setData, post, processing, errors, reset, recentlySuccessful, transform } = useForm({
         name: '',
@@ -258,41 +273,52 @@ export default function Contact({ seo = {}, flash = {} }) {
                                     <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white">
                                         System Infra Solutions Pvt. Ltd.
                                     </h3>
-                                    <p className="leading-relaxed">
-                                        Plot No. 382, Third Floor, F.I.E., Patparganj Industrial Area<br />
-                                        New Delhi – 110092, India
+                                    <p className="leading-relaxed whitespace-pre-line">
+                                        {hqAddress}
                                     </p>
                                 </div>
 
                                 <div className="space-y-3 pt-3 border-t border-slate-100 dark:border-navy-border/60 text-xs font-mono">
                                     <div>
                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">DIRECT BOARD LINES:</span>
-                                        <a href="tel:+9101135004142" className="text-sysred dark:text-[#ff6b6b] hover:underline text-sm font-bold">
-                                            +91-011-35004142 / 43 / 44 / 45
+                                        <a href={`tel:${boardlines[0] || '+9101135004142'}`} className="text-sysred dark:text-[#ff6b6b] hover:underline text-sm font-bold">
+                                            {boardlines.join(' / ')}
                                         </a>
                                     </div>
                                     <div>
                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">DIRECT MOBILE / HELPLINE:</span>
-                                        <a href="tel:+919899905475" className="text-slate-800 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors text-sm font-bold">
-                                            +91-9899905475 / +91-7668609810
+                                        <a href={`tel:${helplines[0] || '+919899905475'}`} className="text-slate-800 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors text-sm font-bold">
+                                            {helplines.join(' / ')}
                                         </a>
                                     </div>
                                     <div>
                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">DEPARTMENT MAILBOXES:</span>
                                         <div className="space-y-0.5">
-                                            <a href="mailto:sales@sysinfra.in" className="text-slate-800 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors block text-sm">
-                                                sales@sysinfra.in &bull; info@sysinfra.in
+                                            <a href={`mailto:${emailSales}`} className="text-slate-800 dark:text-white hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors block text-sm">
+                                                {emailSales} &bull; {emailInfo}
                                             </a>
-                                            <a href="mailto:hr@sysinfra.in" className="text-slate-600 dark:text-slate-300 hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors block text-xs">
-                                                Careers & Recruitment: hr@sysinfra.in
+                                            <a href={`mailto:${emailSupport}`} className="text-slate-600 dark:text-slate-300 hover:text-sysred dark:hover:text-[#ff6b6b] transition-colors block text-xs">
+                                                Technical Support: {emailSupport}
                                             </a>
                                         </div>
                                     </div>
                                     <div>
                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">REGIONAL BRANCHES IN INDIA:</span>
-                                        <p className="text-slate-700 dark:text-slate-300 text-xs font-sans">
-                                            Patna, Uttar Pradesh, Madhya Pradesh (Offices &amp; Warehouses)
-                                        </p>
+                                        {branches.length > 0 ? (
+                                            <div className="space-y-2 mt-1">
+                                                {branches.map((b, bIdx) => (
+                                                    <div key={bIdx} className="text-xs font-sans text-slate-700 dark:text-slate-300">
+                                                        <strong className="font-mono text-slate-900 dark:text-white">{b.title || b.city}: </strong>
+                                                        <span>{b.address}</span>
+                                                        {b.phone && <span className="block font-mono text-[11px] text-[#dd3c34] dark:text-[#ff6b6b] mt-0.5">{b.phone}</span>}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <p className="text-slate-700 dark:text-slate-300 text-xs font-sans">
+                                                Patna, Uttar Pradesh, Madhya Pradesh (Offices &amp; Warehouses)
+                                            </p>
+                                        )}
                                     </div>
                                     <div>
                                         <span className="text-slate-500 dark:text-slate-400 block mb-0.5">OFFICIAL PORTAL:</span>
@@ -367,7 +393,7 @@ export default function Contact({ seo = {}, flash = {} }) {
                         </div>
                         <iframe
                             title="System Infra Solutions Location Map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d532133.9197566778!2d76.79728722612579!3d28.813379345027453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb4834bc8df9%3A0x96b2ef91963d1fb!2sSystem%20Infra%20Solutions%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1611221383318!5m2!1sen!2sin"
+                            src={mapsEmbed}
                             width="100%"
                             height="420"
                             style={{ border: 0 }}

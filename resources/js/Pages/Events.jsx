@@ -5,11 +5,20 @@ import Footer from '@/Components/Footer';
 import AnimatedHeading from '@/Components/AnimatedHeading';
 import Seo from '@/Components/Seo';
 
+const resolveAssetUrl = (path) => {
+    if (!path) return '';
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    if (path.startsWith('/')) return path;
+    if (path.startsWith('storage/')) return '/' + path;
+    if (path.startsWith('img/')) return '/' + path;
+    return `/storage/${path}`;
+};
+
 export default function Events({ events = [], seo = {} }) {
     const [selectedCategory, setSelectedCategory] = useState('ALL');
     const [activeModalImage, setActiveModalImage] = useState(null);
 
-    const categories = ['ALL', 'Festival Celebration', 'New Year Celebration', 'Technology & Industry Expos'];
+    const categories = ['ALL', ...new Set(events.map(e => e.category).filter(Boolean))];
 
     const filteredEvents = selectedCategory === 'ALL'
         ? events
@@ -95,11 +104,11 @@ export default function Events({ events = [], seo = {} }) {
                         {filteredEvents.map((evt, idx) => (
                             <div 
                                 key={evt.title}
-                                className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 overflow-hidden hover:border-[#dd3c34] dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out flex flex-col cursor-pointer"
+                                className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 overflow-hidden hover:border-[#dd3c34] dark:hover:border-sysred/80 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] hover:-translate-y-2 dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] transition-all duration-300 ease-out flex flex-col cursor-pointer"
                             >
-                                <div className="relative aspect-video w-full overflow-hidden bg-slate-900 cursor-pointer" onClick={() => setActiveModalImage(`/${evt.cover}`)}>
+                                <div className="relative aspect-video w-full overflow-hidden bg-slate-900 cursor-pointer" onClick={() => setActiveModalImage(resolveAssetUrl(evt.cover))}>
                                     <img 
-                                        src={`/${evt.cover}`} 
+                                        src={resolveAssetUrl(evt.cover)} 
                                         alt={evt.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         loading="lazy"
@@ -127,7 +136,7 @@ export default function Events({ events = [], seo = {} }) {
                                         <span>System Infra Solutions Delhi HQ</span>
                                         <button 
                                             type="button" 
-                                            onClick={() => setActiveModalImage(`/${evt.cover}`)}
+                                            onClick={() => setActiveModalImage(resolveAssetUrl(evt.cover))}
                                             className="text-[#dd3c34] dark:text-[#ff6b6b] font-semibold hover:underline flex items-center gap-1"
                                         >
                                             View Photo &rarr;
@@ -160,11 +169,11 @@ export default function Events({ events = [], seo = {} }) {
                             {filteredGalleryItems.map((item, idx) => (
                                 <div
                                     key={`${item.src}-${idx}`}
-                                    onClick={() => setActiveModalImage(`/${item.src}`)}
-                                    className="group relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34] dark:hover:border-sysred/80 shadow-sm dark:shadow-lg dark:shadow-black/40 hover:shadow-xl hover:-translate-y-1.5 dark:hover:shadow-[0_0_25px_-5px_rgba(221,60,52,0.45)] cursor-pointer transition-all duration-300 ease-out"
+                                    onClick={() => setActiveModalImage(resolveAssetUrl(item.src))}
+                                    className="group relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 hover:border-[#dd3c34] dark:hover:border-sysred/80 shadow-[0_4px_16px_rgba(221,60,52,0.08)] dark:shadow-[0_4px_20px_rgba(221,60,52,0.2)] hover:shadow-[0_12px_28px_rgba(221,60,52,0.3)] hover:-translate-y-1.5 dark:hover:shadow-[0_0_30px_rgba(221,60,52,0.5)] cursor-pointer transition-all duration-300 ease-out"
                                 >
                                     <img
-                                        src={`/${item.src}`}
+                                        src={resolveAssetUrl(item.src)}
                                         alt={item.title}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                         loading="lazy"

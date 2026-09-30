@@ -220,7 +220,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             return (
                                 <article
                                     key={partner.id || idx}
-                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden"
+                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] transition-all duration-300 ease-out overflow-hidden"
                                 >
                                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                                         {/* Left Column: Brand Identity, Logo, Quick Specs & Official Link */}
@@ -370,7 +370,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                     </div>
 
                     {/* Partnership Inquiry Banner */}
-                    <div className="mt-12 card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-10 border border-slate-200 dark:border-navy-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70">
+                    <div className="mt-12 card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-10 border border-slate-200 dark:border-navy-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl shadow-[0_8px_30px_rgba(221,60,52,0.1)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)]">
                         <div className="max-w-xl">
                             <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-2">
                                 TECHNOLOGY COLLABORATION

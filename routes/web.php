@@ -45,6 +45,7 @@ Route::get('/resource.php', fn () => redirect('/resources', 301));
 Route::get('/catalogues', fn () => redirect('/resources', 301))->name('catalogues');
 Route::get('/catalogue', fn () => redirect('/resources', 301));
 Route::get('/download-catalog', [ResourceController::class, 'downloadMaster'])->name('catalog.download');
+Route::get('/download-catalog/{catalogue}', [ResourceController::class, 'download'])->name('catalog.download.item');
 Route::get('/catalogues/download/{catalogue}', [ResourceController::class, 'download'])->name('catalogues.download');
 
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact');

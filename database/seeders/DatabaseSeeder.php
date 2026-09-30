@@ -3,13 +3,19 @@
 namespace Database\Seeders;
 
 use App\Models\Banner;
+use App\Models\Catalogue;
 use App\Models\Client;
 use App\Models\CompanyStat;
+use App\Models\CompanyValue;
+use App\Models\EventAlbum;
+use App\Models\Milestone;
 use App\Models\NewsPost;
 use App\Models\OemPartner;
 use App\Models\PortfolioItem;
 use App\Models\ProductCategory;
 use App\Models\ProductSubcategory;
+use App\Models\RdHardwareCard;
+use App\Models\SiteSetting;
 use App\Models\TeamMember;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
@@ -778,7 +784,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Manufacturing & Quality Assurance',
                 'title' => 'Head of Plant Engineering & QC',
-                'bio' => 'Overseeing international-standard manufacturing at our 4,000 sq. ft. Patparganj facility for IP55 AMF outdoor panels, 5G smart enclosures, and rigorous 72-hour burn-in stress testing.',
+                'bio' => 'Overseeing international-standard manufacturing at our 8,000 sq. ft. Patparganj facility for IP55 AMF outdoor panels, 5G smart enclosures, and rigorous 72-hour burn-in stress testing.',
                 'photo_path' => 'img/productIconImg/manufacturingFacility.png',
                 'sort_order' => 2,
             ],
@@ -812,5 +818,264 @@ class DatabaseSeeder extends Seeder
             'published_at' => now(),
             'is_published' => true,
         ]);
+
+        // 8. Downloadable Technical Catalogues & Brochures
+        Catalogue::truncate();
+        $catalogues = [
+            [
+                'title' => 'System Infra Solutions Corporate Catalogue',
+                'slug' => 'system-infra-solutions-catalogue',
+                'subtitle' => 'Comprehensive Technical & Product Architecture',
+                'category' => 'Master Corporate',
+                'badge' => 'Flagship Catalog',
+                'description' => 'Complete catalog covering telecom power controllers, AMF systems, SYS-AXS NOC telemetry, small cell smart enclosures, and Patparganj manufacturing plant capabilities.',
+                'file_path' => 'catalogue/SystemInfraSolutionsCatalogue.pdf',
+                'file_size' => '2.26 MB',
+                'pages' => 'Full Portfolio',
+                'is_popular' => true,
+                'is_master' => true,
+                'sort_order' => 1,
+            ],
+            [
+                'title' => 'I-Protect Telecom Tower Security & Anti-Theft',
+                'slug' => 'i-protect-security-catalogue',
+                'subtitle' => 'Site Surveillance, RFID Access & Fuel Siphon Deterrent',
+                'category' => 'Security Telemetry',
+                'badge' => 'Patented IoT',
+                'description' => 'Smart perimeter security, RFID keyless entry, dual PIR intrusion motion sensors, siren automation, and diesel tank ultrasonic level monitoring.',
+                'file_path' => 'catalogue/IProtectCatalouge.pdf',
+                'file_size' => '640 KB',
+                'pages' => 'Technical Sheet',
+                'is_popular' => true,
+                'is_master' => false,
+                'sort_order' => 2,
+            ],
+            [
+                'title' => 'SIS-AXS Enterprise NOC Platform & Remote Telemetry',
+                'slug' => 'sis-axs-noc-catalogue',
+                'subtitle' => 'Centralized Monitoring & IoT Management Unit',
+                'category' => 'NOC Automation',
+                'badge' => 'Cloud Telemetry',
+                'description' => 'Cloud-connected NOC telemetry gateway managing remote diesel generator parameters, battery bank health, grid availability, and multi-tenant billing.',
+                'file_path' => 'catalogue/SIS-AXSCatalouge.pdf',
+                'file_size' => '706 KB',
+                'pages' => 'Technical Spec',
+                'is_popular' => true,
+                'is_master' => false,
+                'sort_order' => 3,
+            ],
+            [
+                'title' => 'Smart Box 5G Small Cell & Micro-Site Enclosure',
+                'slug' => 'smart-box-5g-catalogue',
+                'subtitle' => 'Integrated Urban Telecom Infrastructure Enclosures',
+                'category' => '5G Infrastructure',
+                'badge' => '5G Enclosure',
+                'description' => 'Compact IP65 outdoor telecom enclosures designed for pole mounting, fiber aggregation, smart street furniture, and high-density 5G radio deployments.',
+                'file_path' => 'catalogue/SmartBoxCatalog.pdf',
+                'file_size' => '808 KB',
+                'pages' => 'Product Spec',
+                'is_popular' => false,
+                'is_master' => false,
+                'sort_order' => 4,
+            ],
+            [
+                'title' => 'AMF Panel Automated Power Controllers',
+                'slug' => 'amf-panel-controller-catalogue',
+                'subtitle' => 'Auto Mains Failure & Hybrid DG Automation Panels',
+                'category' => 'Power Automation',
+                'badge' => '70,000+ Deployed',
+                'description' => 'Automated Mains Failure controllers for telecom and commercial sites. Handles automatic generator start/stop, phase sequencing, and fuel conservation.',
+                'file_path' => 'catalogue/AMFPanel.pdf',
+                'file_size' => '702 KB',
+                'pages' => 'Engineering Guide',
+                'is_popular' => true,
+                'is_master' => false,
+                'sort_order' => 5,
+            ],
+            [
+                'title' => 'Dual DG Automation Controller System',
+                'slug' => 'dual-dg-controller-catalogue',
+                'subtitle' => 'Intelligent Dual Generator Alternating Logic',
+                'category' => 'Power Automation',
+                'badge' => 'Energy Optimization',
+                'description' => 'Equal run-time load balancing and automated switchover for sites running dual diesel generator setups in harsh off-grid geographies.',
+                'file_path' => 'catalogue/DualDGcontroller.pdf',
+                'file_size' => '468 KB',
+                'pages' => 'Specification',
+                'is_popular' => false,
+                'is_master' => false,
+                'sort_order' => 6,
+            ],
+            [
+                'title' => 'Security Automation & Perimeter Defense Systems',
+                'slug' => 'security-automation-catalogue',
+                'subtitle' => 'Turnstiles, Bollards, Road Blockers & Inspection',
+                'category' => 'Perimeter Defense',
+                'badge' => 'Defence Grade',
+                'description' => 'High-security crash-rated bollards, hydraulic road blockers, tyre killers, flap turnstiles, and UVSS vehicle undercarriage scanners for defence and VIP installations.',
+                'file_path' => 'catalogue/Security.pdf',
+                'file_size' => '5.48 MB',
+                'pages' => 'Comprehensive Guide',
+                'is_popular' => true,
+                'is_master' => false,
+                'sort_order' => 7,
+            ],
+        ];
+
+        foreach ($catalogues as $cat) {
+            Catalogue::create($cat + ['is_published' => true]);
+        }
+
+        // 9. Media & Event Albums
+        EventAlbum::truncate();
+        EventAlbum::create([
+            'title' => 'Holi Celebration @ SIS Office — Delhi Team',
+            'slug' => 'holi-celebration-delhi',
+            'category' => 'Festival Celebration',
+            'event_date' => 'March 2024',
+            'cover_image_path' => 'img/eventGallery/festivalImg/FestivalCelebration.webp',
+            'gallery_images' => [
+                'img/eventGallery/festivalImg/Festival0.webp',
+                'img/eventGallery/festivalImg/Festival1.webp',
+                'img/eventGallery/festivalImg/Festival2.webp',
+                'img/eventGallery/festivalImg/Festival3.webp',
+                'img/eventGallery/festivalImg/Festival4.webp',
+                'img/eventGallery/festivalImg/Festival5.webp',
+                'img/eventGallery/festivalImg/Festival6.webp',
+                'img/eventGallery/festivalImg/Festival7.webp',
+                'img/eventGallery/festivalImg/Festival8.webp',
+                'img/eventGallery/festivalImg/Festival9.webp',
+                'img/eventGallery/festivalImg/Festival10.webp',
+                'img/eventGallery/festivalImg/Festival11.webp',
+                'img/banner/holicelebration.png',
+            ],
+            'description' => 'Joyous colors, camaraderie, and team bonding as the System Infra Solutions corporate headquarters in Delhi celebrates Holi with energy and unity.',
+            'sort_order' => 1,
+            'is_published' => true,
+        ]);
+
+        EventAlbum::create([
+            'title' => 'New Year Celebration & Employee Milestones',
+            'slug' => 'new-year-celebration-2024',
+            'category' => 'New Year Celebration',
+            'event_date' => 'January 2024',
+            'cover_image_path' => 'img/eventGallery/newYearCelebration/birthDayBanner.webp',
+            'gallery_images' => [
+                'img/eventGallery/newYearCelebration/birthDayBanner.webp',
+                'img/eventGallery/newYearCelebration/festival1.webp',
+                'img/eventGallery/newYearCelebration/festival2.webp',
+            ],
+            'description' => 'Welcoming the new year with milestone recognitions, team celebrations, and strategic infrastructure roadmap presentations.',
+            'sort_order' => 2,
+            'is_published' => true,
+        ]);
+
+        EventAlbum::create([
+            'title' => 'India Mobile Congress (IMC Expo) — 5G Launch',
+            'slug' => 'imc-expo-5g-launch',
+            'category' => 'Technology & Industry Expos',
+            'event_date' => 'October 2022',
+            'cover_image_path' => 'img/eventGallery/imcImg/imcBanner.webp',
+            'gallery_images' => [
+                'img/eventGallery/imcImg/imcBanner.webp',
+                'img/eventGallery/imcImg/galleryImg1.webp',
+                'img/eventGallery/imcImg/galleryImg2.webp',
+                'img/eventGallery/imcImg/galleryImg3.webp',
+                'img/eventGallery/imcImg/galleryImg4.webp',
+                'img/eventGallery/imcImg/galleryImg5.webp',
+                'img/eventGallery/imcImg/galleryImg6.webp',
+                'img/eventGallery/imcImg/galleryImg7.webp',
+                'img/eventGallery/imcImg/galleryImg8.webp',
+                'img/eventGallery/imcImg/galleryImg9.webp',
+                'img/eventGallery/imcImg/galleryImg10.webp',
+                'img/eventGallery/imcImg/galleryImg11.webp',
+                'img/eventGallery/imcImg/galleryImg12.webp',
+            ],
+            'description' => 'Unveiling 5G smart enclosures, tactical wireless solutions, and intelligent IoT telemetry alongside Prime Minister Shri Narendra Modi and industry leaders at Pragati Maidan, New Delhi.',
+            'sort_order' => 3,
+            'is_published' => true,
+        ]);
+
+        // 10. Growth Milestones
+        Milestone::truncate();
+        $milestones = [
+            ['metric' => '300+', 'label' => 'Solar AMF Controllers', 'detail' => 'In operation for solar cell sites along with installation & commissioning for Bharti Infratel / Indus Towers.', 'sort_order' => 1],
+            ['metric' => '50,000+', 'label' => 'AMF Units Operational', 'detail' => 'AMF controllers installed across India with zero hardware defect return rates under audited SLA conditions.', 'sort_order' => 2],
+            ['metric' => '3,00,000+', 'label' => 'SMPS Modules Rectified', 'detail' => 'Re-conditioned from our dedicated Patparganj service facility for major telecom OEMs and tower operators.', 'sort_order' => 3],
+            ['metric' => '70,000+', 'label' => 'Sites Automated', 'detail' => 'Telecom sites engineered with intelligent AMF panels, fuel level telemetry, and remote monitoring.', 'sort_order' => 4],
+            ['metric' => '10,000+', 'label' => 'NOC Surveillance Sites', 'detail' => 'Connected under real-time telemetry surveillance via the SYS-AXS cloud platform & mobile apps.', 'sort_order' => 5],
+            ['metric' => '4,000 Sq.Ft.', 'label' => 'Patparganj Factory', 'detail' => 'International standard manufacturing plant with precision wiring, fabrication, and testing infrastructure.', 'sort_order' => 6],
+            ['metric' => '24/7', 'label' => 'Ambulance SLA Model', 'detail' => 'Dedicated rapid-intervention mobile teams achieving under 2-hour MTTR emergency restorations.', 'sort_order' => 7],
+            ['metric' => '2011', 'label' => 'Established Year', 'detail' => 'Founded with a focus on indigenous telecom power innovation and pan-India energy conservation.', 'sort_order' => 8],
+        ];
+        foreach ($milestones as $m) {
+            Milestone::create($m + ['is_published' => true]);
+        }
+
+        // 11. Company Values
+        CompanyValue::truncate();
+        $values = [
+            ['code' => '01', 'title' => 'Always Customer First', 'badge' => 'Priority', 'description' => 'Our customer is the reason for our existence. We continuously tailor power and telemetry solutions to solve their specific operational bottlenecks.', 'sort_order' => 1],
+            ['code' => '02', 'title' => 'Dedication', 'badge' => 'Execution', 'description' => 'Uncompromising commitment to mission-critical infrastructure reliability, maintaining continuous uptime even under extreme grid conditions.', 'sort_order' => 2],
+            ['code' => '03', 'title' => 'Continuous Improvement', 'badge' => 'R&D', 'description' => 'Relentless refinement of micro-controller algorithms, edge compute firmware, and manufacturing processes to stay ahead of technology evolution.', 'sort_order' => 3],
+            ['code' => '04', 'title' => 'Openness & Initiative', 'badge' => 'Culture', 'description' => 'Proactive engineering culture embracing challenges, transparent communication with clients, and rapid prototyping of custom hardware.', 'sort_order' => 4],
+            ['code' => '05', 'title' => 'Integrity', 'badge' => 'Ethics', 'description' => 'Highest ethical standards in component sourcing, audited telecom SLA compliance, transparent billing meters, and customer data security.', 'sort_order' => 5],
+            ['code' => '06', 'title' => 'Teamwork', 'badge' => 'Unity', 'description' => 'Synergistic collaboration between embedded R&D engineers, Patparganj plant technicians, and 24/7 field service teams across India.', 'sort_order' => 6],
+        ];
+        foreach ($values as $v) {
+            CompanyValue::create($v + ['is_published' => true]);
+        }
+
+        // 12. R&D Prototype Hardware Cards
+        RdHardwareCard::truncate();
+        $rdCards = [
+            ['name' => 'SVR Card (Static Voltage Regulator)', 'tag' => 'Power Conditioning', 'description' => 'Microprocessor card for precision voltage regulation and phase correction in high-fluctuation circles.', 'image_path' => 'img/cardsImg/svrCard.webp', 'sort_order' => 1],
+            ['name' => 'AC/DC High-Precision Measurement Card', 'tag' => 'Telemetry Shunts', 'description' => 'Multi-channel isolated voltage, current, and energy measurement card for multi-tenant tower billing.', 'image_path' => 'img/cardsImg/measurmentCard.webp', 'sort_order' => 2],
+            ['name' => 'Z-Brainer Intelligent Display & Control Card', 'tag' => 'Edge Analytics', 'description' => 'ARM Cortex edge controller board with tactile membrane keypad and multi-line alphanumeric LCD.', 'image_path' => 'img/cardsImg/Z-brainerDisplay&ControlCard.webp', 'sort_order' => 3],
+            ['name' => 'Z-Brainer 32-Channel Alarm Relay Board', 'tag' => 'Alarm Multiplexer', 'description' => 'Optically isolated dry-contact concentration card aggregating fire, BTS, battery, and door intrusion signals.', 'image_path' => 'img/cardsImg/Z-brainerAlarmRelayCard.webp', 'sort_order' => 4],
+            ['name' => 'Industrial 4G/LTE GPRS Telemetry Gateway', 'tag' => 'Cellular Uplink', 'description' => 'Multi-band cellular communication board with RS485 Modbus pass-through and hardware watchdog.', 'image_path' => 'img/cardsImg/gprsModemtop.webp', 'sort_order' => 5],
+            ['name' => 'Heavy-Duty Railway Power Supply Unit', 'tag' => 'Specialized Power', 'description' => 'Ruggedized power converter tested for railway signaling testbenches and high-voltage substations.', 'image_path' => 'img/cardsImg/railwayTestbenchPowerSupply.webp', 'sort_order' => 6],
+            ['name' => 'Galvanic Isolated DC-to-DC Converter Card', 'tag' => 'DC Conversion', 'description' => 'Converts -48V DC telecom bus into isolated +12V/+24V DC for auxiliary micro-controllers and sensors.', 'image_path' => 'img/cardsImg/dctodcConverter.webp', 'sort_order' => 7],
+            ['name' => 'Dual DG Alternation & Cycling Relay Card', 'tag' => 'DG Automation', 'description' => 'Pluto alternator cycle logic board ensuring symmetrical engine run-hours in off-grid sites.', 'image_path' => 'img/cardsImg/dgRelayCard.webp', 'sort_order' => 8],
+        ];
+        foreach ($rdCards as $card) {
+            RdHardwareCard::create($card + ['is_published' => true]);
+        }
+
+        // 13. Default Global Site Settings
+        SiteSetting::set('site_name', 'System Infra Solutions Private Limited', 'branding');
+        SiteSetting::set('footer_tagline', 'Mission-Critical Telecom Power, AMF Panels & NOC IoT Telemetry', 'branding');
+        SiteSetting::set('footer_copyright', 'System Infra Solutions Private Limited. All Rights Reserved.', 'branding');
+
+        SiteSetting::set('hero_video_url', '/img/sysinfra-video-banner.mp4', 'video');
+        SiteSetting::set('hero_video_badge', '8,000 SQ. FT. ADVANCED MANUFACTURING FACILITY • PATPARGANJ NEW DELHI', 'video');
+        SiteSetting::set('hero_video_title', 'Inside Our Patparganj Electronics Facility', 'video');
+        SiteSetting::set('hero_video_subtitle', 'Watch how our state-of-the-art Delhi manufacturing facility produces high-reliability AMF panels, IoT telemetry systems, and precision power electronics.', 'video');
+        SiteSetting::set('hero_video_highlights', [
+            ['title' => '8,000 Sq. Ft. International Facility', 'desc' => 'High-throughput manufacturing facility in Patparganj Industrial Area with precision sheet metal fabrication, PCB wave-soldering, and 72-hour burn-in stress testing chambers.'],
+            ['title' => '70,000+ Automated Sites Nationwide', 'desc' => 'Delivering zero-outage telecom power solutions, intelligent AMF controllers, and automated dual-DG alternation for India’s largest telecom operators.'],
+            ['title' => 'Pan-India 24/7 Service Ambulance Model', 'desc' => 'Over 500+ field service technicians and 25+ regional spare-parts hubs maintaining mission-critical cellular uptime with rapid 2-hour SLA response.'],
+        ], 'video');
+
+        SiteSetting::set('boardline_1', '+91-011-35004142', 'contact');
+        SiteSetting::set('boardline_2', '+91-011-35004143', 'contact');
+        SiteSetting::set('boardline_3', '+91-011-35004144', 'contact');
+        SiteSetting::set('boardline_4', '+91-011-35004145', 'contact');
+        SiteSetting::set('helpline_mobile_1', '+91-9899905475', 'contact');
+        SiteSetting::set('helpline_mobile_2', '+91-7668609810', 'contact');
+        SiteSetting::set('email_sales', 'sales@sysinfra.in', 'contact');
+        SiteSetting::set('email_support', 'support@sysinfra.in', 'contact');
+        SiteSetting::set('email_info', 'info@sysinfra.in', 'contact');
+        SiteSetting::set('hq_address', 'Plot No. 382, Third Floor, Functional Industrial Estate (F.I.E.), Patparganj Industrial Area, New Delhi - 110092', 'contact');
+        SiteSetting::set('google_maps_embed', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d532133.9197566778!2d76.79728722612579!3d28.813379345027453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb4834bc8df9%3A0x96b2ef91963d1fb!2sSystem%20Infra%20Solutions%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1611221383318!5m2!1sen!2sin', 'contact');
+
+        SiteSetting::set('plant_headline', '4,000 Sq. Ft. International Standard Manufacturing Plant', 'manufacturing');
+        SiteSetting::set('plant_description', 'System Infra Solutions Private Limited (SISPL) operates an international quality standard manufacturing facility of 4,000 square feet for complete assembly, wiring, and testing of AMF panels, power controllers, and IoT telemetry products at Patparganj Industrial Area, New Delhi.', 'manufacturing');
+        SiteSetting::set('plant_bullets', [
+            ['text' => 'Precision sheet metal fabrication & IP55 powder coating'],
+            ['text' => 'Automated PCB assembly & selective soldering lines'],
+            ['text' => '72-hour full electrical load & thermal burn-in chambers'],
+            ['text' => 'High-voltage dielectric insulation & surge surge testing'],
+        ], 'manufacturing');
     }
 }
