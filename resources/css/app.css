@@ -80,26 +80,26 @@
     }
 
     .card-dual {
-        @apply bg-white dark:bg-navy-surface border border-slate-200/90 dark:border-navy-border/60 rounded-xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 transition-all duration-200;
+        @apply bg-white dark:bg-navy-surface border border-slate-200/90 dark:border-navy-border/60 rounded-xl shadow-[0_8px_30px_rgba(221,60,52,0.12)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] transition-all duration-200;
     }
 
     .panel {
-        @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 transition-all duration-200;
+        @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-[0_8px_30px_rgba(221,60,52,0.12)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)] transition-all duration-200;
     }
 
     .panel-hover {
-        @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70
-               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out;
+        @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-[0_8px_30px_rgba(221,60,52,0.12)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)]
+               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out;
     }
 
     .card-symmetric {
-        @apply h-full flex flex-col justify-between border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70
-               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.25),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden;
+        @apply h-full flex flex-col justify-between border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-[0_8px_30px_rgba(221,60,52,0.12)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)]
+               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden;
     }
 
     .card-interactive {
-        @apply border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#141414] rounded-2xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70
-               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.25),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out;
+        @apply border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#141414] rounded-2xl shadow-[0_8px_30px_rgba(221,60,52,0.12)] dark:shadow-[0_8px_30px_rgba(221,60,52,0.25)]
+               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_20px_45px_-8px_rgba(221,60,52,0.35),0_0_25px_-2px_rgba(221,60,52,0.2)] dark:hover:shadow-[0_0_50px_-4px_rgba(221,60,52,0.65),0_0_25px_-2px_rgba(221,60,52,0.4)] hover:-translate-y-2 transition-all duration-300 ease-out;
     }
 
     .btn-shimmer {
@@ -510,26 +510,26 @@
 
     /* Standard Hardware Deck (Home page): Animated Cards visible next to fixed card (Screenshot Style) */
     .hardware-deck .csstricks-card {
-        box-shadow: 0 8px 30px -4px rgba(221, 60, 52, 0.12), 0 2px 10px -2px rgba(221, 60, 52, 0.08);
+        box-shadow: 0 10px 32px -4px rgba(221, 60, 52, 0.22), 0 4px 14px -2px rgba(221, 60, 52, 0.16);
     }
     .hardware-deck .csstricks-card:hover,
     .hardware-deck .csstricks-card:focus-within {
-        box-shadow: 0 20px 48px -8px rgba(221, 60, 52, 0.38), 
-                    0 6px 20px -3px rgba(221, 60, 52, 0.25), 
-                    -0.75rem 0.75rem 2rem -0.5rem rgba(221, 60, 52, 0.28) !important;
+        box-shadow: 0 20px 48px -8px rgba(221, 60, 52, 0.42), 
+                    0 6px 20px -3px rgba(221, 60, 52, 0.28), 
+                    -0.75rem 0.75rem 2rem -0.5rem rgba(221, 60, 52, 0.32) !important;
         border-color: rgba(221, 60, 52, 0.75) !important;
     }
     .dark .hardware-deck .csstricks-card,
     :is(.dark) .hardware-deck .csstricks-card {
-        box-shadow: 0 8px 32px -4px rgba(221, 60, 52, 0.28), 0 0 20px -2px rgba(221, 60, 52, 0.2);
+        box-shadow: 0 10px 36px -4px rgba(221, 60, 52, 0.38), 0 0 24px -2px rgba(221, 60, 52, 0.28);
     }
     .dark .hardware-deck .csstricks-card:hover,
     .dark .hardware-deck .csstricks-card:focus-within,
     :is(.dark) .hardware-deck .csstricks-card:hover,
     :is(.dark) .hardware-deck .csstricks-card:focus-within {
-        box-shadow: 0 0 50px -4px rgba(221, 60, 52, 0.7), 
-                    0 0 25px -2px rgba(221, 60, 52, 0.45), 
-                    -1rem 0.75rem 2rem -0.5rem rgba(221, 60, 52, 0.35) !important;
+        box-shadow: 0 0 50px -4px rgba(221, 60, 52, 0.75), 
+                    0 0 25px -2px rgba(221, 60, 52, 0.5), 
+                    -1rem 0.75rem 2rem -0.5rem rgba(221, 60, 52, 0.4) !important;
         border-color: rgba(221, 60, 52, 0.85) !important;
     }
 
@@ -544,36 +544,36 @@
         }
         .hardware-deck .csstricks-card:first-child {
             margin-left: 0;
-            box-shadow: 0 8px 30px -4px rgba(221, 60, 52, 0.14), 0 2px 8px -2px rgba(221, 60, 52, 0.08);
+            box-shadow: 0 10px 32px -4px rgba(221, 60, 52, 0.22), 0 4px 14px -2px rgba(221, 60, 52, 0.16);
         }
         .dark .hardware-deck .csstricks-card:first-child,
         :is(.dark) .hardware-deck .csstricks-card:first-child {
-            box-shadow: 0 10px 32px -6px rgba(221, 60, 52, 0.32), 0 0 20px -3px rgba(221, 60, 52, 0.22);
+            box-shadow: 0 12px 36px -6px rgba(221, 60, 52, 0.38), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
         .hardware-deck .csstricks-card:not(:first-child) {
             margin-left: -5.5rem;
-            box-shadow: -1.25rem 0.5rem 1.75rem -0.5rem rgba(221, 60, 52, 0.16), -0.5rem 0.25rem 1rem -0.5rem rgba(221, 60, 52, 0.1);
+            box-shadow: -1.25rem 0.5rem 1.75rem -0.5rem rgba(221, 60, 52, 0.22), -0.5rem 0.25rem 1rem -0.5rem rgba(221, 60, 52, 0.16);
         }
         .dark .hardware-deck .csstricks-card:not(:first-child),
         :is(.dark) .hardware-deck .csstricks-card:not(:first-child) {
-            box-shadow: -1.5rem 0.5rem 2rem -0.5rem rgba(221, 60, 52, 0.35), 0 0 20px -3px rgba(221, 60, 52, 0.22);
+            box-shadow: -1.5rem 0.5rem 2.25rem -0.5rem rgba(221, 60, 52, 0.42), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
         .hardware-deck .csstricks-card:hover,
         .hardware-deck .csstricks-card:focus-within {
             transform: translateY(-0.85rem) rotate(2deg) !important;
             z-index: 50 !important;
-            box-shadow: 0 20px 48px -8px rgba(221, 60, 52, 0.38), 
-                        0 6px 20px -3px rgba(221, 60, 52, 0.25), 
-                        -1rem 1rem 2.5rem -0.75rem rgba(221, 60, 52, 0.32) !important;
+            box-shadow: 0 20px 48px -8px rgba(221, 60, 52, 0.42), 
+                        0 6px 20px -3px rgba(221, 60, 52, 0.28), 
+                        -1rem 1rem 2.5rem -0.75rem rgba(221, 60, 52, 0.35) !important;
             border-color: rgba(221, 60, 52, 0.75) !important;
         }
         .dark .hardware-deck .csstricks-card:hover,
         .dark .hardware-deck .csstricks-card:focus-within,
         :is(.dark) .hardware-deck .csstricks-card:hover,
         :is(.dark) .hardware-deck .csstricks-card:focus-within {
-            box-shadow: 0 0 50px -4px rgba(221, 60, 52, 0.7),
-                        0 0 25px -2px rgba(221, 60, 52, 0.45), 
-                        -1.25rem 1rem 2.5rem -0.75rem rgba(221, 60, 52, 0.35) !important;
+            box-shadow: 0 0 50px -4px rgba(221, 60, 52, 0.75),
+                        0 0 25px -2px rgba(221, 60, 52, 0.5), 
+                        -1.25rem 1rem 2.5rem -0.75rem rgba(221, 60, 52, 0.4) !important;
             border-color: rgba(221, 60, 52, 0.85) !important;
         }
         .hardware-deck .csstricks-card:hover ~ .csstricks-card,
@@ -595,23 +595,23 @@
         /* 1. First Card in Deck */
         .hardware-deck .csstricks-card:first-child {
             margin-left: 0;
-            box-shadow: 0 8px 30px -4px rgba(221, 60, 52, 0.14), 0 2px 8px -2px rgba(221, 60, 52, 0.08);
+            box-shadow: 0 10px 32px -4px rgba(221, 60, 52, 0.22), 0 4px 14px -2px rgba(221, 60, 52, 0.16);
         }
 
         .dark .hardware-deck .csstricks-card:first-child,
         :is(.dark) .hardware-deck .csstricks-card:first-child {
-            box-shadow: 0 10px 32px -6px rgba(221, 60, 52, 0.32), 0 0 20px -3px rgba(221, 60, 52, 0.22);
+            box-shadow: 0 12px 36px -6px rgba(221, 60, 52, 0.38), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
 
         /* 2. Subsequent Overlapping Cards: Sized so exactly 4 cards fan out across the deck */
         .hardware-deck .csstricks-card:not(:first-child) {
             margin-left: -6.25rem; /* -100px overlap: gives 210px visible strip per card */
-            box-shadow: -1.25rem 0.5rem 1.75rem -0.5rem rgba(221, 60, 52, 0.16), -0.5rem 0.25rem 1rem -0.5rem rgba(221, 60, 52, 0.1);
+            box-shadow: -1.25rem 0.5rem 1.75rem -0.5rem rgba(221, 60, 52, 0.22), -0.5rem 0.25rem 1rem -0.5rem rgba(221, 60, 52, 0.16);
         }
 
         .dark .hardware-deck .csstricks-card:not(:first-child),
         :is(.dark) .hardware-deck .csstricks-card:not(:first-child) {
-            box-shadow: -1.5rem 0.5rem 2rem -0.5rem rgba(221, 60, 52, 0.35), 0 0 20px -3px rgba(221, 60, 52, 0.22);
+            box-shadow: -1.5rem 0.5rem 2.25rem -0.5rem rgba(221, 60, 52, 0.42), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
 
         /* 3. Hover on Card: Upward lift, subtle tilt, high z-index (screenshot animation style) */
@@ -655,20 +655,20 @@
     /* About Us Turnkey 6-Card Pipeline: All 6 cards visible on viewport */
     @media (min-width: 1024px) {
         .pipeline-deck .csstricks-card:first-child {
-            box-shadow: 0 8px 30px -4px rgba(221, 60, 52, 0.14), 0 2px 8px -2px rgba(221, 60, 52, 0.08);
+            box-shadow: 0 10px 32px -4px rgba(221, 60, 52, 0.22), 0 4px 14px -2px rgba(221, 60, 52, 0.16);
         }
         .dark .pipeline-deck .csstricks-card:first-child,
         :is(.dark) .pipeline-deck .csstricks-card:first-child {
-            box-shadow: 0 10px 32px -6px rgba(221, 60, 52, 0.32), 0 0 20px -3px rgba(221, 60, 52, 0.22);
+            box-shadow: 0 12px 36px -6px rgba(221, 60, 52, 0.38), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
 
         .pipeline-deck .csstricks-card:not(:first-child) {
             margin-left: -4.5rem; /* -72px overlap: each card adds 143px */
-            box-shadow: -1.25rem 0.5rem 1.75rem -0.5rem rgba(221, 60, 52, 0.16), -0.5rem 0.25rem 1rem -0.5rem rgba(221, 60, 52, 0.1);
+            box-shadow: -1.25rem 0.5rem 1.75rem -0.5rem rgba(221, 60, 52, 0.22), -0.5rem 0.25rem 1rem -0.5rem rgba(221, 60, 52, 0.16);
         }
         .dark .pipeline-deck .csstricks-card:not(:first-child),
         :is(.dark) .pipeline-deck .csstricks-card:not(:first-child) {
-            box-shadow: -1.5rem 0.5rem 2rem -0.5rem rgba(221, 60, 52, 0.35), 0 0 20px -3px rgba(221, 60, 52, 0.22);
+            box-shadow: -1.5rem 0.5rem 2.25rem -0.5rem rgba(221, 60, 52, 0.42), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
 
         .pipeline-deck .csstricks-card:first-child:focus-within,
