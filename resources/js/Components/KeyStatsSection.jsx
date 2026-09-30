@@ -97,11 +97,8 @@ function StatCard({ stat, isVisible, index }) {
 
     return (
         <div 
-            className="group relative flex flex-col items-center justify-between p-7 sm:p-8 lg:p-8 xl:p-9 rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 hover:bg-white dark:hover:bg-[#121212] transition-all duration-300 ease-out hover:-translate-y-2 shadow-lg shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/50 hover:shadow-2xl dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] overflow-hidden cursor-pointer"
+            className="group relative flex flex-col items-center justify-between p-7 sm:p-8 lg:p-8 xl:p-9 rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 hover:bg-white dark:hover:bg-[#121212] transition-all duration-300 ease-out hover:-translate-y-2 shadow-lg shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/50 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] overflow-hidden cursor-pointer"
         >
-            {/* Top illuminated line on hover */}
-            <div className="absolute top-0 inset-x-8 h-[2px] bg-gradient-to-r from-transparent via-[#dd3c34] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl pointer-events-none" />
-
             {/* Ambient Backlight Hover Glow */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#dd3c34]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 

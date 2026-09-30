@@ -133,11 +133,8 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                             return (
                                 <Link
                                     href={`/latest-news/${post.slug}`}
-                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-2xl hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden flex flex-col md:flex-row w-full"
+                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden flex flex-col md:flex-row w-full"
                                 >
-                                    {/* Top specular accent line on hover */}
-                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff5c54]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff5c54] transition-all duration-500 z-20" />
-
                                     {/* Cover Image Pedestal */}
                                     <div className="w-full md:w-5/12 lg:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[340px] bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/10 shrink-0">
                                         <img
@@ -204,11 +201,8 @@ export default function NewsIndex({ posts = [], seo = {} }) {
                                 <Link
                                     key={post.id || post.slug}
                                     href={`/latest-news/${post.slug}`}
-                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden flex flex-col"
+                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-sysred/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden flex flex-col"
                                 >
-                                    {/* Top specular accent line on hover */}
-                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff5c54]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff5c54] transition-all duration-500 z-20" />
-
                                     <div className="flex-1 flex flex-col">
                                         {/* Cover Image Pedestal */}
                                         <div className="aspect-[16/10] w-full bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b border-slate-100 dark:border-white/10">

@@ -89,17 +89,17 @@
 
     .panel-hover {
         @apply border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70
-               hover:border-red-500/60 dark:hover:border-[#ff5c54]/70 hover:shadow-2xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] hover:-translate-y-2 transition-all duration-300 ease-out;
+               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out;
     }
 
     .card-symmetric {
         @apply h-full flex flex-col justify-between border border-slate-200/90 dark:border-navy-border/60 bg-white dark:bg-navy-surface rounded-xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70
-               hover:border-red-500/60 dark:hover:border-[#ff5c54]/70 hover:shadow-2xl dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.5)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden;
+               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.25),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden;
     }
 
     .card-interactive {
         @apply border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#141414] rounded-2xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70
-               hover:border-red-500/60 dark:hover:border-[#ff5c54]/70 hover:shadow-2xl dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.5)] hover:-translate-y-2 transition-all duration-300 ease-out;
+               hover:border-red-500/70 dark:hover:border-[#ff5c54]/80 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.25),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out;
     }
 
     .btn-shimmer {

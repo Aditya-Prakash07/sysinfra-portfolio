@@ -289,11 +289,8 @@ export default function Navbar() {
                                         {categoriesNav.map((cat, idx) => (
                                             <div 
                                                 key={cat.id || idx}
-                                                className="snap-start shrink-0 w-[290px] sm:w-[330px] lg:w-[350px] h-[385px] group/col flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/50 dark:hover:border-[#ff6b6b]/40 hover:bg-white dark:hover:bg-[#161616] hover:shadow-xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.35)] transition-all duration-300 relative overflow-hidden select-none"
+                                                className="snap-start shrink-0 w-[290px] sm:w-[330px] lg:w-[350px] h-[385px] group/col flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-white/10 bg-slate-50/70 dark:bg-[#121212] hover:border-sysred/60 dark:hover:border-[#ff6b6b]/60 hover:bg-white dark:hover:bg-[#161616] hover:shadow-[0_12px_35px_-8px_rgba(221,60,52,0.20),0_4px_16px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_35px_-4px_rgba(221,60,52,0.5),0_0_18px_-2px_rgba(221,60,52,0.3)] transition-all duration-300 relative overflow-hidden select-none"
                                             >
-                                                {/* Top specular accent line on hover */}
-                                                <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover/col:via-sysred dark:group-hover/col:via-[#ff6b6b] transition-all duration-500 rounded-t-2xl" />
-
                                                 {/* Header */}
                                                 <div className="flex items-start gap-3 pb-3 mb-3 border-b border-slate-200/70 dark:border-white/10 shrink-0">
                                                     <div className="w-8 h-8 rounded-lg bg-red-500/10 dark:bg-red-500/15 text-sysred dark:text-[#ff6b6b] flex items-center justify-center shrink-0 group-hover/col:bg-sysred group-hover/col:text-white transition-all duration-300 text-xs font-bold font-mono">

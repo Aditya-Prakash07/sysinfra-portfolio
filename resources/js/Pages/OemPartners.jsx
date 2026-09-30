@@ -220,9 +220,8 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             return (
                                 <article
                                     key={partner.id || idx}
-                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
+                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden"
                                 >
-                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                                         {/* Left Column: Brand Identity, Logo, Quick Specs & Official Link */}
                                         <div className="lg:col-span-4 flex flex-col items-center sm:items-start text-center sm:text-left border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-white/10 pb-7 lg:pb-0 lg:pr-8">

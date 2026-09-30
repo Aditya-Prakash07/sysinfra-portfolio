@@ -96,10 +96,8 @@ export default function Clients({ clients = [], seo = {} }) {
                         {filteredClients.map((client, idx) => (
                             <div
                                 key={idx}
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2.5 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                             >
-                                {/* Specular top red laser line on hover */}
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                                 <div>
                                     {/* Client Logo with White Background for Clarity */}

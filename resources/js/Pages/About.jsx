@@ -375,9 +375,8 @@ export default function About({ seo = {} }) {
                         {CORE_VALUES.map((val) => (
                             <div 
                                 key={val.id} 
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                             >
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
                                         <span className="text-2xl font-mono font-bold text-slate-300 dark:text-white/20 group-hover:text-[#dd3c34] transition-colors">
@@ -449,10 +448,8 @@ export default function About({ seo = {} }) {
                             {RD_CARDS.map((card, idx) => (
                                 <div 
                                     key={idx}
-                                    className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                    className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                                 >
-                                    {/* Specular top red laser line on hover */}
-                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <div>
                                         <div className="aspect-[4/3] w-full rounded-xl bg-slate-100 dark:bg-white/[0.02] p-3 flex items-center justify-center overflow-hidden mb-3 border border-slate-100 dark:border-white/5">
                                             <img 
@@ -520,9 +517,8 @@ export default function About({ seo = {} }) {
                         {MILESTONES.map((m, idx) => (
                             <div 
                                 key={idx} 
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden cursor-pointer"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden cursor-pointer"
                             >
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                 <div className="text-3xl font-display font-extrabold text-[#dd3c34] dark:text-[#ff5c54] mb-1">
                                     {m.metric}
                                 </div>
@@ -609,9 +605,8 @@ export default function About({ seo = {} }) {
                             {PROCESS.map((p) => (
                                 <div 
                                     key={p.step}
-                                    className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden cursor-pointer"
+                                    className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden cursor-pointer"
                                 >
-                                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <span className="text-2xl font-mono font-black text-[#dd3c34] dark:text-[#ff6b6b] block mb-2">
                                         {p.step}
                                     </span>
@@ -648,8 +643,7 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate1.jpg" 
@@ -666,8 +660,7 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate2.jpg" 
@@ -684,8 +677,7 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate3.jpg" 
@@ -702,8 +694,7 @@ export default function About({ seo = {} }) {
                             </span>
                         </div>
 
-                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-4 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out text-center flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div className="aspect-[3/4] w-full rounded-xl overflow-hidden bg-white dark:bg-black/40 p-2 border border-slate-200/60 dark:border-white/10 mb-3 shadow-xs">
                                 <img 
                                     src="/img/Certificate/Certificate4.jpg" 
@@ -746,9 +737,8 @@ export default function About({ seo = {} }) {
                         {SYSINFRA_LEADERSHIP.map((div, idx) => (
                             <div 
                                 key={idx}
-                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
+                                className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer"
                             >
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-white/[0.04] p-2 flex items-center justify-center border border-slate-200/60 dark:border-white/10 group-hover:scale-105 transition-transform">
@@ -811,8 +801,7 @@ export default function About({ seo = {} }) {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         {/* 1. Holi Celebration */}
-                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
                             <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                                 <img 
                                     src="/img/eventGallery/festivalImg/FestivalCelebration.webp" 
@@ -842,8 +831,7 @@ export default function About({ seo = {} }) {
                         </div>
 
                         {/* 2. New Year Celebration */}
-                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
                             <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                                 <img 
                                     src="/img/eventGallery/newYearCelebration/birthDayBanner.webp" 
@@ -873,8 +861,7 @@ export default function About({ seo = {} }) {
                         </div>
 
                         {/* 3. India Mobile Congress */}
-                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+                        <div className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 overflow-hidden shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col cursor-pointer">
                             <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                                 <img 
                                     src="/img/eventGallery/imcImg/imcBanner.webp" 
@@ -926,8 +913,7 @@ export default function About({ seo = {} }) {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     CORPORATE BROCHURE
@@ -965,8 +951,7 @@ export default function About({ seo = {} }) {
                             </div>
                         </div>
 
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     TELECOM SECURITY
@@ -1004,8 +989,7 @@ export default function About({ seo = {} }) {
                             </div>
                         </div>
 
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     NOC TELEMETRY
@@ -1043,8 +1027,7 @@ export default function About({ seo = {} }) {
                             </div>
                         </div>
 
-                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                        <div className="group relative p-6 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out flex flex-col justify-between overflow-hidden cursor-pointer">
                             <div>
                                 <span className="text-[10px] font-mono uppercase tracking-wider text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1">
                                     5G / SMALL CELL

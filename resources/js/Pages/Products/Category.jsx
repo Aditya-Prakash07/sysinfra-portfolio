@@ -214,11 +214,8 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                                 <Link
                                     key={item.id}
                                     href={`/products/${category.slug}/${subcategory.slug}/${item.slug}`}
-                                    className="card-symmetric group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden"
+                                    className="card-symmetric group relative hover:border-sysred/70 dark:hover:border-[#ff6b6b]/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden"
                                 >
-                                    {/* Top specular accent line on hover */}
-                                    <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff6b6b]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff6b6b] transition-all duration-500 z-20" />
-
                                     <div className="flex-1 flex flex-col">
                                         {/* Image Pedestal with deep black in dark mode */}
                                         <div className="aspect-[4/3] w-full bg-gradient-to-b from-slate-100/70 via-slate-50/40 to-slate-100/80 dark:bg-black dark:from-black dark:via-black dark:to-black overflow-hidden relative flex items-center justify-center p-6 border-b border-slate-100 dark:border-white/10">

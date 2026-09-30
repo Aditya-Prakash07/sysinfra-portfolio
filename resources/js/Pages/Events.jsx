@@ -95,10 +95,8 @@ export default function Events({ events = [], seo = {} }) {
                         {filteredEvents.map((evt, idx) => (
                             <div 
                                 key={evt.title}
-                                className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 overflow-hidden hover:border-[#dd3c34] dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out flex flex-col cursor-pointer"
+                                className="group relative rounded-2xl bg-white dark:bg-[#0a0a0a] border border-slate-200/90 dark:border-white/10 overflow-hidden hover:border-[#dd3c34] dark:hover:border-sysred/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out flex flex-col cursor-pointer"
                             >
-                                {/* Specular top red laser line on hover */}
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#dd3c34] dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-30" />
                                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900 cursor-pointer" onClick={() => setActiveModalImage(`/${evt.cover}`)}>
                                     <img 
                                         src={`/${evt.cover}`} 

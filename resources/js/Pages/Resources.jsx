@@ -160,9 +160,7 @@ export default function Resources({ catalogues = [], seo = {} }) {
                     </div>
 
                     {/* Master Corporate Catalogue Featured Banner */}
-                    <div className="mt-10 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.4)] hover:-translate-y-1.5 transition-all duration-300 ease-out text-left relative overflow-hidden group">
-                        {/* Specular top red laser line on hover */}
-                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff5c54]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff5c54] transition-all duration-500" />
+                    <div className="mt-10 p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#141414] border border-slate-200/80 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/70 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-1.5 transition-all duration-300 ease-out text-left relative overflow-hidden group">
                         <div className="space-y-2">
                             <div className="flex items-center gap-2">
                                 <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-sysred text-white">
@@ -248,10 +246,8 @@ export default function Resources({ catalogues = [], seo = {} }) {
                             {filtered.map((cat, idx) => (
                             <div 
                                 key={cat.id || idx}
-                                className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0d0d0d] border border-slate-200 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:-translate-y-2 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden cursor-pointer"
+                                className="group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#0d0d0d] border border-slate-200 dark:border-white/10 hover:border-sysred/70 dark:hover:border-[#ff5c54]/80 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] hover:-translate-y-2 dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] transition-all duration-300 ease-out overflow-hidden cursor-pointer"
                             >
-                                {/* Top Edge Red Specular Glow */}
-                                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred/0 dark:via-[#ff5c54]/0 to-transparent group-hover:via-sysred dark:group-hover:via-[#ff5c54] transition-all duration-500" />
 
                                 <div>
                                     {/* Badges & File Specs */}
