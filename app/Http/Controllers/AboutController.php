@@ -20,7 +20,16 @@ class AboutController extends Controller
 
         $plantHeadline = SiteSetting::get('plant_headline', '4,000 Sq. Ft. International Standard Manufacturing Plant');
         $plantDesc = SiteSetting::get('plant_description', 'System Infra Solutions Private Limited (SISPL) operates an international quality standard manufacturing facility of 4,000 square feet for complete assembly, wiring, and testing of AMF panels, power controllers, and IoT telemetry products at Patparganj Industrial Area, New Delhi.');
-        $plantBullets = SiteSetting::get('plant_bullets', null);
+        $rawPlantBullets = SiteSetting::get('plant_bullets', null);
+        $plantBullets = null;
+        if (is_array($rawPlantBullets)) {
+            $plantBullets = array_values(array_filter(array_map(function ($item) {
+                if (is_array($item)) {
+                    return $item['text'] ?? $item['title'] ?? $item['detail'] ?? '';
+                }
+                return is_string($item) ? $item : '';
+            }, $rawPlantBullets)));
+        }
 
         return Inertia::render('About', [
             'team' => TeamMember::where('is_published', true)

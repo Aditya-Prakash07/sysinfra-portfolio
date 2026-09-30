@@ -244,7 +244,7 @@ export default function About({
 
     const plantHeadline = plantSettings?.headline || '4,000 Sq. Ft. International Standard Manufacturing Plant';
     const plantDesc = plantSettings?.description || 'System Infra Solutions Private Limited (SISPL) operates an international quality standard manufacturing facility of 4,000 square feet for complete assembly, wiring, and testing of AMF panels, power controllers, and IoT telemetry products at Patparganj Industrial Area, New Delhi.';
-    const plantBullets = (plantSettings?.bullets && Array.isArray(plantSettings.bullets) && plantSettings.bullets.length > 0)
+    const rawBullets = (plantSettings?.bullets && Array.isArray(plantSettings.bullets) && plantSettings.bullets.length > 0)
         ? plantSettings.bullets
         : [
             'Precision sheet metal fabrication & IP55 powder coating',
@@ -252,6 +252,11 @@ export default function About({
             '72-hour full electrical load & thermal burn-in chambers',
             'High-voltage dielectric insulation & surge surge testing'
         ];
+
+    const plantBullets = rawBullets.map((b) => {
+        if (typeof b === 'string') return b;
+        return b?.text || b?.title || b?.detail || '';
+    }).filter(Boolean);
 
     return (
         <MainLayout>
@@ -588,7 +593,7 @@ export default function About({
                                 {plantBullets.map((bullet, bIdx) => (
                                     <div key={bIdx} className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#dd3c34] shrink-0" />
-                                        <span>{bullet}</span>
+                                        <span>{typeof bullet === 'string' ? bullet : (bullet?.text || bullet?.title || bullet?.detail || '')}</span>
                                     </div>
                                 ))}
                             </div>
