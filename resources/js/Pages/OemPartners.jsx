@@ -220,7 +220,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                             return (
                                 <article
                                     key={partner.id || idx}
-                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-sm hover:shadow-2xl hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
+                                    className="group relative rounded-2xl bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/10 p-7 sm:p-9 lg:p-10 shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70 hover:shadow-2xl hover:border-sysred/70 dark:hover:border-sysred/80 hover:-translate-y-1.5 dark:hover:shadow-[0_0_35px_-5px_rgba(221,60,52,0.45)] transition-all duration-300 ease-out overflow-hidden"
                                 >
                                     <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-sysred dark:via-[#ff5c54] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
@@ -371,7 +371,7 @@ export default function OemPartners({ partners = [], seo = {} }) {
                     </div>
 
                     {/* Partnership Inquiry Banner */}
-                    <div className="mt-12 card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-10 border border-slate-200 dark:border-navy-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl shadow-sm">
+                    <div className="mt-12 card-dual !bg-white dark:!bg-navy-surface p-8 sm:p-10 border border-slate-200 dark:border-navy-border flex flex-col md:flex-row items-center justify-between gap-8 rounded-2xl shadow-md shadow-slate-200/60 dark:shadow-2xl dark:shadow-black/70">
                         <div className="max-w-xl">
                             <span className="text-xs font-mono text-sysred dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-2">
                                 TECHNOLOGY COLLABORATION
