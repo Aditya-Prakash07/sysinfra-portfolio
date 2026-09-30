@@ -956,7 +956,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                     <Link
                                         key={post.id || post.slug}
                                         href={`/latest-news/${post.slug}`}
-                                        className="card-symmetric group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden flex flex-col md:flex-row w-full"
+                                        className="card-symmetric group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-1.5 transition-all duration-300 ease-out overflow-hidden flex flex-col md:flex-row w-full"
                                     >
                                         {/* Cover Image Pedestal */}
                                         <div className="w-full md:w-5/12 lg:w-1/2 aspect-[16/10] md:aspect-auto md:min-h-[320px] bg-slate-100 dark:bg-black overflow-hidden relative flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-100 dark:border-white/10 shrink-0">
@@ -1031,7 +1031,7 @@ export default function Home({ banners = [], categories = [], featuredProducts =
                                         <Link
                                             key={post.id || post.slug}
                                             href={`/latest-news/${post.slug}`}
-                                            className="card-symmetric group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden flex flex-col"
+                                            className="card-symmetric group relative hover:border-sysred/60 dark:hover:border-[#ff6b6b]/50 hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:-translate-y-2 transition-all duration-300 ease-out overflow-hidden flex flex-col"
                                         >
                                             <div className="flex-1 flex flex-col">
                                                 {/* Image Pedestal */}

@@ -241,7 +241,7 @@ export default function WhySysinfraDiagram() {
 
                     {/* Right: Interactive Pillar Breakdown & Highlighting */}
                     <div className="lg:col-span-5 space-y-4">
-                        <div className="panel p-6 sm:p-8 relative overflow-hidden border border-slate-200/90 dark:border-navy-border shadow-lg hover:shadow-2xl dark:hover:shadow-[0_0_30px_-5px_rgba(221,60,52,0.45)] hover:border-sysred/60 dark:hover:border-sysred/70 transition-all duration-300">
+                        <div className="panel p-6 sm:p-8 relative overflow-hidden border border-slate-200/90 dark:border-navy-border shadow-lg hover:shadow-[0_18px_45px_-8px_rgba(221,60,52,0.22),0_6px_20px_-3px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_0_45px_-4px_rgba(221,60,52,0.6),0_0_20px_-2px_rgba(221,60,52,0.35)] hover:border-sysred/60 dark:hover:border-sysred/70 transition-all duration-300">
                             <div className="flex items-center gap-3 mb-4">
                                 <span 
                                     className="w-4 h-4 rounded-full transition-colors duration-300"
