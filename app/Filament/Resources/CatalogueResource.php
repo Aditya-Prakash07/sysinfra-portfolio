@@ -114,7 +114,13 @@ class CatalogueResource extends Resource
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable()->weight('bold'),
                 Tables\Columns\TextColumn::make('category')->sortable()->badge(),
                 Tables\Columns\TextColumn::make('file_size')->label('Size'),
-                Tables\Columns\IconColumn::make('is_master')->label('Master PDF')->boolean(),
+                Tables\Columns\IconColumn::make('is_master')
+                    ->label('Master PDF')
+                    ->icon(fn (bool $state): ?string => $state ? 'heroicon-s-check-circle' : null)
+                    ->color('success')
+                    ->alignCenter()
+                    ->placeholder('—')
+                    ->tooltip(fn (bool $state): string => $state ? 'Primary Master Corporate Catalogue (Featured in top hero banner)' : 'Standard Product Catalogue'),
                 Tables\Columns\IconColumn::make('is_published')->label('Published')->boolean(),
                 Tables\Columns\TextColumn::make('sort_order')->label('Order')->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->since()->sortable(),
