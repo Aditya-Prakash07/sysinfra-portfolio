@@ -146,7 +146,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                 {/* Ambient Red Glow */}
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                <div className="container-content relative z-10 text-center max-w-5xl mx-auto">
                     <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
                         <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
                         SYSTEM INFRA SOLUTIONS &bull; OFFICIAL PRODUCT CATALOG
@@ -332,7 +332,7 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                 </span>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
                                 {matchingProducts.map((item) => (
                                     <Link
                                         key={item.id}
@@ -464,8 +464,8 @@ export default function ProductsIndex({ categories = [], seo = {} }) {
                                         cat.subcategories?.length === 1 
                                             ? 'grid-cols-1 max-w-md' 
                                             : cat.subcategories?.length === 2 
-                                            ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl' 
-                                            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                                            ? 'grid-cols-1 sm:grid-cols-2' 
+                                            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                                     }`}>
                                         {cat.subcategories?.map((sub) => (
                                             <Link

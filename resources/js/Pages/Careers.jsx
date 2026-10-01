@@ -92,7 +92,7 @@ ${formData.coverLetter}`
                 {/* Ambient Red Glow */}
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                <div className="container-content relative z-10 text-center max-w-5xl mx-auto">
                     <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
                         <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
                         CAREERS &bull; LIFE AT SYSTEM INFRA &bull; PAN-INDIA OPPORTUNITIES
@@ -249,7 +249,7 @@ ${formData.coverLetter}`
 
             {/* Current Openings Section */}
             <section id="openings" className="py-20 bg-white dark:bg-[#000000] transition-colors duration-300">
-                <div className="container-content max-w-5xl">
+                <div className="container-content">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-100 dark:border-white/10 gap-4">
                         <div>
                             <span className="text-xs font-mono text-[#dd3c34] dark:text-[#ff6b6b] uppercase tracking-wider font-bold block mb-1">

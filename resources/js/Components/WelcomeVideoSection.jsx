@@ -22,7 +22,7 @@ export default function WelcomeVideoSection({ videoSettings = {} }) {
                     <span>{badgeText}</span>
                 </div>
 
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     <AnimatedHeading
                         as="h2"
                         delay={40}
@@ -34,7 +34,7 @@ export default function WelcomeVideoSection({ videoSettings = {} }) {
                     </AnimatedHeading>
                 </div>
 
-                <p className="mt-3.5 text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-3xl mx-auto leading-relaxed font-sans text-center">
+                <p className="mt-3.5 text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-4xl mx-auto leading-relaxed font-sans text-center">
                     {subheadline}
                 </p>
             </div>

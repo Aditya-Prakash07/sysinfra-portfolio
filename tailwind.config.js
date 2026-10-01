@@ -58,7 +58,7 @@ export default {
                 mono: ['"IBM Plex Mono"', ...defaultTheme.fontFamily.mono],
             },
             maxWidth: {
-                content: '1240px',
+                content: '1600px',
             },
             animation: {
                 'signal-sweep': 'signal-sweep 3.2s ease-in-out infinite',

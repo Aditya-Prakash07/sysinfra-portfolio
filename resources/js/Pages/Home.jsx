@@ -351,8 +351,8 @@ export default function Home({ banners = [], videoSettings = {}, categories = []
 
                 {/* Main Content Area — Strictly excluded on video banner so video is free of text overlays */}
                 {!slides[currentSlide]?.isVideo && (slides[currentSlide]?.heading || slides[currentSlide]?.subheading) && (
-                    <div className="relative z-20 my-auto w-full px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 pointer-events-none">
-                        <div className="max-w-xl xl:max-w-2xl w-full text-left py-10 sm:py-14 pointer-events-auto">
+                    <div className="relative z-20 my-auto w-full container-content pointer-events-none">
+                        <div className="max-w-xl xl:max-w-2xl 2xl:max-w-3xl w-full text-left py-10 sm:py-14 pointer-events-auto">
                             <div key={currentSlide} className="space-y-6">
                                 {/* Prominent Credential Highlight for Motorola Solutions Authorized Channel Partner */}
                                 {slides[currentSlide]?.heading?.toLowerCase().includes('motorola') && (
@@ -1094,7 +1094,7 @@ export default function Home({ banners = [], videoSettings = {}, categories = []
                 {/* Ambient Radial Backdrop Glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-red-500/10 dark:bg-red-500/15 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="container-content text-center max-w-3xl mx-auto space-y-6 relative z-10">
+                <div className="container-content text-center max-w-4xl mx-auto space-y-6 relative z-10">
                     <span className="badge-rf text-xs">GOVERNMENT & ENTERPRISE PROCUREMENT</span>
                     <AnimatedHeading 
                         as="h2" 

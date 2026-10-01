@@ -69,7 +69,7 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                 {/* Ambient Red Glow */}
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#dd3c34]/15 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
+                <div className="container-content relative z-10 text-center max-w-5xl mx-auto">
                     {/* Breadcrumbs */}
                     <nav className="flex items-center justify-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-6">
                         <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">HOME</Link>
@@ -207,8 +207,8 @@ export default function ProductsCategory({ category, subcategory, items = [], se
                             filteredItems.length === 1 
                                 ? 'grid-cols-1 max-w-md' 
                                 : filteredItems.length === 2 
-                                ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl' 
-                                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                                ? 'grid-cols-1 sm:grid-cols-2' 
+                                : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
                         }`}>
                             {filteredItems.map((item) => (
                                 <Link

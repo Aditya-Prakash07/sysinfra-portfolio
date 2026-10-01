@@ -91,7 +91,7 @@ export default function WhySysinfraDiagram() {
                 </div>
 
                 {/* Main Interactive Diagram & Info Showcase */}
-                <div className="grid lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
+                <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
                     {/* Left: The Symmetrical Radial Hub & Spoke SVG Diagram */}
                     <div className="lg:col-span-7 flex justify-center items-center">
                         <div className="relative w-full max-w-[460px] sm:max-w-[520px] aspect-square">
