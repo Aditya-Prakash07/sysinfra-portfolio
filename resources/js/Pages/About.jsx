@@ -122,7 +122,7 @@ const CORE_VALUES = [
     },
 ];
 
-// Authentic prototype & controller cards from sysinfra.in/cardsImg/
+// Hardware prototype & controller cards
 const RD_CARDS = [
     {
         name: 'SVR Card (Static Voltage Regulator)',
@@ -174,7 +174,7 @@ const RD_CARDS = [
     }
 ];
 
-// Authentic Sysinfra Leadership & Technical Divisions
+// Leadership & Technical Divisions
 const SYSINFRA_LEADERSHIP = [
     {
         name: 'Executive Directorate',
@@ -294,7 +294,7 @@ export default function About({
                         System Infra Solutions Pvt. Ltd. (SISPL) is an ISO 9001:2015, ISO 14001:2015, and OHSAS 45001:2018 certified technology powerhouse delivering automated AMF panels, SYS-AXS NOC telemetry platforms, 5G smart boxes, and turnkey site operations across 70,000+ telecom sites nationwide.
                     </p>
 
-                    {/* Quick Highlights Strip from sysinfra.in/aboutus.php */}
+                    {/* Quick Highlights Strip */}
                     <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80 dark:border-white/10 text-xs font-mono max-w-4xl mx-auto">
                         <div>
                             <span className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-slate-900 dark:text-white block whitespace-nowrap">70,000+</span>
@@ -316,16 +316,16 @@ export default function About({
                 </div>
             </header>
 
-            {/* KEY STATS SECTION — EXACT DESIGN & DETAILS FROM sysinfra.in (From User Screenshot) */}
+            {/* Key Performance Indicators */}
             <KeyStatsSection />
 
-            {/* Vision & Mission Section (From sysinfra.in/visionMission.php) */}
+            {/* Vision & Mission Section */}
             <section className="py-16 sm:py-20 bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-300">
                 <div className="container-content">
                     <div className="grid lg:grid-cols-12 gap-8 items-center">
                         <div className="lg:col-span-6 space-y-6">
                             <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block">
-                                OUR PURPOSE &bull; sysinfra.in/visionMission.php
+                                OUR PURPOSE
                             </span>
                             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-slate-900 dark:text-white leading-tight">
                                 Vision Without Action Is A Daydream. Action Without Vision Is A Nightmare.
@@ -361,7 +361,7 @@ export default function About({
                             </div>
                         </div>
 
-                        {/* Vision & Mission Banner Photo from sysinfra.in */}
+                        {/* Vision & Mission Overview Banner */}
                         <div className="lg:col-span-6">
                             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-white/10 group">
                                 <img 
@@ -389,12 +389,12 @@ export default function About({
                 </div>
             </section>
 
-            {/* Core Values Section (sysinfra.in/ourCoreValues.php) */}
+            {/* Core Values Section */}
             <section className="py-16 sm:py-20 bg-white dark:bg-[#000000] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="max-w-2xl mb-12">
                         <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                            OUR PRINCIPLES &bull; sysinfra.in/ourCoreValues.php
+                            CORE VALUES
                         </span>
                         <AnimatedHeading 
                             as="h2" 
@@ -436,13 +436,13 @@ export default function About({
                 </div>
             </section>
 
-            {/* In-House R&D Showcase & Prototype Boards (sysinfra.in/researchDevelopment.php) */}
+            {/* In-House R&D Showcase & Prototype Boards */}
             <section id="research" className="py-16 sm:py-20 bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="grid lg:grid-cols-12 gap-10 items-center mb-12">
                         <div className="lg:col-span-7">
                             <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                                RESEARCH &amp; DEVELOPMENT &bull; sysinfra.in/researchDevelopment.php
+                                RESEARCH &amp; DEVELOPMENT
                             </span>
                             <AnimatedHeading 
                                 as="h2" 
@@ -470,11 +470,11 @@ export default function About({
                         </div>
                     </div>
 
-                    {/* R&D Prototype Hardware Gallery (Downloaded Cards from sysinfra.in/cardsImg/) */}
+                    {/* R&D Prototype Hardware Gallery */}
                     <div className="space-y-4">
                         <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-white/10">
                             <span className="text-xs font-mono uppercase text-slate-500 dark:text-slate-400 font-bold">
-                                AUTHENTIC PROTOTYPES &amp; CONTROLLER BOARDS ENGINEERED IN PATPARGANJ LAB
+                                PROPRIETARY CONTROLLER BOARDS &amp; HARDWARE SYSTEMS
                             </span>
                             <span className="text-xs font-mono text-[#dd3c34] dark:text-[#ff6b6b] font-semibold">
                                 8 Engineered Sub-Systems
@@ -520,12 +520,12 @@ export default function About({
                 </div>
             </section>
 
-            {/* Growth Story & Milestones (sysinfra.in/growthStory.php) */}
+            {/* Growth Story & Milestones */}
             <section id="growth" className="py-16 sm:py-20 bg-white dark:bg-[#000000] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="max-w-2xl mb-12">
                         <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                            GROWTH STORY &bull; sysinfra.in/growthStory.php
+                            GROWTH STORY &amp; MILESTONES
                         </span>
                         <AnimatedHeading 
                             as="h2" 
@@ -539,7 +539,7 @@ export default function About({
                         </p>
                     </div>
 
-                    {/* Milestone Chart Banner from sysinfra.in */}
+                    {/* Milestone Chart Overview Banner */}
                     <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-xl mb-12 bg-slate-50 dark:bg-white/[0.02]">
                         <img 
                             src="/img/banner/history-milestone1-1536x671.png" 
@@ -575,13 +575,13 @@ export default function About({
                 </div>
             </section>
 
-            {/* Manufacturing Facility & Quality Assurance (sysinfra.in/manufacturingFacility.php) */}
+            {/* Manufacturing Facility & Quality Assurance */}
             <section id="manufacturing" className="py-16 sm:py-20 bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="grid lg:grid-cols-12 gap-10 items-center mb-12">
                         <div className="lg:col-span-6 space-y-4">
                             <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block">
-                                PRODUCTION FACILITY &bull; sysinfra.in/manufacturingFacility.php
+                                PRODUCTION FACILITY
                             </span>
                             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-slate-900 dark:text-white leading-tight">
                                 {plantHeadline}
@@ -599,7 +599,7 @@ export default function About({
                             </div>
                         </div>
 
-                        {/* Facility Warehouse & Maps Photos from sysinfra.in */}
+                        {/* Facility Warehouse & Factory Layout Photos */}
                         <div className="lg:col-span-6 grid grid-cols-2 gap-4">
                             <div className="rounded-2xl overflow-hidden border border-slate-200/90 dark:border-white/10 shadow-md">
                                 <img 
@@ -653,12 +653,12 @@ export default function About({
                 </div>
             </section>
 
-            {/* Certifications & Quality Accreditations (sysinfra.in/certifications.php) */}
+            {/* Certifications & Quality Accreditations */}
             <section id="certifications" className="py-16 sm:py-20 bg-white dark:bg-[#000000] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="max-w-2xl mb-12">
                         <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                            QUALITY ASSURANCE &bull; sysinfra.in/certifications.php
+                            QUALITY ASSURANCE &amp; ACCREDITATIONS
                         </span>
                         <AnimatedHeading 
                             as="h2" 
@@ -749,7 +749,7 @@ export default function About({
                 <div className="container-content">
                     <div className="max-w-2xl mb-12">
                         <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                            TECHNICAL LEADERSHIP &bull; sysinfra.in
+                            TECHNICAL LEADERSHIP
                         </span>
                         <AnimatedHeading 
                             as="h2" 
@@ -811,13 +811,13 @@ export default function About({
                 </div>
             </section>
 
-            {/* LIFE, CULTURE & FESTIVAL CELEBRATIONS (sysinfra.in/events.php) */}
+            {/* Life, Culture & Corporate Celebrations */}
             <section id="celebrations" className="py-16 sm:py-20 bg-slate-50 dark:bg-[#050505] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                         <div className="max-w-2xl">
                             <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                                CULTURE &amp; CELEBRATIONS &bull; sysinfra.in/events.php
+                                CULTURE &amp; CELEBRATIONS
                             </span>
                             <AnimatedHeading 
                                 as="h2" 
@@ -861,7 +861,7 @@ export default function About({
                                     Colorful festivities, cultural unity, and energetic celebrations with the System Infra Solutions Delhi headquarters team.
                                 </p>
                                 <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-xs font-mono text-slate-500">
-                                    <span>12 Authentic Photos</span>
+                                    <span>12 Photos</span>
                                     <Link href="/media" className="text-[#dd3c34] dark:text-[#ff6b6b] font-semibold hover:underline">
                                         View &rarr;
                                     </Link>
@@ -932,12 +932,12 @@ export default function About({
                 </div>
             </section>
 
-            {/* Download Official Catalogues Section (sysinfra.in/resource.php) */}
+            {/* Technical Catalogues & Documentation Section */}
             <section id="catalogues" className="py-16 sm:py-20 bg-white dark:bg-[#000000] transition-colors duration-300 border-t border-slate-100 dark:border-white/10">
                 <div className="container-content">
                     <div className="max-w-2xl mb-12">
                         <span className="text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold block mb-1.5">
-                            DOCUMENTATION &amp; RESOURCES &bull; sysinfra.in/resource.php
+                            DOCUMENTATION &amp; RESOURCES
                         </span>
                         <AnimatedHeading 
                             as="h2" 
@@ -1112,7 +1112,7 @@ export default function About({
                                 Need technical sheets for AMF Panels, Dual DG Controllers or Security Systems?
                             </span>
                             <span className="text-xs text-slate-500 dark:text-steel mt-0.5 block">
-                                Access our complete official documentation repository matching sysinfra.in/resource.php.
+                                Access our complete technical documentation and specifications repository.
                             </span>
                         </div>
                         <Link

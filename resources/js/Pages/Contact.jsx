@@ -101,7 +101,7 @@ export default function Contact({ seo = {}, flash = {}, contactSettings = {} }) 
                         {/* Form Column */}
                         <div className="lg:col-span-7">
                             <div className="panel p-8 sm:p-10">
-                                {/* Success Alert matching sysinfra.in */}
+                                {/* Form Submission Alert */}
                                 {(submittedSuccess || recentlySuccessful || flash?.success) && (
                                     <div className="mb-6 p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border-2 border-emerald-400 dark:border-emerald-600/50 text-emerald-950 dark:text-emerald-100 shadow-md space-y-2">
                                         <div className="flex items-center gap-3 font-display font-bold text-lg text-emerald-700 dark:text-emerald-300">
@@ -382,7 +382,7 @@ export default function Contact({ seo = {}, flash = {}, contactSettings = {} }) 
                         </div>
                     </div>
 
-                    {/* Google Maps Embed matching sysinfra.in */}
+                    {/* Headquarters Google Maps Embed */}
                     <div className="mt-16 rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 shadow-xl">
                         <div className="bg-slate-900 text-white px-6 py-3.5 flex items-center justify-between text-xs font-mono">
                             <span className="font-bold flex items-center gap-2">

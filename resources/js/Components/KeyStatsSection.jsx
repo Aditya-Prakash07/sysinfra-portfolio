@@ -148,7 +148,7 @@ export default function KeyStatsSection({ stats = [] }) {
         return () => observer.disconnect();
     }, []);
 
-    // Exact 4 impact statistics from sysinfra.in
+    // Default impact statistics
     const defaultStats = [
         { label: 'RECTIFIER MODULE RE-CONDITIONED', value: 300000, suffix: ' +', icon: 'rectifier' },
         { label: 'TELECOM SITE AUTOMATION', value: 70000, suffix: ' +', icon: 'telecom' },

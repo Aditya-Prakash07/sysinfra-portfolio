@@ -423,7 +423,7 @@
 
     /* =========================================================================
        CSS-TRICKS STYLE OVERLAPPING & FANNING CARD DECK (OPTIMIZED)
-       Faithful implementation of the iconic CSS-Tricks "Popular this month":
+       Overlapping fanning card deck implementation:
        - Independent, fixed Left Anchor Card with animated flowing gradient border
        - Dedicated spacing ensuring Anchor Card NEVER overlaps with deck cards
        - Overlapping card deck with negative left margins on md/lg/xl screens
@@ -508,7 +508,7 @@
         z-index: -1;
     }
 
-    /* Standard Hardware Deck (Home page): Animated Cards visible next to fixed card (Screenshot Style) */
+    /* Standard Hardware Deck (Home page): Animated Cards visible next to fixed card */
     .hardware-deck .csstricks-card {
         box-shadow: 0 10px 32px -4px rgba(221, 60, 52, 0.22), 0 4px 14px -2px rgba(221, 60, 52, 0.16);
     }
@@ -614,7 +614,7 @@
             box-shadow: -1.5rem 0.5rem 2.25rem -0.5rem rgba(221, 60, 52, 0.42), 0 0 24px -3px rgba(221, 60, 52, 0.28);
         }
 
-        /* 3. Hover on Card: Upward lift, subtle tilt, high z-index (screenshot animation style) */
+        /* 3. Hover on Card: Upward lift, subtle tilt, elevated z-index */
         .hardware-deck .csstricks-card:hover,
         .hardware-deck .csstricks-card:focus-within {
             transform: translateY(-0.85rem) rotate(2deg) !important;

@@ -55,7 +55,7 @@ export default function Resources({ catalogues = [], masterCatalogue = null, seo
                 <div className="container-content relative z-10 text-center max-w-4xl mx-auto">
                     <span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#dd3c34] dark:text-[#ff6b6b] font-bold px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
                         <span className="w-2 h-2 rounded-full bg-[#dd3c34] animate-pulse" />
-                        OFFICIAL TECHNICAL ARCHIVES &bull; sysinfra.in/resource.php
+                        OFFICIAL TECHNICAL ARCHIVES &bull; SPECIFICATIONS &amp; BROCHURES
                     </span>
 
                     <AnimatedHeading

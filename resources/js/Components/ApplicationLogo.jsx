@@ -11,10 +11,10 @@ const resolveLogoUrl = (path) => {
 };
 
 /**
- * ApplicationLogo — Authentic Original sysinfra.in Brand Logo
+ * ApplicationLogo
  * 
  * Uses custom uploaded logos from Admin Panel (SiteSettings) if available,
- * falling back to the authentic high-quality SVG official artwork:
+ * falling back to default brand SVG artwork:
  * - Light Mode: /storage/logo/system_infra_solutions_logo_exact.svg
  * - Dark Mode: /storage/logo/system_infra_solutions_logo_dark.svg
  * - Compact: /img/mobile-logo.png

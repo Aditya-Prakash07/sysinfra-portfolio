@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 class ResourceController extends Controller
 {
     /**
-     * Default fallback catalogues metadata matching sysinfra.in/resource.php
+     * Default fallback catalogues metadata
      */
     public static function getDefaultCatalogues(): array
     {

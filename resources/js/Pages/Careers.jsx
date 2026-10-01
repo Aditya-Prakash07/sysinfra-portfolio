@@ -9,7 +9,7 @@ export default function Careers({ openings = [], seo = {} }) {
     const [activeJobForModal, setActiveJobForModal] = useState(null);
     const [submitted, setSubmitted] = useState(false);
 
-    // Form state matching sysinfra.in/applyForJob.php
+    // Job application form state
     const [formData, setFormData] = useState({
         fullName: '',
         mobile: '',
@@ -134,7 +134,7 @@ ${formData.coverLetter}`
                 </div>
             </header>
 
-            {/* Life at Sysinfra Pillars (from sysinfra.in/whySysteminfra.php) */}
+            {/* Life at Sysinfra Pillars */}
             <section className="py-20 bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-300">
                 <div className="container-content">
                     <div className="text-center max-w-3xl mx-auto mb-16">
@@ -247,7 +247,7 @@ ${formData.coverLetter}`
                 </div>
             </section>
 
-            {/* Current Openings Section (from sysinfra.in/jobOpening.php) */}
+            {/* Current Openings Section */}
             <section id="openings" className="py-20 bg-white dark:bg-[#000000] transition-colors duration-300">
                 <div className="container-content max-w-5xl">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-100 dark:border-white/10 gap-4">
@@ -366,7 +366,7 @@ ${formData.coverLetter}`
                 </div>
             </section>
 
-            {/* Interactive Apply Now Modal (faithful to sysinfra.in/applyForJob.php) */}
+            {/* Interactive Apply Now Modal */}
             {activeJobForModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
                     <div className="bg-white dark:bg-[#0a0a0a] border border-slate-200 dark:border-white/15 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8">

@@ -1,10 +1,10 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "sysinfra/sysinfra-platform",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "description": "Enterprise Web Platform & Telemetry Portal for System Infra Solutions Private Limited.",
+    "keywords": ["sysinfra", "telecom", "energy-management", "iot", "laravel", "react"],
+    "license": "proprietary",
     "require": {
         "php": "^8.3",
         "filament/filament": "^3.2",

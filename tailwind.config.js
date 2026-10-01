@@ -13,7 +13,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                // Pure Black shades for Dark Mode as requested
+                // High-contrast dark surfaces
                 navy: {
                     dark: '#000000',    // true pure black
                     DEFAULT: '#050505', // jet black

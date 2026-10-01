@@ -26,8 +26,8 @@ use Illuminate\Support\Str;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seeds complete authentic categories, rich products, real media assets, leadership profiles,
-     * client case studies, and OEM partners for System Infra Solutions (sysinfra.in).
+     * Seeds product categories, products, media assets, leadership profiles,
+     * client case studies, and OEM partners for System Infra Solutions.
      */
     public function run(): void
     {
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 1. Complete Categories & Subcategories Tree matching official sysinfra.in navigation
+        // 1. Categories & Subcategories Tree
         $tree = [
             'Energy Management & Controllers' => [
                 'thumbnail' => 'img/productIconImg/energyMgtImg.png',
@@ -145,7 +145,7 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // 2. All Genuine Products Scraped from sysinfra.in
+        // 2. Product Catalog
         $catalog = [
             // ==================== Energy Management & Controllers ====================
             [
@@ -634,7 +634,7 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // 3. Impact Stats (from sysinfra.in official achievements)
+        // 3. Impact Stats
         $stats = [
             ['label' => 'RECTIFIER MODULE RE-CONDITIONED', 'value' => 300000, 'suffix' => ' +', 'icon' => 'rectifier', 'sort_order' => 0],
             ['label' => 'TELECOM SITE AUTOMATION', 'value' => 70000, 'suffix' => ' +', 'icon' => 'telecom', 'sort_order' => 1],
@@ -764,7 +764,7 @@ class DatabaseSeeder extends Seeder
             OemPartner::create($p + ['is_published' => true]);
         }
 
-        // 6. Leadership & Engineering Directorate (Authentic Sysinfra Divisions)
+        // 6. Leadership & Engineering Directorate
         TeamMember::truncate();
         $sysinfraTeam = [
             [

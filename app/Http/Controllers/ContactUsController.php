@@ -66,7 +66,7 @@ class ContactUsController extends Controller
 
     public function store(Request $request): RedirectResponse|JsonResponse
     {
-        // Support field aliases from sysinfra.in (msg / message, mobile / phone)
+        // Support common field aliases (msg / message, mobile / phone)
         if ($request->has('msg') && !$request->has('message')) {
             $request->merge(['message' => $request->input('msg')]);
         }

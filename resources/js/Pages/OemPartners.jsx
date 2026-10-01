@@ -4,7 +4,7 @@ import MainLayout from '@/Layouts/MainLayout';
 import Seo from '@/Components/Seo';
 import AnimatedHeading from '@/Components/AnimatedHeading';
 
-// Authentic System Infra Solutions OEM & Technology Partnerships
+// System Infra Solutions OEM & Technology Partnerships
 const DEFAULT_SYSINFRA_OEM_PARTNERS = [
     {
         id: 'motorola-solutions',

@@ -72,7 +72,7 @@ export default function Events({ events = [], seo = {} }) {
                     </AnimatedHeading>
 
                     <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-sans max-w-2xl mx-auto">
-                        Experience the vibrant culture, team celebrations, festival joy, and technology expos from the authentic archives of System Infra Solutions.
+                        Experience the vibrant culture, team celebrations, festival joy, and technology expos at System Infra Solutions.
                     </p>
 
                     {/* Category Filter Pills */}
@@ -148,7 +148,7 @@ export default function Events({ events = [], seo = {} }) {
                     </div>
 
                     {/* =========================================================================
-                        3. HIGH-DENSITY PHOTO MOSAIC GRID (ALL AUTHENTIC ASSETS)
+                        3. PHOTO MOSAIC GRID
                     ========================================================================= */}
                     <div className="border-t border-slate-200 dark:border-white/10 pt-12">
                         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">

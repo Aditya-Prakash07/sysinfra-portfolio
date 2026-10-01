@@ -97,7 +97,7 @@ class EventController extends Controller
             'events' => $events,
             'seo' => [
                 'title' => 'Media & Corporate Events Gallery — System Infra Solutions',
-                'description' => 'Explore authentic photo galleries of System Infra Solutions events, India Mobile Congress (IMC) 5G showcases, and corporate cultural celebrations.',
+                'description' => 'Explore photo galleries of System Infra Solutions events, India Mobile Congress (IMC) 5G showcases, and corporate cultural celebrations.',
             ],
         ]);
     }

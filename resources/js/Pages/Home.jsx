@@ -256,7 +256,7 @@ export default function Home({ banners = [], videoSettings = {}, categories = []
             />
 
             {/* =========================================================================
-                1. HERO SECTION WITH MOTOROLA SOLUTIONS-INSPIRED LIVE BANNERS (CINEMATIC FULL VIEWPORT)
+                1. HERO SECTION — CINEMATIC SLIDER
             ========================================================================= */}
             <section 
                 className="relative bg-white dark:bg-[#04060a] text-slate-900 dark:text-paper overflow-hidden h-[100dvh] min-h-[640px] max-h-[960px] flex flex-col justify-center transition-colors duration-300"
@@ -492,7 +492,7 @@ export default function Home({ banners = [], videoSettings = {}, categories = []
 
 
             {/* =========================================================================
-                2. WELCOME & CORPORATE HD VIDEO SHOWCASE (FROM ORIGINAL WEBSITE)
+                2. WELCOME & CORPORATE HD VIDEO SHOWCASE
             ========================================================================= */}
             <WelcomeVideoSection videoSettings={videoSettings} />
 
@@ -832,7 +832,7 @@ export default function Home({ banners = [], videoSettings = {}, categories = []
 
 
             {/* =========================================================================
-                5. IMPACT METRICS (STATS) — ANIMATED SCROLL COUNTER & TIER-1 CSS EFFECTS
+                5. IMPACT METRICS & PERFORMANCE STATS
             ========================================================================= */}
             <KeyStatsSection stats={stats} />
 
