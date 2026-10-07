@@ -41,10 +41,10 @@ export default function ApplicationLogo({
         : resolveLogoUrl(siteBranding.logo_light);
 
     const defaultSrc = compact
-        ? '/img/mobile-logo.png?v=2'
+        ? '/img/mobile-logo.png?v=3'
         : isDark
-            ? '/img/system_infra_solutions_logo_dark.svg'
-            : '/img/system_infra_solutions_logo_exact.svg';
+            ? '/img/system_infra_solutions_logo_dark.svg?v=3'
+            : '/img/system_infra_solutions_logo_exact.svg?v=3';
 
     const src = (!compact && customLogo) ? customLogo : defaultSrc;
 
@@ -57,8 +57,8 @@ export default function ApplicationLogo({
             onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = isDark 
-                    ? '/storage/logo/system_infra_solutions_logo_dark.svg' 
-                    : '/storage/logo/system_infra_solutions_logo_exact.svg';
+                    ? '/storage/logo/system_infra_solutions_logo_dark.svg?v=3' 
+                    : '/storage/logo/system_infra_solutions_logo_exact.svg?v=3';
             }}
             {...props}
         />
