@@ -58,7 +58,9 @@ class EventAlbumResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('events/covers')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(20480) // 20MB
+                    ->openable()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif'])
                     ->required()
                     ->helperText('Main display photo shown on event story cards.'),
 
@@ -69,7 +71,9 @@ class EventAlbumResource extends Resource
                     ->reorderable()
                     ->disk('public')
                     ->directory('events/gallery')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(20480) // 20MB per photo
+                    ->openable()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif'])
                     ->helperText('Upload all photographs from this celebration or expo. Click any thumbnail to enlarge on the live page.')
                     ->columnSpanFull(),
             ]),

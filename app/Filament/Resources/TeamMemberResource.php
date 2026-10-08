@@ -23,7 +23,9 @@ class TeamMemberResource extends Resource
             Forms\Components\Textarea::make('bio')->rows(4)->columnSpanFull(),
             Forms\Components\FileUpload::make('photo_path')
                 ->image()->disk('public')->directory('team')
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']),
+                ->maxSize(20480)
+                ->openable()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif']),
             Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
             Forms\Components\Toggle::make('is_published')->default(true),
         ])->columns(2);

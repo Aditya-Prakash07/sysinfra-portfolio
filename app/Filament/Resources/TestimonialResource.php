@@ -22,8 +22,10 @@ class TestimonialResource extends Resource
             Forms\Components\TextInput::make('client_name')->label('Client / Project')->required(),
             Forms\Components\Textarea::make('story')->rows(5)->required()->columnSpanFull(),
             Forms\Components\FileUpload::make('logo_path')
-                ->image()->disk('public')->directory('testimonials')
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']),
+                ->disk('public')->directory('testimonials')
+                ->maxSize(20480)
+                ->openable()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']),
             Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
             Forms\Components\Toggle::make('is_published')->default(true),
         ])->columns(2);

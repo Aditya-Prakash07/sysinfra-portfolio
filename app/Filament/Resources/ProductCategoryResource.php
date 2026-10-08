@@ -31,7 +31,9 @@ class ProductCategoryResource extends Resource
                 ->image()
                 ->disk('public')
                 ->directory('categories')
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']),
+                ->maxSize(20480)
+                ->openable()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/svg+xml']),
             Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
             Forms\Components\Toggle::make('is_published')->default(true),
         ])->columns(2);

@@ -22,8 +22,13 @@ class BannerResource extends Resource
             Forms\Components\TextInput::make('heading')->required(),
             Forms\Components\TextInput::make('subheading'),
             Forms\Components\FileUpload::make('image_path')
-                ->image()->disk('public')->directory('banners')->required()
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->image()
+                ->disk('public')
+                ->directory('banners')
+                ->maxSize(20480) // 20MB
+                ->openable()
+                ->required()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif'])
                 ->helperText('Recommended 2400×1350px for a crisp full-bleed hero on large screens.'),
             Forms\Components\TextInput::make('cta_label'),
             Forms\Components\TextInput::make('cta_url'),

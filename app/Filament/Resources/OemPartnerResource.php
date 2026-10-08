@@ -34,7 +34,8 @@ class OemPartnerResource extends Resource
                 ->label('Partner Logo')
                 ->disk('public')
                 ->directory('partners')
-                ->image()
+                ->maxSize(20480)
+                ->openable()
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']),
             Forms\Components\TextInput::make('website_url')
                 ->label('Official Website URL')

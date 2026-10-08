@@ -38,7 +38,9 @@ class RdHardwareCardResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('rd-cards')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(20480)
+                    ->openable()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif'])
                     ->required()
                     ->helperText('Clear product image of the electronic card or telemetry PCB.'),
 

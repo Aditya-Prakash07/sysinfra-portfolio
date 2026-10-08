@@ -28,7 +28,9 @@ class NewsPostResource extends Resource
             Forms\Components\DatePicker::make('published_at')->default(now()),
             Forms\Components\FileUpload::make('cover_image_path')
                 ->image()->disk('public')->directory('news')
-                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']),
+                ->maxSize(20480)
+                ->openable()
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/avif']),
             Forms\Components\RichEditor::make('body')->required()->columnSpanFull(),
             Forms\Components\Toggle::make('is_published')->default(true),
         ])->columns(2);

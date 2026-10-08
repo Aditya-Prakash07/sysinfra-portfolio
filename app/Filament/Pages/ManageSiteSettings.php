@@ -51,9 +51,11 @@ class ManageSiteSettings extends Page implements HasForms
                                     ->label('Hero Video File (MP4/WebM)')
                                     ->disk('public')
                                     ->directory('videos')
-                                    ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/quicktime'])
+                                    ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/quicktime', 'video/x-matroska', 'video/avi', 'video/x-msvideo'])
                                     ->maxSize(102400) // 100MB
-                                    ->helperText('Upload the high-definition looping facility video banner.'),
+                                    ->openable()
+                                    ->downloadable()
+                                    ->helperText('Upload the high-definition looping facility video banner (up to 100MB).'),
                                 Forms\Components\TextInput::make('hero_video_url')
                                     ->label('External Video Stream URL (Optional fallback)')
                                     ->placeholder('/img/sysinfra-video-banner.mp4 or https://...'),
@@ -62,6 +64,8 @@ class ManageSiteSettings extends Page implements HasForms
                                     ->image()
                                     ->disk('public')
                                     ->directory('videos')
+                                    ->maxSize(20480) // 20MB
+                                    ->openable()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp']),
                                 Forms\Components\TextInput::make('hero_video_badge')
                                     ->label('Top Eyebrow Badge')

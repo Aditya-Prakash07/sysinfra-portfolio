@@ -64,8 +64,10 @@ class CatalogueResource extends Resource
                     ->label('PDF Document')
                     ->disk('public')
                     ->directory('catalogue')
-                    ->acceptedFileTypes(['application/pdf'])
+                    ->acceptedFileTypes(['application/pdf', 'application/x-pdf', 'application/acrobat', 'applications/vnd.pdf', 'text/pdf', 'text/x-pdf'])
                     ->maxSize(51200) // 50MB
+                    ->openable()
+                    ->downloadable()
                     ->required()
                     ->helperText('Upload the official PDF file (up to 50MB).'),
 
@@ -74,7 +76,9 @@ class CatalogueResource extends Resource
                     ->image()
                     ->disk('public')
                     ->directory('catalogue/covers')
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(20480) // 20MB
+                    ->openable()
+                    ->downloadable()
                     ->helperText('Optional preview image displayed on the resource card.'),
 
                 Forms\Components\TextInput::make('file_size')

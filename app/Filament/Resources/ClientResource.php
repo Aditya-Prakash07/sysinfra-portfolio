@@ -55,7 +55,8 @@ class ClientResource extends Resource
                 ->label('Client Logo')
                 ->disk('public')
                 ->directory('clients')
-                ->image()
+                ->maxSize(20480)
+                ->openable()
                 ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']),
 
             Forms\Components\TextInput::make('website_url')

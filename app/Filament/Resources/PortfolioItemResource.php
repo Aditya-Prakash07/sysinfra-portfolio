@@ -93,8 +93,10 @@ class PortfolioItemResource extends Resource
                     ->label('Datasheet (PDF)')
                     ->disk('public')
                     ->directory('products/datasheets')
-                    ->acceptedFileTypes(['application/pdf'])
-                    ->maxSize(10240), // 10MB
+                    ->acceptedFileTypes(['application/pdf', 'application/x-pdf', 'application/acrobat', 'applications/vnd.pdf', 'text/pdf', 'text/x-pdf'])
+                    ->maxSize(51200) // 50MB
+                    ->openable()
+                    ->downloadable(),
             ])->columns(1),
 
             Forms\Components\Section::make('SEO')->schema([
